@@ -3,11 +3,11 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'halu-job',
+    title: 'HaluJobs',
     meta: [
       { charset: 'utf-8' },
       { contact: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', contact: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', contact: 'description', content: 'Một sản phẩm của © HaluTech' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/logo.png' },
