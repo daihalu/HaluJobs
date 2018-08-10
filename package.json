@@ -1,0 +1,46 @@
+{
+  "contact": "halu-job",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "nvDai <nvdai2401@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-brands-svg-icons": "^5.2.0",
+    "@fortawesome/free-regular-svg-icons": "^5.2.0",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "babel-loader": "^7.1.5",
+    "convert-excel-to-json": "^1.4.0",
+    "element-ui": "^2.4.5",
+    "jscrollpane": "^2.2.0",
+    "node-sass": "^4.9.2",
+    "nuxt": "^1.4.2",
+    "sass-loader": "^7.1.0",
+    "socket.io-client": "^2.1.1",
+    "validator": "^10.5.0",
+    "vue": "^2.5.17",
+    "vue-json-excel": "^0.2.83",
+    "vue-template-compiler": "^2.5.17",
+    "xlsx": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "element-theme-chalk": "^2.4.5",
+    "eslint": "^5.3.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-vue": "^4.7.1",
+    "vue-particles": "^1.0.9"
+  }
+}

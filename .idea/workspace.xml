@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d5aee19c-31e4-4fb1-8b85-086668c70233" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-2054862639">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="ESLintLanguageService" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="vue" value="78" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Vue.js" value="78" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="js" value="1" />
+          <entry key="vue" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JavaScript" value="1" />
+          <entry key="Vue.js" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="1498617533">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="js" value="2" />
+          <entry key="json" value="5" />
+          <entry key="lock" value="2" />
+          <entry key="ts" value="1" />
+          <entry key="vue" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JSON" value="5" />
+          <entry key="JavaScript" value="2" />
+          <entry key="TypeScript" value="1" />
+          <entry key="Vue.js" value="10" />
+          <entry key="yarn.lock" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="2" />
+          <entry key="vue" value="1151" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="2" />
+          <entry key="Vue.js" value="1151" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="ESLintLanguageService" value="1" />
+          <entry key="TypeScriptServerServiceImpl" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="halu-job" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="134" selection-start-line="134" selection-end-line="134" />
+              <folding>
+                <element signature="e#3122#3174#0" expanded="true" />
+                <element signature="e#4309#6468#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/components/public-components/stamps/DynamicCandidateStamp/index.vue">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+              <folding>
+                <element signature="e#537#584#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layouts/employer.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="46" column="5" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layouts/candidate.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-924" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Copy of SCSS File" />
+        <option value="JavaScript File" />
+        <option value=" SCSS File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>search-bar</find>
+      <find>icon-hover</find>
+      <find>flexibleCandidateBox</find>
+      <find>.advanced-search-button</find>
+      <find>navigation-bar--container</find>
+      <find>advanced-search-box</find>
+      <find>selection</find>
+      <find>flexibleCandidateLabel</find>
+      <find>navigation-bar</find>
+      <find>container</find>
+      <find>phone</find>
+      <find>contact-container</find>
+      <find>activeBtn</find>
+      <find>updatedDate</find>
+      <find>active</find>
+      <find>save-candidate</find>
+      <find>box-right</find>
+      <find>h4</find>
+      <find>relating-candidate</find>
+      <find>jobTy</find>
+      <find>vue</find>
+      <find>ex</find>
+      <find>_file</find>
+      <find>files[0]</find>
+      <find>var</find>
+      <find>excelData</find>
+      <find>cols</find>
+      <find>email</find>
+      <find>showScrollButton</find>
+      <find>data</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>CompanyBox</replace>
+      <replace>CompanyCard</replace>
+      <replace>timtruong</replace>
+      <replace>send-message</replace>
+      <replace>view-contact</replace>
+      <replace>JobInfo</replace>
+      <replace>fixed-top-job-bar--tran</replace>
+      <replace>fixed-top-candidate-bar</replace>
+      <replace>save-candidate`</replace>
+      <replace>.fixed-top-job-bar--btn</replace>
+      <replace>jobOptions</replace>
+      <replace>languageOptions</replace>
+      <replace>foreignLanguagesOptions</replace>
+      <replace>foreignLanguageOptions</replace>
+      <replace>qualificationOptions</replace>
+      <replace>workAddress</replace>
+      <replace>workExperience</replace>
+      <replace>workExperienceOptions</replace>
+      <replace>hasCheckedRules</replace>
+      <replace>@import &quot;~assets/css/halujobs-variables&quot;;</replace>
+      <replace>.contact-container</replace>
+      <replace>ho-so/candidate-info</replace>
+      <replace>flexible-candidate-box</replace>
+      <replace>container</replace>
+      <replace>const</replace>
+      <replace>files[1]</replace>
+      <replace>const`</replace>
+      <replace>let</replace>
+      <replace>exe</replace>
+      <replace>exelData</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pages/nha-tuyen-dung/dang-ky/index.vue" />
+        <option value="$PROJECT_DIR$/components/bars/Footer/index.vue" />
+        <option value="$PROJECT_DIR$/components/cards/CompanyCard/index.vue" />
+        <option value="$PROJECT_DIR$/components/boxs/FunctionBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/boxs/TheUrgentJobBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/boxs/FlexibleCandidateBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/cards/CandidateCard/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/CandidateHeader/index.vue" />
+        <option value="E:/Programs/candidate.js" />
+        <option value="$PROJECT_DIR$/components/ho-so/PersonalInfo/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/BasicInfo/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/PersonalSkill/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/JobGoal/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/CandidateInfo/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/ForeignLanguage/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/ComputerSkills/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/WorkExperience/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/Qualification/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/candidate-info/ForeignLanguage/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/candidate-info/ComputerSkills/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/candidate-info/Qualification/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/AdvancedSearch/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/Tools/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/DynamicCandidateStamp/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/candidate-info/Contact/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/Breadcrumb/index.vue" />
+        <option value="$PROJECT_DIR$/pages/ho-so/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/candidate-info/BasicInfo/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/candidate-info/CandidateCover/index.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/bars/FixBarAction/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/FixBarAction/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/FixBarAction/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/cards/AttractiveJobCard/index.vue" />
+        <option value="$PROJECT_DIR$/assets/css/halujobs-globals.scss" />
+        <option value="$PROJECT_DIR$/assets/css/main.scss" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/JobCover/index.vue" />
+        <option value="$PROJECT_DIR$/assets/css/halujobs-qclasses.scss" />
+        <option value="$PROJECT_DIR$/components/public-components/boxs/AdvancedSearch/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/RelatingCandidate/index.vue" />
+        <option value="$PROJECT_DIR$/components/ho-so/boxs/DynamicCandidate/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/SameJobs/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/QuickInfo/index.vue" />
+        <option value="$PROJECT_DIR$/pages/tuyen-dung/viec-lam/index.vue" />
+        <option value="$PROJECT_DIR$/nuxt.config.js" />
+        <option value="$PROJECT_DIR$/pages/xem-bang-gia/index.vue" />
+        <option value="$PROJECT_DIR$/pages/index.vue" />
+        <option value="$PROJECT_DIR$/layouts/default.vue" />
+        <option value="$PROJECT_DIR$/layouts/employer.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/tools/ConvertExcelToJSON/index.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1539" />
+    <option name="y" value="180" />
+    <option name="width" value="1936" />
+    <option name="height" value="882" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="stamps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="stamps" type="462c0819:PsiDirectoryNode" />
+              <item name="DynamicCandidateStamp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+              <item name="ConvertExcelToJSON" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="halu-job" type="b2602c69:ProjectViewProjectNode" />
+              <item name="halu-job" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="xem-bang-gia" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="D:\IT\Nuxt js\halu-job\node_modules\eslint" />
+    <property name="node.js.selected.package.standard" value="D:\IT\Nuxt js\halu-job\node_modules\eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="D:\IT\Learning Nuxt js\halu-job\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.1.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\tuyen-dung\viec-lam\boxs" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\tuyen-dung\viec-lam\JobInfo" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\tuyen-dung" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\ho-so\candidate-info" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\ho-so\CandidateInfo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\public-components\cards" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\tuyen-dung\viec-lam\boxs" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\public-components\bars" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\public-components\stamps" />
+      <recent name="D:\IT\Learning Nuxt js\halu-job\components\public-components\boxs" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d5aee19c-31e4-4fb1-8b85-086668c70233" name="Default" comment="" />
+      <created>1531360968509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1531360968509</updated>
+      <workItem from="1531360970823" duration="26716000" />
+      <workItem from="1531442048389" duration="29644000" />
+      <workItem from="1531528007681" duration="30888000" />
+      <workItem from="1531623595214" duration="5742000" />
+      <workItem from="1531701398150" duration="29452000" />
+      <workItem from="1531749897714" duration="1566000" />
+      <workItem from="1531752124817" duration="1489000" />
+      <workItem from="1531786743464" duration="29272000" />
+      <workItem from="1531873734718" duration="28880000" />
+      <workItem from="1531960558093" duration="80000" />
+      <workItem from="1531960651935" duration="228000" />
+      <workItem from="1531960900677" duration="26387000" />
+      <workItem from="1532306000158" duration="32023000" />
+      <workItem from="1532392582462" duration="26696000" />
+      <workItem from="1532478492064" duration="33072000" />
+      <workItem from="1532564768182" duration="30549000" />
+      <workItem from="1532671440556" duration="3611000" />
+      <workItem from="1532679748545" duration="431000" />
+      <workItem from="1532940960548" duration="133000" />
+      <workItem from="1533017741775" duration="13145000" />
+      <workItem from="1533048485182" duration="192000" />
+      <workItem from="1533084719443" duration="7692000" />
+      <workItem from="1533103552752" duration="16603000" />
+      <workItem from="1533137084092" duration="25000" />
+      <workItem from="1533169907992" duration="13980000" />
+      <workItem from="1533189552443" duration="16177000" />
+      <workItem from="1533216351049" duration="15000" />
+      <workItem from="1533256003376" duration="8671000" />
+      <workItem from="1533265057618" duration="12238000" />
+      <workItem from="1533601690028" duration="1231000" />
+      <workItem from="1533780211966" duration="28000" />
+      <workItem from="1533780322256" duration="71000" />
+      <workItem from="1533780637227" duration="172000" />
+      <workItem from="1533801163713" duration="2203000" />
+      <workItem from="1533804686194" duration="205000" />
+      <workItem from="1533805746871" duration="2894000" />
+      <workItem from="1533860965337" duration="18876000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="451277000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info id="Favorites" order="1" sideWeight="0.11953353" side_tool="true" weight="0.13751318" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.88046646" visible="true" weight="0.13751318" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.32890365" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.3286334" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" x="-43" y="343" width="1503" height="230" id="Terminal" order="11" visible="true" weight="0.2559653" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/components/ho-so/CandidateInfo/index.vue" />
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/ForeignLanguage/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/ComputerSkills/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/Qualification/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/AdvancedSearch/index.vue" />
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/Tools/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/DynamicCandidateStamp/index.vue" />
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/Contact/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/CandidateCard/index.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/Breadcrumb/index.vue" />
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/CandidateCover/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1176">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/BasicInfo/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="57" column="6" lean-forward="true" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/data-options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://E:/Documents/candidate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="143" column="6" selection-start-line="143" selection-start-column="6" selection-end-line="143" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/bars/FixBarAction/index.vue" />
+    <entry file="file://E:/Documents/job.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-392">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/FixBarAction/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="102" column="2" selection-start-line="102" selection-start-column="2" selection-end-line="132" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/FixBarAction/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="136" column="24" lean-forward="true" selection-start-line="136" selection-start-column="24" selection-end-line="136" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/index.vue" />
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../2DBros/assets/css/2dbros-qc-classes.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="4" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/AttractiveJobCard/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/JobCover/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/halujobs-globals.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/boxs/AdvancedSearch/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/RelatingCandidate/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/DynamicCandidate/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/halujobs-qclasses.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/SameJobs/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="77" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ho-so/candidate-info/PersonalInfo/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tuyen-dung/viec-lam/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding>
+            <element signature="n#quick-info#0;n#el-col#0;n#el-row#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/QuickInfo/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="31" column="21" selection-start-line="25" selection-start-column="6" selection-end-line="31" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/ho-so/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2632">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="n#fix-bar-action#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#contact#0;n#el-row#0;n#el-col#0;n#el-row#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1428" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yarn.lock">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/xlsx/xlsx.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1428">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuxt.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/xlsx/types/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="231" column="4" selection-start-line="231" selection-start-column="4" selection-end-line="231" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="e#537#584#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/employer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/candidate.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-924" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/xem-bang-gia/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/ung-vien/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9828" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/tools/ConvertExcelToJSON/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-756">
+          <caret line="30" column="12" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+          <folding>
+            <element signature="e#3122#3174#0" expanded="true" />
+            <element signature="e#4309#6468#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/stamps/DynamicCandidateStamp/index.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>

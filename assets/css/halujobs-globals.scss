@@ -1,0 +1,154 @@
+html {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: $fs-base-16;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  background-color: $color-gray;
+  color: $color-black;
+  font-weight: $fw-small-400;
+}
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+label {
+  line-height: 20px !important;
+}
+
+.el-checkbox__inner:hover,
+.el-input .el-input__inner:focus,
+.el-select .el-input__inner:focus,
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: $color-primary;
+}
+
+.el-form-item.is-success .el-input__inner,
+.el-form-item.is-success .el-input__inner:focus,
+.el-form-item.is-success .el-textarea__inner,
+.el-form-item.is-success .el-textarea__inner:focus {
+  border-color: $color-secondary;
+}
+
+.el-select-dropdown__item.selected {
+  color: $color-primary;
+  font-weight: $fw-big-700;
+}
+
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
+  color: $color-primary;
+  background-color: $color-white;
+}
+
+.el-tabs__item.is-active {
+  color: $color-primary;
+}
+
+.el-tabs__item:hover {
+  color: $color-primary;
+}
+
+.el-tabs__active-bar {
+  background-color: $color-primary;
+}
+
+.el-checkbox__input.is-checked + .el-checkbox__label {
+  color: $color-black;
+}
+
+.el-form-item__content {
+  line-height: 30px;
+}
+
+.el-checkbox__label {
+  font-weight: $fw-small-400;
+}
+
+.el-checkbox__inner {
+  border-color: #dcdfe6 !important;
+}
+
+.el-checkbox__inner:hover {
+  border-color: $color-primary !important;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: $color-primary;
+  border-color: $color-primary !important;
+}
+
+.el-checkbox__input.is-focused .el-checkbox__inner{
+  border-color: $color-primary !important;
+}
+
+.el-date-picker__header span:hover {
+  color: $color-primary !important;
+}
+
+.el-year-table td a:hover {
+  color: $color-primary !important;
+}
+
+.el-month-table td a:hover {
+  color: $color-primary !important;
+}
+
+.el-date-table td.current:not(.disabled) span {
+  color: $color-white;
+  background-color: $color-primary;
+}
+
+.el-date-table td.today span,
+.el-date-table td div:hover {
+  color: $color-primary;
+  font-weight: $fs-large-18;
+}
+
+
+
+.el-select .el-input__inner:focus,
+.el-input--prefix .el-input__inner:focus {
+  border-color: $color-primary;
+}
+
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: $color-primary;
+}
+
+.el-select-dropdown__item.selected {
+  color: $color-primary;
+  font-weight: bold;
+}
+
+.el-button {
+  border: 0 none;
+  outline: 0 none;
+  transition: all 0.15s ease-in-out;
+}
+
+svg {
+  font-size: $fs-large-18;
+}
+
+a {
+  text-decoration: none;
+  color: $color-primary;
+}
+
+a:hover {
+  cursor: pointer;
+  color: $color-secondary;
+}
+
+a:active {
+  cursor: pointer;
+  text-underline: none;
+  color: $color-primary;
+}
+
