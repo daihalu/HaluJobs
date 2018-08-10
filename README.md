@@ -1,6 +1,6 @@
-# halu-job
+# HaluJobs
 
-> Nuxt.js project
+> Một sản phẩm của © HaluTech
 
 ## Build Setup
 
