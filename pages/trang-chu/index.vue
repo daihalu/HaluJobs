@@ -2,18 +2,21 @@
   <div>
     <search-bar/>
     <div class="home-container">
-      <breadcrumb
-        :breadcrumbObj="hotJobList"
-        class="mg-top-15"
-      />
+      <breadcrumb :breadcrumbObj="hotJobList" class="mg-top-15"/>
+
       <banner class="mg-top-15"/>
+
       <new-job-box class="mg-top-15"/>
+
       <function-box class="mg-top-15"/>
-      <urgent-job-box jobTitle="VIỆC LÀM TUYỂN GẤP"/>
-      <Banner/>
-      <el-row :gutter="20">
+
+      <main-job-box jobTitle="VIỆC LÀM TUYỂN GẤP"/>
+
+      <banner class="mg-top-15"/>
+
+      <el-row :gutter="16">
         <el-col :span="16">
-          <AttractiveJobBox jobTitle="VIỆC LÀM HẤP DẪN"/>
+          <attractive-job-box jobTitle="VIỆC LÀM HẤP DẪN" class="mg-top-15"/>
           <HighSalaryJobBox jobTitle="VIỆC LÀM LƯƠNG CAO"/>
         </el-col>
         <el-col :span="8">
@@ -108,12 +111,8 @@
   import SearchBar from '~/components/public-components/bars/SearchBar';
 
 
-
-
-
-  import AttractiveJobBox from '~/components/boxs/AttractiveJobBox';
   import TheBestEmployerBox from '~/components/boxs/TheBestEmployerBox';
-  import HighSalaryJobBox from '~/components/boxs/HighSalaryJobBox';
+
   import HotLineBox from '~/components/boxs/HotLineBox';
   import LocationJobBox from '~/components/boxs/LocationJobBox';
 
@@ -122,7 +121,9 @@
   import Banner from '~/components/trang-chu/boxs/Banner';
   import NewJobBox from '~/components/trang-chu/boxs/NewJobBox';
   import FunctionBox from '~/components/trang-chu/boxs/FunctionBox';
-  import UrgentJobBox from '~/components/trang-chu/boxs/UrgentJobBox';
+  import MainJobBox from '~/components/public-components/boxs/MainJobBox';
+  import AttractiveJobBox from '~/components/boxs/AttractiveJobBox';
+  import HighSalaryJobBox from '~/components/trang-chu/boxs/HighSalaryJobBox';
 
 
 
@@ -136,7 +137,7 @@
       FunctionBox,
       Banner,
       NewJobBox,
-      UrgentJobBox,
+      MainJobBox,
       AttractiveJobBox,
       TheBestEmployerBox,
       HighSalaryJobBox,

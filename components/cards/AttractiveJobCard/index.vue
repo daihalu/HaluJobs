@@ -2,7 +2,8 @@
   <div class="job-card">
     <div class="job-card--avatar">
       <nuxt-link to="/tuyen-dung/viec-lam" :title="companyName">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg"/>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg"/>
       </nuxt-link>
     </div>
     <div class="job-card--content">
@@ -31,7 +32,7 @@
     data() {
       return {
         position: 'Giám đốc điều hành nhân sự',
-        companyName: 'Công ty cổ phần Đại Ca',
+        companyName: 'Công ty cổ phần Đại Nam',
         salary: '15 - 22 triệu',
         expiryDate: '30/7/2018',
         location: 'Sài Gòn'

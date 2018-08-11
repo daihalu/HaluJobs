@@ -46,7 +46,6 @@
   }
 </script>
 
-
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
@@ -71,10 +70,5 @@
     font-size: 60px;
     margin-bottom: 15px;
   }
-
-
-</style>
-
-<style lang="">
 
 </style>

@@ -1,34 +1,34 @@
 <template>
   <div class="job-card">
     <div>
-      <nuxt-link :to="quickJobUrl" :title="companyName">
-        <img src="https://www.codyhub.com/wp-content/uploads/2017/07/i2.jpg"/>
+      <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
+        <img :src="jobInfo.avatarUrl"/>
       </nuxt-link>
     </div>
 
-    <div class="job-card--content">
-      <el-tooltip class="item" effect="dark" :content="position" placement="top-start">
+    <div class="container">
+      <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
         <p class="position">
-          <nuxt-link to="/tuyen-dung/viec-lam" :title="position">
-            {{position}}
+          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
+            {{jobInfo.position}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
-      <p class="company" :title="companyName">
+      <p class="company" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{companyName}}
+        {{jobInfo.companyName}}
       </p>
 
-      <div class="job-card--content--item">
-        <p class="salary" :title="salary">
-          <font-awesome-icon icon="dollar-sign"/>
-          {{salary}}
+      <div class="items">
+        <p class="salary" :title="jobInfo.salary">
+          <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
+          {{jobInfo.salary}}
         </p>
 
-        <p class="deadline" :title="quickJobUrl">
-          <font-awesome-icon icon="user-clock"/>
-          {{deadline}}
+        <p class="deadline" :title="jobInfo.deadline">
+          <font-awesome-icon :icon="['fas', 'user-clock']"/>
+          {{jobInfo.deadline}}
         </p>
       </div>
 
@@ -39,11 +39,7 @@
 <script>
   export default {
     props: {
-      position: String,
-      companyName: String,
-      salary: String,
-      deadline: String,
-      quickJobUrl: String
+      jobInfo: Object
     }
   }
 </script>
@@ -59,7 +55,7 @@
     margin-top: 3px;
   }
 
-  .job-card--content {
+  .container {
     margin-left: 10px;
   }
 
@@ -78,15 +74,15 @@
     opacity: 1;
   }
 
-  .salary {
-    color: $color-pink;
-  }
-
   .deadline,
   .salary {
     font-size: $fs-small-14;
     line-height: 25px;
     display: inline;
+  }
+
+  .salary {
+    color: $color-pink;
   }
 
   .deadline {
