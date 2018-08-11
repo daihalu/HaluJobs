@@ -4,10 +4,28 @@
     <nuxt/>
     <Footer/>
     <div class="fixed-contact-box">
-      <nuxt-link to="/"><font-awesome-icon :icon="['fab', 'facebook-f']"/></nuxt-link>
-      <nuxt-link to="/"><font-awesome-icon :icon="['fas', 'phone']"/></nuxt-link>
-      <nuxt-link to="/"><font-awesome-icon :icon="['far', 'envelope']"/></nuxt-link>
+      <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogTableVisible = true"/>
+      <font-awesome-icon :icon="['fas', 'phone']"/>
+      <font-awesome-icon :icon="['far', 'envelope']"/>
     </div>
+    <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="dialogTableVisible">
+      <div>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?
+        Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.
+      </div>
+      <div class="mg-top-15">
+        <iframe
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
+          width="500"
+          height="130"
+          style="border:none;overflow:hidden"
+          scrolling="no"
+          frameborder="0"
+          allowTransparency="true"
+          allow="encrypted-media"
+        >
+        </iframe>
+      </div>
+    </el-dialog>
 
     <div class="btn-scroll-top" v-if="showScrollButton" @click="scrollTop">
       <font-awesome-icon :icon="['fas', 'chevron-up']"/>
@@ -26,7 +44,8 @@
     data() {
       return {
         showScrollButton: false,
-        scrollToTop: false
+        scrollToTop: false,
+        dialogTableVisible: false
       }
     },
     methods: {
@@ -34,7 +53,7 @@
         this.showScrollButton = window.scrollY > 600;
       },
       scrollTop() {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       }
     },
     beforeMount() {
@@ -47,29 +66,35 @@
 </script>
 
 
-
 <style lang="scss">
   @import "~assets/css/halujobs_variables";
 
   .fixed-contact-box {
+    background-color: $color-white;
+    border: 1px solid $color-primary;
     position: fixed;
     top: 330px;
     right: 30px;
-    background-color: $color-white;
     z-index: $index-top-1000;
-    border: 1px solid $color-primary;
     display: flex;
     flex-direction: column;
-    padding: $padding-border-box-10;
+    align-items: center;
+    padding: 0 $padding-border-box-10;
     border-radius: $br-3;
+
+    svg {
+      color: $color-primary;
+      font-size: 20px;
+      height: 35px;
+
+    }
   }
 
-  .fixed-contact-box svg {
-    font-size: 20px;
+  svg:hover {
+    cursor: pointer;
   }
 
-  .fixed-contact-box a {
-    line-height: $line-height-35;
+  .mg-top-15 {
     text-align: center;
   }
 
@@ -87,6 +112,10 @@
 
   .btn-scroll-top:hover {
     cursor: pointer;
+  }
+
+  .el-dialog__body {
+    padding: 0px 20px 20px 20px;
   }
 
 </style>

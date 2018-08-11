@@ -23,16 +23,11 @@
   background-color: $color-white;
 }
 
-.el-tabs__item.is-active {
-  color: $color-primary;
-}
-
-.el-tabs__item:hover {
-  color: $color-primary;
-}
-
+.el-tabs__item.is-active,
+.el-tabs__item:hover,
+.el-dialog__headerbtn .el-dialog__close:hover,
 .el-tabs__active-bar {
-  background-color: $color-primary;
+  color: $color-primary !important;
 }
 
 .el-checkbox__input.is-checked + .el-checkbox__label {
@@ -51,9 +46,7 @@
   border-color: #dcdfe6 !important;
 }
 
-.el-checkbox__inner:hover {
-  border-color: $color-primary !important;
-}
+
 
 .el-checkbox__input.is-checked .el-checkbox__inner {
   background-color: $color-primary;
