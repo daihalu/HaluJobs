@@ -7,7 +7,7 @@
     </div>
 
     <div class="container">
-      <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
+      <el-tooltip effect="dark" :content="jobInfo.position" placement="top-start">
         <p class="position">
           <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
             {{jobInfo.position}}
@@ -15,7 +15,7 @@
         </p>
       </el-tooltip>
 
-      <p class="company" :title="jobInfo.companyName">
+      <p class="company item" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
         {{jobInfo.companyName}}
       </p>
@@ -69,10 +69,17 @@
     justify-content: space-between;
   }
 
+  .item {
+    font-size: 14px;
+    line-height: 25px;
+    display: inline;
+  }
+
   .position {
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;
+    font-size: $fs-base-16;
   }
 
   .company {
@@ -82,12 +89,6 @@
 
   .company:hover {
     opacity: 1;
-  }
-
-  .item {
-    font-size: 14px;
-    line-height: 25px;
-    display: inline;
   }
 
   .salary,

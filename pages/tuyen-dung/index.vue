@@ -187,7 +187,7 @@
                   </el-col>
                   <!--<el-col :span="8">-->
 
-                    <!--<div class="selection-box">-->
+                    <!--<div class="selection-box-container">-->
                       <!--<font-awesome-icon icon="globe-asia"/>-->
                       <!--<el-select v-model="searchData.foreignLanguage" filterable placeholder="Trình độ ngoại ngữ">-->
                         <!--<el-option-->
@@ -237,7 +237,7 @@
             </div>
           </div>
 
-          <!--<div class="banner-box">-->
+          <!--<div class="banner-box-container">-->
           <!--<nuxt-link to="/">-->
           <!--<img-->
           <!--src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.0-9/27459795_1516131271837402_799174223676649307_n.png?_nc_cat=0&oh=8de849a451cb5afc9918e09de0cc6407&oe=5BE0F15C"/>-->

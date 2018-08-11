@@ -7,7 +7,7 @@
       </nuxt-link>
     </div>
     <div class="job-card--content">
-      <el-tooltip class="item" effect="dark" :content="position" placement="top-start">
+      <el-tooltip  effect="dark" :content="position" placement="top-start">
         <p class="position">
           <nuxt-link to="/tuyen-dung/viec-lam" :title="position">
             {{position}}
@@ -49,7 +49,7 @@
     border: 1px solid $color-border;
     border-radius: $br-5;
     font-size: $fs-base-16;
-    padding: $padding-border-box-10;
+
     display: flex;
     flex-direction: row;
     justify-content: baseline;
@@ -79,10 +79,10 @@
   }
 
 
-
   .position {
     color: $color-primary;
     font-weight: $fw-base-500;
+    font-size: $fs-base-16 !important;
     padding-bottom: 5px;
   }
 

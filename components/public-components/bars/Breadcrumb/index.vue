@@ -1,5 +1,5 @@
 <template>
-  <el-row class="container box">
+  <el-row class="container box-container">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item v-for="item in breadcrumbObj" :key="item.name">
         <nuxt-link :to="item.url">{{item.name}}</nuxt-link>
@@ -25,7 +25,7 @@
     @import "~assets/css/halujobs_variables";
 
     .container {
-      padding-left: 10px;
+      padding: 10px 0 10px 10px;
     }
 
     .container a {

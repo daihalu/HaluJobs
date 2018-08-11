@@ -1,12 +1,12 @@
 <template>
-  <el-row class="high-salary-job-box">
-    <h4>
+  <el-row class="box-container">
+    <h4 class="box-title">
       <font-awesome-icon icon="briefcase"/>
       {{jobTitle}}
     </h4>
-    <div class="row" id="high-salary-job-box">
+    <div class="scroll-box" id="scroll-box">
       <el-row :gutter="4">
-        <el-col v-for="item in 50" v-bind:key="item">
+        <el-col v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
           <high-salary-job-card
             :jobInfo="jobList[0]"
           />
@@ -48,15 +48,10 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .row {
+  .scroll-box {
     overflow: auto;
-    height: 640px;
+    height: 720px;
     padding: 10px;
-  }
-
-  .high-salary-job-box {
-    background-color: $color-white;
-    margin: $mg-top-bottom-15 auto;
   }
 
   h4 {
@@ -67,24 +62,24 @@
   }
 
   /* width */
-  #high-salary-job-box::-webkit-scrollbar {
+  #scroll-box::-webkit-scrollbar {
     width: 10px;
   }
 
   /* Track */
-  #high-salary-job-box::-webkit-scrollbar-track:hover {
+  #scroll-box::-webkit-scrollbar-track:hover {
     background: $color-gray;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   }
 
   /* Handle */
-  #high-salary-job-box::-webkit-scrollbar-thumb {
+  #scroll-box::-webkit-scrollbar-thumb {
     background: $color-scroll-bar;
     border-radius: 8px;
   }
 
   /* Handle on hover */
-  #high-salary-job-box::-webkit-scrollbar-thumb:hover {
+  #scroll-box::-webkit-scrollbar-thumb:hover {
     background: $color-scroll-bar--hover;
   }
 

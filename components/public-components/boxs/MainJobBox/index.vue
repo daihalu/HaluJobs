@@ -7,7 +7,7 @@
     <el-carousel trigger="click" height="555px" indicator-position="outside" v-bind:interval="60000">
       <el-carousel-item v-for="item in 8" :key="item">
         <el-row :gutter="10">
-          <el-col :span="8" v-for="item in 15" v-bind:key="item" class="mr-bottom-10">
+          <el-col :span="8" v-for="item in 15" v-bind:key="item" class="mg-bottom-10">
             <quick-job-card
               :jobInfo="jobList[0]"
             />

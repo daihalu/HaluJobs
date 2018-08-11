@@ -1,15 +1,15 @@
 <template>
   <div class="job-card">
-    <div class="job-card--avatar">
+    <div>
       <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
         <img :src="jobInfo.avatarUrl"/>
       </nuxt-link>
     </div>
 
-    <div class="job-card--content el-col-16">
+    <el-col :span="16" class="job-card--content">
       <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
         <p class="position">
-          <nuxt-link to="/tuyen-dung/viec-lam" :title="jobInfo.position">
+          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
             {{jobInfo.position}}
           </nuxt-link>
         </p>
@@ -18,9 +18,9 @@
         <font-awesome-icon :icon="['far', 'building']"/>
         {{jobInfo.companyName}}
       </p>
-    </div>
+    </el-col>
 
-    <div class="job-card--content--item el-col-5">
+    <el-col :span="6" class="job-card--content--item">
       <p class="salary" :title="jobInfo.salary">
         <font-awesome-icon icon="dollar-sign"/>
         {{jobInfo.salary}}
@@ -35,7 +35,7 @@
         <font-awesome-icon icon="map-marker-alt"/>
         {{jobInfo.workAddress}}
       </p>
-    </div>
+    </el-col>
   </div>
 </template>
 
@@ -51,19 +51,13 @@
   @import "~assets/css/halujobs_variables";
 
   .job-card {
-    margin: 5px 3px;
-    border: 1px solid $color-border;
-    border-radius: $br-5;
-    font-size: $fs-base-16;
-    padding: $padding-border-box-10;
     display: flex;
     flex-direction: row;
     justify-content: baseline;
     align-items: center;
   }
-  
 
-  .job-card--avatar img {
+  img {
     border: 2px solid $color-gray;
     border-radius: $br-3;
     width: 70px;
@@ -72,9 +66,8 @@
   }
 
   .job-card--content {
-    margin-left: 20px;
+    margin-left: 10px;
   }
-
 
   .position {
     color: $color-primary;
@@ -82,33 +75,34 @@
     padding-bottom: 5px;
   }
 
-  .company {
+  .company,
+  .deadline {
     opacity: 0.8;
-
   }
 
   svg {
-    margin-right: 3px;
-    font-size: 14px;
     opacity: 0.7;
+  }
+
+  .deadline,
+  .salary,
+  .workAddress {
+    font-size: 14px;
+    line-height: 25px;
+    margin-right: 10px;
   }
 
   .salary {
     color: $color-pink;
   }
 
-  .deadline, .salary, .workAddress {
-    font-size: 14px;
-    line-height: 25px;
-    margin-right: 10px;
-  }
-
-  .deadline, .workAddress {
+  .deadline,
+  .workAddress {
     display: inline;
   }
 
-  .deadline {
-    opacity: 0.8;
+  .deadline:hover {
+    opacity: 1;
   }
 
 </style>

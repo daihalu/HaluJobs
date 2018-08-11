@@ -103,7 +103,7 @@
   }
 
   .el-footer {
-    width: 1250px;
+    width: $page-width;
     margin: 0 auto;
     padding: 20px 0;
     height: 100% !important;

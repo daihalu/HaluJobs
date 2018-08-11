@@ -4,9 +4,9 @@
       <font-awesome-icon icon="briefcase"/>
       {{jobTitle}}
     </h4>
-    <div class="row" id="scroll-box">
+    <div id="scroll-box">
       <el-row :gutter="10">
-        <el-col :span="12" v-for="item in 50" v-bind:key="item" class="mr-bottom-10">
+        <el-col :span="12" v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
           <attractive-job-card
             :jobInfo="jobList[0]"
           />
@@ -47,9 +47,9 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .row {
+  #scroll-box {
     overflow: auto;
-    height: 670px;
+    height: 664px;
     padding: 10px;
   }
 

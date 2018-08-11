@@ -10,17 +10,14 @@
 
 /*============================JOB BOX=============================*/
 
-.box {
+.box-container {
   border: 1px solid $color-border;
   background-color: $color-white;
   border-radius: $br-5;
-  padding: $padding-border-box-10 0;
+
 }
 
-.box-container {
-  background-color: $color-white;
-  border-radius: $br-5;
-}
+
 
 .box-title {
   border-bottom: 1px solid $color-border;
@@ -62,14 +59,17 @@
 
 /*====================MARGIN===================*/
 
-.mr-top-10 {
+.mg-top-10 {
   margin-top: 10px !important;
 }
 
-.mr-bottom-10 {
+.mg-bottom-10 {
   margin-bottom: 10px !important;
 }
 
 .mg-top-15 {
   margin-top: 15px !important;
+}
+.mg-bottom-15 {
+  margin-bottom: 15px !important;
 }
