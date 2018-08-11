@@ -68,7 +68,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .overlay-container {
     height: 100%;
@@ -104,7 +104,7 @@
 
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .fixed-contact-box {
     position: fixed;

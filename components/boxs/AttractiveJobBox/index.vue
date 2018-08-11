@@ -28,7 +28,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .row {
     overflow: auto;
@@ -38,7 +38,7 @@
 
   .hot-job-box {
     background-color: $color-white;
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
   }
 
   h4 {

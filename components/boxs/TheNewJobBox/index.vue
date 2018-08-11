@@ -31,10 +31,10 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .new-job-box {
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
     padding: $padding-border-box-10;
     line-height: $line-height-30;
     background-color: $color-white;

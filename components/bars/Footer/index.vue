@@ -91,7 +91,7 @@
 </script>
 
 <style scoped lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .el-container {
     background-color: $color-primary;
@@ -210,6 +210,6 @@
 </style>
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
 </style>

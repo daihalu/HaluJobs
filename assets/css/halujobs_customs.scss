@@ -1,26 +1,3 @@
-html {
-  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: $fs-base-16;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  background-color: $color-gray;
-  color: $color-black;
-  font-weight: $fw-small-400;
-}
-
-*, *:before, *:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-label {
-  line-height: 20px !important;
-}
 
 .el-checkbox__inner:hover,
 .el-input .el-input__inner:focus,
@@ -110,8 +87,6 @@ label {
   font-weight: $fs-large-18;
 }
 
-
-
 .el-select .el-input__inner:focus,
 .el-input--prefix .el-input__inner:focus {
   border-color: $color-primary;
@@ -127,28 +102,24 @@ label {
 }
 
 .el-button {
-  border: 0 none;
   outline: 0 none;
   transition: all 0.15s ease-in-out;
+  font-size: 16px;
+  height: 40px;
+  font-weight: 600;
 }
 
-svg {
-  font-size: $fs-large-18;
+.el-carousel__indicators--outside button {
+  background-color: #1ab394;
+  opacity: 0.24;
 }
 
-a {
-  text-decoration: none;
-  color: $color-primary;
+.el-carousel__item {
+  padding: 10px !important;
 }
 
-a:hover {
-  cursor: pointer;
-  color: $color-secondary;
+.el-carousel__button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }
-
-a:active {
-  cursor: pointer;
-  text-underline: none;
-  color: $color-primary;
-}
-

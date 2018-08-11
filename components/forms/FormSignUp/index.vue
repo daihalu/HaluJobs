@@ -196,7 +196,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .sign-up-form {
     border: 1px solid $color-border;

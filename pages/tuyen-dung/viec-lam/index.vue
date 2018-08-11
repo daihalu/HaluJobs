@@ -219,7 +219,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .container {
     width: $page-width;
@@ -230,7 +230,7 @@
     border: 1px solid $color-gray;
     padding: 15px;
     background-color: $color-white;
-    margin-top: $mg-top-bottom-20;
+    margin-top: $mg-top-bottom-15;
     text-align: center;
   }
 
@@ -256,7 +256,7 @@
   }
 
   .navigation-bar {
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
     padding-left: 0;
   }
 
@@ -289,7 +289,7 @@
   .advanced-search-box {
     padding: $padding-border-box-15;
     background-color: $color-white;
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
   }
 
   .advanced-search-box--container {
@@ -358,7 +358,7 @@
 </style>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .fixed-top-job-bar {
     position: fixed;

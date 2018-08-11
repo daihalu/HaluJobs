@@ -1,17 +1,17 @@
 <template>
-    <div class="company-box">
-      <img src="https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif"
-           alt="Công Ty TNHH MTV Dương Thiên Hương">
-      <p class="company-name">{{name}}</p>
-      <p><strong>Địa chỉ:</strong> {{address}}</p>
-      <p><strong>Quy mô công ty:</strong> {{size}}</p>
-      <div class="btn-options">
-        <el-button class="send-message">
-          <font-awesome-icon icon="comment"/>
-          Gửi tin nhắn
-        </el-button>
-      </div>
+  <div class="company-box">
+    <img src="https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif"
+         alt="Công Ty TNHH MTV Dương Thiên Hương">
+    <p class="company-name">{{name}}</p>
+    <p><strong>Địa chỉ:</strong> {{address}}</p>
+    <p><strong>Quy mô công ty:</strong> {{size}}</p>
+    <div class="btn-options">
+      <el-button class="send-message">
+        <font-awesome-icon icon="comment"/>
+        Gửi tin nhắn
+      </el-button>
     </div>
+  </div>
 
 
 </template>
@@ -24,21 +24,19 @@
       size: String
     },
     data() {
-      return {
-
-      }
+      return {}
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .company-box {
     border: 1px solid $color-gray;
     padding: 15px;
     background-color: $color-white;
-    margin-top: $mg-top-bottom-20;
+    margin-top: $mg-top-bottom-15;
     text-align: center;
 
   }

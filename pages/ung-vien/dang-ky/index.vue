@@ -470,7 +470,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .sign-up-container {
     width: $page-width;
@@ -621,7 +621,7 @@
 </style>
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .el-col-12 .el-checkbox__label {
     font-size: 12px !important;

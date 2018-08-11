@@ -85,7 +85,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .search-bar-container {
     width: 100%;
@@ -107,7 +107,7 @@
   }
 
   .navigation-bar {
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
     padding-left: 0;
   }
 

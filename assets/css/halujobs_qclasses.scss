@@ -1,0 +1,75 @@
+
+.hr-1 {
+  border: 0;
+  height: 0.7px;
+  color: $color-black;
+  opacity: 0.5;
+  margin-top: 10px;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+/*============================JOB BOX=============================*/
+
+.box {
+  border: 1px solid $color-border;
+  background-color: $color-white;
+  border-radius: $br-5;
+  padding: $padding-border-box-10 0;
+}
+
+.box-container {
+  background-color: $color-white;
+  border-radius: $br-5;
+}
+
+.box-title {
+  border-bottom: 1px solid $color-border;
+  padding: 10px;
+  font-size: $fs-large-18;
+  font-weight: $fw-base-500;
+}
+
+/*============================JOB CARD=============================*/
+
+.job-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-border;
+  border-radius: $br-5;
+  font-size: $fs-base-16;
+  padding: $padding-border-box-10;
+}
+
+.job-card:hover {
+  box-shadow: 0 0 5px $color-primary;
+  cursor: pointer;
+}
+
+.job-card:active {
+  box-shadow: 0 0 0 transparent;
+  transition: none;
+}
+
+/*====================PADDING===================*/
+
+.padding-right-0 {
+  padding-right: 0 !important;
+}
+
+.padding-left-0 {
+  padding-left: 0 !important;
+}
+
+/*====================MARGIN===================*/
+
+.mr-top-10 {
+  margin-top: 10px !important;
+}
+
+.mr-bottom-10 {
+  margin-bottom: 10px !important;
+}
+
+.mg-top-15 {
+  margin-top: 15px !important;
+}

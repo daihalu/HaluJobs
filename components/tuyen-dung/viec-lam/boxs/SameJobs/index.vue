@@ -34,7 +34,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .container {
     padding: 5px;
@@ -60,5 +60,5 @@
 </style>
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 </style>

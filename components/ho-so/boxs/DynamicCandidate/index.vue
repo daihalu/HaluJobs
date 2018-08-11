@@ -20,13 +20,13 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .container {
     border: 1px solid $color-gray;
     padding: 15px;
     background-color: $color-white;
-    margin-top: $mg-top-bottom-20;
+    margin-top: $mg-top-bottom-15;
     text-align: left;
     width: 100%;
   }

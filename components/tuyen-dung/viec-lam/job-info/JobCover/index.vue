@@ -69,11 +69,11 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .job-container {
     width: 100%;
-    margin-top: $mg-top-bottom-20;
+    margin-top: $mg-top-bottom-15;
     font-size: $fs-base-16;
     color: $color-black;
     border: 1px solid $color-gray;

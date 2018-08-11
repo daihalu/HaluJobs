@@ -24,12 +24,12 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .container {
     padding: 5px;
     background-color: #ffffff;
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
   }
 
   .container h4 {

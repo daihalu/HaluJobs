@@ -308,7 +308,7 @@
 
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .advanced-search-bar {
     background: url("https://halutech.com.vn/assets/images/bg.jpg");
@@ -416,7 +416,7 @@
 </style>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .selection-box {
     position: relative;
@@ -463,7 +463,7 @@
 </style>
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .el-input--suffix .el-input__inner,
   .el-input--prefix .el-input__inner {
@@ -486,7 +486,7 @@
 </style>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .nav-search-bar {
     width: 50%;

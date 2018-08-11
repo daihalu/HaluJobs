@@ -1,12 +1,15 @@
 <template>
   <div>
-    <SearchBar/>
+    <search-bar/>
     <div class="home-container">
-      <TheHotCategory/>
-      <Banner/>
-      <TheNewJobBox/>
-      <FunctionBox/>
-      <TheUrgentJobBox jobTitle="VIỆC LÀM TUYỂN GẤP"/>
+      <breadcrumb
+        :breadcrumbObj="hotJobList"
+        class="mg-top-15"
+      />
+      <banner class="mg-top-15"/>
+      <new-job-box class="mg-top-15"/>
+      <function-box class="mg-top-15"/>
+      <urgent-job-box jobTitle="VIỆC LÀM TUYỂN GẤP"/>
       <Banner/>
       <el-row :gutter="20">
         <el-col :span="16">
@@ -59,12 +62,12 @@
               TÌM KIẾM VIỆC LÀM THEO NGÀNH NGHỀ
             </h4>
 
-            <!--<el-input-->
-            <!--type="email"-->
-            <!--v-model="emailSubscriber.email"-->
-            <!--auto-complete="off"-->
-            <!--placeHolder="Vui lòng nhập ngành nghề">-->
-            <!--</el-input>-->
+            <el-input
+              type="email"
+              v-model="emailSubscriber.email"
+              auto-complete="off"
+              placeHolder="Vui lòng nhập ngành nghề">
+            </el-input>
             <div class="job-searching-box--list">
               <ul v-for="job in jobList" :key="job.value">
                 <nuxt-link to="/tuyen-dung">
@@ -102,17 +105,26 @@
 </template>
 
 <script>
-  import SearchBar from '~/components/bars/SearchBar';
-  import TheHotCategory from '~/components/categories/TheHotCategory';
-  import FunctionBox from '~/components/boxs/FunctionBox';
-  import Banner from '~/components/categories/Banner';
-  import TheNewJobBox from '~/components/boxs/TheNewJobBox';
-  import TheUrgentJobBox from '~/components/boxs/TheUrgentJobBox';
+  import SearchBar from '~/components/public-components/bars/SearchBar';
+
+
+
+
+
   import AttractiveJobBox from '~/components/boxs/AttractiveJobBox';
   import TheBestEmployerBox from '~/components/boxs/TheBestEmployerBox';
   import HighSalaryJobBox from '~/components/boxs/HighSalaryJobBox';
   import HotLineBox from '~/components/boxs/HotLineBox';
   import LocationJobBox from '~/components/boxs/LocationJobBox';
+
+
+  import Breadcrumb from '~/components/public-components/bars/Breadcrumb';
+  import Banner from '~/components/trang-chu/boxs/Banner';
+  import NewJobBox from '~/components/trang-chu/boxs/NewJobBox';
+  import FunctionBox from '~/components/trang-chu/boxs/FunctionBox';
+  import UrgentJobBox from '~/components/trang-chu/boxs/UrgentJobBox';
+
+
 
   import {JobOption} from '~/assets/js/data-options';
 
@@ -120,23 +132,29 @@
   export default {
     components: {
       SearchBar,
-      TheHotCategory,
+      Breadcrumb,
       FunctionBox,
       Banner,
-      TheNewJobBox,
-      TheUrgentJobBox,
+      NewJobBox,
+      UrgentJobBox,
       AttractiveJobBox,
       TheBestEmployerBox,
       HighSalaryJobBox,
       HotLineBox,
       LocationJobBox
     },
+    head() {
+      return {
+        title: this.title
+      }
+    },
+    layout: 'default',
     data() {
-
       const {
         jobs
       } = JobOption;
       return {
+        title: 'HaluJobs - Tuyển dụng thần tốc',
         emailSubscriber: '',
         employers: [
           {
@@ -176,7 +194,49 @@
             avatar: 'https://t3.ftcdn.net/jpg/01/97/43/68/500_F_197436858_tA3mc2cKkeQbn0jk9ZVScv7alCp92w8m.jpg'
           }
         ],
-        jobList: jobs
+        jobList: jobs,
+        hotJobList: [
+          {
+            name: 'Nhân viên kinh doanh',
+            url: '/'
+          },
+          {
+            name: 'Bán hàng',
+            url: '/'
+          },
+          {
+            name: 'IT phần mềm',
+            url: '/'
+          },
+          {
+            name: 'IT phần cứng/mạng',
+            url: '/'
+          },
+          {
+            name: 'Kế toán kiểm toán',
+            url: '/'
+          },
+          {
+            name: 'Ngân hàng',
+            url: '/'
+          },
+          {
+            name: 'Lái tàu',
+            url: '/'
+          },
+          {
+            name: 'Dược sĩ',
+            url: '/'
+          },
+          {
+            name: 'Cơ khí chế tạo',
+            url: '/'
+          },
+          {
+            name: 'Ngành nghề khác',
+            url: '/'
+          },
+        ]
       }
     },
     methods: {
@@ -195,7 +255,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .home-container {
     width: $page-width;
@@ -208,7 +268,7 @@
   .banner-box {
     padding: $padding-border-box-10;
     background-color: $color-white;
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
   }
 
   h4 {

@@ -49,7 +49,7 @@
 
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .fixed-contact-box {
     position: fixed;

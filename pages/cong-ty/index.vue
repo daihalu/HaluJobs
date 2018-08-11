@@ -111,7 +111,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .container {
     width: $page-width;
@@ -119,7 +119,7 @@
   }
 
   .navigation-bar {
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
     padding-left: 0;
   }
 

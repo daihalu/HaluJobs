@@ -110,12 +110,12 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .advanced-search-box {
     padding: $padding-border-box-15;
     background-color: $color-white;
-    margin: $mg-top-bottom-20 auto;
+    margin: $mg-top-bottom-15 auto;
   }
 
   .advanced-search-box--container {

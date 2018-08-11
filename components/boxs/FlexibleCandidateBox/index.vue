@@ -31,7 +31,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   h4 {
     border-bottom: 1px solid $color-border;
@@ -50,7 +50,7 @@
 </style>
 
 <style lang="scss">
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
 
   .el-carousel__indicators--outside {
     bottom: 10px !important;

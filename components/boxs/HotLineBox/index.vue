@@ -57,7 +57,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/css/halujobs-variables";
+  @import "~assets/css/halujobs_variables";
   .hotline-box {
     background-color: $color-white;
     margin-bottom: 20px;
