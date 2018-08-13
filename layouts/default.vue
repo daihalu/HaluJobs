@@ -1,33 +1,88 @@
 <template>
   <div>
-    <NavBar/>
+    <NavBar id="element"/>
     <nuxt/>
     <Footer/>
     <div class="fixed-contact-box">
-      <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogTableVisible = true"/>
-      <font-awesome-icon :icon="['fas', 'phone']"/>
-      <font-awesome-icon :icon="['far', 'envelope']"/>
+      <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogFacebookVisible = true"/>
+      <font-awesome-icon :icon="['fas', 'phone']" @click="dialogPhoneVisible = true"/>
+      <font-awesome-icon :icon="['far', 'envelope']" @click="dialogMailVisible = true"/>
     </div>
-    <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="dialogTableVisible">
-      <div>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?
-        Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.
+
+    <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="dialogFacebookVisible">
+      <div class="box-container padding-15">
+        <div>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?
+          Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.
+        </div>
+        <div class="mg-top-15">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
+            width="500"
+            height="350"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowTransparency="true"
+            allow="encrypted-media"
+          >
+          </iframe>
+        </div>
       </div>
-      <div class="mg-top-15">
-        <iframe
-          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
-          width="500"
-          height="130"
-          style="border:none;overflow:hidden"
-          scrolling="no"
-          frameborder="0"
-          allowTransparency="true"
-          allow="encrypted-media"
-        >
-        </iframe>
+    </el-dialog>
+    <el-dialog :visible.sync="dialogPhoneVisible">
+      <el-row class="box-container container">
+        <div class="header">
+          <h2>HOTLINE TƯ VẤN DÀNH CHO NHÀ TUYỂN DỤNG</h2>
+        </div>
+
+        <div class="hotline-box">
+          <h3>KHU VỰC <span>MIỀN BẮC</span> HOTLINE
+            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
+          </h3>
+          <h3>KHU VỰC <span>MIỀN TRUNG</span> HOTLINE
+            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
+          </h3>
+          <h3>KHU VỰC <span>MIỀN NAM</span> HOTLINE
+            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
+          </h3>
+        </div>
+      </el-row>
+
+      <el-row class="box-container container">
+        <div class="header">
+          <h2>HOTLINE TƯ VẤN DÀNH CHO NGUỜI TÌM VIỆC</h2>
+        </div>
+        <div class="hotline-box">
+          <h3>TOÀN QUỐC:
+            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
+          </h3>
+        </div>
+
+      </el-row>
+    </el-dialog>
+    <el-dialog :visible.sync="dialogMailVisible">
+      <div class="box-container dialog-mail-container">
+        <p>
+          Nếu Quý khách có bất kỳ thắc mắc nào về dịch vụ của HaluJobs, vui lòng gửi email tới địa chỉ tư vấn của chúng
+          tôi:
+        </p>
+
+        <div>
+          <nuxt-link to="/mailto:hotro@halutech.com.vn">
+            <font-awesome-icon :icon="['far', 'envelope']" @click="dialogMailVisible = true"/>
+            hotro@halutech.com.vn
+          </nuxt-link>
+        </div>
+        <p>Chân thành cảm ơn!</p>
+
       </div>
     </el-dialog>
 
-    <div class="btn-scroll-top" v-if="showScrollButton" @click="scrollTop">
+    <div
+      class="btn-scroll-top"
+      v-if="showScrollButton"
+      v-scroll-to="{el:'#element', duration: 2000, easing: 'ease-in-out'}"
+    >
       <font-awesome-icon :icon="['fas', 'chevron-up']"/>
     </div>
   </div>
@@ -45,15 +100,14 @@
       return {
         showScrollButton: false,
         scrollToTop: false,
-        dialogTableVisible: false
+        dialogFacebookVisible: false,
+        dialogPhoneVisible: false,
+        dialogMailVisible: false
       }
     },
     methods: {
       handleScroll() {
         this.showScrollButton = window.scrollY > 600;
-      },
-      scrollTop() {
-        window.scrollTo(0, 0);
       }
     },
     beforeMount() {
@@ -118,6 +172,47 @@
     padding: 0px 20px 20px 20px;
   }
 
+  .container {
+    padding: $padding-border-box-15;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .header {
+    color: $color-white;
+    background-color: $color-primary;
+    line-height: $line-height-50;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+  }
+
+  .hotline-box {
+    padding: 10px;
+    font-size: $fs-small-14;
+
+    h3 {
+      line-height: $line-height-50;
+      font-size: 24px;
+      font-weight: $fw-base-500;
+      span, a {
+        color: $color-pink;
+      }
+    }
+  }
+
+  .dialog-mail-container {
+    padding: $padding-border-box-15;
+    margin: 20px 0;
+
+    a {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
 </style>
 
 

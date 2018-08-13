@@ -137,9 +137,7 @@
 </style>
 
 <style>
-  .selection-box .el-input--suffix .el-input__inner{
-    padding-left: 25px;
-  }
+
 
   .search-bar .el-input .el-input__inner,
   .search-bar .el-select .el-input__inner {

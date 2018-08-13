@@ -31,6 +31,7 @@
     "validator": "^10.5.0",
     "vue": "^2.5.17",
     "vue-json-excel": "^0.2.83",
+    "vue-scrollto": "^2.11.0",
     "vue-template-compiler": "^2.5.17",
     "xlsx": "^0.13.3"
   },

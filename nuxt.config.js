@@ -20,7 +20,8 @@ module.exports = {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/font-awesome',
-    { src: '@/plugins/vue-particles', ssr: false }
+    { src: '@/plugins/vue-particles', ssr: false },
+    '@/plugins/vue-scroll-to'
   ],
   /*
   ** Customize the progress bar color

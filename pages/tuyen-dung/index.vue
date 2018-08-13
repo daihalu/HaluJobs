@@ -1,211 +1,7 @@
 <template>
   <div>
-    <div class="advanced-search-bar">
-      <el-row class="field-search-bar">
-        <el-row :gutter="8" class="nav-search-bar">
-          <el-col
-            :span="6"
-            class="nav-search-bar--item"
-            :class="{active: activeMenuItem === 'timvieclam'}"
-          >
-            <nuxt-link to="/tuyen-dung">
-              <p @click="activeMenuItem = 'timvieclam'">
-                <font-awesome-icon icon="briefcase"/>
-                Tìm việc làm
-              </p>
-            </nuxt-link>
-          </el-col>
+    <advanced-search @on_click_search_button="handleOnClickSearchButton"/>
 
-          <el-col
-            :span="6"
-            class="nav-search-bar--item"
-            :class="{active: activeMenuItem === 'timungvien' }"
-          >
-            <nuxt-link to="/ung-vien">
-              <p @click="activeMenuItem = 'timungvien'">
-                <font-awesome-icon :icon="['far', 'id-card']"/>
-                Tìm ứng viên
-              </p>
-            </nuxt-link>
-          </el-col>
-
-          <el-col
-            :span="6"
-            class="nav-search-bar--item"
-            :class="{active: activeMenuItem === 'timcongty' }"
-          >
-            <nuxt-link to="/cong-ty">
-              <p @click="activeMenuItem = 'timcongty'">
-                <font-awesome-icon :icon="['far', 'building']"/>
-                Tìm công ty
-              </p>
-            </nuxt-link>
-          </el-col>
-
-          <el-col
-            :span="6"
-            class="nav-search-bar--item"
-            :class="{active: activeMenuItem === 'timtruong' }"
-          >
-            <nuxt-link to="/danh-sach-truong">
-              <p @click="activeMenuItem = 'timtruong'">
-                <font-awesome-icon icon="school"/>
-                Tìm trường
-              </p>
-            </nuxt-link>
-          </el-col>
-        </el-row>
-        <div class="search-bar">
-          <div>
-            <el-row :gutter="10" class="main-search-bar">
-              <el-col :span="9" class="job-input">
-                <div class="form-input">
-                  <font-awesome-icon icon="search"/>
-                  <el-input placeholder="Tiêu đề công việc, vị trí, địa điểm làm việc..." v-model="searchData.input"
-                            prefix-icon="el-icon-dai"></el-input>
-                </div>
-              </el-col>
-              <el-col :span="6">
-                <div class="selection-box">
-                  <font-awesome-icon :icon="['far', 'clipboard']"/>
-                  <el-select v-model="searchData.job" filterable placeholder="Tất cả ngành nghề">
-                    <el-option
-                      v-for="item in jobOptions"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
-                </div>
-              </el-col>
-              <el-col :span="6">
-                <div class="selection-box">
-                  <font-awesome-icon icon="map-marker-alt"/>
-                  <el-select v-model="searchData.workAddress" filterable placeholder="Tất cả địa điểm">
-                    <el-option
-                      v-for="item in workAddressOptions"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
-                </div>
-              </el-col>
-              <el-col :span="3">
-                <el-button class="search-button">
-                  <font-awesome-icon icon="search"/>
-                  Tìm kiếm
-                </el-button>
-              </el-col>
-            </el-row>
-
-            <div class="advance-search-selections">
-              <p class="advance-search--result">Tìm thấy 200000 kết quả</p>
-              <p class="advance-search-bar--text" @click="handleOnClickShowAdvanceSearch"
-                 v-if="showAdvanceSearch == false">
-                <font-awesome-icon icon="chevron-down"/>
-                Chọn tìm kiếm nâng cao
-              </p>
-              <p class="advance-search-bar--text" @click="handleOnClickShowAdvanceSearch"
-                 v-if="showAdvanceSearch == true">
-                <font-awesome-icon icon="chevron-up"/>
-                Ẩn tìm kiếm nâng cao
-              </p>
-            </div>
-
-            <transition name="advances-search-fade">
-              <div v-if="showAdvanceSearch" class="advance-search-selections--options">
-                <el-row :gutter="10">
-                  <el-col :span="8">
-                    <div class="selection-box">
-                      <font-awesome-icon :icon="['fas', 'user']"/>
-                      <el-select v-model="searchData.jobTitle" filterable placeholder="Cấp bậc">
-                        <el-option
-                          v-for="item in jobTitleOptions"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </div>
-                  </el-col>
-                  <el-col :span="8">
-
-                    <div class="selection-box">
-                      <font-awesome-icon icon="dollar-sign"/>
-                      <el-select v-model="searchData.salary" filterable placeholder="Mức lương">
-                        <el-option
-                          v-for="item in desiredSalaryOptions"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </div>
-                  </el-col>
-                  <el-col :span="8">
-
-                    <div class="selection-box">
-                      <font-awesome-icon icon="user-clock"/>
-                      <el-select v-model="searchData.workExperience" filterable placeholder="Kinh nghiệm">
-                        <el-option
-                          v-for="item in workExperienceOptions"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </div>
-                  </el-col>
-                </el-row>
-                <el-row :gutter="10">
-                  <el-col :span="8">
-                    <div class="selection-box">
-                      <font-awesome-icon icon="hotel"/>
-                      <el-select v-model="searchData.jobType" filterable placeholder="Loại hình công việc">
-                        <el-option
-                          v-for="item in jobTypeOptions"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </div>
-                  </el-col>
-                  <el-col :span="8">
-                    <div class="selection-box">
-                      <font-awesome-icon icon="transgender"/>
-                      <el-select v-model="searchData.gender" filterable placeholder="Giới tính">
-                        <el-option
-                          v-for="item in genderOptions"
-                          :key="item.value"
-                          :label="item.label"
-                          :value="item.value">
-                        </el-option>
-                      </el-select>
-                    </div>
-                  </el-col>
-                  <!--<el-col :span="8">-->
-
-                    <!--<div class="selection-box-container">-->
-                      <!--<font-awesome-icon icon="globe-asia"/>-->
-                      <!--<el-select v-model="searchData.foreignLanguage" filterable placeholder="Trình độ ngoại ngữ">-->
-                        <!--<el-option-->
-                          <!--v-for="item in foreignLanguageOptions"-->
-                          <!--:key="item.value"-->
-                          <!--:label="item.label"-->
-                          <!--:value="item.value">-->
-                        <!--</el-option>-->
-                      <!--</el-select>-->
-                    <!--</div>-->
-                  <!--</el-col>-->
-                </el-row>
-              </div>
-            </transition>
-          </div>
-        </div>
-      </el-row>
-    </div>
     <div class="container">
 
       <el-row class="navigation-bar">
@@ -363,6 +159,8 @@
   import AttractiveJobCard from '~/components/cards/AttractiveJobCard';
   import ColorlessNewJobBoxCol16 from '~/components/boxs/ColorlessNewJobBoxCol16';
 
+  import AdvancedSearch from '~/components/tuyen-dung/bar/AdvancedSearch';
+
   import {JobOption} from '~/assets/js/data-options';
 
 
@@ -372,7 +170,9 @@
       AdvanceSearchBar,
       HighSalaryJobBox,
       AttractiveJobCard,
-      ColorlessNewJobBoxCol16
+      ColorlessNewJobBoxCol16,
+
+      AdvancedSearch
     },
     data() {
       const {
@@ -381,15 +181,10 @@
         workAddresses,
         workExperience,
         jobTypes,
-        foreignLanguages,
-        desiredSalaries,
-        genders,
-        qualifications,
       } = JobOption;
       return {
         searchData: {
-          input: '',
-          job: '',
+          jobInput: '',
           workAddress: '',
           jobTitle: '',
           salary: '',
@@ -407,17 +202,11 @@
 
         },
         activeMenuItem: 'timvieclam',
-        showAdvanceSearch: false,
-        activeBtn: '',
         jobOptions: jobs,
         workAddressOptions: workAddresses,
         workExperienceOptions: workExperience,
         jobTitleOptions: jobTitles,
         jobTypeOptions: jobTypes,
-        foreignLanguageOptions: foreignLanguages,
-        desiredSalaryOptions: desiredSalaries,
-        genderOptions: genders,
-        qualificationOption: qualifications,
         numberJobShown: 5
       }
     },
@@ -425,13 +214,12 @@
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
-      handleOnClickShowAdvanceSearch() {
-        this.showAdvanceSearch = !this.showAdvanceSearch;
-      },
-      hello() {
-        alert("Hello");
+      handleOnClickSearchButton(value) {
+        this.searchData = value;
+        console.log("Parent");
+        console.log(this.searchData)
       }
-    }
+    },
   }
 </script>
 
@@ -762,8 +550,5 @@
 </style>
 
 <style>
-  .el-input--suffix .el-input__inner,
-  .el-input--prefix .el-input__inner {
-    padding-left: 35px;
-  }
+
 </style>

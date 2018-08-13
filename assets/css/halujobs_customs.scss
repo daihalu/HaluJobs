@@ -23,6 +23,11 @@
   background-color: $color-white;
 }
 
+.el-dialog__headerbtn .el-dialog__close {
+  font-size: 22px;
+  font-weight: $fw-big-700;
+}
+
 .el-tabs__item.is-active,
 .el-tabs__item:hover,
 .el-dialog__headerbtn .el-dialog__close:hover,
@@ -46,7 +51,9 @@
   border-color: #dcdfe6 !important;
 }
 
-
+.el-input--suffix .el-input__inner {
+  padding-left: 35px !important;
+}
 
 .el-checkbox__input.is-checked .el-checkbox__inner {
   background-color: $color-primary;
