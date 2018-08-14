@@ -334,21 +334,20 @@
     transition: none;
   }
 
-  .active {
-    background-color: $color-secondary;
-    color: $color-white;
-  }
-
-  .active a {
-    color: $color-white;
-  }
-
   a {
     color: $color-black;
   }
 
   a:hover {
     color: $color-white;
+  }
+
+  .active {
+    background-color: $color-secondary;
+    color: $color-white;
+    a {
+      color: $color-white;
+    }
   }
 
   .search-bar {

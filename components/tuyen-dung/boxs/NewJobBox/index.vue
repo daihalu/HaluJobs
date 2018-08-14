@@ -4,10 +4,10 @@
       <font-awesome-icon icon="briefcase"/>
       {{jobBoxTitle}}
     </h4>
-    <div class="scroll-box" id="scroll-box">
+    <div class="scroll-box" id="new-job-box">
       <el-row :gutter="4">
         <el-col v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
-          <high-salary-job-card
+          <new-job-card
             :jobInfo="jobList[0]"
           />
         </el-col>
@@ -17,12 +17,11 @@
 </template>
 
 <script>
-  import HighSalaryJobCard from '~/components/public-components/cards/PinkSalary16';
-
+  import NewJobCard from '~/components/public-components/cards/ColorlessCard16';
 
   export default {
     components: {
-      HighSalaryJobCard
+      NewJobCard
     },
     props: {
       jobBoxTitle: String,
@@ -36,29 +35,29 @@
 
   .scroll-box {
     overflow: auto;
-    height: 720px;
+    height: 640px;
     padding: 10px;
   }
 
   /* width */
-  #scroll-box::-webkit-scrollbar {
+  #new-job-box::-webkit-scrollbar {
     width: 10px;
   }
 
   /* Track */
-  #scroll-box::-webkit-scrollbar-track:hover {
+  #new-job-box::-webkit-scrollbar-track:hover {
     background: $color-gray;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
   }
 
   /* Handle */
-  #scroll-box::-webkit-scrollbar-thumb {
+  #new-job-box::-webkit-scrollbar-thumb {
     background: $color-scroll-bar;
     border-radius: 8px;
   }
 
   /* Handle on hover */
-  #scroll-box::-webkit-scrollbar-thumb:hover {
+  #new-job-box::-webkit-scrollbar-thumb:hover {
     background: $color-scroll-bar--hover;
   }
 

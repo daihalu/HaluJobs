@@ -2,19 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5aee19c-31e4-4fb1-8b85-086668c70233" name="Default" comment="&quot;Development&quot;">
-      <change afterPath="$PROJECT_DIR$/components/public-components/boxs/SelectionBox/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/vue-scroll-to.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/public-components/cards/ColorlessCard16/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/tuyen-dung/boxs/HotJobBox/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/tuyen-dung/boxs/NewJobBox/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layouts/simple.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/halujobs_customs.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/halujobs_customs.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/public-components/bars/SearchBar/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/bars/SearchBar/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/public-components/boxs/MainJobBox/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/boxs/MainJobBox/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/public-components/cards/AttractiveJobCard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/cards/PinkLocationSalary8/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/public-components/cards/HighSalaryJobCard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/cards/PinkSalary16/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/public-components/cards/QuickJobCard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/cards/PinkSalary8/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/trang-chu/boxs/HighSalaryJobBox/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/trang-chu/boxs/HighSalaryJobBox/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/SameJobs/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/SameJobs/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/trang-chu/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/trang-chu/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/tuyen-dung/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tuyen-dung/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/vue-particles.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/vue-particles.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -113,16 +119,18 @@
     <session id="1071467735">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.28" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="3" />
+          <entry key="ESLintLanguageService" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -130,34 +138,34 @@
           <entry key="JavaScript-modules-diagram/D:/IT/Halu Projects/HaluJobs/components/public-components/cards/AttractiveJobCard" value="1" />
           <entry key="js" value="8" />
           <entry key="md" value="2" />
-          <entry key="scss" value="16" />
-          <entry key="vue" value="174" />
+          <entry key="scss" value="17" />
+          <entry key="vue" value="214" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JavaScript" value="8" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="SCSS" value="16" />
+          <entry key="SCSS" value="17" />
           <entry key="UML" value="1" />
-          <entry key="Vue.js" value="174" />
+          <entry key="Vue.js" value="214" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="16" />
           <entry key="md" value="11" />
-          <entry key="scss" value="524" />
+          <entry key="scss" value="532" />
           <entry key="txt" value="13" />
-          <entry key="vue" value="4640" />
+          <entry key="vue" value="5524" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="16" />
           <entry key="PLAIN_TEXT" value="24" />
-          <entry key="SCSS" value="524" />
-          <entry key="Vue.js" value="4640" />
+          <entry key="SCSS" value="532" />
+          <entry key="Vue.js" value="5524" />
         </counts>
       </usages-collector>
     </session>
@@ -170,8 +178,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-964">
-              <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
+            <state relative-caret-position="-812">
+              <caret line="122" column="25" selection-end-line="218" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
@@ -180,9 +188,6 @@
                 <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#3057#3104#0" expanded="true" />
-                <element signature="e#3807#4197#0" />
-                <element signature="e#4301#4543#0" />
               </folding>
             </state>
           </provider>
@@ -191,38 +196,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/tuyen-dung/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1148">
-              <caret line="186" column="23" selection-start-line="186" selection-start-column="23" selection-end-line="186" selection-end-column="23" />
+            <state relative-caret-position="646">
+              <caret line="190" column="43" selection-start-line="190" selection-start-column="43" selection-end-line="190" selection-end-column="43" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#el-col#1;n#el-row#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#5181#5245#0" expanded="true" />
-                <element signature="e#6397#6532#0" />
-                <element signature="n#style#0;n#!!top" />
+                <element signature="n#el-row#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#5015#5079#0" expanded="true" />
+                <element signature="e#6942#7283#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue">
+        <entry file="file://$PROJECT_DIR$/components/tuyen-dung/boxs/NewJobBox/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="346" column="13" lean-forward="true" selection-start-line="346" selection-start-column="13" selection-end-line="346" selection-end-column="13" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#transition#0;n#div#0;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#script#0;n#!!top" />
-                <element signature="e#6236#6312#0" expanded="true" />
-                <element signature="e#9102#9208#0" />
-                <element signature="e#9302#9449#0" />
-                <element signature="e#9474#9577#0" />
-                <element signature="e#9603#9705#0" />
-                <element signature="e#9736#10071#0" />
-                <element signature="e#14281#14316#0" />
-                <element signature="e#14355#14418#0" />
-                <element signature="e#14482#14537#0" />
-              </folding>
+            <state relative-caret-position="336">
+              <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -230,17 +219,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/halujobs_qclasses.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="64" column="15" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/halujobs_customs.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+            <state relative-caret-position="224">
+              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -260,19 +240,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jobTypeOptions</find>
-      <find>foreignLanguageOptions</find>
-      <find>desiredSalaryOptions</find>
-      <find>genderOptions</find>
-      <find>handleOnClickSearchButton</find>
-      <find>selection-box-container</find>
-      <find>selection-box</find>
-      <find>qualificationOption</find>
-      <find>.el-input--suffix .el-input__inner</find>
       <find>el-icon-dai</find>
       <find>activeBtn</find>
-      <find>container</find>
-      <find>navigation-bar</find>
       <find>top-key-word-box</find>
       <find>attractive-job-box</find>
       <find>advanced-search-box</find>
@@ -290,12 +259,19 @@
       <find>job-input</find>
       <find>nav-search-bar--item</find>
       <find>nav-search-bar</find>
+      <find>navigation-bar</find>
+      <find>con</find>
+      <find>breadcrumbObj</find>
+      <find>jobList</find>
+      <find>hotJobList</find>
+      <find>urgentJobList</find>
+      <find>quickJobList</find>
+      <find>jobTitle</find>
+      <find>item</find>
+      <find>new-job-box</find>
+      <find>container</find>
     </findStrings>
     <replaceStrings>
-      <replace>@import &quot;~assets/css/halujobs-variables&quot;;</replace>
-      <replace>.contact-container</replace>
-      <replace>ho-so/candidate-info</replace>
-      <replace>flexible-candidate-box</replace>
       <replace>const</replace>
       <replace>files[1]</replace>
       <replace>const`</replace>
@@ -322,6 +298,10 @@
       <replace>hotline-box</replace>
       <replace>handleOnClickSearchButton</replace>
       <replace>el-icon-halujobs</replace>
+      <replace>breadcrumbArr</replace>
+      <replace>quickJobList</replace>
+      <replace>hotJobList</replace>
+      <replace>jobBoxTitle</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\IT\Halu Projects\HaluJobs\components\public-components\cards\AttractiveJobCard</dir>
@@ -333,17 +313,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/boxs/AttractiveJobBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/boxs/ColorlessNewJobBoxCol16/index.vue" />
-        <option value="$PROJECT_DIR$/components/boxs/CompanyBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/boxs/FlexibleCandidateBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/boxs/FunctionBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/boxs/HighSalaryJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/boxs/HotLineBox/index.vue" />
         <option value="$PROJECT_DIR$/components/boxs/LocationJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/boxs/NewestCandidateBox/index.vue" />
         <option value="$PROJECT_DIR$/components/boxs/TheNewJobBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/boxs/TheUrgentJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/bars/AdvanceSearchBar/index.vue" />
         <option value="$PROJECT_DIR$/components/bars/NavBar/index.vue" />
         <option value="$PROJECT_DIR$/components/bars/SearchBar/index.vue" />
@@ -356,34 +329,41 @@
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/NewJob/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/NewJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/public-components/boxs/ScrollJobBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/public-components/boxs/MainJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/public-components/cards/QuickJobCard/index.vue" />
         <option value="$PROJECT_DIR$/components/public-components/cards/HighSalaryJobCard/index.vue" />
-        <option value="$PROJECT_DIR$/components/trang-chu/boxs/HighSalaryJobBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue" />
         <option value="$PROJECT_DIR$/assets/css/halujobs_globals.scss" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/TopEmployers/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/FunctionBox/index.vue" />
-        <option value="$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/EmailSubscriberBox/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/JobSearchingBox/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/HotLineBox/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/LocationJobBox/index.vue" />
         <option value="$PROJECT_DIR$/components/trang-chu/boxs/StatisticalBox/index.vue" />
         <option value="$PROJECT_DIR$/components/bars/Footer/index.vue" />
-        <option value="$PROJECT_DIR$/pages/trang-chu/index.vue" />
         <option value="$PROJECT_DIR$/components/cards/AttractiveJobCard/index.vue" />
         <option value="$PROJECT_DIR$/components/public-components/cards/AttractiveJobCard/index.vue" />
-        <option value="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" />
-        <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/plugins/vue-scroll-to.js" />
         <option value="$PROJECT_DIR$/plugins/vue-particles.js" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
         <option value="$PROJECT_DIR$/assets/css/halujobs_customs.scss" />
         <option value="$PROJECT_DIR$/components/public-components/bars/SearchBar/index.vue" />
         <option value="$PROJECT_DIR$/components/public-components/boxs/SelectionBox/index.vue" />
-        <option value="$PROJECT_DIR$/pages/tuyen-dung/index.vue" />
         <option value="$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue" />
+        <option value="$PROJECT_DIR$/layouts/default.vue" />
+        <option value="$PROJECT_DIR$/layouts/simple.vue" />
+        <option value="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" />
+        <option value="$PROJECT_DIR$/pages/tuyen-dung/viec-lam/index.vue" />
+        <option value="$PROJECT_DIR$/pages/ung-vien/index.vue" />
+        <option value="$PROJECT_DIR$/components/boxs/TheUrgentJobBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue" />
+        <option value="$PROJECT_DIR$/pages/trang-chu/index.vue" />
+        <option value="$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/boxs/MainJobBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/boxs/HotJobBox/index.vue" />
+        <option value="$PROJECT_DIR$/pages/tuyen-dung/index.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/cards/ColorlessCard16/index.vue" />
+        <option value="$PROJECT_DIR$/components/trang-chu/boxs/HighSalaryJobBox/index.vue" />
+        <option value="$PROJECT_DIR$/components/tuyen-dung/boxs/NewJobBox/index.vue" />
       </list>
     </option>
   </component>
@@ -402,10 +382,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1917" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="882" />
+    <option name="x" value="1239" />
+    <option name="y" value="428" />
+    <option name="width" value="1551" />
+    <option name="height" value="839" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -442,7 +422,35 @@
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="cards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="cards" type="462c0819:PsiDirectoryNode" />
+              <item name="ColorlessJobCardCol16" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="public-components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="bars" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="bars" type="462c0819:PsiDirectoryNode" />
+              <item name="Breadcrumb" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
@@ -457,28 +465,103 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="public-components" type="462c0819:PsiDirectoryNode" />
               <item name="boxs" type="462c0819:PsiDirectoryNode" />
-              <item name="SelectionBox" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
-              <item name="bar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
-              <item name="bar" type="462c0819:PsiDirectoryNode" />
               <item name="AdvancedSearch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+              <item name="MainJobBox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="cards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="cards" type="462c0819:PsiDirectoryNode" />
+              <item name="PinkSalary8" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="cards" type="462c0819:PsiDirectoryNode" />
+              <item name="PinkSalary16" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+              <item name="AttractiveJobBox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+              <item name="HighSalaryJobBox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+              <item name="NewJobBox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+              <item name="HotJobBox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
+              <item name="viec-lam" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
@@ -489,6 +572,19 @@
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="nha-tuyen-dung" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="nha-tuyen-dung" type="462c0819:PsiDirectoryNode" />
+              <item name="dang-nhap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
@@ -508,6 +604,12 @@
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="tuyen-dung" type="462c0819:PsiDirectoryNode" />
               <item name="viec-lam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -530,7 +632,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\IT\Learning Nuxt js\halu-job\node_modules\prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.1.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -610,7 +712,9 @@
       <workItem from="1533860965337" duration="18876000" />
       <workItem from="1533887179221" duration="9242000" />
       <workItem from="1533947374784" duration="27867000" />
-      <workItem from="1534119913865" duration="21178000" />
+      <workItem from="1534119913865" duration="21501000" />
+      <workItem from="1534208745792" duration="1076000" />
+      <workItem from="1534226242505" duration="7819000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Development&quot;">
       <created>1533887616412</created>
@@ -623,7 +727,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="509564000" />
+    <option name="totallyTimeSpent" value="518782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -632,7 +736,7 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" sideWeight="0.11953353" side_tool="true" weight="0.13751318" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.88046646" visible="true" weight="0.1391258" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.88046646" visible="true" weight="0.13645943" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.329718" />
@@ -644,11 +748,32 @@
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" x="3243" y="117" width="586" height="856" id="Terminal" order="11" type="FLOATING" visible="true" weight="0.18112798" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" x="3275" y="118" width="517" height="877" id="Terminal" order="3" type="FLOATING" visible="true" weight="0.24253732" />
     </layout>
+    <layout-to-restore>
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info id="Favorites" order="1" sideWeight="0.11953353" side_tool="true" weight="0.13751318" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.88046646" visible="true" weight="0.13645943" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.114967465" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.3286334" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" x="3239" y="122" width="590" height="838" id="Terminal" order="11" type="FLOATING" visible="true" weight="0.18112798" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -668,7 +793,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/trang-chu/index.vue</url>
-          <line>104</line>
+          <line>107</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -678,83 +803,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/tuyen-dung/index.vue</url>
-          <line>391</line>
-          <properties lambdaOrdinal="-1" />
+          <line>360</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/tuyen-dung/index.vue</url>
-          <line>547</line>
-          <properties lambdaOrdinal="-1" />
+          <line>514</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue</url>
-          <line>416</line>
-          <properties lambdaOrdinal="-1" />
+          <line>415</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/ho-so/boxs/FixBarAction/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyBox/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/FixBarAction/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/QuickInfo/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/viec-lam/job-info/JobCover/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/boxs/TheUrgentJobBox/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/categories/TheHotCategory/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/bars/NavBar/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="126" column="41" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/Banner/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -801,13 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/tuyen-dung/viec-lam/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="58" column="26" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/boxs/AttractiveJobBox/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
@@ -816,58 +874,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/public-components/boxs/ScrollJobBox/index.vue" />
-    <entry file="file://$PROJECT_DIR$/components/public-components/cards/CandidateCard/index.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/boxs/MainJobBox/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/NewJobBox/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/cards/QuickJobCard/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1148">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/cards/HighSalaryJobCard/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/HighSalaryJobBox/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1456">
-          <caret line="52" column="15" selection-start-line="52" selection-start-column="15" selection-end-line="52" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/TopEmployers/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/FunctionBox/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1120">
@@ -917,13 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-84">
-          <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/cards/AttractiveJobCard/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1316">
@@ -931,24 +930,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/cards/AttractiveJobCard/index.vue">
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/PinkLocationSalary8/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/trang-chu/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1888">
-          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding>
-            <element signature="n#div#2;n#el-col#1;n#el-row#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#2851#2921#0" expanded="true" />
-            <element signature="e#4342#6501#0" />
-            <element signature="e#6546#7362#0" />
-            <element signature="e#7391#7651#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,30 +941,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="632">
           <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="116" selection-end-column="8" />
-          <folding>
-            <element signature="n#div#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/element-variables.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/halujobs_qclasses.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="64" column="15" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugins/vue-scroll-to.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -994,34 +965,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-964">
-          <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#3057#3104#0" expanded="true" />
-            <element signature="e#3807#4197#0" />
-            <element signature="e#4301#4543#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/boxs/AdvancedSearch/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2352" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/public-components/bars/SearchBar/index.vue">
@@ -1034,13 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/halujobs_customs.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/public-components/boxs/SelectionBox/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-896">
@@ -1048,38 +985,219 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/tuyen-dung/index.vue">
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1148">
-          <caret line="186" column="23" selection-start-line="186" selection-start-column="23" selection-end-line="186" selection-end-column="23" />
+        <state relative-caret-position="-173">
+          <caret line="351" column="2" selection-start-line="351" selection-start-column="2" selection-end-line="351" selection-end-column="2" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#2;n#el-col#1;n#el-row#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#5181#5245#0" expanded="true" />
-            <element signature="e#6397#6532#0" />
-            <element signature="n#style#0;n#!!top" />
+            <element signature="n#el-row#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#transition#0;n#div#0;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#script#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/bar/AdvancedSearch/index.vue">
+    <entry file="file://$PROJECT_DIR$/assets/css/halujobs_customs.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="346" column="13" lean-forward="true" selection-start-line="346" selection-start-column="13" selection-end-line="346" selection-end-column="13" />
+        <state relative-caret-position="800">
+          <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/simple.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3976">
+          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#transition#0;n#div#0;n#div#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#script#0;n#!!top" />
-            <element signature="e#6236#6312#0" expanded="true" />
-            <element signature="e#9102#9208#0" />
-            <element signature="e#9302#9449#0" />
-            <element signature="e#9474#9577#0" />
-            <element signature="e#9603#9705#0" />
-            <element signature="e#9736#10071#0" />
-            <element signature="e#14281#14316#0" />
-            <element signature="e#14355#14418#0" />
-            <element signature="e#14482#14537#0" />
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/nha-tuyen-dung/dang-nhap/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="58" column="23" lean-forward="true" selection-start-line="53" selection-start-column="4" selection-end-line="58" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/boxs/TheUrgentJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/ung-vien/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="356" column="69" selection-start-line="356" selection-start-column="69" selection-end-line="356" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tuyen-dung/viec-lam/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="58" column="69" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-812">
+          <caret line="122" column="25" selection-end-line="218" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/TopEmployers/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="991">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/NewJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/bars/Breadcrumb/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/trang-chu/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="222" column="8" selection-start-line="222" selection-start-column="8" selection-end-line="232" selection-end-column="9" />
+          <folding>
+            <element signature="e#1472#1542#0" expanded="true" />
+            <element signature="e#3094#5712#0" />
+            <element signature="e#5757#6573#0" />
+            <element signature="e#6601#6942#0" />
+            <element signature="e#6994#7418#0" />
+            <element signature="e#7498#7973#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/boxs/AdvancedSearch/index.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/boxs/ColorlessNewJobBoxCol16/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/boxs/HotJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/cards/ColorlessJobCardCol16/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/CandidateCard/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/PinkSalary8/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-700">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/boxs/MainJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tuyen-dung/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="190" column="43" selection-start-line="190" selection-start-column="43" selection-end-line="190" selection-end-column="43" />
+          <folding>
+            <element signature="n#el-row#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#5015#5079#0" expanded="true" />
+            <element signature="e#6942#7283#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/ColorlessCard16/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1624">
+          <caret line="70" column="2" selection-start-line="70" selection-start-column="2" selection-end-line="70" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/cards/PinkSalary16/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/halujobs_qclasses.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/HighSalaryJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="40" column="3" selection-start-line="40" selection-start-column="3" selection-end-line="40" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/tuyen-dung/boxs/NewJobBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
         </state>
       </provider>
     </entry>

@@ -7,7 +7,7 @@
     <div class="scroll-box" id="scroll-box">
       <el-row :gutter="4">
         <el-col v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
-          <high-salary-job-card
+          <hot-job-card
             :jobInfo="jobList[0]"
           />
         </el-col>
@@ -17,12 +17,11 @@
 </template>
 
 <script>
-  import HighSalaryJobCard from '~/components/public-components/cards/PinkSalary16';
-
+  import HotJobCard from '~/components/public-components/cards/PinkSalary16';
 
   export default {
     components: {
-      HighSalaryJobCard
+      HotJobCard
     },
     props: {
       jobBoxTitle: String,
@@ -38,6 +37,13 @@
     overflow: auto;
     height: 720px;
     padding: 10px;
+  }
+
+  h4 {
+    border-bottom: 1px solid $color-border;
+    padding: 10px;
+    font-size: $fs-large-18;
+    font-weight: $fw-base-500;
   }
 
   /* width */

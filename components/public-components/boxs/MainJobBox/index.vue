@@ -2,7 +2,7 @@
   <el-row class="box-container">
     <h4 class="box-title">
       <font-awesome-icon icon="briefcase"/>
-      {{jobTitle}}
+      {{jobBoxTitle}}
     </h4>
     <el-carousel trigger="click" height="555px" indicator-position="outside" v-bind:interval="60000">
       <el-carousel-item v-for="item in 8" :key="item">
@@ -20,28 +20,15 @@
 </template>
 
 <script>
-  import QuickJobCard from '~/components/public-components/cards/QuickJobCard';
+  import QuickJobCard from '~/components/public-components/cards/PinkSalary8';
 
   export default {
     props: {
-      jobTitle: String
+      jobBoxTitle: String,
+      jobList: Array
     },
     components: {
       QuickJobCard
-    },
-    data() {
-      return {
-        jobList: [
-          {
-            position: 'Nhân Viên Kinh Doanh Thiết',
-            companyName: 'Công ty cổ phần Hoàng Kim',
-            salary: '10 - 20 triệu',
-            deadline: '13/7/2018',
-            jobUrl: '/tuyen-dung/viec-lam',
-            avatarUrl: 'https://www.codyhub.com/wp-content/uploads/2017/07/i2.jpg'
-          },
-        ]
-      }
     }
   }
 </script>

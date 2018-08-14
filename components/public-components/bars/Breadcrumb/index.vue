@@ -1,7 +1,7 @@
 <template>
   <el-row class="container box-container">
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item v-for="item in breadcrumbObj" :key="item.name">
+      <el-breadcrumb-item v-for="item in breadcrumbArr" :key="item.name">
         <nuxt-link :to="item.url">{{item.name}}</nuxt-link>
       </el-breadcrumb-item>
 
@@ -16,7 +16,7 @@
     export default {
         props: {
           title: String,
-          breadcrumbObj: Array
+          breadcrumbArr: Array
         }
     }
 </script>
@@ -26,6 +26,7 @@
 
     .container {
       padding: 10px 0 10px 10px;
+      width: 100%;
     }
 
     .container a {

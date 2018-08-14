@@ -4,23 +4,28 @@
 
     <div class="container">
 
-      <el-row class="navigation-bar">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item>
-            <nuxt-link to="/">Trang chủ</nuxt-link>
-          </el-breadcrumb-item>
-          <el-breadcrumb-item>
-            Tuyển dụng
-          </el-breadcrumb-item>
-        </el-breadcrumb>
-      </el-row>
+      <breadcrumb :breadcrumbArr="breadcrumb" title="Tuyển dụng" class="mg-top-15"/>
 
-      <TheUrgentJobBox jobTitle="TUYỂN DỤNG NHANH"/>
+      <quick-job-box
+        jobBoxTitle="Tuyển dụng nhanh"
+        :jobList="quickJobList"
+        class="mg-top-15"
+      />
 
       <el-row :gutter="20">
         <el-col :span="16">
-          <HighSalaryJobBox jobTitle="TUYỂN DỤNG TIÊU ĐIỂM"/>
-          <ColorlessNewJobBoxCol16 jobTitle="VIỆC LÀM MỚI"/>
+
+          <hot-job-box
+            jobBoxTitle="Tuyển dụng tiêu điểm"
+            :jobList="hotJobList"
+            class="mg-top-15"
+          />
+
+          <new-job-box
+            jobBoxTitle="Việc làm mới"
+            :jobList="newJobList"
+            class="mg-top-15"
+          />
         </el-col>
         <el-col :span="8">
           <div class="attractive-job-box">
@@ -52,81 +57,7 @@
             </div>
           </div>
 
-          <div class="advanced-search-box">
-            <h4>
-              <font-awesome-icon :icon="['fas', 'briefcase']"/>
-              TÌM KIẾM NÂNG CAO
-            </h4>
-            <div class="box-right">
-              <div class="selection-box">
-                <font-awesome-icon :icon="['far', 'clipboard']"/>
-                <el-select v-model="advancedSearchData.job" filterable placeholder="Ngành nghề">
-                  <el-option
-                    v-for="item in jobOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-
-              <div class="selection-box">
-                <font-awesome-icon icon="map-marker-alt"/>
-                <el-select v-model="advancedSearchData.workAddress" filterable placeholder="Vị trí">
-                  <el-option
-                    v-for="item in workAddressOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-
-              <div class="selection-box">
-                <font-awesome-icon icon="user-clock"/>
-                <el-select v-model="advancedSearchData.workExperience" filterable placeholder="Năm kinh nghiệm">
-                  <el-option
-                    v-for="item in workExperienceOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-
-              <div class="selection-box">
-                <font-awesome-icon icon="user-tie"/>
-                <el-select v-model="advancedSearchData.jobTitle" filterable placeholder="Cấp bậc">
-                  <el-option
-                    v-for="item in jobTitleOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-
-              <div class="selection-box">
-                <font-awesome-icon icon="hotel"/>
-                <el-select v-model="advancedSearchData.jobType" filterable placeholder="Loại hình công việc">
-                  <el-option
-                    v-for="item in jobTypeOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-
-              <el-button
-                size="medium"
-                class="advanced-search-button">
-                <font-awesome-icon icon="search"/>
-                Tìm kiếm
-              </el-button>
-
-            </div>
-          </div>
+          <!--Tim kiem nang cao-->
         </el-col>
       </el-row>
       <el-row class="statistical-box">
@@ -160,6 +91,10 @@
   import ColorlessNewJobBoxCol16 from '~/components/boxs/ColorlessNewJobBoxCol16';
 
   import AdvancedSearch from '~/components/tuyen-dung/bar/AdvancedSearch';
+  import Breadcrumb from '~/components/public-components/bars/Breadcrumb';
+  import QuickJobBox from '~/components/public-components/boxs/MainJobBox';
+  import HotJobBox from '~/components/tuyen-dung/boxs/HotJobBox';
+  import NewJobBox from '~/components/tuyen-dung/boxs/NewJobBox';
 
   import {JobOption} from '~/assets/js/data-options';
 
@@ -172,8 +107,18 @@
       AttractiveJobCard,
       ColorlessNewJobBoxCol16,
 
-      AdvancedSearch
+      AdvancedSearch,
+      Breadcrumb,
+      QuickJobBox,
+      HotJobBox,
+      NewJobBox
     },
+    head() {
+      return {
+        title: this.title
+      };
+    },
+    layout: 'simple',
     data() {
       const {
         jobTitles,
@@ -183,6 +128,13 @@
         jobTypes,
       } = JobOption;
       return {
+        title: 'Tuyển dụng thần tốc | Tuyển dụng uy tín',
+        breadcrumb: [
+          {
+            name: 'Trang chủ',
+            url: '/'
+          },
+        ],
         searchData: {
           jobInput: '',
           workAddress: '',
@@ -207,7 +159,38 @@
         workExperienceOptions: workExperience,
         jobTitleOptions: jobTitles,
         jobTypeOptions: jobTypes,
-        numberJobShown: 5
+        numberJobShown: 5,
+        quickJobList: [
+          {
+            position: 'Nhân Viên Kinh Doanh Thiết',
+            companyName: 'Công ty cổ phần Hoàng Kim',
+            salary: '10 - 20 triệu',
+            deadline: '13/7/2018',
+            jobUrl: '/tuyen-dung/viec-lam',
+            avatarUrl: 'https://www.codyhub.com/wp-content/uploads/2017/07/i2.jpg'
+          },
+        ],
+        hotJobList: [
+          {
+            position: 'Nhân Viên Marketing Online - Được Đào Tạo Từ A-Z',
+            companyName: 'Công Ty Cổ Phần Tư Vấn Bất Động Sản Phương Đông',
+            salary: '10 triệu - 20 triệu',
+            deadline: '13/7/2018',
+            workAddress: 'Hà Nội',
+            jobUrl: '/tuyen-dung/viec-lam',
+            avatarUrl: 'http://www.spulsa.info/wp-content/uploads/photo-logos-free-online-logo-maker-design-a-custom-logo-canva.png'
+          }
+        ],
+        newJobList: [
+          {
+            position: 'Nhân Viên Marketing Online - Được Đào Tạo Từ A-Z',
+            companyName: 'Công Ty Cổ Phần Tư Vấn Bất Động Sản Phương Đông',
+            salary: '10 triệu - 20 triệu',
+            expiryDate: '13/7/2018',
+            location: 'Hà Nội',
+            jobUrl: '/tuyen-dung/viec-lam',
+          }
+        ]
       }
     },
     methods: {
@@ -228,20 +211,7 @@
 
   .container {
     width: $page-width;
-    margin: 0 auto !important;
-  }
-
-  .navigation-bar {
-    margin: $mg-top-bottom-15 auto;
-    padding-left: 0;
-  }
-
-  .navigation-bar a {
-    color: $color-primary;
-  }
-
-  .navigation-bar a:hover {
-    color: $color-secondary;
+    margin: 0 auto;
   }
 
   .attractive-job-box,
@@ -344,7 +314,7 @@
     font-weight: $fw-base-500;
   }
 
-  .advanced-search-button:hover{
+  .advanced-search-button:hover {
     background-color: $color-white;
     color: $color-primary;
     border-color: $color-primary;
@@ -358,7 +328,6 @@
     background-color: $color-primary;
     color: $color-white;
   }
-
 
   .job-list ul a li {
     color: $color-primary;
@@ -404,7 +373,6 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-
 
   .search-bar {
     background-color: $color-secondary;
@@ -501,7 +469,6 @@
     text-align: center;
     margin-left: 0;
   }
-
 
   .nav-search-bar--item {
     background-color: $color-white;

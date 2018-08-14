@@ -2,7 +2,7 @@
   <el-row class="box-container">
     <h4 class="box-title">
       <font-awesome-icon icon="briefcase"/>
-      {{jobTitle}}
+      {{jobBoxTitle}}
     </h4>
     <div id="scroll-box">
       <el-row :gutter="10">
@@ -17,29 +17,15 @@
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/AttractiveJobCard';
+  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalary8';
 
   export default {
     components: {
       AttractiveJobCard
     },
     props: {
-      jobTitle: String
-    },
-    data() {
-      return {
-        jobList: [
-          {
-            position: "Giám đốc điều hành nhân sự",
-            companyName: "Công ty cổ phần Đại Nam",
-            salary: "15 - 22 triệu",
-            deadline: "30/7/2018",
-            workAddress: "Sài Gòn",
-            avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
-            jobUrl: "/tuyen-dung/viec-lam",
-          }
-        ]
-      }
+      jobBoxTitle: String,
+      jobList: Array
     }
   }
 </script>

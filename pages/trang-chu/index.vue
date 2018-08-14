@@ -2,7 +2,7 @@
   <div>
     <search-bar/>
     <div class="home-container">
-      <breadcrumb :breadcrumbObj="hotJobList" class="mg-top-15"/>
+      <breadcrumb :breadcrumbArr="hotJobList" class="mg-top-15"/>
 
       <banner class="mg-top-15"/>
 
@@ -10,8 +10,9 @@
 
       <function-box class="mg-top-15"/>
 
-      <main-job-box
-        jobTitle="VIỆC LÀM TUYỂN GẤP"
+      <urgent-job-box
+        jobBoxTitle="Việc làm tuyển gấp"
+        :jobList="urgentJobList"
         class="mg-top-15"
       />
 
@@ -20,12 +21,14 @@
       <el-row :gutter="16">
         <el-col :span="16">
           <attractive-job-box
-            jobTitle="VIỆC LÀM HẤP DẪN"
+            jobBoxTitle="Việc làm hấp dẫn"
+            :jobList="attractiveJobList"
             class="mg-top-15"
           />
 
-          <HighSalaryJobBox
-            jobTitle="VIỆC LÀM LƯƠNG CAO"
+          <high-salary-job-box
+            jobBoxTitle="Việc làm lương cao"
+            :jobList="highSalaryJobList"
             class="mg-top-15"
           />
         </el-col>
@@ -66,7 +69,7 @@
   import Banner from '~/components/trang-chu/boxs/Banner';
   import NewJobBox from '~/components/trang-chu/boxs/NewJobBox';
   import FunctionBox from '~/components/trang-chu/boxs/FunctionBox';
-  import MainJobBox from '~/components/public-components/boxs/MainJobBox';
+  import UrgentJobBox from '~/components/public-components/boxs/MainJobBox';
   import AttractiveJobBox from '~/components/trang-chu/boxs/AttractiveJobBox';
   import HighSalaryJobBox from '~/components/trang-chu/boxs/HighSalaryJobBox';
   import TopEmployers from '~/components/trang-chu/boxs/TopEmployers';
@@ -86,7 +89,7 @@
       FunctionBox,
       Banner,
       NewJobBox,
-      MainJobBox,
+      UrgentJobBox,
       AttractiveJobBox,
       HighSalaryJobBox,
       TopEmployers,
@@ -195,6 +198,38 @@
             name: 'Ngành nghề khác',
             url: '/'
           },
+        ],
+        urgentJobList: [
+          {
+            position: 'Nhân Viên Kinh Doanh Thiết',
+            companyName: 'Công ty cổ phần Hoàng Kim',
+            salary: '10 - 20 triệu',
+            deadline: '13/7/2018',
+            jobUrl: '/tuyen-dung/viec-lam',
+            avatarUrl: 'https://www.codyhub.com/wp-content/uploads/2017/07/i2.jpg'
+          },
+        ],
+        attractiveJobList: [
+          {
+            position: "Giám đốc điều hành nhân sự",
+            companyName: "Công ty cổ phần Đại Nam",
+            salary: "15 - 22 triệu",
+            deadline: "30/7/2018",
+            workAddress: "Sài Gòn",
+            avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
+            jobUrl: "/tuyen-dung/viec-lam",
+          }
+        ],
+        highSalaryJobList: [
+          {
+            position: 'Nhân Viên Marketing Online - Được Đào Tạo Từ A-Z',
+            companyName: 'Công Ty Cổ Phần Tư Vấn Bất Động Sản Phương Đông',
+            salary: '10 triệu - 20 triệu',
+            deadline: '13/7/2018',
+            workAddress: 'Hà Nội',
+            jobUrl: '/tuyen-dung/viec-lam',
+            avatarUrl: 'http://www.spulsa.info/wp-content/uploads/photo-logos-free-online-logo-maker-design-a-custom-logo-canva.png'
+          }
         ]
       }
     },
