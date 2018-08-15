@@ -4,12 +4,13 @@
       <font-awesome-icon icon="briefcase"/>
       {{jobBoxTitle}}
     </h4>
-    <el-carousel trigger="click" height="555px" indicator-position="outside" v-bind:interval="60000">
+    <el-carousel trigger="click" height="520px" indicator-position="outside" v-bind:interval="60000">
       <el-carousel-item v-for="item in 8" :key="item">
         <el-row :gutter="10">
           <el-col :span="8" v-for="item in 15" v-bind:key="item" class="mg-bottom-10">
-            <quick-job-card
-              :jobInfo="jobList[0]"
+            <flexible-candidate-card
+              :candidateInfo="candidateList[0]"
+              @on_click_card="onClickCard"
             />
           </el-col>
         </el-row>
@@ -20,21 +21,22 @@
 </template>
 
 <script>
-  import QuickJobCard from '~/components/public-components/cards/PinkSalaryJobCard8';
+  import FlexibleCandidateCard from '~/components/public-components/cards/PinkExperienceCandiateCard8';
 
   export default {
     props: {
       jobBoxTitle: String,
-      jobList: Array
+      candidateList: Array
     },
     components: {
-      QuickJobCard
+      FlexibleCandidateCard
+    },
+    methods: {
+      onClickCard(value) {
+        this.$emit('on_click_card', value);
+      }
     }
   }
 </script>
 
-<style lang="scss" scoped>
-  @import '~assets/css/halujobs_variables';
-
-</style>
 

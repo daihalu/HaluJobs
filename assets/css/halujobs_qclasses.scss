@@ -17,8 +17,6 @@
 
 }
 
-
-
 .box-title {
   border-bottom: 1px solid $color-border;
   text-transform: uppercase;
@@ -29,21 +27,22 @@
 
 /*============================JOB CARD=============================*/
 
-.job-card {
+.card {
   display: flex;
   align-items: center;
   border: 1px solid $color-border;
   border-radius: $br-5;
   font-size: $fs-base-16;
   padding: $padding-border-box-10;
+  transition: all 0.15s ease-in-out;
 }
 
-.job-card:hover {
+.card:hover {
   box-shadow: 0 0 5px $color-primary;
   cursor: pointer;
 }
 
-.job-card:active {
+.card:active {
   box-shadow: 0 0 0 transparent;
   transition: none;
 }

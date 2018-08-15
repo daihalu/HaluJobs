@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import HotJobCard from '~/components/public-components/cards/PinkSalary16';
+  import HotJobCard from '~/components/public-components/cards/PinkSalaryJobCard16';
 
   export default {
     components: {

@@ -1,5 +1,5 @@
 <template>
-    <el-card shadow="hover" class="job-card">
+    <el-card shadow="hover" class="card">
       <div class="el-col-16 job-card--content">
         <el-tooltip class="item" effect="dark" :content="position" placement="top">
           <p class="position">{{position}}</p>
@@ -32,14 +32,14 @@
 </script>
 
 <style lang="scss" scoped>
-  .job-card {
+  .card {
     font-size: 14px;
     position: relative;
     padding: 10px;
     margin-bottom: 5px;
   }
 
-  .job-card:hover {
+  .card:hover {
     cursor: pointer;
   }
 

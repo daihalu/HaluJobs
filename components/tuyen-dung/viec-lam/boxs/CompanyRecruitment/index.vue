@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalary8';
+  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
 
   export default {
     props: {

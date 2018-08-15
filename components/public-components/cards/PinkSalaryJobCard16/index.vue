@@ -1,7 +1,12 @@
 <template>
-  <el-row class="job-card">
-    <el-col :span="18" class="job-card--content">
+  <div class="card">
+    <div class="avatar">
+      <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
+        <img :src="jobInfo.avatarUrl"/>
+      </nuxt-link>
+    </div>
 
+    <el-col :span="16" class="job-card--content">
       <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
         <p class="position">
           <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
@@ -9,29 +14,29 @@
           </nuxt-link>
         </p>
       </el-tooltip>
-
       <p class="company" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
         {{jobInfo.companyName}}
       </p>
     </el-col>
-    <el-col :span="6">
+
+    <el-col :span="6" class="job-card--content--item">
       <p class="salary" :title="jobInfo.salary">
         <font-awesome-icon icon="dollar-sign"/>
         {{jobInfo.salary}}
       </p>
 
-      <p class="expiryDate" :title="jobInfo.expiryDate">
+      <p class="deadline" :title="jobInfo.deadline">
         <font-awesome-icon icon="user-clock"/>
-        {{jobInfo.expiryDate}}
+        {{jobInfo.deadline}}
       </p>
 
-      <p class="location" :title="jobInfo.location">
+      <p class="workAddress" :title="jobInfo.workAddress">
         <font-awesome-icon icon="map-marker-alt"/>
-        {{jobInfo.location}}
+        {{jobInfo.workAddress}}
       </p>
     </el-col>
-  </el-row>
+  </div>
 </template>
 
 <script>
@@ -45,9 +50,26 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  svg {
-    margin-right: 3px;
-    opacity: 0.7;
+  .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: center;
+  }
+  .avatar {
+    height: 70px;
+    width: 50px;
+  }
+
+  img {
+    border: 2px solid $color-gray;
+    border-radius: $br-5;
+    width: 100%;
+    height: 100%;
+  }
+
+  .job-card--content {
+    margin-left: 10px;
   }
 
   .position {
@@ -56,28 +78,33 @@
     padding-bottom: 5px;
   }
 
-  .company {
+  .company,
+  .deadline {
     opacity: 0.8;
   }
 
-  .expiryDate,
+  svg {
+    opacity: 0.7;
+  }
+
+  .deadline,
   .salary,
-  .location {
-    font-size: $fs-small-14;
+  .workAddress {
+    font-size: 14px;
     line-height: 25px;
-  }
-
-  .expiryDate,
-  .location {
-    display: inline;
-  }
-
-  .expiryDate {
-    opacity: 0.8;
     margin-right: 10px;
   }
 
-  .expiryDate:hover {
+  .salary {
+    color: $color-pink;
+  }
+
+  .deadline,
+  .workAddress {
+    display: inline;
+  }
+
+  .deadline:hover {
     opacity: 1;
   }
 

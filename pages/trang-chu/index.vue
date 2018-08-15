@@ -18,7 +18,7 @@
 
       <banner class="mg-top-15"/>
 
-      <el-row :gutter="16">
+      <el-row :gutter="15">
         <el-col :span="16">
           <attractive-job-box
             jobBoxTitle="Việc làm hấp dẫn"
@@ -77,7 +77,7 @@
   import JobSearchingBox from '~/components/trang-chu/boxs/JobSearchingBox';
   import HotLineBox from '~/components/trang-chu/boxs/HotLineBox';
   import LocationJobBox from '~/components/trang-chu/boxs/LocationJobBox';
-  import StatisticalBox from '~/components/trang-chu/boxs/StatisticalBox';
+  import StatisticalBox from '~/components/public-components/boxs/StatisticalBox';
 
   import {JobOption} from '~/assets/js/data-options';
 

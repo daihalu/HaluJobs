@@ -2,7 +2,7 @@
   <div>
     <NavBar id="element"/>
     <nuxt/>
-    <Footer/>
+    <Footer class="footer"/>
     <div class="fixed-contact-box">
       <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogFacebookVisible = true"/>
       <font-awesome-icon :icon="['fas', 'phone']" @click="dialogPhoneVisible = true"/>
@@ -123,6 +123,10 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
+  .footer {
+    margin-top: 15px;
+  }
+
   .fixed-contact-box {
     background-color: $color-white;
     border: 1px solid $color-primary;
@@ -203,7 +207,7 @@
 
   .dialog-mail-container {
     padding: $padding-border-box-15;
-    margin: 20px 0;
+    margin-bottom: 10px;
 
     a {
       font-size: 20px;

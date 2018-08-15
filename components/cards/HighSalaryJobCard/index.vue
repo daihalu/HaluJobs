@@ -1,5 +1,5 @@
 <template>
-  <div class="job-card">
+  <div class="card">
     <div class="job-card--avatar">
       <nuxt-link to="/tuyen-dung/viec-lam" :title="companyName">
         <img src="http://www.spulsa.info/wp-content/uploads/photo-logos-free-online-logo-maker-design-a-custom-logo-canva.png"/>
@@ -43,7 +43,7 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .job-card {
+  .card {
     margin: 5px 3px;
     border: 1px solid $color-border;
     border-radius: $br-5;
@@ -55,12 +55,12 @@
     align-items: center;
   }
 
-  .job-card:hover {
+  .card:hover {
     box-shadow: 0 0 5px $color-primary;
     cursor: pointer;
   }
 
-  .job-card:active {
+  .card:active {
     box-shadow: 0 0 0 transparent;
     transition: none;
   }

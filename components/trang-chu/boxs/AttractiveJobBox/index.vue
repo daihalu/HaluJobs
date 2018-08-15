@@ -1,7 +1,7 @@
 <template>
   <el-row class="box-container">
     <h4 class="box-title">
-      <font-awesome-icon icon="briefcase"/>
+      <font-awesome-icon :icon="['fas', 'briefcase']"/>
       {{jobBoxTitle}}
     </h4>
     <div id="scroll-box">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalary8';
+  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
 
   export default {
     components: {

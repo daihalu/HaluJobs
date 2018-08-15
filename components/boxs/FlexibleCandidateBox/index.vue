@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import CandidateCard from '~/components/cards/CandidateCard';
+  import CandidateCard from '~/components/cards/PinkExperienceCandiateCard8';
 
   export default {
     props: {

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import CandidateCard from '~/components/public-components/cards/CandidateCard';
+  import CandidateCard from '~/components/public-components/cards/PinkExperienceCandiateCard8';
 
   export default {
     components: {

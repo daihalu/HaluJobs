@@ -64,5 +64,14 @@
     opacity: 0.5;
   }
 
+  ul {
+    list-style-type: none;
+  }
+
+  ul li {
+
+    border-bottom: 1px dotted $color-primary;
+  }
+
 </style>
 

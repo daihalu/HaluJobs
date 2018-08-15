@@ -1,13 +1,13 @@
 <template>
-  <div class="job-card">
-    <div>
+  <div class="card">
+    <div class="avatar">
       <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
         <img :src="jobInfo.avatarUrl"/>
       </nuxt-link>
     </div>
 
     <div class="container">
-      <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
+      <el-tooltip effect="dark" :content="jobInfo.position" placement="top-start">
         <p class="position">
           <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
             {{jobInfo.position}}
@@ -15,20 +15,24 @@
         </p>
       </el-tooltip>
 
-      <p class="company" :title="jobInfo.companyName">
+      <p class="company item" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
         {{jobInfo.companyName}}
       </p>
 
       <div class="items">
-        <p class="salary" :title="jobInfo.salary">
+        <p class="item salary" :title="jobInfo.salary">
           <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
           {{jobInfo.salary}}
         </p>
 
-        <p class="deadline" :title="jobInfo.deadline">
+        <p class="item deadline" :title="jobInfo.deadline">
           <font-awesome-icon :icon="['fas', 'user-clock']"/>
           {{jobInfo.deadline}}
+        </p>
+        <p class="item location" :title="jobInfo.workAddress">
+          <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
+          {{jobInfo.workAddress}}
         </p>
       </div>
 
@@ -47,22 +51,39 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
+  .avatar {
+    height: 70px;
+    width: 70px;
+  }
+
   img {
     border: 2px solid $color-gray;
-    border-radius: $br-3;
-    width: 70px;
-    height: 70px;
-    margin-top: 3px;
+    border-radius: $br-5;
+    width: 100%;
+    height: 100%;
   }
 
   .container {
     margin-left: 10px;
+    width: 100%;
+  }
+
+  .items {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .item {
+    font-size: 14px;
+    line-height: 25px;
+    display: inline;
   }
 
   .position {
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;
+    font-size: $fs-base-16;
   }
 
   .company {
@@ -74,19 +95,12 @@
     opacity: 1;
   }
 
-  .deadline,
-  .salary {
-    font-size: $fs-small-14;
-    line-height: 25px;
-    display: inline;
-  }
-
-  .salary {
+  .salary,
+  .location {
     color: $color-pink;
   }
 
   .deadline {
-    padding-left: 50px;
     opacity: 0.8;
   }
 
@@ -100,3 +114,5 @@
   }
 
 </style>
+
+

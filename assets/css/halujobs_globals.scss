@@ -12,7 +12,7 @@ html {
   font-weight: $fw-small-400;
 }
 
-*, *:before, *:after {
+*, *:before, *:after, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

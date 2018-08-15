@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import NewJobCard from '~/components/public-components/cards/ColorlessCard16';
+  import NewJobCard from '~/components/public-components/cards/ColorlessJobCard16';
 
   export default {
     components: {
@@ -35,7 +35,7 @@
 
   .scroll-box {
     overflow: auto;
-    height: 640px;
+    height: 663px;
     padding: 10px;
   }
 
