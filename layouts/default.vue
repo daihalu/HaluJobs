@@ -89,7 +89,7 @@
 </template>
 <script>
   import NavBar from '../components/bars/NavBar';
-  import Footer from '~/components/bars/Footer';
+  import Footer from '~/components/public-components/bars/Footer';
 
   export default {
     components: {

@@ -53,14 +53,13 @@
 
   .avatar {
     height: 70px;
-    width: 70px;
   }
 
   img {
     border: 2px solid $color-gray;
     border-radius: $br-5;
-    width: 100%;
-    height: 100%;
+    height: 70px;
+    width: 70px;
   }
 
   .container {

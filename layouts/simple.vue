@@ -30,12 +30,12 @@
       </div>
     </el-dialog>
     <el-dialog :visible.sync="dialogPhoneVisible">
-      <el-row class="box-container container">
+      <el-row class="box-container hot-line-container">
         <div class="header">
           <h2>HOTLINE TƯ VẤN DÀNH CHO NHÀ TUYỂN DỤNG</h2>
         </div>
 
-        <div class="hotline-box">
+        <div class="hot-line-box">
           <h3>KHU VỰC <span>MIỀN BẮC</span> HOTLINE
             <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
           </h3>
@@ -48,11 +48,11 @@
         </div>
       </el-row>
 
-      <el-row class="box-container container">
+      <el-row class="box-container container ta-center">
         <div class="header">
           <h2>HOTLINE TƯ VẤN DÀNH CHO NGUỜI TÌM VIỆC</h2>
         </div>
-        <div class="hotline-box">
+        <div class="hot-line-box">
           <h3>TOÀN QUỐC:
             <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
           </h3>
@@ -88,8 +88,8 @@
   </div>
 </template>
 <script>
-  import NavBar from '../components/bars/NavBar';
-  import Footer from '~/components/bars/Footer';
+  import NavBar from '~/components/bars/NavBar';
+  import Footer from '~/components/public-components/bars/Footer';
 
   export default {
     components: {
@@ -173,7 +173,7 @@
     padding: 0px 20px 20px 20px;
   }
 
-  .container {
+  .hot-line-container {
     padding: $padding-border-box-15;
     text-align: center;
     margin-top: 20px;
@@ -188,7 +188,7 @@
     padding: 10px;
   }
 
-  .hotline-box {
+  .hot-line-box {
     padding: 10px;
     font-size: $fs-small-14;
 

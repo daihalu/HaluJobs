@@ -33,7 +33,7 @@
 
 <script>
   import NavBar from '../components/bars/NavBar';
-  import Footer from '~/components/bars/Footer';
+  import Footer from '~/components/public-components/bars/Footer';
   /*
   * :style="{'background-image':'url('+backgroundUrl+');'}"
   backgroundUrl: require('~/assets/images/bg.jpg'),
