@@ -103,12 +103,12 @@
           <div class="advance-search-selections">
             <p class="advance-search--result">Tìm thấy 200000 kết quả</p>
             <p class="advance-search-bar--text" @click="handleOnClickShowAdvanceSearch"
-               v-if="showAdvanceSearch == false">
+               v-if="showAdvanceSearch === false">
               <font-awesome-icon icon="chevron-down"/>
               Chọn tìm kiếm nâng cao
             </p>
             <p class="advance-search-bar--text" @click="handleOnClickShowAdvanceSearch"
-               v-if="showAdvanceSearch == true">
+               v-if="showAdvanceSearch === true">
               <font-awesome-icon icon="chevron-up"/>
               Ẩn tìm kiếm nâng cao
             </p>

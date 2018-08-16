@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NavBar id="element"/>
+    <NavBar id="scroll-target"/>
     <nuxt/>
-    <Footer/>
+    <Footer class="mg-top-15"/>
     <div class="fixed-contact-box">
       <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogFacebookVisible = true"/>
       <font-awesome-icon :icon="['fas', 'phone']" @click="dialogPhoneVisible = true"/>
@@ -14,7 +14,7 @@
         <div>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?
           Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.
         </div>
-        <div class="mg-top-15">
+        <div class="ta-center mg-top-15">
           <iframe
             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
             width="500"
@@ -81,7 +81,7 @@
     <div
       class="btn-scroll-top"
       v-if="showScrollButton"
-      v-scroll-to="{el:'#element', duration: 2000, easing: 'ease-in-out'}"
+      v-scroll-to="{el:'#scroll-target', duration: 2000, easing: 'ease-in-out'}"
     >
       <font-awesome-icon :icon="['fas', 'chevron-up']"/>
     </div>
@@ -146,10 +146,6 @@
 
   svg:hover {
     cursor: pointer;
-  }
-
-  .mg-top-15 {
-    text-align: center;
   }
 
   .btn-scroll-top {
