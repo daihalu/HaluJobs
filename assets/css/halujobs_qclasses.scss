@@ -8,6 +8,15 @@
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
+.tag {
+  display: inline-block;
+  border: 1px solid $color-primary;
+  background-color: $color-tags;
+  padding: 0 5px;
+  font-size: $fs-small-14;
+  border-radius: $br-5;
+  margin-right: 5px;
+}
 /*============================JOB BOX=============================*/
 
 .box-container {

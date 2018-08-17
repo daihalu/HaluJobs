@@ -205,6 +205,7 @@
   .dialog-mail-container {
     padding: $padding-border-box-15;
     margin-bottom: 10px;
+    margin-top: 20px;
 
     a {
       font-size: 20px;

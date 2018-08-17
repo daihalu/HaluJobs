@@ -3,6 +3,7 @@
     <NavBar id="scroll-target"/>
     <nuxt/>
     <Footer class="mg-top-15"/>
+
     <div class="fixed-contact-box">
       <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogFacebookVisible = true"/>
       <font-awesome-icon :icon="['fas', 'phone']" @click="dialogPhoneVisible = true"/>
@@ -14,7 +15,7 @@
         <div>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?
           Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.
         </div>
-        <div class="ta-center mg-top-15">
+        <div class="mg-top-15 ta-center ">
           <iframe
             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
             width="500"
@@ -30,12 +31,12 @@
       </div>
     </el-dialog>
     <el-dialog :visible.sync="dialogPhoneVisible">
-      <el-row class="box-container container">
+      <el-row class="box-container hot-line-container">
         <div class="header">
           <h2>HOTLINE TƯ VẤN DÀNH CHO NHÀ TUYỂN DỤNG</h2>
         </div>
 
-        <div class="hotline-box">
+        <div class="hot-line-box">
           <h3>KHU VỰC <span>MIỀN BẮC</span> HOTLINE
             <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
           </h3>
@@ -48,11 +49,11 @@
         </div>
       </el-row>
 
-      <el-row class="box-container container">
+      <el-row class="box-container hot-line-container">
         <div class="header">
           <h2>HOTLINE TƯ VẤN DÀNH CHO NGUỜI TÌM VIỆC</h2>
         </div>
-        <div class="hotline-box">
+        <div class="hot-line-box">
           <h3>TOÀN QUỐC:
             <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
           </h3>
@@ -60,6 +61,7 @@
 
       </el-row>
     </el-dialog>
+
     <el-dialog :visible.sync="dialogMailVisible">
       <div class="box-container dialog-mail-container">
         <p>
@@ -165,10 +167,10 @@
   }
 
   .el-dialog__body {
-    padding: 0px 20px 20px 20px;
+    padding: 0 20px 20px 20px;
   }
 
-  .container {
+  .hot-line-container {
     padding: $padding-border-box-15;
     text-align: center;
     margin-top: 20px;
@@ -183,7 +185,7 @@
     padding: 10px;
   }
 
-  .hotline-box {
+  .hot-line-box {
     padding: 10px;
     font-size: $fs-small-14;
 
@@ -200,6 +202,7 @@
   .dialog-mail-container {
     padding: $padding-border-box-15;
     margin-bottom: 10px;
+    margin-top: 20px;
 
     a {
       font-size: 20px;

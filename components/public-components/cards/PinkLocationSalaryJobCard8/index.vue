@@ -10,14 +10,14 @@
       <el-tooltip effect="dark" :content="jobInfo.position" placement="top-start">
         <p class="position">
           <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
-            {{jobInfo.position}}
+            {{position}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
       <p class="company item" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{jobInfo.companyName}}
+        {{companyName}}
       </p>
 
       <div class="items">
@@ -32,7 +32,7 @@
         </p>
         <p class="item location" :title="jobInfo.workAddress">
           <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
-          {{jobInfo.workAddress}}
+          {{workAddress}}
         </p>
       </div>
 
@@ -44,6 +44,30 @@
   export default {
     props: {
       jobInfo: Object
+    },
+    data() {
+      return {
+        position: this.jobInfo.position,
+        companyName: this.jobInfo.companyName,
+        workAddress: this.jobInfo.workAddress
+      }
+    },
+    created() {
+      console.log(this.position);
+      if (this.position.length > 30) {
+        this.position = this.position.slice(0, 30) + '...';
+        console.log(this.position);
+      }
+
+      if (this.companyName.length > 33) {
+        this.companyName = this.companyName.slice(0, 33) + '...';
+        console.log(this.companyName);
+      }
+
+      if (this.workAddress.length > 7) {
+        this.workAddress = this.workAddress.slice(0, 5) + '...';
+        console.log(this.workAddress);
+      }
     }
   }
 </script>

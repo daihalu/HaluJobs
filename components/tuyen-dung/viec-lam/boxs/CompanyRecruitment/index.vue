@@ -2,14 +2,9 @@
   <div class="box-right companyRecruitment">
     <h4>{{name}}</h4>
     <hr class="hr-1"/>
-    <div v-for="item in attractiveJobs" :key="item.name">
+    <div v-for="item in companyJobs" :key="item.name">
       <attractive-job-card
-        :title="item.title"
-        :companyName="item.companyName"
-        :salary="item.salary"
-        :deadline="item.deadline"
-        :workAddress="item.workAddress"
-        :logoUrl="item.logoUrl"
+        :jobInfo="item"
       />
     </div>
 
@@ -22,7 +17,7 @@
   export default {
     props: {
       name: String,
-      attractiveJobs: Array
+      companyJobs: Array
     },
     components: {
       AttractiveJobCard

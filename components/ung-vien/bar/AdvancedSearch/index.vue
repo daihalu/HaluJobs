@@ -257,7 +257,7 @@
         this.$emit("on_click_search_button", this.searchData);
       },
       handleOnSelectJobOptions(value) {
-        this.searchData.jobOptions = value;
+        this.searchData.jobInput = value;
       },
       handleOnSelectWorkAddress(value) {
         this.searchData.workAddress = value;

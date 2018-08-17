@@ -87,8 +87,17 @@
   font-weight: $fs-large-18;
 }
 
+.el-dialog__body {
+  padding: 0 20px 20px 20px !important;
+}
+
+.el-textarea__inner {
+  font-family: inherit !important;
+}
+
 .el-select .el-input__inner:focus,
-.el-input--prefix .el-input__inner:focus {
+.el-input--prefix .el-input__inner:focus,
+.el-textarea__inner:focus {
   border-color: $color-primary;
 }
 

@@ -1,14 +1,18 @@
 <template>
-  <div class="container">
-    <h3>Thông tin tuyển dụng nhanh</h3>
-    <hr class="hr-1"/>
+  <div class="box-container">
+    <h3 class="box-title">Thông tin tuyển dụng nhanh</h3>
 
-    <el-row>
+    <el-row class="container">
       <el-col :span="12">
-        <p><strong>Kinh nghiệm: </strong>{{yearsOfExperience}}</p>
+        <p><strong>Kinh nghiệm: </strong>{{yearsOfExperience}} năm</p>
         <p><strong>Bằng cấp yêu cầu: </strong>{{qualification}}</p>
         <p><strong>Số lượng cần tuyển: </strong>{{numberOfRecruits}}</p>
-        <p><strong>Ngành nghề: </strong>{{professions}}</p>
+        <p>
+          <strong>Ngành nghề: </strong>
+          <nuxt-link to="/tuyen-dung" v-for="item in professions" :key="item" class="tag">
+            {{item}}
+          </nuxt-link>
+        </p>
       </el-col>
 
       <el-col :span="12">
@@ -26,7 +30,7 @@
       yearsOfExperience: String,
       qualification: String,
       numberOfRecruits: String,
-      professions: String,
+      professions: Array,
       position: String,
       gender: String,
       jobType: String
@@ -38,35 +42,20 @@
   @import "~assets/css/halujobs_variables";
 
   .container {
-    width: 100%;
-    color: $color-black;
-    border: 1px solid $color-gray;
-    background-color: $color-white;
-    margin-top: $mg-top-bottom-15;
-    border-radius: $br-5;
-    padding: $padding-border-box-15;
+    padding: 0 15px 15px 15px;
   }
 
-  .container h3 {
+  h3 {
     color: $color-primary;
-    border-bottom: 1px solid $color-border;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    font-size: $fs-large-18;
-    font-weight: $fw-base-500;
   }
 
-  .container hr {
-    margin-bottom: 10px;
+  .tag {
+    color: $color-black !important;
   }
 
   .container p {
     line-height: 25px;
     margin-bottom: 3px;
   }
-
 </style>
 
-<style lang="">
-
-</style>

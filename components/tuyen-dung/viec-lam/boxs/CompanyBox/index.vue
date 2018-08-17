@@ -1,30 +1,84 @@
 <template>
-  <div class="company-box">
-    <img src="https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif"
-         alt="Công Ty TNHH MTV Dương Thiên Hương">
-    <p class="company-name">{{name}}</p>
-    <p><strong>Địa chỉ:</strong> {{address}}</p>
-    <p><strong>Quy mô công ty:</strong> {{size}}</p>
-    <div class="btn-options">
-      <el-button class="send-message">
-        <font-awesome-icon icon="comment"/>
-        Gửi tin nhắn
-      </el-button>
+  <div>
+    <div class="box-container">
+      <img :src="logoUrl" :alt="companyName">
+      <p class="company-name">{{companyName}}</p>
+      <p><strong>Địa chỉ:</strong> {{workAddresses}}</p>
+      <p><strong>Quy mô công ty:</strong> {{companySize}}</p>
+      <div class="btn-options">
+        <el-button class="send-message" @click="dialogSendMessageVisible = true">
+          <font-awesome-icon :icon="['fas', 'comment']"/>
+          Gửi tin nhắn
+        </el-button>
+      </div>
     </div>
+
+    <el-dialog
+      :title="dialogTitle"
+      :visible.sync="dialogSendMessageVisible"
+      class="dialog-container"
+    >
+      <el-form
+        ref="message"
+        :rules="rules"
+        :model="message"
+        label-position="top"
+      >
+        <el-form-item label="Nhập tiêu đề: " prop="title">
+          <el-input
+            v-model="message.title"
+            placeholder="Nhập tiêu đề"
+          >
+          </el-input>
+        </el-form-item>
+
+        <el-form-item label="Nhập tiêu nội dung tin nhắn: " prop="content">
+          <el-input
+            type="textarea"
+            :rows="5"
+            v-model="message.content"
+            placeholder="Nhập nội dung tin nhắn"
+          >
+          </el-input>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button class="send-message" @click="showMessage">
+            Gửi tin nhắn
+          </el-button>
+        </el-form-item>
+
+      </el-form>
+    </el-dialog>
   </div>
-
-
 </template>
 
 <script>
   export default {
     props: {
-      name: String,
-      address: String,
-      size: String
+      companyName: String,
+      workAddresses: String,
+      companySize: String,
+      logoUrl: String
     },
     data() {
-      return {}
+      return {
+        dialogSendMessageVisible: false,
+        dialogTitle: 'Gửi tin nhắn cho ' + this.companyName,
+        message: {
+          title: '',
+          content: ''
+        },
+        rules: {
+          title: [{required: true, message: 'Vui lòng nhập tiêu đề tin nhắn', trigger: 'blur'}],
+          content: [{required: true, message: 'Vui lòng nhập nội dung tin nhắn', trigger: 'blur'}],
+        }
+      }
+    },
+    methods: {
+      showMessage() {
+        console.log(this.message);
+      }
     }
   }
 </script>
@@ -32,49 +86,34 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .company-box {
-    border: 1px solid $color-gray;
-    padding: 15px;
-    background-color: $color-white;
-    margin-top: $mg-top-bottom-15;
+  .box-container {
     text-align: center;
-
+    padding: $padding-border-box-15;
   }
 
-  .company-box img {
-    width: 260px;
-    height: 260px;
+  img {
+    width: 300px;
+    height: 300px;
     border: $br-3 solid $color-gray;
   }
 
   .company-name {
     color: $color-primary;
-    font-weight: $fw-big-700;
+    font-weight: $fw-base-500;
     font-size: $fs-large-18;
+    text-transform: uppercase;
   }
 
   .company-box p {
     line-height: $line-height-30;
   }
 
-  .el-button {
-    padding: 10px 20px;
-    outline: 0 none;
-    transition: all 0.15s ease-in-out;
-    font-weight: $fw-base-500;
-    font-size: $fs-base-16;
-    margin-top: 10px;
-  }
-
-  .el-button:active {
-    box-shadow: 0 0 0 transparent;
-    transition: none;
-  }
-
   .send-message {
     background-color: $color-white;
     border: 1px solid $color-primary;
     color: $color-primary;
+    padding: 10px 20px;
+    margin-top: 10px;
   }
 
   .send-message:hover {
@@ -87,9 +126,9 @@
     color: $color-primary;
   }
 
+  .dialog-container {
+    text-align: left;
+  }
 
 </style>
 
-<style lang="">
-
-</style>

@@ -26,7 +26,7 @@
 
     .container {
       padding: 10px 0 10px 10px;
-      width: 100%;
+      width: 100% !important;
     }
 
     .container a {

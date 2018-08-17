@@ -1,19 +1,14 @@
 <template>
-  <el-row class="container">
-    <h4>
-      <font-awesome-icon icon="user-tie"/>
+  <el-row class="box-container">
+    <h4 class="box-title">
+      <font-awesome-icon :icon="['fas', 'user-tie']"/>
       Việc làm tương tự
     </h4>
-    <hr class="hr-1"/>
-    <el-row :gutter="4">
-      <el-col :span="8" v-for="item in attractiveJobs" :key="item.companyName" class="">
-        <attractive-job-card
-          :title="item.title"
-          :companyName="item.companyName"
-          :salary="item.salary"
-          :deadline="item.deadline"
-          :workAddress="item.workAddress"
-          :logoUrl="item.logoUrl"
+
+    <el-row :gutter="10" class="container">
+      <el-col :span="8" v-for="item in sameJobs" :key="item.companyName" class="mg-bottom-10">
+        <same-job-card
+          :jobInfo="item"
         />
       </el-col>
     </el-row>
@@ -21,14 +16,14 @@
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
+  import SameJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
 
   export default {
     props: {
-      attractiveJobs: Array
+      sameJobs: Array
     },
     components: {
-      AttractiveJobCard
+      SameJobCard
     }
   }
 </script>
@@ -37,28 +32,7 @@
   @import "~assets/css/halujobs_variables";
 
   .container {
-    padding: 5px;
-    background-color: #ffffff;
-
-    margin: 20px auto;
+    padding: 10px;
 
   }
-
-  .container h4 {
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-
-  hr {
-    margin-bottom: 10px;
-  }
-
-  .container .el-row .el-col {
-    margin-bottom: 5px;
-  }
-
-</style>
-
-<style lang="scss">
-  @import "~assets/css/halujobs_variables";
 </style>

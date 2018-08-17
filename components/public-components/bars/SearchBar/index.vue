@@ -13,29 +13,24 @@
       </el-col>
 
       <el-col :span="6" class="selection-box">
-
-          <font-awesome-icon :icon="['far', 'clipboard']" class="svg-icon"/>
-          <el-select v-model="searchData.job" filterable placeholder="Tất cả ngành nghề" value="">
-            <el-option
-              v-for="item in jobOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+        <selection-box
+          :options="jobOptions"
+          iconPrefix="far"
+          iconName="clipboard"
+          placeHolder="Tất cả ngành nghề"
+          @on_select="handleOnSelectJobOptions"
+        />
 
       </el-col>
 
       <el-col :span="6" class="selection-box">
-          <font-awesome-icon icon="map-marker-alt" class="svg-icon"/>
-          <el-select v-model="searchData.workAddress" filterable placeholder="Tất cả địa điểm" value="">
-            <el-option
-              v-for="item in workAddressOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
+        <selection-box
+          :options="workAddressOptions"
+          iconPrefix="fas"
+          iconName="map-marker-alt"
+          placeHolder="Tất cả địa điểm"
+          @on_select="handleOnSelectWorkAddress"
+        />
       </el-col>
 
       <el-col :span="3" class="padding-right-0">
@@ -49,9 +44,14 @@
 </template>
 
 <script>
+  import SelectionBox from '~/components/public-components/boxs/SelectionBox';
+
   import {JobOption} from '~/assets/js/data-options';
 
   export default {
+    components: {
+      SelectionBox
+    },
     props: {
       type: String,
       size: Number
@@ -64,14 +64,22 @@
       return {
         searchData: {
           input: '',
-          job: '',
+          jobInput: '',
           workAddress: '',
         },
         jobOptions: jobs,
         workAddressOptions: workAddresses,
       }
     },
-    methods: {}
+    methods: {
+      handleOnSelectJobOptions(value) {
+        this.searchData.jobInput = value;
+      },
+      handleOnSelectWorkAddress(value) {
+        this.searchData.workAddress = value;
+      },
+
+    }
   }
 </script>
 

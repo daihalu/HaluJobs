@@ -10,11 +10,23 @@
 
     <el-row class="container">
       <breadcrumb
-        title="Nhân Viên Văn Phòng Phụ Trách Kinh Doanh Khai Thác Sự Kiện"
-        :breadcrumbObj="breadcrumbObj"
+        :title="job.jobInfo.title"
+        :breadcrumbArr="breadcrumbArr"
+        class="mg-top-15"
       />
-      <banner/>
-      <job-cover/>
+
+      <banner class="mg-top-15"/>
+
+      <job-cover
+        :title="job.jobInfo.title"
+        :companyName="job.employerInfo.companyName"
+        :salary="job.jobInfo.salary"
+        :deadline="job.jobInfo.deadline"
+        :workAddresses="job.jobInfo.workAddresses"
+        :logoUrl="job.employerInfo._logoUrl"
+        class="mg-top-15"
+      />
+
       <el-row :gutter="20">
         <el-col :span="16">
           <quick-info
@@ -25,21 +37,24 @@
             :position="job.jobDetails.position"
             :gender="job.jobRequirements.gender"
             :jobType="job.jobDetails.jobType"
+            class="mg-top-15"
           />
 
         </el-col>
         <el-col :span="8">
 
-            <company-box
-              :name="job.employerInfo.companyName"
-              :address="job.employerInfo.companyAddress"
-              :size="job.employerInfo.companySize"
-            />
+          <company-box
+            :companyName="job.employerInfo.companyName"
+            :workAddresses="job.employerInfo.companyAddress"
+            :companySize="job.employerInfo.companySize"
+            :logoUrl="job.employerInfo._logoUrl"
+            class="mg-top-15"
+          />
 
 
           <company-recruitment
             :name="job.employerInfo.companyName"
-            :attractiveJobs="attractiveJobs"
+            :companyJobs="companyJobs"
           />
 
           <advanced-search/>
@@ -47,7 +62,8 @@
       </el-row>
 
       <same-jobs
-        :attractiveJobs="attractiveJobs"
+        :sameJobs="sameJobs"
+        class="mg-top-15"
       />
 
     </el-row>
@@ -56,11 +72,12 @@
 
 <script>
   import SearchBar from '~/components/bars/SearchBar';
-  import AttractiveJobCard from '~/components/cards/AttractiveJobCard';
-  import Banner from '~/components/categories/Banner';
+
+
   import CompanyBox from '~/components/tuyen-dung/viec-lam/boxs/CompanyBox';
 
   import Breadcrumb from '~/components/public-components/bars/Breadcrumb';
+  import Banner from '~/components/public-components/boxs/Banner';
   import FixBarAction from '~/components/tuyen-dung/viec-lam/boxs/FixBarAction';
   import AdvancedSearch from '~/components/public-components/boxs/AdvancedSearch';
   import CompanyRecruitment from '~/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment';
@@ -76,7 +93,6 @@
       Breadcrumb,
       Banner,
       JobCover,
-      AttractiveJobCard,
       AdvancedSearch,
       CompanyBox,
       FixBarAction,
@@ -84,12 +100,18 @@
       SameJobs,
       QuickInfo
     },
+    head() {
+      return {
+        title: `Tuyển ${this.job.jobInfo.title} - ${this.job.employerInfo.companyName}`
+      };
+    },
+    layout: 'simple',
     data() {
       return {
         job: {
           jobInfo: {
             title: 'Nhân viên hành chính nhân sự',
-            workAddresses: ['Bắc Cạn'],
+            workAddresses: ['Hà Nội'],
             salary: '8 triệu - 15 triệu',
             isBonus: true,
             deadline: '10/08/2018 '
@@ -136,69 +158,131 @@
           },
           employerInfo: {
             _id: '',
-            companyName: 'Công ty cổ phần tập đoàn công nghiệp An Khang',
-            companyAddress: 'Số 280, Tổ 13, Phường Sông Cầu, TP Bắc Cạn, Tỉnh Bắc Cạn',
+            companyName: 'Công ty cổ phần công nghệ Halu Việt Nam',
+            companyAddress: 'T2, 36/7 Ngọc Khánh, Ba Đình, Hà Nội',
             companySize: 'Hơn 10000 người',
-            _logoUrl: '~/assets/images/logo.png'
+            _logoUrl: 'https://scontent.fhan2-2.fna.fbcdn.net/v/t1.0-9/27459795_1516131271837402_799174223676649307_n.png?_nc_cat=0&oh=b95d1c0d6edfd09e16efef0fe1ca2a8b&oe=5C087E5C'
           },
           _updatedDate: '18/05/2018'
         },
-        attractiveJobs: [
+        sameJobs: [
           {
-            title: "Giám đốc tài chính 1",
+            position: "Giám đốc tài chính 1",
             companyName: 'Công ty THHH AK 1',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg'
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            jobUrl: '/tuyen-dung'
           },
           {
-            title: "Giám đốc tài chính 2",
+            position: "Giám đốc tài chính 2",
             companyName: 'Công ty THHH AK 2',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg'
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            jobUrl: '/tuyen-dung'
           },
           {
-            title: "Giám đốc tài chính 3",
+            position: "Giám đốc tài chính 3",
             companyName: 'Công ty THHH AK 3',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg'
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            jobUrl: '/tuyen-dung'
           },
           {
-            title: "Giám đốc tài chính 4",
+            position: "Giám đốc tài chính 4",
             companyName: 'Công ty THHH AK 4',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg'
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            jobUrl: '/tuyen-dung'
           },
           {
-            title: "Giám đốc tài chính 5",
+            position: "Giám đốc tài chính 5",
             companyName: 'Công ty THHH AK 5',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg'
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            jobUrl: '/tuyen-dung'
           },
           {
-            title: "Giám đốc tài chính 6",
+            position: "Giám đốc tài chính 6",
             companyName: 'Công ty THHH AK 6',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg'
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            jobUrl: '/tuyen-dung'
           }
         ],
-        breadcrumbObj:
-          [
-            {name: 'Trang chủ', link: '/'},
-            {name: 'Tuyển dụng', link: '/tuyen-dung'},
-            {name: 'Bắc Cạn', link: '/tuyen-dung/dia-diem'},
-          ],
+        companyJobs: [
+          {
+            position: "Công ty cổ phần công nghệ Halu Việt Nam 1",
+            companyName: 'Công ty cổ phần công nghệ Halu Việt Nam 1 Công ty cổ phần công nghệ Halu Việt Nam 1',
+            salary: '15 - 20 triệu',
+            deadline: '25/9/2018',
+            workAddress: 'Sài Gòn 12345',
+            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            jobUrl: '/tuyen-dung'
+          },
+          {
+            position: "Giám đốc tài chính 2",
+            companyName: 'Công ty THHH AK 2',
+            salary: '15 - 20 triệu',
+            deadline: '25/9/2018',
+            workAddress: 'Sài Gòn',
+            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            jobUrl: '/tuyen-dung'
+          },
+          {
+            position: "Giám đốc tài chính 3",
+            companyName: 'Công ty THHH AK 3',
+            salary: '15 - 20 triệu',
+            deadline: '25/9/2018',
+            workAddress: 'Sài Gòn',
+            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            jobUrl: '/tuyen-dung'
+          },
+          {
+            position: "Giám đốc tài chính 4",
+            companyName: 'Công ty THHH AK 4',
+            salary: '15 - 20 triệu',
+            deadline: '25/9/2018',
+            workAddress: 'Sài Gòn',
+            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            jobUrl: '/tuyen-dung'
+          },
+          {
+            position: "Giám đốc tài chính 5",
+            companyName: 'Công ty THHH AK 5',
+            salary: '15 - 20 triệu',
+            deadline: '25/9/2018',
+            workAddress: 'Sài Gòn',
+            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            jobUrl: '/tuyen-dung'
+          },
+          {
+            position: "Giám đốc tài chính 6",
+            companyName: 'Công ty THHH AK 6',
+            salary: '15 - 20 triệu',
+            deadline: '25/9/2018',
+            workAddress: 'Sài Gòn',
+            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            jobUrl: '/tuyen-dung'
+          }
+        ],
+        breadcrumbArr: [
+          {name: 'Trang chủ', url: '/'},
+          {name: 'Tuyển dụng', url: '/tuyen-dung'},
+          {name: 'Bắc Cạn', url: '/tuyen-dung/dia-diem'},
+        ],
+        scrolled: false
       }
     }
     ,
