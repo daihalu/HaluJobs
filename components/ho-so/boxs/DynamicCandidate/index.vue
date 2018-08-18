@@ -4,7 +4,9 @@
     <h4> Hồ sơ ứng viên năng động</h4>
     <hr class="hr-1"/>
     <div v-for="item in 10" :key="item">
-      <CandidateCard/>
+      <candidate-card
+        :candidateInfo="activeCandidateList[0]"
+      />
     </div>
   </div>
 </template>
@@ -13,6 +15,9 @@
   import CandidateCard from '~/components/public-components/cards/PinkExperienceCandiateCard8';
 
   export default {
+    props: {
+      activeCandidateList: Array
+    },
     components: {
       CandidateCard
     }

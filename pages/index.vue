@@ -201,34 +201,35 @@
         ],
         urgentJobList: [
           {
-            position: 'Nhân Viên Kinh Doanh Thiết',
-            companyName: 'Công ty cổ phần Hoàng Kim',
+            jobTitle: 'Nhân Viên Kinh Doanh Thiết Nhân Viên Kinh Doanh Thiết',
+            companyName: 'Công ty cổ phần Hoàng Kim Công ty cổ phần Hoàng Kim',
             salary: '10 - 20 triệu',
             deadline: '13/7/2018',
             jobUrl: '/tuyen-dung/viec-lam',
-            avatarUrl: 'https://www.codyhub.com/wp-content/uploads/2017/07/i2.jpg'
+            logoUrl: 'https://www.codyhub.com/wp-content/uploads/2017/07/i2.jpg',
+            seen: true
           },
         ],
         attractiveJobList: [
           {
-            position: "Giám đốc điều hành nhân sự",
+            jobTitle: "Giám đốc điều hành nhân sự Giám đốc điều hành nhân sự",
             companyName: "Công ty cổ phần Đại Nam",
             salary: "15 - 22 triệu",
             deadline: "30/7/2018",
             workAddress: "Sài Gòn",
-            avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
+            logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
             jobUrl: "/tuyen-dung/viec-lam",
           }
         ],
         highSalaryJobList: [
           {
-            position: 'Nhân Viên Marketing Online - Được Đào Tạo Từ A-Z',
-            companyName: 'Công Ty Cổ Phần Tư Vấn Bất Động Sản Phương Đông',
+            jobTitle: 'Nhân Viên Marketing Online - Được Đào Tạo Từ A-Z Nhân Viên Marketing Online - Được Đào Tạo Từ A-Z',
+            companyName: 'Công Ty Cổ Phần Tư Vấn Bất Động Sản Phương Đông ông Ty Cổ Phần Tư Vấn Bất Động Sản Phương Đông',
             salary: '10 triệu - 20 triệu',
             deadline: '13/7/2018',
-            workAddress: 'Hà Nội',
+            workAddress: 'Hồ Chí Minh',
             jobUrl: '/tuyen-dung/viec-lam',
-            avatarUrl: 'http://www.spulsa.info/wp-content/uploads/photo-logos-free-online-logo-maker-design-a-custom-logo-canva.png'
+            logoUrl: 'http://www.spulsa.info/wp-content/uploads/photo-logos-free-online-logo-maker-design-a-custom-logo-canva.png'
           }
         ]
       }

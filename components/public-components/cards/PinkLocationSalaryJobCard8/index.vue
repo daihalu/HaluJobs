@@ -2,15 +2,15 @@
   <div class="card">
     <div class="avatar">
       <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
-        <img :src="jobInfo.avatarUrl"/>
+        <img :src="jobInfo.logoUrl"/>
       </nuxt-link>
     </div>
 
     <div class="container">
-      <el-tooltip effect="dark" :content="jobInfo.position" placement="top-start">
-        <p class="position">
-          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
-            {{position}}
+      <el-tooltip effect="dark" :content="jobInfo.jobTitle" placement="top-start">
+        <p class="jobTitle">
+          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.jobTitle">
+            {{jobTitle}}
           </nuxt-link>
         </p>
       </el-tooltip>
@@ -41,33 +41,23 @@
 </template>
 
 <script>
+  import {ConvertStringToShorterString} from '~/assets/js/functions';
+
   export default {
     props: {
       jobInfo: Object
     },
     data() {
       return {
-        position: this.jobInfo.position,
+        jobTitle: this.jobInfo.jobTitle,
         companyName: this.jobInfo.companyName,
         workAddress: this.jobInfo.workAddress
       }
     },
     created() {
-      console.log(this.position);
-      if (this.position.length > 30) {
-        this.position = this.position.slice(0, 30) + '...';
-        console.log(this.position);
-      }
-
-      if (this.companyName.length > 33) {
-        this.companyName = this.companyName.slice(0, 33) + '...';
-        console.log(this.companyName);
-      }
-
-      if (this.workAddress.length > 7) {
-        this.workAddress = this.workAddress.slice(0, 5) + '...';
-        console.log(this.workAddress);
-      }
+      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 32);
+      this.companyName = ConvertStringToShorterString(this.companyName, 0, 33);
+      this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 5);
     }
   }
 </script>
@@ -102,7 +92,7 @@
     display: inline;
   }
 
-  .position {
+  .jobTitle {
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;

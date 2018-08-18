@@ -17,6 +17,18 @@
   border-radius: $br-5;
   margin-right: 5px;
 }
+
+.card-status {
+  display: inline;
+  border: 1px solid transparent;
+  background-color: $color-primary;
+  padding: 1px;
+  font-size: 12px;
+  border-radius: 3px;
+  color: $color-white;
+  text-align: center;
+}
+
 /*============================JOB BOX=============================*/
 
 .box-container {
@@ -87,6 +99,7 @@
 .mg-top-15 {
   margin-top: 15px !important;
 }
+
 .mg-bottom-15 {
   margin-bottom: 15px !important;
 }

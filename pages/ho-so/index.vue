@@ -11,9 +11,11 @@
     <el-row class="container">
       <breadcrumb
         :title="candidate.resume.basicInfo.title"
-        :breadcrumbObj="breadcrumbObj"
+        :breadcrumbArr="breadcrumbArr"
+        class="mg-top-15"
       />
-      <Banner/>
+
+      <banner class="mg-top-15"/>
       <el-row :gutter="20">
         <el-col :span="16">
           <el-row class="candidate-info">
@@ -88,13 +90,15 @@
 
           <tools/>
 
-          <dynamic-candidate/>
+          <dynamic-candidate
+            :activeCandidateList="activeCandidateList"
+          />
 
           <advanced-search/>
         </el-col>
       </el-row>
 
-      <relating-candidate/>
+      <!--<relating-candidate/>-->
     </el-row>
 
 
@@ -105,7 +109,7 @@
   import SearchBar from '~/components/bars/SearchBar';
   import CandidateCard from '~/components/cards/CandidateCard';
   import TheCandidateListCategory from '~/components/categories/TheCandidateListCategory';
-  import Banner from '~/components/categories/Banner';
+  import Banner from '~/components/public-components/boxs/Banner';
 
   import CandidateCover from '~/components/ho-so/candidate-info/CandidateCover';
   import PersonalInfo from '~/components/ho-so/candidate-info/PersonalInfo';
@@ -321,10 +325,19 @@
         workExperienceOptions: workExperience,
         jobTitleOptions: jobTitles,
         jobTypeOptions: jobTypes,
-        breadcrumbObj: [
-          { name: 'Trang chủ', link: '/' },
-          { name: 'Danh sách ứng viên', link: '/ung-vien' },
+        breadcrumbArr: [
+          { name: 'Trang chủ', url: '/' },
+          { name: 'Danh sách ứng viên', url: '/ung-vien' },
         ],
+        activeCandidateList: [
+          {
+            position: 'Trưởng phòng maketing',
+            profileUrl: '/ho-so',
+            avatarUrl: 'https://pbs.twimg.com/profile_images/1028759724446113794/-wMRK-jB_400x400.jpg',
+            candidateName: 'Eden Hazard',
+            workExperience: '8'
+          }
+        ]
       }
     },
     methods: {

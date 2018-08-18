@@ -24,7 +24,7 @@
       </p>
 
       <p class="workExperience" :title="candidateInfo.workExperience">
-        Kinh nghiệm: <span>{{candidateInfo.workExperience}}</span>
+        Kinh nghiệm: <span>{{candidateInfo.workExperience}} năm</span>
       </p>
 
       <p class="status" v-if="seenCard">Đã xem</p>
@@ -39,7 +39,7 @@
     },
     data() {
       return {
-        seenCard: this.candidateInfo.seen
+        seenCard: true
       }
     },
     methods: {

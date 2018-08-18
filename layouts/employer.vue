@@ -24,10 +24,10 @@
         >
         </vue-particles>
       </div>
-
     </div>
-    <nuxt/>
-    <Footer class="footer"/>
+
+    <nuxt style="height: 100vh;"/>
+    <Footer class="footer-bar"/>
   </div>
 </template>
 
@@ -72,6 +72,7 @@
 
   .overlay-container {
     height: 100%;
+
   }
 
   .cover-background {
@@ -93,10 +94,8 @@
     opacity: 0.3;
   }
 
-  .footer {
-    position: absolute;
-    z-index: 2;
-    top: 100vh;
+  .footer-bar {
+    position: relative;
   }
 
 

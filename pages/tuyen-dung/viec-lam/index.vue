@@ -1,6 +1,7 @@
 <template>
   <div>
     <fix-bar-action
+      v-if="scrolled"
       :title="job.jobInfo.title"
       :salary="job.jobInfo.salary"
       :deadline="job.jobInfo.deadline"
@@ -167,113 +168,113 @@
         },
         sameJobs: [
           {
-            position: "Giám đốc tài chính 1",
+            jobTitle: "Giám đốc tài chính 1",
             companyName: 'Công ty THHH AK 1',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 2",
+            jobTitle: "Giám đốc tài chính 2",
             companyName: 'Công ty THHH AK 2',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 3",
+            jobTitle: "Giám đốc tài chính 3",
             companyName: 'Công ty THHH AK 3',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 4",
+            jobTitle: "Giám đốc tài chính 4",
             companyName: 'Công ty THHH AK 4',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 5",
+            jobTitle: "Giám đốc tài chính 5",
             companyName: 'Công ty THHH AK 5',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 6",
+            jobTitle: "Giám đốc tài chính 6",
             companyName: 'Công ty THHH AK 6',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
+            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
             jobUrl: '/tuyen-dung'
           }
         ],
         companyJobs: [
           {
-            position: "Công ty cổ phần công nghệ Halu Việt Nam 1",
-            companyName: 'Công ty cổ phần công nghệ Halu Việt Nam 1 Công ty cổ phần công nghệ Halu Việt Nam 1',
+            jobTitle: "Lập trình viên full-stack Lập trình viên full-stack",
+            companyName: 'Công ty cổ phần công nghệ Halu Việt Nam 1',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
-            workAddress: 'Sài Gòn 12345',
-            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            workAddress: 'Sài Gòn, Hà Nội',
+            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 2",
+            jobTitle: "Giám đốc tài chính 2",
             companyName: 'Công ty THHH AK 2',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 3",
+            jobTitle: "Giám đốc tài chính 3",
             companyName: 'Công ty THHH AK 3',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 4",
+            jobTitle: "Giám đốc tài chính 4",
             companyName: 'Công ty THHH AK 4',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 5",
+            jobTitle: "Giám đốc tài chính 5",
             companyName: 'Công ty THHH AK 5',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
             jobUrl: '/tuyen-dung'
           },
           {
-            position: "Giám đốc tài chính 6",
+            jobTitle: "Giám đốc tài chính 6",
             companyName: 'Công ty THHH AK 6',
             salary: '15 - 20 triệu',
             deadline: '25/9/2018',
             workAddress: 'Sài Gòn',
-            avatarUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
+            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
             jobUrl: '/tuyen-dung'
           }
         ],
@@ -287,17 +288,18 @@
     }
     ,
     methods: {
-      handleScroll() {
-        this.scrolled = window.scrollY > 600 && window.scrollY < 3500;
+      handleOnScroll() {
+        this.scrolled = window.scrollY > 800 && window.scrollY < 3500;
+        console.log(window.scrollY)
       }
     }
     ,
     beforeMount() {
-      window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('scroll', this.handleOnScroll);
     }
     ,
     beforeDestroy() {
-      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('scroll', this.handleOnScroll);
     }
   }
 </script>

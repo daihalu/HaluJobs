@@ -2,22 +2,22 @@
   <div class="card">
     <div class="avatar">
       <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
-        <img :src="jobInfo.avatarUrl"/>
+        <img :src="jobInfo.logoUrl"/>
       </nuxt-link>
     </div>
 
     <div class="container">
-      <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
+      <el-tooltip class="item" effect="dark" :content="jobInfo.jobTitle" placement="top-start">
         <p class="position">
-          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
-            {{jobInfo.position}}
+          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.jobTitle">
+            {{jobTitle}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
       <p class="company" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{jobInfo.companyName}}
+        {{companyName}}
       </p>
 
       <div class="items">
@@ -30,6 +30,8 @@
           <font-awesome-icon :icon="['fas', 'user-clock']"/>
           {{jobInfo.deadline}}
         </p>
+
+        <p class="card-status" v-if="seenCard">Đã xem</p>
       </div>
 
     </div>
@@ -37,14 +39,22 @@
 </template>
 
 <script>
+  import {ConvertStringToShorterString} from '~/assets/js/functions';
+
   export default {
     props: {
       jobInfo: Object
     },
     data() {
       return {
-        seenCard: ''
+        seenCard: this.jobInfo.seen,
+        jobTitle: this.jobInfo.jobTitle,
+        companyName: this.jobInfo.companyName
       }
+    },
+    created() {
+      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 30);
+      this.companyName = ConvertStringToShorterString(this.companyName, 0, 28);
     }
   }
 </script>
@@ -60,12 +70,12 @@
   img {
     border: 2px solid $color-gray;
     border-radius: $br-5;
-    width: 100%;
     height: 100%;
   }
 
   .container {
     margin-left: 10px;
+    width: 100%;
   }
 
   .position {
@@ -95,7 +105,7 @@
   }
 
   .deadline {
-    padding-left: 50px;
+    margin-left: 25px;
     opacity: 0.8;
   }
 
@@ -106,6 +116,10 @@
   svg {
     font-size: 14px;
     opacity: 0.7;
+  }
+
+  .card-status {
+    margin-left: 34px;
   }
 
 </style>

@@ -27,7 +27,6 @@
   .container {
     padding: 0;
     height: 65vh;
-    width: 100%;
   }
 
   .item {

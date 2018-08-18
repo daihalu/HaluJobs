@@ -107,7 +107,7 @@
     },
     methods: {
       handleScroll() {
-        this.showScrollButton = window.scrollY > 600;
+        this.showScrollButton = window.scrollY > 800;
       }
     },
     beforeMount() {

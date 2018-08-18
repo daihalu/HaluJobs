@@ -2,21 +2,21 @@
   <div class="card">
     <div class="avatar">
       <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
-        <img :src="jobInfo.avatarUrl"/>
+        <img :src="jobInfo.logoUrl"/>
       </nuxt-link>
     </div>
 
     <el-col :span="16" class="job-card--content">
-      <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
-        <p class="position">
-          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
-            {{jobInfo.position}}
+      <el-tooltip class="item" effect="dark" :content="jobInfo.jobTitle" placement="top-start">
+        <p class="jobTitle">
+          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.jobTitle">
+            {{jobTitle}}
           </nuxt-link>
         </p>
       </el-tooltip>
       <p class="company" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{jobInfo.companyName}}
+        {{companyName}}
       </p>
     </el-col>
 
@@ -33,16 +33,30 @@
 
       <p class="workAddress" :title="jobInfo.workAddress">
         <font-awesome-icon icon="map-marker-alt"/>
-        {{jobInfo.workAddress}}
+        {{workAddress}}
       </p>
     </el-col>
   </div>
 </template>
 
 <script>
+  import {ConvertStringToShorterString} from '~/assets/js/functions';
+  
   export default {
     props: {
       jobInfo: Object
+    },
+    data() {
+      return {
+        jobTitle: this.jobInfo.jobTitle,
+        companyName: this.jobInfo.companyName,
+        workAddress: this.jobInfo.workAddress
+      }
+    },
+    created() {
+      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 53);
+      this.companyName = ConvertStringToShorterString(this.companyName, 0, 50);
+      this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 7);
     }
   }
 </script>
@@ -57,8 +71,8 @@
     align-items: center;
   }
   .avatar {
-    height: 70px;
-    width: 50px;
+    height: 50px;
+    width: 70px;
   }
 
   img {
@@ -72,7 +86,7 @@
     margin-left: 10px;
   }
 
-  .position {
+  .jobTitle {
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;
@@ -92,7 +106,6 @@
   .workAddress {
     font-size: 14px;
     line-height: 25px;
-    margin-right: 10px;
   }
 
   .salary {
@@ -102,6 +115,10 @@
   .deadline,
   .workAddress {
     display: inline;
+  }
+
+  .workAddress {
+    margin-left: 10px;
   }
 
   .deadline:hover {

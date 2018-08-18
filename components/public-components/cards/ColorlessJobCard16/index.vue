@@ -2,17 +2,17 @@
   <el-row class="card">
     <el-col :span="18" class="job-card--content">
 
-      <el-tooltip class="item" effect="dark" :content="jobInfo.position" placement="top-start">
-        <p class="position">
-          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.position">
-            {{jobInfo.position}}
+      <el-tooltip class="item" effect="dark" :content="jobInfo.jobTitle" placement="top-start">
+        <p class="jobTitle">
+          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.jobTitle">
+            {{jobTitle}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
       <p class="company" :title="jobInfo.companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{jobInfo.companyName}}
+        {{companyName}}
       </p>
     </el-col>
     <el-col :span="6">
@@ -26,18 +26,32 @@
         {{jobInfo.expiryDate}}
       </p>
 
-      <p class="location" :title="jobInfo.location">
+      <p class="location" :title="jobInfo.workAddress">
         <font-awesome-icon icon="map-marker-alt"/>
-        {{jobInfo.location}}
+        {{workAddress}}
       </p>
     </el-col>
   </el-row>
 </template>
 
 <script>
+  import {ConvertStringToShorterString} from '~/assets/js/functions';
+
   export default {
     props: {
       jobInfo: Object
+    },
+    data() {
+      return {
+        jobTitle: this.jobInfo.jobTitle,
+        companyName: this.jobInfo.companyName,
+        workAddress: this.jobInfo.workAddress
+      }
+    },
+    created() {
+      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 63);
+      this.companyName = ConvertStringToShorterString(this.companyName, 0, 60);
+      this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 7);
     }
   }
 </script>
@@ -50,7 +64,7 @@
     opacity: 0.7;
   }
 
-  .position {
+  .jobTitle {
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;

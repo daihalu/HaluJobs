@@ -96,7 +96,7 @@
 
   .sign-in-container {
     width: $page-width;
-    margin: 15vh auto !important;
+    margin: 0 auto !important;
   }
 
 </style>
