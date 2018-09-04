@@ -33,7 +33,7 @@
 
 <script>
   import NavBar from '../components/dang-nhap/NavBar';
-  import Footer from '~/components/public-components/bars/Footer';
+  import Footer from '~/components/dang-nhap/Footer';
   /*
   * :style="{'background-image':'url('+backgroundUrl+');'}"
   backgroundUrl: require('~/assets/images/bg.jpg'),

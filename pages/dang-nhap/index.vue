@@ -18,167 +18,181 @@
             <div class="btn-options " id="btn-options">
               <p v-if="!activeBtn">Bạn đang muốn? </p>
 
-              <div :class="btnAfter" style="display: inline">
-                <el-button
-                  @click.once="handleOnFirstClickLeftBtn"
-                  @click="handleOnClickLeftButton"
-                  class="button button--wapasha"
-                  :class="{active: activeBtn === 'timungvien'}"
-                >
-                  {{(activeBtn === 'timvieclam' || activeBtn === 'timungvien') ? 'Nhà tuyển dụng' : 'Tìm ứng viên'}}
-                </el-button>
+              <div :class="btnAfter" class="mg-top-15">
 
-                <el-button
-                  @click.once="handleOnFirstClickRightBtn"
-                  @click="handleOnClickRightButton"
-                  class="button button--wapasha"
-                  :class="{active: activeBtn === 'timvieclam'}"
-                >
-                  {{(activeBtn === 'timvieclam' || activeBtn === 'timungvien') ? 'Ứng viên' : 'Tìm việc làm'}}
-                </el-button>
+                <transition name="fade-in-up">
+                  <el-button
+                    @click.once="handleOnFirstClickLeftBtn"
+                    @click="handleOnClickLeftButton"
+                    class="button button--wapasha"
+                    :class="{active: activeBtn === 'timungvien'}"
+                  >
+                    {{(activeBtn === 'timvieclam' || activeBtn === 'timungvien') ? 'Nhà tuyển dụng' : 'Tìm ứng viên'}}
+                  </el-button>
+                </transition>
+
+                <transition name="fade-in-up">
+                  <el-button
+                    @click.once="handleOnFirstClickRightBtn"
+                    @click="handleOnClickRightButton"
+                    class="button button--wapasha"
+                    :class="{active: activeBtn === 'timvieclam'}"
+                  >
+                    {{(activeBtn === 'timvieclam' || activeBtn === 'timungvien') ? 'Ứng viên' : 'Tìm việc làm'}}
+                  </el-button>
+                </transition>
+
               </div>
             </div>
 
-            <div v-if="activeBtn === 'timungvien'" class="input-container">
+            <transition name="fade-in-up">
+              <div v-if="activeBtn === 'timungvien'" class="input-container">
 
-              <el-form
-                :model="employerForm"
-                :rules="rules"
-                ref="employerForm"
-                label-position="top"
-              >
+                <el-form
+                  :model="employerForm"
+                  :rules="rules"
+                  ref="employerForm"
+                  label-position="top"
+                >
 
-                <transition name="fade-in-up">
-                  <el-form-item
-                    prop="name"
-                    label="Nhập họ và tên"
-                    class="mg-top-15"
-                  >
-                    <el-input
-                      v-model="employerForm.name"
-                      auto-complete="on"
-                      placeholder="Nhập họ và tên..."
-                    ></el-input>
-                  </el-form-item>
-                </transition>
-
-                <transition name="fade-in-up">
-                  <el-form-item
-                    prop="phoneNumber"
-                    label="Nhập số điện thoại"
-                    v-if="hasChangeEmployerNameInput"
-                  >
-                    <el-input
-                      v-model="employerForm.phoneNumber"
-                      auto-complete="on"
-                      placeholder="Nhập số điện thoại..."
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      prop="name"
+                      label="Nhập họ và tên"
+                      class="mg-top-15"
                     >
-                      <!--<template slot="prepend">-->
-                      <!--<img :src="flagUrl" width="30px" height="20px"/>-->
-                      <!--</template>-->
-                    </el-input>
-                  </el-form-item>
-                </transition>
+                      <el-input
+                        v-model="employerForm.name"
+                        auto-complete="on"
+                        autofocus="true"
+                        placeholder="Nhập họ và tên..."
+                      ></el-input>
+                    </el-form-item>
+                  </transition>
 
-                <transition name="fade-in-up">
-                  <el-form-item
-                    prop="companyName"
-                    label="Nhập tên công ty"
-                    v-if="hasChangeCompanyPhoneNumberInput"
-                  >
-                    <el-input
-                      v-model="employerForm.companyName"
-                      auto-complete="on"
-                      placeholder="Nhập tên công ty..."
-                    ></el-input>
-                  </el-form-item>
-                </transition>
-
-                <transition name="fade-in-up">
-                  <el-form-item
-                    v-if="hasChangeCompanyNameInput"
-                  >
-                    <el-button
-                      @click="submitForm('employerForm')"
-                      class="mg-top-15 button button--wapasha done-btn"
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      prop="phoneNumber"
+                      label="Nhập số điện thoại"
+                      v-if="hasChangeEmployerNameInput"
                     >
-                      Xong
-                    </el-button>
-                  </el-form-item>
-                </transition>
+                      <el-input
+                        v-model="employerForm.phoneNumber"
+                        auto-complete="on"
+                        placeholder="Nhập số điện thoại..."
+                      >
+                        <!--<template slot="prepend">-->
+                        <!--<img :src="flagUrl" width="30px" height="20px"/>-->
+                        <!--</template>-->
+                      </el-input>
+                    </el-form-item>
+                  </transition>
 
-              </el-form>
-            </div>
-
-            <div v-if="activeBtn === 'timvieclam'" class="input-container">
-
-              <el-form
-                :model="candidateForm"
-                :rules="rules"
-                ref="candidateForm"
-                label-position="top"
-              >
-                <transition name="fade-in-up">
-                  <el-form-item
-                    prop="name"
-                    label="Nhập họ và tên"
-                    class="mg-top-15"
-                  >
-                    <el-input
-                      v-model="candidateForm.name"
-                      auto-complete="on"
-                      placeholder="Nhập họ và tên..."
-                    ></el-input>
-                  </el-form-item>
-                </transition>
-
-                <transition name="fade-in-up">
-                  <el-form-item
-                    prop="phoneNumber"
-                    label="Nhập số điện thoại"
-                    v-if="hasChangeCandidateNameInput"
-                  >
-                    <el-input
-                      v-model="candidateForm.phoneNumber"
-                      auto-complete="on"
-                      placeholder="Nhập số điện thoại..."
-                    ></el-input>
-                  </el-form-item>
-                </transition>
-
-                <transition name="fade-in-up">
-                  <el-form-item
-                    prop="professions"
-                    label="Chọn lĩnh vực muốn làm việc"
-                    v-if="hasChangeCandidatePhoneNumberInput"
-                  >
-
-                    <el-select v-model="candidateForm.professions" placeholder="Chọn lĩnh vực muốn làm việc...">
-                      <el-option
-                        v-for="item in professionOptions"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
-                  </el-form-item>
-                </transition>
-
-                <transition name="fade-in-up">
-                  <el-form-item v-if="hasChangeCandidateProfessionInput">
-                    <el-button
-                      @click="submitForm('candidateForm')"
-                      class="mg-top-15 button button--wapasha done-btn"
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      prop="companyName"
+                      label="Nhập tên công ty"
+                      v-if="hasChangeCompanyPhoneNumberInput"
                     >
-                      Xong
-                    </el-button>
-                  </el-form-item>
-                </transition>
+                      <el-input
+                        v-model="employerForm.companyName"
+                        auto-complete="on"
+                        placeholder="Nhập tên công ty..."
+                      ></el-input>
+                    </el-form-item>
+                  </transition>
 
-              </el-form>
-            </div>
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      v-if="hasChangeCompanyNameInput"
+                    >
+                      <el-button
+                        @click="submitForm('employerForm')"
+                        class="mg-top-15 button button--wapasha done-btn"
+                      >
+                        Xong
+                      </el-button>
+                    </el-form-item>
+                  </transition>
+
+                </el-form>
+              </div>
+            </transition>
+
+            <transition name="fade-in-up">
+              <div v-if="activeBtn === 'timvieclam'" class="input-container">
+
+                <el-form
+                  :model="candidateForm"
+                  :rules="rules"
+                  ref="candidateForm"
+                  label-position="top"
+                >
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      prop="name"
+                      label="Nhập họ và tên"
+                      class="mg-top-15"
+                    >
+                      <el-input
+                        v-model="candidateForm.name"
+                        auto-complete="on"
+                        autofocus="true"
+                        placeholder="Nhập họ và tên..."
+                      ></el-input>
+                    </el-form-item>
+                  </transition>
+
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      prop="phoneNumber"
+                      label="Nhập số điện thoại"
+                      v-if="hasChangeCandidateNameInput"
+                    >
+                      <el-input
+                        v-model="candidateForm.phoneNumber"
+                        auto-complete="on"
+                        placeholder="Nhập số điện thoại..."
+                      ></el-input>
+                    </el-form-item>
+                  </transition>
+
+                  <transition name="fade-in-up">
+                    <el-form-item
+                      prop="professions"
+                      label="Chọn lĩnh vực muốn làm việc"
+                      v-if="hasChangeCandidatePhoneNumberInput"
+                    >
+
+                      <el-select v-model="candidateForm.professions" placeholder="Chọn lĩnh vực muốn làm việc...">
+                        <el-option
+                          v-for="item in professionOptions"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </transition>
+
+                  <transition name="fade-in-up">
+                    <el-form-item v-if="hasChangeCandidateProfessionInput">
+                      <el-button
+                        @click="submitForm('candidateForm')"
+                        class="mg-top-15 button button--wapasha done-btn"
+                      >
+                        Xong
+                      </el-button>
+                    </el-form-item>
+                  </transition>
+
+                </el-form>
+              </div>
+            </transition>
           </div>
         </div>
+
+
       </div>
     </div>
 
@@ -335,7 +349,8 @@
           })
           .add({
             targets: ['#box-right'],
-            offset: '+=600',
+            offset: '-=50',
+            opacity: 0.3,
             translateX: {
               value: '100%',
               duration: 1000
@@ -350,6 +365,12 @@
               this.activeBtn = 'timungvien';
               this.btnAfter = 'btn-after';
             }
+          })
+          .add({
+            targets: ['#box-right'],
+            opacity: 1,
+            easing: 'easeInOutQuart',
+            // duration: 100,
           })
 
       },
@@ -367,7 +388,7 @@
           })
           .add({
             targets: ['#box-right'],
-            offset: '+=600',
+            offset: '-=50',
             translateX: {
               value: '100%',
               duration: 1000
@@ -503,6 +524,7 @@
     border: 1px solid $color-white;
     background: none;
     position: relative;
+    outline: none;
     z-index: 1;
     -webkit-backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
@@ -564,12 +586,18 @@
     align-items: center;
 
     .active {
-      border: 3px solid $color-white !important;
+      border: 2px solid $color-white !important;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.7);
+      font-weight: $fw-big-700;
+      color: $color-black;
+      text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
+      transform: inherit;
     }
 
     .button {
-      height: 60px;
-      width: 250px;
+      height: 70px;
+      width: 50%;
       font-size: 30px;
     }
   }
@@ -597,6 +625,7 @@
   .el-form-item__label {
     color: #ffffff !important;
     font-size: 20px;
+    margin-left: -5px;
 
     &:before {
       content: '' !important;

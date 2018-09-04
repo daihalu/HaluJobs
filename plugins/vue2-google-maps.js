@@ -1,9 +1,10 @@
 import Vue from "vue";
+import {API_KEY} from '~/halujobs.config';
 import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "AIzaSyByBB1jSXbMCz1dlG85eIN5N_y3j7fLRCU",
+    key: API_KEY,
     libraries: "places" // necessary for places input
   }
 });
