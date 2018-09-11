@@ -1,101 +1,109 @@
 <template>
-  <div>
-    <div>
-      <h2>Tìm kiếm 1 địa điểm: </h2>
-      <label>
-        <gmap-autocomplete
-          @place_changed="setPlace"
-        >
-        </gmap-autocomplete>
-        <button @click="getRoute">Add</button>
-      </label>
-      <br/>
+  <el-row>
+    <el-col :span="16">
+      <gmap-map
+        :center="center"
+        :zoom="mapZoomSize"
+        style="width: 100%; height: 100vh;"
+        ref="haluMap"
+      >
 
-      <div>
-        <p>Chọn bán kính:</p>
-        <selection-box
-          :options="radiusOptions"
-          iconPrefix="far"
-          iconName="dot-circle"
-          placeHolder="Chọn bán kính"
-          @on_select="handleOnSelectRadiusOptions"
-          style="width: 300px"
-        />
+        <gmap-marker
+          :position="user.position"
+          :icon="userLocationMarker"
+          :clickable="false"
+        >
+        </gmap-marker>
+
+        <gmap-marker
+          :key="index"
+          v-for="(job, index) in jobList"
+          :position="job.employer._coords"
+          :title="jobList[index].jobTitle"
+          @click="handleOnClickMarker(index)"
+          :icon="markerIcon"
+          :clickable="true"
+
+        >
+          <gmap-info-window
+            :opened="job.showJobInfo"
+            @closeclick="job.showJobInfo=false"
+            :options="{
+              width: '500',
+
+            }"
+
+          >
+            <attractive-job-card
+              :jobInfo="jobList[index]"
+            />
+          </gmap-info-window>
+        </gmap-marker>
+      </gmap-map>
+    </el-col>
+
+    <el-col :span="8">
+      <div class="box-container">
+        <div ref="header">
+          <p class="box-title"><span>10</span> công việc cho bạn</p>
+
+          <div class="selection-container">
+            <selection-box
+              :options="radiusOptions"
+              iconPrefix="far"
+              iconName="dot-circle"
+              placeHolder="Chọn bán kính"
+              @on_select="handleOnSelectRadiusOptions"
+              style="width: 30%"
+            />
+            <selection-box
+              :options="desiredSalaryOptions"
+              iconPrefix="fas"
+              iconName="dollar-sign"
+              placeHolder="Chọn mức lương"
+              @on_select="handleOnSelectSalaryOptions"
+              style="width: 34%"
+            />
+            <selection-box
+              :options="jobOptions"
+              iconPrefix="far"
+              iconName="clipboard"
+              placeHolder="Chọn ngành nghề"
+              @on_select="handleOnSelectSalaryOptions"
+              style="width: 34%"
+            />
+          </div>
+        </div>
+
+        <div id="job-list" class="job-list-container" :style="{height: jobBoxHeight + 'px'}">
+          <div v-for="(job, index) in jobList" :key="index">
+            <detail-job-card
+              :jobInfo="job"
+              class="job-card"
+              @mouseover.native="showMarkerLabel(index)"
+            />
+          </div>
+        </div>
       </div>
 
-    </div>
-    <br>
-    <gmap-map
-      :center="center"
-      :zoom="11"
-      style="width:100%; height: 80vh;"
-      ref="haluMap"
-    >
-      <gmap-circle
-        :center="center"
-        :radius="radiusSelection"
-        :options="{
-          strokeColor: '#1ab394',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: '#1ab394',
-          fillOpacity: 0.2,
-        }"
-      >
-      </gmap-circle>
 
-      <gmap-marker
-        :position="user.position"
-        title="You there"
-        :icon="userLocationMarker"
-        :clickable="false"
-      >
-      </gmap-marker>
-
-      <!--:label="{-->
-      <!--text: jobList[index].salary,-->
-      <!--color: 'red',-->
-      <!--fontSize: '30px',-->
-      <!--border: '5px'-->
-      <!--}"-->
-      <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        :title="jobList[index].jobTitle"
-        @click="handleOnClickMarker(index)"
-        :icon="markerIcon"
-        :clickable="true"
-        v-if="m.showMarker"
-      >
-        <gmap-info-window
-          :opened="m.showJobInfo"
-          @closeclick="m.showJobInfo=false"
-          :options="{
-            width: '800'
-          }"
-          style="max-width: 800px"
-        >
-          <attractive-job-card
-            :jobInfo="jobList[index]"
-            :distance="m.route.distance"
-            :duration="m.route.duration"
-          />
-        </gmap-info-window>
-      </gmap-marker>
-    </gmap-map>
-  </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
   import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryMapJobCard8';
   import SelectionBox from '~/components/public-components/boxs/SelectionBox';
+  import DetailJobCard from '~/components/ban-do/DetailJobCard';
+
+  import {JobOption} from '~/assets/js/data-options';
 
   export default {
     name: "GoogleMap",
     components: {
       AttractiveJobCard,
-      SelectionBox
+      SelectionBox,
+      DetailJobCard
     },
     head() {
       return {
@@ -104,116 +112,58 @@
     },
     layout: 'google-map',
     data() {
+      const {
+        desiredSalaries,
+        jobs,
+      } = JobOption;
+
       return {
         title: 'Bản đồ công việc',
         center: {lat: 45.508, lng: -73.587},
-        routes: null,
         user: {},
-        markers: [],
-        places: [],
-        currentPlace: null,
         userLocationMarker: {
           url: require('~/assets/images/marker_icon_1.png'),
           size: {width: 40, height: 40, f: 'px', b: 'px'},
           scaledSize: {width: 35, height: 35, f: 'px', b: 'px'}
         },
         markerIcon: {
-          url: require('~/assets/images/marker_icon.png'),
-          scaledSize: {width: 20, height: 30, f: 'px', b: 'px'},
+          url: require('~/assets/images/marker_icon_3.jpg'),
+          scaledSize: {width: 10, height: 10, f: 'px', b: 'px'},
           labelOrigin: {x: 0, y: 40},
           strokeColor: '#1ab394',
           strokeOpacity: 0.8,
           border: '5px'
         },
-        jobList: [
-          {
-            jobTitle: "Giám đốc điều hành nhân sự",
-            companyName: "Công ty cổ phần Đại Nam",
-            salary: "15 - 22 triệu",
-            deadline: "30/7/2018",
-            workAddress: "Sài Gòn",
-            logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
-            jobUrl: "/tuyen-dung/viec-lam",
-            location: '510 quang trung, hà đông',
-          },
-          {
-            jobTitle: "Giám đốc điều hành nhân sự Giám đốc điều hành nhân sự",
-            companyName: "Công ty cổ phần Đại Nam",
-            salary: "15 - 22 triệu",
-            deadline: "30/7/2018",
-            workAddress: "Sài Gòn",
-            logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
-            jobUrl: "/tuyen-dung/viec-lam",
-            location: 'Ô mai Hồng Lam 151 Quang Trung'
-          },
-          {
-            jobTitle: "Giám đốc điều hành",
-            companyName: "Công ty cổ phần Đại Nam",
-            salary: "15 - 22 triệu",
-            deadline: "30/7/2018",
-            workAddress: "Sài Gòn",
-            logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
-            jobUrl: "/tuyen-dung/viec-lam",
-            location: 'T2, 36/7 Ngọc Khánh, Ba Đình, Hà Nội'
-          },
-          {
-            jobTitle: "Giám đốc điều hành Kinh tế",
-            companyName: "Công ty cổ phần Đại Hà",
-            salary: "15 - 22 triệu",
-            deadline: "30/7/2018",
-            workAddress: "Phú Thọ",
-            logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt_V7avrT3e0yZsQ_lVZgrMaE_fUA-8RX04mDkxTPO2SgoGU-Jjg",
-            jobUrl: "/tuyen-dung/viec-lam",
-            location: 'Unnamed Road, Trung Sơn, Yên Lập, Phú Thọ, Việt Nam'
-          }
-        ],
+        jobList: [],
+        jobOptions: jobs,
+        desiredSalaryOptions: desiredSalaries,
         radiusOptions: [
-          {label: '3 km', value: 3000},
-          {label: '5 km', value: 5000},
-          {label: '10 km', value: 10000},
-          {label: '15 km', value: 15000},
-          {label: '20 km', value: 20000},
-          {label: 'Khác', value: 'Khác'}
+          {label: '3 km', value: 3},
+          {label: '5 km', value: 5},
+          {label: '10 km', value: 10},
+          {label: '15 km', value: 15},
+          {label: '20 km', value: 20},
+          {label: '50 km', value: 50},
+          {label: '100 km', value: 100},
+          {label: 'Toàn quốc', value: 10000}
         ],
-        radiusSelection: 0
+        radiusSelection: 0,
+        mapZoomSize: 12,
+        jobBoxHeight: null
       }
     },
     mounted() {
       this.getCurrentUserCoordinate();
 
-      for (let i = 0; i < this.jobList.length; i++) {
-        this.getCoordinateOfAddresses(this.jobList[i].location);
-      }
-
-      console.log("markers: ");
-
-      console.log(this.markers);
+      this.jobBoxHeight = window.innerHeight - this.$refs.header.clientHeight - 10;
     },
     methods: {
-      // receives a place object via the autocomplete component
-      setPlace(place) {
-        this.currentPlace = place;
-      },
-      addMarker() {
-        if (this.currentPlace) {
-          const marker = {
-            lat: this.currentPlace.geometry.location.lat(),
-            lng: this.currentPlace.geometry.location.lng()
-          };
-          this.markers.push({position: marker});
-          this.places.push(this.currentPlace);
-          this.center = marker;
-          this.currentPlace = null;
-        }
-      },
       getCurrentUserCoordinate() {
         navigator.geolocation.getCurrentPosition(position => {
           this.center = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-
-          // console.log(position);
 
           this.user = {
             position: {
@@ -222,92 +172,78 @@
             }
           };
 
-
+          this.getJobs(10);
         });
 
-      },
-      getRoute(destination) {
-        this.directionsService = new google.maps.DirectionsService();
-        this.directionsDisplay = new google.maps.DirectionsRenderer();
-        this.directionsDisplay.setMap(this.$refs.haluMap.$mapObject);
-
-        let vm = this;
-
-        //Draw polyline
-        // vm.directionsDisplay.setDirections(response)
-
-        return new Promise(function (resolve, reject) {
-          vm.directionsService.route({
-            origin: vm.user.position,
-            destination: destination,
-            travelMode: 'DRIVING'
-          }, (response, status) => {
-            if (status === google.maps.GeocoderStatus.OK) {
-              resolve(response);
-            } else {
-              reject(status);
-            }
-          });
-        })
-
-      },
-      getCoordinateOfAddresses(address) {
-        let vm = this;
-
-        this.$refs.haluMap.$mapPromise.then(function () {
-          let geocoder = new google.maps.Geocoder();
-
-          geocoder.geocode({'address': address}, function (response, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-              let position = {
-                lat: response[0].geometry.location.lat(),
-                lng: response[0].geometry.location.lng()
-              };
-
-              vm.getRoute(position)
-                .then(data => {
-                  vm.markers.push({
-                      position: position,
-                      showJobInfo: false,
-                      showMarker: true,
-                      route: {
-                        distance: data.routes[0].legs[0].distance.text,
-                        duration: data.routes[0].legs[0].duration.text
-                      }
-                    }
-                  );
-                })
-                .catch(err => console.log(err))
-            }
-          });
-        });
       },
       handleOnClickMarker(index) {
-        this.markers[index].showJobInfo = !this.markers[index].showJobInfo;
+        this.jobList[index].showJobInfo = !this.jobList[index].showJobInfo;
 
-        for (let i = 0; i < this.markers.length; i++) {
+        for (let i = 0; i < this.jobList.length; i++) {
           if (i !== index) {
-            this.markers[i].showJobInfo = false;
+            this.jobList[i].showJobInfo = false;
           }
         }
-
-        console.log("Click: " + this.markers[index].showJobInfo);
-        console.log(this.markers);
+        console.log("Click: " + this.jobList[index].showJobInfo);
       },
       handleOnSelectRadiusOptions(value) {
-        this.radiusSelection = value;
+        if (value === 10) {
+          this.mapZoomSize = 12;
+          return;
+        } else {
+          this.radiusSelection = value;
+          this.center = this.user.position;
+          this.getJobs(value);
 
-        for (let i = 0; i < this.markers.length; i++) {
-          this.markers[i].showJobInfo = false;
-          if (value === 'Khác') {
-            this.markers[i].showMarker = true;
-            this.radiusSelection = 0;
+          if (value === 3) {
+            this.mapZoomSize = 14;
+          } else if (value === 5) {
+            this.mapZoomSize = 13;
+          } else if (value === 15) {
+            this.mapZoomSize = 12;
+          } else if (value === 20) {
+            this.mapZoomSize = 11;
+          } else if (value === 50) {
+            this.mapZoomSize = 10;
+          } else if (value === 100) {
+            this.mapZoomSize = 9;
           } else {
-            let distance = this.markers[i].route.distance.replace(/( +)\w+/, "");
-            this.markers[i].showMarker = parseInt(distance) * 1000 <= value;
+            this.mapZoomSize = 5;
           }
         }
       },
+      handleOnSelectSalaryOptions(value) {
+        const url = `/api/jobs?coords=${this.user.position.lat},${this.user.position.lng}&radius=10&industry=${value}&salary=`;
+        this.$axios.$get(url)
+          .then(res => {
+            console.log(res);
+            this.jobList = res.jobs.map(job => {
+              return {...job, showJobInfo: false}
+            });
+            console.log(this.jobList)
+
+          })
+      },
+      showMarkerLabel(index) {
+        this.jobList[index].showJobInfo = true;
+        for (let i = 0; i < this.jobList.length; i++) {
+          if (i !== index) {
+            this.jobList[i].showJobInfo = false;
+          }
+        }
+      },
+      getJobs(radius, salary, industry) {
+        const url = `/api/jobs?coords=${this.user.position.lat},${this.user.position.lng}&radius=${radius}`;
+        this.$axios.$get(url)
+          .then(res => {
+            console.log(res);
+            this.jobList = res.jobs.map(job => {
+              return {...job, showJobInfo: false}
+            });
+            console.log(this.jobList)
+
+          })
+      }
 
     }
   }
@@ -316,11 +252,52 @@
 <style lang="scss" scoped>
   @import '~assets/css/halujobs_variables';
 
-  .labels {
-    border: 1px solid red;
+  .box-container {
+    padding: 10px 0 10px 10px;
+    height: 100vh;
+
+    .box-title {
+      border-bottom: none;
+      padding: 0 10px 10px 0;
+    }
+  }
+
+  .selection-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-border;
+    border-top: 1px solid $color-border;
+    padding: 15px 0;
+  }
+
+  .job-list-container {
+    overflow: auto;
+    height: inherit;
+    padding: 10px 1px 10px;
+    .job-card {
+      margin-top: 10px;
+    }
+  }
+
+  #job-list::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  #job-list::-webkit-scrollbar-track:hover {
+    background: $color-gray;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Handle */
+  #job-list::-webkit-scrollbar-thumb {
+    background: $color-scroll-bar;
+    border-radius: 8px;
+  }
+
+  /* Handle on hover */
+  #job-list::-webkit-scrollbar-thumb:hover {
+    background: $color-scroll-bar--hover;
   }
 </style>
 
-<style lang="scss">
-
-</style>

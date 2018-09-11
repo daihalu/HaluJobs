@@ -1,10 +1,10 @@
 <template>
   <div class="advanced-search-bar">
     <el-row class="field-search-bar">
-      <el-row :gutter="8" class="nav-search-bar">
+      <el-row :gutter="8" class="container">
         <el-col
           :span="6"
-          class="nav-search-bar--item"
+          class="item"
           :class="{active: activeMenuItem === 'timvieclam'}"
         >
           <nuxt-link to="/tuyen-dung">
@@ -17,7 +17,7 @@
 
         <el-col
           :span="6"
-          class="nav-search-bar--item"
+          class="item"
           :class="{active: activeMenuItem === 'timungvien' }"
         >
           <nuxt-link to="/ung-vien">
@@ -30,7 +30,7 @@
 
         <el-col
           :span="6"
-          class="nav-search-bar--item"
+          class="item"
           :class="{active: activeMenuItem === 'timcongty' }"
         >
           <nuxt-link to="/cong-ty">
@@ -43,7 +43,7 @@
 
         <el-col
           :span="6"
-          class="nav-search-bar--item"
+          class="item"
           :class="{active: activeMenuItem === 'timtruong' }"
         >
           <nuxt-link to="/danh-sach-truong">
@@ -325,7 +325,7 @@
     margin-left: 0 !important;
   }
 
-  .nav-search-bar {
+  .container {
     display: flex;
     margin-top: 50px;
   }
@@ -488,13 +488,13 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .nav-search-bar {
+  .container {
     width: 50%;
     text-align: center;
     margin-left: 0;
   }
 
-  .nav-search-bar--item {
+  .item {
     background-color: $color-white;
     line-height: 40px;
     border-bottom: none;
@@ -504,13 +504,13 @@
     transition: all 0.15s ease-in-out;
   }
 
-  .nav-search-bar--item:hover {
+  .item:hover {
     cursor: pointer;
     background-color: $color-secondary;
     color: $color-white;
   }
 
-  .nav-search-bar--item:active {
+  .item:active {
     cursor: pointer;
     background-color: $color-primary;
     color: $color-white;

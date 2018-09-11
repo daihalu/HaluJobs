@@ -34,7 +34,10 @@
       </el-col>
 
       <el-col :span="3" class="padding-right-0">
-        <el-button class="search-button">
+        <el-button
+          class="search-button"
+
+        >
           <font-awesome-icon :icon="['fas', 'search']"/>
           Tìm kiếm
         </el-button>
@@ -51,10 +54,6 @@
   export default {
     components: {
       SelectionBox
-    },
-    props: {
-      type: String,
-      size: Number
     },
     data() {
       const {
@@ -87,7 +86,6 @@
   @import "~assets/css/halujobs_variables";
 
   .container {
-    margin-top: 56px;
     background-color: $color-secondary;
     padding: 15px 0;
     width: 100%;

@@ -253,6 +253,7 @@
       } = JobOption;
       return {
         title: 'Đăng nhập',
+        hasFocusLeftForm: true,
         activeBtn: '',
         btnAfter: '',
         boxLeftHeight: 250,

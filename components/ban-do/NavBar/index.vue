@@ -4,16 +4,13 @@
       <el-row class="nav-bar">
         <el-col :span="4" class="nav-bar--logo">
           <nuxt-link to="/">
-            <img src="https://halutech.com.vn/images/logo.png"/>
+              <img src="https://halutech.com.vn/images/logo.png"/>
           </nuxt-link>
           <p></p>
         </el-col>
         <el-col :span="20" class="nav-bar--container">
           <ul class="nav-menu">
-            <li
-              @click="activeMenuItem = 'trangchu'"
-              :class="{active: activeMenuItem === 'trangchu' }"
-            >
+            <li>
               <nuxt-link to="/" class="nav-item">
                 <font-awesome-icon :icon="['fas', 'home']"/>
                 <p>Trang chủ</p>
@@ -67,7 +64,8 @@
   export default {
     data() {
       return {
-        activeMenuItem: 'trangchu'
+        activeIndex: '1',
+        activeMenuItem: 'homepage'
       }
     },
     methods: {
@@ -93,7 +91,7 @@
   }
 
   .header {
-    width: $page-width;
+    width: 95%;
     margin: 0 auto;
     padding: 0;
     height: 100% !important;
@@ -139,6 +137,7 @@
         background-color: $color-secondary;
       }
     }
+
   }
 
   .nav-bar--logo {
@@ -155,11 +154,6 @@
         height: 100%;
       }
     }
-  }
-
-  .active {
-    background-color: $color-secondary;
-    color: $color-white;
   }
 
 </style>

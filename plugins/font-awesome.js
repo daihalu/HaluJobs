@@ -50,7 +50,8 @@ import {
   faBook,
   faSignInAlt,
   faDoorOpen,
-  faCheck
+  faCheck,
+  faCar
 
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -95,7 +96,8 @@ library.add(
   faDoorOpen,
   faCheckCircle,
   faCheck,
-  faDotCircle
+  faDotCircle,
+  faCar
 );
 // const stroopwafel = icon({ prefix: 'fas', iconName: 'stroopwafel' });
 config.autoAddCss = false;

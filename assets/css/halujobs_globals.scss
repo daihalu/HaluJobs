@@ -27,18 +27,8 @@ svg {
 }
 
 a {
-  text-decoration: none;
-  color: $color-primary;
+  color: inherit;
+   text-decoration: none;
 }
 
-a:hover {
-  cursor: pointer;
-  color: $color-secondary;
-}
-
-a:active {
-  cursor: pointer;
-  text-underline: none;
-  color: $color-primary;
-}
 

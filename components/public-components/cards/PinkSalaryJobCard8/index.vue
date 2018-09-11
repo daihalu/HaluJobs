@@ -20,7 +20,7 @@
         {{companyName}}
       </p>
 
-      <div class="items">
+      <div class="item">
         <p class="salary" :title="jobInfo.salary">
           <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
           {{jobInfo.salary}}
@@ -105,7 +105,7 @@
   }
 
   .deadline {
-    margin-left: 25px;
+
     opacity: 0.8;
   }
 
@@ -119,7 +119,13 @@
   }
 
   .card-status {
-    margin-left: 34px;
+    height: 100%;
+  }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 </style>

@@ -1,59 +1,7 @@
 <template>
   <div class="advanced-search-bar">
     <el-row class="field-search-bar">
-      <el-row :gutter="8" class="nav-search-bar">
-        <el-col
-          :span="6"
-          class="nav-search-bar--item"
-          :class="{active: activeMenuItem === 'timvieclam'}"
-        >
-          <nuxt-link to="/tuyen-dung">
-            <p @click="activeMenuItem = 'timvieclam'">
-              <font-awesome-icon icon="briefcase"/>
-              Tìm việc làm
-            </p>
-          </nuxt-link>
-        </el-col>
-
-        <el-col
-          :span="6"
-          class="nav-search-bar--item"
-          :class="{active: activeMenuItem === 'timungvien' }"
-        >
-          <nuxt-link to="/ung-vien">
-            <p @click="activeMenuItem = 'timungvien'">
-              <font-awesome-icon :icon="['far', 'id-card']"/>
-              Tìm ứng viên
-            </p>
-          </nuxt-link>
-        </el-col>
-
-        <el-col
-          :span="6"
-          class="nav-search-bar--item"
-          :class="{active: activeMenuItem === 'timcongty' }"
-        >
-          <nuxt-link to="/cong-ty">
-            <p @click="activeMenuItem = 'timcongty'">
-              <font-awesome-icon :icon="['far', 'building']"/>
-              Tìm công ty
-            </p>
-          </nuxt-link>
-        </el-col>
-
-        <el-col
-          :span="6"
-          class="nav-search-bar--item"
-          :class="{active: activeMenuItem === 'timtruong' }"
-        >
-          <nuxt-link to="/danh-sach-truong">
-            <p @click="activeMenuItem = 'timtruong'">
-              <font-awesome-icon icon="school"/>
-              Tìm trường
-            </p>
-          </nuxt-link>
-        </el-col>
-      </el-row>
+      <nav-search-bar class="advanced-search-bar__nav"/>
 
       <div class="search-bar">
         <div>
@@ -191,12 +139,14 @@
 
 <script>
   import SelectionBox from '~/components/public-components/boxs/SelectionBox';
+  import NavSearchBar from '~/components/public-components/bars/NavSearchBar';
 
   import {JobOption} from '~/assets/js/data-options';
 
   export default {
     components: {
-      SelectionBox
+      SelectionBox,
+      NavSearchBar
     },
     data() {
       const {
@@ -229,7 +179,6 @@
           jobType: '',
 
         },
-        activeMenuItem: 'timvieclam',
         showAdvanceSearch: false,
         jobOptions: jobs,
         workAddressOptions: workAddresses,
@@ -279,7 +228,7 @@
       },
       handleOnSelectForeignLanguage(value) {
         this.searchData.foreignLanguage = value;
-      }
+      },
     }
   }
 </script>
@@ -303,51 +252,8 @@
     margin-right: 0 !important;
   }
 
-  .nav-search-bar {
-    display: flex;
+  .advanced-search-bar__nav {
     margin-top: 50px;
-    width: 50%;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  .nav-search-bar--item {
-    background-color: $color-white;
-    line-height: 40px;
-    border-bottom: none;
-    border-radius: $br-5 $br-5 0 0;
-    margin-right: 5px;
-    color: $color-black;
-    transition: all 0.15s ease-in-out;
-  }
-
-  .nav-search-bar--item:hover {
-    cursor: pointer;
-    background-color: $color-secondary;
-    color: $color-white;
-  }
-
-  .nav-search-bar--item:active {
-    cursor: pointer;
-    background-color: $color-primary;
-    color: $color-white;
-    transition: none;
-  }
-
-  a {
-    color: $color-black;
-  }
-
-  a:hover {
-    color: $color-white;
-  }
-
-  .active {
-    background-color: $color-secondary;
-    color: $color-white;
-    a {
-      color: $color-white;
-    }
   }
 
   .search-bar {

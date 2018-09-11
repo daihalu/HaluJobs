@@ -1,6 +1,8 @@
 <template>
   <div>
-    <advanced-search @on_click_search_button="handleOnClickSearchButton"/>
+    <advanced-search
+      @on_click_search_button="handleOnClickSearchButton"
+    />
 
     <div class="container">
 
@@ -62,7 +64,7 @@
 </template>
 
 <script>
-
+  import NavBar from '~/components/public-components/bars/NavBar';
   import AttractiveJobCard from '~/components/cards/AttractiveJobCard';
   // import NewestCandidateBox from '~/components/boxs/NewestCandidateBox';
   import {JobOption} from '~/assets/js/data-options';
@@ -74,9 +76,11 @@
 
   import StatisticalBox from '~/components/public-components/boxs/StatisticalBox';
 
+  import {mapState, mapGetters, mapActions} from 'vuex';
+
   export default {
     components: {
-
+      NavBar,
       AttractiveJobCard,
 
       AdvancedSearch,
@@ -90,7 +94,8 @@
         title: this.title
       };
     },
-    layout: 'simple',
+    // layout: 'simple',
+    layout: 'default',
     data() {
       const {
         jobTitles,
@@ -131,7 +136,7 @@
           jobType: '',
 
         },
-        activeMenuItem: 'timungvien',
+        // activeMenuItem: 'timungvien',
         showAdvanceSearch: false,
         activeBtn: '',
         jobOptions: jobs,
@@ -166,6 +171,11 @@
           }
         ]
       }
+    },
+    computed: {
+      ...mapGetters({
+        activeMenuItem: 'navBarStatus'
+      })
     },
     methods: {
       handleSelect(key, keyPath) {

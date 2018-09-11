@@ -2,13 +2,13 @@
   <div class="card">
     <div class="avatar">
       <nuxt-link to="/" :title="jobInfo.employer.name">
-        <img :src="jobInfo.employer._logo"/>
+        <img :src="logoUrl"/>
       </nuxt-link>
     </div>
 
     <div class="container">
       <el-tooltip effect="dark" :content="jobInfo.title" placement="top-start">
-        <p class="jobTitle">
+        <p class="job-title">
           <nuxt-link to="/">
             {{jobTitle}}
           </nuxt-link>
@@ -21,19 +21,18 @@
       </p>
 
       <div class="items">
-        <p class="item salary" :title="salary">
+        <p class="item" :title="salary">
           <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
-          {{salary}}
+          Mức lương: <span class="salary">{{salary}}</span>
         </p>
 
-        <!--<p class="item deadline" :title="closingDate">-->
-          <!--<font-awesome-icon :icon="['fas', 'user-clock']"/>-->
-          <!--{{closingDate}}-->
-        <!--</p>-->
+        <p class="item" :title="closingDate">
+          <font-awesome-icon :icon="['fas', 'user-clock']"/>
+          Hạn nộp hồ sơ: <span class="deadline">{{closingDate}}</span>
+        </p>
         <p class="item location" :title="jobInfo.workAddress">
           <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
-          <span> {{workAddress}}</span>
-
+          Địa chỉ: {{workAddress}}
         </p>
       </div>
     </div>
@@ -49,11 +48,11 @@
     },
     data() {
       return {
-        logoUrl: '/',
-        closingDate: '',
+        logoUrl: this.jobInfo.employer._logo,
+        closingDate: this.jobInfo.closing_date,
         jobTitle: this.jobInfo.title,
         companyName: this.jobInfo.employer.name,
-        workAddress: this.jobInfo.locations.join(', '),
+        workAddress: this.jobInfo.employer.address,
         salary: this.jobInfo.salary.range
       }
     },
@@ -64,8 +63,8 @@
       },
     },
     created() {
-      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 32);
-      this.companyName = ConvertStringToShorterString(this.companyName, 0, 33);
+      // this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 32);
+      // this.companyName = ConvertStringToShorterString(this.companyName, 0, 33);
       // this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 5);
       this.closingDate = this.formattedDate(this.jobInfo.closing_date);
     }
@@ -77,19 +76,22 @@
 
   .card {
     border: none;
-    padding: 3px;
+    padding: 5px;
     width: 100%;
+    border-bottom: 1px solid $color-primary;
+    border-top: 1px solid $color-primary;
+    border-radius: 0;
   }
 
   .avatar {
-    height: 70px;
+    height: 100px;
   }
 
   img {
     border: 2px solid $color-gray;
     border-radius: $br-5;
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
   }
 
   .container {
@@ -97,52 +99,43 @@
     width: 100%;
   }
 
-  .items {
-    display: flex;
-    justify-content: space-between;
-  }
 
   .item {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 25px;
-    display: inline;
+    display: block;
   }
 
-  .jobTitle {
+  .job-title {
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;
-    font-size: $fs-base-16;
+    font-size: $fs-large-18;
   }
 
-  .company {
-    opacity: 0.8;
-    padding-bottom: 3px;
-  }
+  /*.location {*/
+    /*opacity: 0.8;*/
+    /*padding-bottom: 3px;*/
 
-  .company:hover {
-    opacity: 1;
-  }
+    /*&:hover {*/
+      /*opacity: 1;*/
+    /*}*/
+  /*}*/
 
   .salary,
-  .location {
-    color: $color-pink;
-  }
-
   .deadline {
-    opacity: 0.8;
-  }
-
-  .deadline:hover {
-    opacity: 1;
+    color: $color-pink;
   }
 
   svg {
     font-size: 14px;
     opacity: 0.7;
+    display: inline-block;
+    width: 20px !important;
+    text-align: left;
+    height: 15px;
   }
 
 </style>
-
 
 

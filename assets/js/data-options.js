@@ -9,7 +9,7 @@ export const JobOption = {
     {value: 'Khác', label: 'Khác'}
   ],
   jobs: [
-    {value: 'Việc làm Bán hàng', label: 'Việc làm Bán hàng'},
+    {value: 'Bán hàng', label: 'Việc làm Bán hàng'},
     {value: 'Việc làm Biên tập/ Báo chí/ Truyền hình', label: 'Việc làm Biên tập/ Báo chí/ Truyền hình'},
     {value: 'Việc làm Bảo hiểm/ Tư vấn bảo hiểm', label: 'Việc làm Bảo hiểm/ Tư vấn bảo hiểm'},
     {value: 'Việc làm Bảo hiểm/ Tư vấn bảo hiểm 1', label: 'Việc làm Bảo hiểm/ Tư vấn bảo hiểm 1'},

@@ -1,4 +1,12 @@
 module.exports = {
+  modules: [
+    '@nuxtjs/axios',
+  ],
+  axios: {
+    baseURL: 'https://halujobs.herokuapp.com',
+    // proxyHeaders: false,
+    // credentials: true
+  },
   /*
   ** Headers of the page
   */
@@ -28,6 +36,7 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#ffffff' },
+
   /*
   ** Build configuration
   */

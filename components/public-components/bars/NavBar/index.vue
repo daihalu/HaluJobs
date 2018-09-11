@@ -4,15 +4,18 @@
       <el-row class="nav-bar">
         <el-col :span="4" class="nav-bar--logo">
           <nuxt-link to="/">
-            <img src="https://halutech.com.vn/images/logo.png"/>
+            <img
+              src="https://halutech.com.vn/images/logo.png"
+              @click="updateNavBarStatus('HOME_PAGE')"
+            />
           </nuxt-link>
           <p></p>
         </el-col>
         <el-col :span="20" class="nav-bar--container">
           <ul class="nav-menu">
             <li
-              @click="activeMenuItem = 'trangchu'"
-              :class="{active: activeMenuItem === 'trangchu' }"
+              @click="updateNavBarStatus('HOME_PAGE')"
+              :class="{active: activeMenuItem === 'HOME_PAGE'}"
             >
               <nuxt-link to="/" class="nav-item">
                 <font-awesome-icon :icon="['fas', 'home']"/>
@@ -20,35 +23,50 @@
               </nuxt-link>
             </li>
 
-            <li>
+            <li
+              @click="updateNavBarStatus('RECRUITMENT_PAGE')"
+              :class="{active: activeMenuItem === 'RECRUITMENT_PAGE'}"
+            >
               <nuxt-link to="/tuyen-dung" class="nav-item">
                 <font-awesome-icon :icon="['fas', 'briefcase']"/>
                 <p>Tuyển dụng</p>
               </nuxt-link>
             </li>
 
-            <li>
+            <li
+              @click="updateNavBarStatus('CANDIDATE_PAGE')"
+              :class="{active: activeMenuItem === 'CANDIDATE_PAGE'}"
+            >
               <nuxt-link to="/ung-vien" class="nav-item">
                 <font-awesome-icon :icon="['far', 'id-card']"/>
                 <p>Ứng viên</p>
               </nuxt-link>
             </li>
 
-            <li>
+            <li
+              @click="updateNavBarStatus('COMPANY_PAGE')"
+              :class="{active: activeMenuItem === 'COMPANY_PAGE'}"
+            >
               <nuxt-link to="/cong-ty" class="nav-item">
                 <font-awesome-icon :icon="['far', 'building']"/>
                 <p>Công ty</p>
               </nuxt-link>
             </li>
 
-            <li>
+            <li
+              @click="updateNavBarStatus('ACCOUNT_PAGE')"
+              :class="{active: activeMenuItem === 'ACCOUNT_PAGE'}"
+            >
               <nuxt-link to="/tai-khoan" class="nav-item">
                 <font-awesome-icon :icon="['fas', 'user-tie']"/>
                 <p>Tài khoản</p>
               </nuxt-link>
             </li>
 
-            <li>
+            <li
+              @click="updateNavBarStatus('WHOLE_COUNTRY_PAGE')"
+              :class="{active: activeMenuItem === 'WHOLE_COUNTRY_PAGE'}"
+            >
               <nuxt-link to="/toan-quoc" class="nav-item">
                 <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
                 <p>Toàn quốc</p>
@@ -63,17 +81,16 @@
 </template>
 
 <script>
+  import {mapState, mapGetters, mapActions} from 'vuex';
 
   export default {
-    data() {
-      return {
-        activeMenuItem: 'trangchu'
-      }
+    props: {
+      activeMenuItem: String
     },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      }
+      ...mapActions({
+        updateNavBarStatus: 'updateNavBarStatus'
+      })
     }
   }
 </script>
@@ -139,6 +156,7 @@
         background-color: $color-secondary;
       }
     }
+
   }
 
   .nav-bar--logo {
@@ -159,7 +177,6 @@
 
   .active {
     background-color: $color-secondary;
-    color: $color-white;
   }
 
 </style>

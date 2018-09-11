@@ -1,6 +1,8 @@
 <template>
   <div>
-    <advanced-search @on_click_search_button="handleOnClickSearchButton"/>
+    <advanced-search
+      @on_click_search_button="handleOnClickSearchButton"
+    />
 
     <div class="container">
 
@@ -58,6 +60,7 @@
 </template>
 
 <script>
+  import NavBar from '~/components/public-components/bars/NavBar';
   import AdvancedSearch from '~/components/tuyen-dung/bar/AdvancedSearch';
   import Breadcrumb from '~/components/public-components/bars/Breadcrumb';
   import QuickJobBox from '~/components/public-components/boxs/MainJobBox';
@@ -68,9 +71,12 @@
   import StatisticalBox from '~/components/public-components/boxs/StatisticalBox';
 
   import {JobOption} from '~/assets/js/data-options';
+  import {mapState, mapGetters, mapActions} from 'vuex';
+
 
   export default {
     components: {
+      NavBar,
       AdvancedSearch,
       Breadcrumb,
       QuickJobBox,
@@ -85,7 +91,8 @@
         title: this.title
       };
     },
-    layout: 'simple',
+    // layout: 'simple',
+    layout: 'default',
     data() {
       const {
         jobTitles,
@@ -121,7 +128,6 @@
           jobType: '',
 
         },
-        activeMenuItem: 'timvieclam',
         jobOptions: jobs,
         workAddressOptions: workAddresses,
         workExperienceOptions: workExperience,
@@ -182,7 +188,7 @@
         console.log("Parent");
         console.log(this.searchData)
       }
-    },
+    }
   }
 </script>
 

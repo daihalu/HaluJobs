@@ -1,7 +1,7 @@
 <template>
   <div>
-    <NavBar id="scroll-target"/>
-    <nuxt/>
+    <NavBar id="scroll-target" :activeMenuItem="activeMenuItem"/>
+    <nuxt class="main"/>
     <Footer class="mg-top-15"/>
 
     <div class="fixed-contact-box">
@@ -83,15 +83,17 @@
     <div
       class="btn-scroll-top"
       v-if="showScrollButton"
-      v-scroll-to="{el:'#scroll-target', duration: 2000, easing: 'ease-in-out'}"
+      v-scroll-to="{el:'#scroll-target', duration: 1000, easing: 'ease-in-out'}"
     >
       <font-awesome-icon :icon="['fas', 'chevron-up']"/>
     </div>
   </div>
 </template>
 <script>
-  import NavBar from '../components/bars/NavBar';
+  import NavBar from '~/components/public-components/bars/NavBar';
   import Footer from '~/components/public-components/bars/Footer';
+
+  import {mapState, mapGetters, mapActions} from 'vuex';
 
   export default {
     components: {
@@ -107,10 +109,36 @@
         dialogMailVisible: false
       }
     },
+    computed: {
+      ...mapGetters({
+        activeMenuItem: 'navBarStatus'
+      })
+    },
     methods: {
       handleScroll() {
         this.showScrollButton = window.scrollY > 600;
+      },
+      ...mapActions({
+        initialNavBarStatus: 'updateNavBarStatus'
+      })
+    },
+    created() {
+      const currentRouterPath = this.$router.history.current.name;
+
+      if (currentRouterPath === 'index') {
+        this.initialNavBarStatus('HOME_PAGE');
+      } else if (currentRouterPath === 'tuyen-dung') {
+        this.initialNavBarStatus('RECRUITMENT_PAGE');
+      } else if (currentRouterPath === 'ung-vien') {
+        this.initialNavBarStatus('CANDIDATE_PAGE');
+      } else if (currentRouterPath === 'cong-ty') {
+        this.initialNavBarStatus('COMPANY_PAGE');
+      } else if (currentRouterPath === 'tai-khoan') {
+        this.initialNavBarStatus('ACCOUNT_PAGE');
+      } else if (currentRouterPath === 'toan-quoc') {
+        this.initialNavBarStatus('WHOLE_COUNTRY_PAGE');
       }
+      console.log(this.$router.history.current.name);
     },
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
@@ -124,6 +152,10 @@
 
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
+
+  .main {
+    margin-top: $mg-top-nav-bar-60;
+  }
 
   .fixed-contact-box {
     background-color: $color-white;
@@ -143,11 +175,11 @@
       font-size: 20px;
       height: 35px;
 
-    }
-  }
+      &:hover {
+        cursor: pointer;
+      }
 
-  svg:hover {
-    cursor: pointer;
+    }
   }
 
   .btn-scroll-top {

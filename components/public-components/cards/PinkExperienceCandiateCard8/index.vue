@@ -9,7 +9,7 @@
 
     <div class="container">
 
-      <el-tooltip class="item" effect="dark" :content="candidateInfo.position" placement="top-start">
+      <el-tooltip effect="dark" :content="candidateInfo.position" placement="top-start">
         <p class="position" @click="onClickCard">
           <nuxt-link :to="candidateInfo.profileUrl" :title="candidateInfo.position">
             {{candidateInfo.position}}
@@ -23,11 +23,15 @@
         </nuxt-link>
       </p>
 
-      <p class="workExperience" :title="candidateInfo.workExperience">
-        Kinh nghiệm: <span>{{candidateInfo.workExperience}} năm</span>
-      </p>
+      <div class="item">
+        <p class="workExperience" :title="candidateInfo.workExperience">
+          Kinh nghiệm: <span>{{candidateInfo.workExperience}} năm</span>
+        </p>
 
-      <p class="status" v-if="seenCard">Đã xem</p>
+        <p class="card-status" v-if="seenCard">Đã xem</p>
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -59,17 +63,22 @@
   .avatar {
     height: 70px;
     width: 70px;
-  }
 
-  img {
-    border: 2px solid $color-gray;
-    border-radius: $br-5;
-    width: 100%;
-    height: 100%;
+    a {
+      width: 100%;
+
+      img {
+        border: 2px solid $color-gray;
+        border-radius: $br-5;
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
   .container {
     margin-left: 10px;
+    width: 80%;
   }
 
   .position {
@@ -86,15 +95,10 @@
     color: $color-pink;
   }
 
-  .status {
-    display: inline;
-    border: 1px solid transparent;
-    background-color: $color-primary;
-    padding: 2px;
-    border-radius: 3px;
-    font-size: $fs-small-14;
-    color: $color-white;
-    margin-left: 80px;
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .candidate-name a {

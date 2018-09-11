@@ -59,12 +59,12 @@
 
       <statistical-box class="mg-top-15"/>
     </div>
-
   </div>
 </template>
 
 <script>
-  import SearchBar from '~/components/public-components/bars/SearchBar';
+  import NavBar from '~/components/public-components/bars/NavBar';
+  import SearchBar from '~/components/trang-chu/SearchBar';
   import Breadcrumb from '~/components/public-components/bars/Breadcrumb';
   import Banner from '~/components/trang-chu/boxs/Banner';
   import NewJobBox from '~/components/trang-chu/boxs/NewJobBox';
@@ -81,9 +81,12 @@
 
   import {JobOption} from '~/assets/js/data-options';
 
+  import {mapState, mapGetters, mapActions} from 'vuex';
+
 
   export default {
     components: {
+      NavBar,
       SearchBar,
       Breadcrumb,
       FunctionBox,
@@ -105,6 +108,9 @@
       }
     },
     layout: 'default',
+    props: {
+      // activeMenuItem: String
+    },
     data() {
       const {jobs} = JobOption;
       return {
@@ -233,6 +239,11 @@
           }
         ]
       }
+    },
+    computed: {
+      ...mapGetters({
+        activeMenuItem: 'navBarStatus'
+      })
     },
     methods: {
       submitForm(formName) {
