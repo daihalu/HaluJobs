@@ -101,7 +101,7 @@
 
 
   .item {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 25px;
     display: block;
   }
@@ -110,17 +110,9 @@
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;
-    font-size: $fs-large-18;
+    font-size: 17px;
   }
 
-  /*.location {*/
-    /*opacity: 0.8;*/
-    /*padding-bottom: 3px;*/
-
-    /*&:hover {*/
-      /*opacity: 1;*/
-    /*}*/
-  /*}*/
 
   .salary,
   .deadline {

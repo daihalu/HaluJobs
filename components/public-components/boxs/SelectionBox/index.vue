@@ -47,7 +47,8 @@
 
   .selection-box {
     position: relative;
-    /*margin-bottom: 10px;*/
+    display: flex;
+    align-items: center;
   }
 
   .el-select {
@@ -58,19 +59,22 @@
   .selection-box svg {
     position: absolute;
     z-index: 2;
-    left: 10px;
-    top: 10px;
+    display: inline-block;
+    width: 30px;
     font-size: 18px;
     opacity: 0.5;
   }
 
-  ul {
+  li {
     list-style-type: none;
+    border-bottom: 1px dotted $color-primary;
   }
 
-  ul li {
+</style>
 
-    border-bottom: 1px dotted $color-primary;
+<style>
+  .el-input--suffix .el-input__inner {
+    padding-left: 25px !important;
   }
 
 </style>

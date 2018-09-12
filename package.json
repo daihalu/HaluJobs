@@ -27,6 +27,7 @@
     "convert-excel-to-json": "^1.4.0",
     "element-ui": "^2.4.5",
     "jscrollpane": "^2.2.0",
+    "lodash": "^4.17.10",
     "node-sass": "^4.9.2",
     "nuxt": "^1.4.2",
     "sass-loader": "^7.1.0",

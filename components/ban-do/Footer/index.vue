@@ -200,7 +200,7 @@
 
     .tags {
 
-      width: $page-width;
+      width: 95%;
       margin: 0 auto !important;
       padding-top: 10px;
       padding-bottom: 10px;

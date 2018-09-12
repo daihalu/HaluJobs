@@ -4,6 +4,9 @@
       <gmap-map
         :center="center"
         :zoom="mapZoomSize"
+        @dragend="handleOnDrag"
+        @bounds_changed="handleOnchangeZoomSize"
+        draggable="true"
         style="width: 100%; height: 100vh;"
         ref="haluMap"
       >
@@ -23,16 +26,10 @@
           @click="handleOnClickMarker(index)"
           :icon="markerIcon"
           :clickable="true"
-
         >
           <gmap-info-window
             :opened="job.showJobInfo"
             @closeclick="job.showJobInfo=false"
-            :options="{
-              width: '500',
-
-            }"
-
           >
             <attractive-job-card
               :jobInfo="jobList[index]"
@@ -69,7 +66,7 @@
               iconPrefix="far"
               iconName="clipboard"
               placeHolder="Chọn ngành nghề"
-              @on_select="handleOnSelectSalaryOptions"
+              @on_select="handleOnSelectIndustryOptions"
               style="width: 34%"
             />
           </div>
@@ -97,6 +94,8 @@
   import DetailJobCard from '~/components/ban-do/DetailJobCard';
 
   import {JobOption} from '~/assets/js/data-options';
+
+  import _ from 'lodash';
 
   export default {
     name: "GoogleMap",
@@ -128,7 +127,8 @@
         },
         markerIcon: {
           url: require('~/assets/images/marker_icon_3.jpg'),
-          scaledSize: {width: 10, height: 10, f: 'px', b: 'px'},
+          size: {width: 15, height: 15, f: 'px', b: 'px'},
+          scaledSize: {width: 8, height: 8, f: 'px', b: 'px'},
           labelOrigin: {x: 0, y: 40},
           strokeColor: '#1ab394',
           strokeOpacity: 0.8,
@@ -148,7 +148,9 @@
           {label: 'Toàn quốc', value: 10000}
         ],
         radiusSelection: 0,
-        mapZoomSize: 12,
+        salarySelection: '',
+        industrySelection: '',
+        mapZoomSize: 13,
         jobBoxHeight: null
       }
     },
@@ -160,10 +162,6 @@
     methods: {
       getCurrentUserCoordinate() {
         navigator.geolocation.getCurrentPosition(position => {
-          this.center = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
 
           this.user = {
             position: {
@@ -172,9 +170,9 @@
             }
           };
 
-          this.getJobs(10);
+          this.center = this.user.position;
+          this.getJobs(this.user.position, 10, this.salarySelection, this.industrySelection);
         });
-
       },
       handleOnClickMarker(index) {
         this.jobList[index].showJobInfo = !this.jobList[index].showJobInfo;
@@ -186,14 +184,14 @@
         }
         console.log("Click: " + this.jobList[index].showJobInfo);
       },
+
       handleOnSelectRadiusOptions(value) {
         if (value === 10) {
-          this.mapZoomSize = 12;
           return;
         } else {
           this.radiusSelection = value;
           this.center = this.user.position;
-          this.getJobs(value);
+          this.getJobs(this.user.position, this.radiusSelection || 10, this.salarySelection, this.industrySelection);
 
           if (value === 3) {
             this.mapZoomSize = 14;
@@ -212,8 +210,67 @@
           }
         }
       },
+
       handleOnSelectSalaryOptions(value) {
-        const url = `/api/jobs?coords=${this.user.position.lat},${this.user.position.lng}&radius=10&industry=${value}&salary=`;
+        this.salarySelection = value;
+        this.getJobs(this.user.position, this.radiusSelection || 10, this.salarySelection, this.industrySelection);
+      },
+
+      handleOnSelectIndustryOptions(value) {
+        this.industrySelection = value;
+        this.getJobs(this.user.position, this.radiusSelection || 10, this.salarySelection, this.industrySelection);
+      },
+
+      handleOnDrag: _.debounce(function () {
+        console.log("Drag!");
+
+        const centerCoordinates = {
+          lat: this.$refs.haluMap.$mapObject.getCenter().lat(),
+          lng: this.$refs.haluMap.$mapObject.getCenter().lng()
+        };
+        this.center = centerCoordinates;
+
+        console.log(centerCoordinates);
+
+        this.getJobs(centerCoordinates, this.radiusSelection || 10, this.salarySelection, this.industrySelection);
+      }, 200),
+
+      handleOnchangeZoomSize: _.debounce(function () {
+
+        const zoomSize = this.$refs.haluMap.$mapObject.zoom;
+        let radius = null;
+
+        if (zoomSize >= this.mapZoomSize) {
+          return;
+        } else {
+          if (zoomSize === 11) {
+            //20
+            radius = this.radiusSelection ? this.radiusSelection : 20;
+
+          } else if (zoomSize === 10) {
+            //50
+            radius = this.radiusSelection ? this.radiusSelection : 50;
+          } else if (zoomSize === 9) {
+            //100
+            radius = this.radiusSelection ? this.radiusSelection : 100;
+          } else if (zoomSize === 8) {
+            //500
+            radius = this.radiusSelection ? this.radiusSelection : 500;
+          } else if (zoomSize === 7) {
+            //500
+            radius = this.radiusSelection ? this.radiusSelection : 800;
+          } else {
+            radius = this.radiusSelection ? this.radiusSelection : 3000;
+          }
+        }
+
+        console.log("change zoom size");
+
+        this.getJobs(this.user.position, radius, this.salarySelection, this.industrySelection);
+      }, 200),
+
+      getJobs(coordinates, radius, salary, industry) {
+        const url = `/api/jobs?coords=${coordinates.lat},${coordinates.lng}&radius=${radius}&salary=${salary}&industry=${industry}`;
         this.$axios.$get(url)
           .then(res => {
             console.log(res);
@@ -221,9 +278,9 @@
               return {...job, showJobInfo: false}
             });
             console.log(this.jobList)
-
           })
       },
+
       showMarkerLabel(index) {
         this.jobList[index].showJobInfo = true;
         for (let i = 0; i < this.jobList.length; i++) {
@@ -232,18 +289,6 @@
           }
         }
       },
-      getJobs(radius, salary, industry) {
-        const url = `/api/jobs?coords=${this.user.position.lat},${this.user.position.lng}&radius=${radius}`;
-        this.$axios.$get(url)
-          .then(res => {
-            console.log(res);
-            this.jobList = res.jobs.map(job => {
-              return {...job, showJobInfo: false}
-            });
-            console.log(this.jobList)
-
-          })
-      }
 
     }
   }

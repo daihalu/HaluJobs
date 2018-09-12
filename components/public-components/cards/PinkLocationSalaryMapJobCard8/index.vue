@@ -7,13 +7,12 @@
     </div>
 
     <div class="container">
-      <el-tooltip effect="dark" :content="jobInfo.title" placement="top-start">
-        <p class="jobTitle">
-          <nuxt-link to="/">
-            {{jobTitle}}
-          </nuxt-link>
-        </p>
-      </el-tooltip>
+
+      <p class="jobTitle" :title="jobInfo.title">
+        <nuxt-link to="/">
+          {{jobTitle}}
+        </nuxt-link>
+      </p>
 
       <p class="company item" :title="jobInfo.employer.name">
         <font-awesome-icon :icon="['far', 'building']"/>
@@ -27,10 +26,10 @@
         </p>
 
         <!--<p class="item deadline" :title="closingDate">-->
-          <!--<font-awesome-icon :icon="['fas', 'user-clock']"/>-->
-          <!--{{closingDate}}-->
+        <!--<font-awesome-icon :icon="['fas', 'user-clock']"/>-->
+        <!--{{closingDate}}-->
         <!--</p>-->
-        <p class="item location" :title="jobInfo.workAddress">
+        <p class="item location" :title="workAddressTitle">
           <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
           <span> {{workAddress}}</span>
 
@@ -54,6 +53,7 @@
         jobTitle: this.jobInfo.title,
         companyName: this.jobInfo.employer.name,
         workAddress: this.jobInfo.locations.join(', '),
+        workAddressTitle: this.jobInfo.employer.address,
         salary: this.jobInfo.salary.range
       }
     },
@@ -64,9 +64,9 @@
       },
     },
     created() {
-      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 32);
+      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 35);
       this.companyName = ConvertStringToShorterString(this.companyName, 0, 33);
-      // this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 5);
+      this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 12);
       this.closingDate = this.formattedDate(this.jobInfo.closing_date);
     }
   }
@@ -79,6 +79,7 @@
     border: none;
     padding: 3px;
     width: 100%;
+    max-width: 860px;
   }
 
   .avatar {
