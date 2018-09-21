@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import SameJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
+  import SameJobCard from '~/components/public-components/cards/PinkWorkAddressSalaryJobCard8';
 
   export default {
     props: {

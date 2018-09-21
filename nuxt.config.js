@@ -30,11 +30,20 @@ module.exports = {
     '@/plugins/font-awesome',
     { src: '@/plugins/vue-particles', ssr: false },
     '@/plugins/vue-scroll-to',
-    '@/plugins/vue2-google-maps'
+    '@/plugins/vue-bar',
+    '@/plugins/vue2-google-maps',
+    { src: '@/plugins/local-storage.js', ssr: false }
   ],
   /*
   ** Customize the progress bar color
   */
+
+  router:  {
+
+    scrollBehavior: function (to, from, savedPosition) {
+      return savedPosition;
+    },
+  },
   loading: { color: '#ffffff' },
 
   /*

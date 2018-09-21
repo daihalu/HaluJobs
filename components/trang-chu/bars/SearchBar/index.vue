@@ -3,13 +3,17 @@
     <el-row :gutter="10" class="search-bar">
 
       <el-col :span="9" class="job-input padding-left-0">
-          <font-awesome-icon :icon="['fas', 'search']" class="svg-icon"/>
-          <el-input
-            placeholder="Tiêu đề công việc, vị trí, địa điểm làm việc..."
-            v-model="searchData.input"
-            prefix-icon="el-icon-dai"
-          >
-          </el-input>
+        <font-awesome-icon :icon="['fas', 'search']" class="svg-icon"/>
+
+        <el-autocomplete
+          class="inline-input"
+          v-model="searchData.input"
+          :fetch-suggestions="querySearch"
+          placeholder="Nhập tiêu đề công việc, vị trí, địa điểm làm việc..."
+          :trigger-on-focus="false"
+          @select="handleSelectSearchInput"
+          prefix-icon="el-icon-dai"
+        ></el-autocomplete>
       </el-col>
 
       <el-col :span="6" class="selection-box">
@@ -36,7 +40,7 @@
       <el-col :span="3" class="padding-right-0">
         <el-button
           class="search-button"
-
+          @click="handleOnClickSearch"
         >
           <font-awesome-icon :icon="['fas', 'search']"/>
           Tìm kiếm
@@ -49,6 +53,7 @@
 <script>
   import SelectionBox from '~/components/public-components/boxs/SelectionBox';
 
+  import {ChangeAlias} from '~/assets/js/functions';
   import {JobOption} from '~/assets/js/data-options';
 
   export default {
@@ -59,6 +64,14 @@
       const {
         jobs,
         workAddresses,
+        jobTitles,
+        workExperience,
+        jobTypes,
+        foreignLanguages,
+        desiredSalaries,
+        genders,
+        qualifications,
+        marriageStatuses
       } = JobOption;
       return {
         searchData: {
@@ -66,8 +79,10 @@
           jobInput: '',
           workAddress: '',
         },
+        searchInputOptions: [],
         jobOptions: jobs,
         workAddressOptions: workAddresses,
+        links: [],
       }
     },
     methods: {
@@ -77,8 +92,38 @@
       handleOnSelectWorkAddress(value) {
         this.searchData.workAddress = value;
       },
+      handleSelectSearchInput(value) {
+        this.searchData.input = value.value;
+        console.log(value.value);
+      },
+      handleOnClickSearch() {
+        console.log("Click");
+        console.log(this.searchData);
+      },
 
+      querySearch(queryString, cb) {
+        let job = this.jobOptions;
+        let searchInput = ChangeAlias(queryString);
+        console.log(searchInput);
+
+        let results = searchInput ? job.filter(this.createFilter(searchInput)) : this.jobOptions.value;
+        // call callback function to return suggestions
+        cb(results);
+      },
+      createFilter(queryString) {
+        return (job) => {
+          let aliasJob = ChangeAlias(job.value);
+          return (aliasJob.indexOf(queryString) === 0);
+        };
+      },
+
+    },
+    mounted() {
+      // console.log('Created');
+      this.searchInputOptions = this.jobOptions.concat(this.workAddressOptions);
+      // console.log(this.searchInputOptions)
     }
+
   }
 </script>
 
@@ -108,7 +153,8 @@
     position: relative;
   }
 
-  .el-select {
+  .el-select,
+  .el-autocomplete {
     width: 100%;
   }
 

@@ -1,41 +1,53 @@
 <template>
   <el-row class="card">
-    <el-col :span="18" class="job-card--content">
+    <el-col :span="16" class="job-card--content">
 
-      <el-tooltip class="item" effect="dark" :content="jobInfo.jobTitle" placement="top-start">
-        <p class="jobTitle">
-          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.jobTitle">
-            {{jobTitle}}
+      <el-tooltip
+        effect="dark"
+        :content="jobTitle.title"
+        placement="top-start"
+      >
+        <p class="position">
+          <nuxt-link :to="jobUrl + jobId">
+            {{jobTitle.value}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
-      <p class="company" :title="jobInfo.companyName">
+      <p class="company" :title="companyName.title">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{companyName}}
+        <span>{{companyName.value}}</span>
       </p>
     </el-col>
-    <el-col :span="6">
-      <p class="salary" :title="jobInfo.salary">
-        <font-awesome-icon icon="dollar-sign"/>
-        {{jobInfo.salary}}
+    <el-col :span="8">
+      <p class="salary" :title="salary">
+        <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
+        <span>{{salary}}</span>
       </p>
 
-      <p class="expiryDate" :title="jobInfo.expiryDate">
-        <font-awesome-icon icon="user-clock"/>
-        {{jobInfo.expiryDate}}
-      </p>
+      <el-row>
+        <el-col :span="12">
+          <p class="deadline" :title="deadline">
+            <font-awesome-icon :icon="['fas', 'user-clock']"/>
+            <span> {{deadline}}</span>
+          </p>
+        </el-col>
 
-      <p class="location" :title="jobInfo.workAddress">
-        <font-awesome-icon icon="map-marker-alt"/>
-        {{workAddress}}
-      </p>
+        <el-col :span="12">
+          <p class="work-addresses " :title="workAddresses.title">
+            <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
+            {{workAddresses.value}}
+          </p>
+        </el-col>
+
+
+      </el-row>
     </el-col>
   </el-row>
 </template>
 
 <script>
-  import {ConvertStringToShorterString} from '~/assets/js/functions';
+  import {ConvertStringToShorterString, FormattedDate} from '~/assets/js/functions';
 
   export default {
     props: {
@@ -43,15 +55,29 @@
     },
     data() {
       return {
-        jobTitle: this.jobInfo.jobTitle,
-        companyName: this.jobInfo.companyName,
-        workAddress: this.jobInfo.workAddress
+        jobUrl: this.jobInfo.jobUrl,
+        jobId: this.jobInfo._jobId,
+        jobTitle: {
+          title: this.jobInfo.jobTitle,
+          value: this.jobInfo.jobTitle
+        },
+        companyName: {
+          title: this.jobInfo.companyName,
+          value: this.jobInfo.companyName
+        },
+        workAddresses: {
+          title: this.jobInfo.workAddresses.join(', '),
+          value: this.jobInfo.workAddresses.join(', ')
+        },
+        salary: this.jobInfo.salary.min + ' triệu - ' + this.jobInfo.salary.max + ' triệu',
+        deadline: this.jobInfo.deadline
       }
     },
     created() {
-      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 63);
-      this.companyName = ConvertStringToShorterString(this.companyName, 0, 60);
-      this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 7);
+      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 57);
+      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 55);
+      this.workAddresses.value = ConvertStringToShorterString(this.workAddresses.value, 0, 11);
+      this.deadline = FormattedDate(this.deadline);
     }
   }
 </script>
@@ -59,41 +85,81 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  svg {
-    margin-right: 3px;
-    opacity: 0.7;
+  .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
-  .jobTitle {
+
+  .position {
     color: $color-primary;
+    font-size: $fs-base-16;
     font-weight: $fw-base-500;
-    padding-bottom: 5px;
+    line-height: 25px;
+
+    a {
+      display: block;
+      text-transform: lowercase;
+      padding-left: 4px;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
   }
 
   .company {
     opacity: 0.8;
+    line-height: 25px;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+
+    span {
+      display: inline-block;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
-  .expiryDate,
   .salary,
-  .location {
-    font-size: $fs-small-14;
+  .work-addresses {
+    font-size: 14px;
     line-height: 25px;
   }
 
-  .expiryDate,
-  .location {
-    display: inline;
+  .salary {
+    color: $color-pink;
   }
 
-  .expiryDate {
+  .work-addresses {
     opacity: 0.8;
-    margin-right: 10px;
   }
 
-  .expiryDate:hover {
-    opacity: 1;
+  .deadline {
+    line-height: 25px;
+    font-size: $fs-small-14;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+    }
   }
+
+  svg {
+    font-size: 14px;
+    opacity: 0.7;
+    display: inline-block;
+    width: 20px !important;
+    text-align: left;
+    height: 15px;
+  }
+
 
 </style>
 

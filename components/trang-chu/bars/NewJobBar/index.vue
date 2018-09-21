@@ -50,6 +50,7 @@
     align-items: center;
     p {
       font-weight: $fw-base-500;
+      color: $color-primary;
     }
   }
 

@@ -50,10 +50,14 @@
   @import "~assets/css/halujobs_variables";
 
   .function-box {
-    padding: $padding-border-box-10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-color: transparent;
-    text-align: center;
     height: 140px;
+    color: $color-primary;
+    -webkit-transition: all 0.15s ease-in-out;
     transition: all 0.15s ease-in-out;
   }
 

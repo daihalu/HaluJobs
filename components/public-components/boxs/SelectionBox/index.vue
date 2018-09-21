@@ -5,12 +5,11 @@
       v-model="selectedValue"
       filterable
       :placeholder="placeHolder"
-      value=""
       @change="handleOnChange"
     >
       <el-option
         v-for="item in options"
-        :key="item.value"
+        :key="item.label"
         :label="item.label"
         :value="item.value">
       </el-option>
@@ -56,13 +55,15 @@
     z-index: 1;
   }
 
-  .selection-box svg {
-    position: absolute;
-    z-index: 2;
-    display: inline-block;
-    width: 30px;
-    font-size: 18px;
-    opacity: 0.5;
+  .selection-box {
+    svg {
+      position: absolute;
+      z-index: 2;
+      display: inline-block;
+      width: 30px;
+      font-size: 18px;
+      opacity: 0.5;
+    }
   }
 
   li {
@@ -74,7 +75,7 @@
 
 <style>
   .el-input--suffix .el-input__inner {
-    padding-left: 25px !important;
+    padding-left: 28px !important;
   }
 
 </style>

@@ -4,11 +4,16 @@
       <font-awesome-icon icon="briefcase"/>
       {{jobBoxTitle}}
     </h4>
-    <div class="scroll-box" id="new-job-box">
+
+    <div class="scroll-box" id="scroll-box">
       <el-row :gutter="4">
-        <el-col v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
-          <new-job-card
-            :jobInfo="jobList[0]"
+        <el-col
+          v-for="(item, index) in jobs"
+          :key="index"
+          class="mg-bottom-10"
+        >
+          <high-salary-job-card
+            :jobInfo="item"
           />
         </el-col>
       </el-row>
@@ -17,15 +22,29 @@
 </template>
 
 <script>
-  import NewJobCard from '~/components/public-components/cards/ColorlessJobCard16';
+  import HighSalaryJobCard from '~/components/public-components/cards/ColorlessJobCard16';
+  import {mapActions, mapState} from 'vuex';
 
   export default {
     components: {
-      NewJobCard
+      HighSalaryJobCard
     },
     props: {
       jobBoxTitle: String,
-      jobList: Array
+    },
+    computed: {
+      ...mapState('RECRUITMENT_PAGE', {
+        jobs: 'newJobs'
+      })
+    },
+
+    methods: {
+      ...mapActions('RECRUITMENT_PAGE', {
+        fetchNewJobs: 'fetchNewJobs'
+      })
+    },
+    created() {
+      this.fetchNewJobs();
     }
   }
 </script>
@@ -35,29 +54,29 @@
 
   .scroll-box {
     overflow: auto;
-    height: 663px;
+    height: 745px;
     padding: 10px;
   }
 
   /* width */
-  #new-job-box::-webkit-scrollbar {
+  #scroll-box::-webkit-scrollbar {
     width: 10px;
   }
 
   /* Track */
-  #new-job-box::-webkit-scrollbar-track:hover {
+  #scroll-box::-webkit-scrollbar-track:hover {
     background: $color-gray;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   }
 
   /* Handle */
-  #new-job-box::-webkit-scrollbar-thumb {
+  #scroll-box::-webkit-scrollbar-thumb {
     background: $color-scroll-bar;
     border-radius: 8px;
   }
 
   /* Handle on hover */
-  #new-job-box::-webkit-scrollbar-thumb:hover {
+  #scroll-box::-webkit-scrollbar-thumb:hover {
     background: $color-scroll-bar--hover;
   }
 

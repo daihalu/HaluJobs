@@ -5,8 +5,29 @@ export function ConvertStringToShorterString(string, start, end) {
   return string;
 }
 
-export function getCoordinateOfCurrentAddress(address) {
-  const APIKEY = "AIzaSyByBB1jSXbMCz1dlG85eIN5N_y3j7fLRCU";
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}=${APIKEY}`;
-  return fetch(url).then(response => response.json())
+export function FormattedDate(d) {
+  let date = d.slice(0, 10).split('-');
+  return date[2] + '/' + date[1] + '/' + date[0];
+};
+
+export function ChangeAlias(alias) {
+  let str = alias;
+  str = str.toLowerCase();
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+  str = str.replace(/đ/g,"d");
+  str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+  str = str.replace(/ + /g," ");
+  str = str.trim();
+  return str;
+};
+
+export function ConvertToKebabCase(string) {
+  const kebabCase = string.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase();
+  return kebabCase;
 }
+

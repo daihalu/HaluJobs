@@ -11,11 +11,12 @@
     </div>
 
     <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="dialogFacebookVisible">
-      <div class="box-container padding-15">
-        <div>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?
-          Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.
-        </div>
-        <div class="mg-top-15 ta-center ">
+      <el-row class="box-container padding-15">
+        <el-col :span="10" class="description">
+          <p>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?</p>
+          <p>Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.</p>
+        </el-col>
+        <el-col :span="14" class="ta-center">
           <iframe
             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
             width="500"
@@ -27,8 +28,8 @@
             allow="encrypted-media"
           >
           </iframe>
-        </div>
-      </div>
+        </el-col>
+      </el-row>
     </el-dialog>
     <el-dialog :visible.sync="dialogPhoneVisible">
       <el-row class="box-container hot-line-container">
@@ -70,7 +71,7 @@
         </p>
 
         <div>
-          <nuxt-link to="/mailto:hotro@halutech.com.vn">
+          <nuxt-link to="mailto:hotro@halutech.com.vn">
             <font-awesome-icon :icon="['far', 'envelope']" @click="dialogMailVisible = true"/>
             hotro@halutech.com.vn
           </nuxt-link>
@@ -92,13 +93,15 @@
 <script>
   import NavBar from '~/components/public-components/bars/NavBar';
   import Footer from '~/components/public-components/bars/Footer';
+  import ScrollBar from '~/components/public-components/bars/ScrollBar';
 
   import {mapState, mapGetters, mapActions} from 'vuex';
 
   export default {
     components: {
       NavBar,
-      Footer
+      Footer,
+      ScrollBar
     },
     data() {
       return {
@@ -112,33 +115,17 @@
     computed: {
       ...mapGetters({
         activeMenuItem: 'navBarStatus'
+      }),
+
+      ...mapState('home_page', {
+        hasDoneFetchingData: 'hasDoneFetchingData'
       })
     },
     methods: {
       handleScroll() {
         this.showScrollButton = window.scrollY > 600;
       },
-      ...mapActions({
-        initialNavBarStatus: 'updateNavBarStatus'
-      })
-    },
-    created() {
-      const currentRouterPath = this.$router.history.current.name;
 
-      if (currentRouterPath === 'index') {
-        this.initialNavBarStatus('HOME_PAGE');
-      } else if (currentRouterPath === 'tuyen-dung') {
-        this.initialNavBarStatus('RECRUITMENT_PAGE');
-      } else if (currentRouterPath === 'ung-vien') {
-        this.initialNavBarStatus('CANDIDATE_PAGE');
-      } else if (currentRouterPath === 'cong-ty') {
-        this.initialNavBarStatus('COMPANY_PAGE');
-      } else if (currentRouterPath === 'tai-khoan') {
-        this.initialNavBarStatus('ACCOUNT_PAGE');
-      } else if (currentRouterPath === 'toan-quoc') {
-        this.initialNavBarStatus('WHOLE_COUNTRY_PAGE');
-      }
-      console.log(this.$router.history.current.name);
     },
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
@@ -238,11 +225,16 @@
 
     a {
       font-size: 20px;
+      color: $color-primary;
     }
 
     p {
       font-size: 16px;
     }
+  }
+
+  .description {
+    font-size: $fs-large-18;
   }
 </style>
 

@@ -6,7 +6,7 @@
           <nuxt-link to="/">
             <img
               src="https://halutech.com.vn/images/logo.png"
-              @click="updateNavBarStatus('HOME_PAGE')"
+              @click="handleOnClickNavBar('HOME_PAGE')"
             />
           </nuxt-link>
           <p></p>
@@ -14,7 +14,7 @@
         <el-col :span="20" class="nav-bar--container">
           <ul class="nav-menu">
             <li
-              @click="updateNavBarStatus('HOME_PAGE')"
+              @click="handleOnClickNavBar('HOME_PAGE')"
               :class="{active: activeMenuItem === 'HOME_PAGE'}"
             >
               <nuxt-link to="/" class="nav-item">
@@ -24,7 +24,7 @@
             </li>
 
             <li
-              @click="updateNavBarStatus('RECRUITMENT_PAGE')"
+              @click="handleOnClickNavBar('RECRUITMENT_PAGE')"
               :class="{active: activeMenuItem === 'RECRUITMENT_PAGE'}"
             >
               <nuxt-link to="/tuyen-dung" class="nav-item">
@@ -34,7 +34,7 @@
             </li>
 
             <li
-              @click="updateNavBarStatus('CANDIDATE_PAGE')"
+              @click="handleOnClickNavBar('CANDIDATE_PAGE')"
               :class="{active: activeMenuItem === 'CANDIDATE_PAGE'}"
             >
               <nuxt-link to="/ung-vien" class="nav-item">
@@ -44,7 +44,7 @@
             </li>
 
             <li
-              @click="updateNavBarStatus('COMPANY_PAGE')"
+              @click="handleOnClickNavBar('COMPANY_PAGE')"
               :class="{active: activeMenuItem === 'COMPANY_PAGE'}"
             >
               <nuxt-link to="/cong-ty" class="nav-item">
@@ -54,7 +54,7 @@
             </li>
 
             <li
-              @click="updateNavBarStatus('ACCOUNT_PAGE')"
+              @click="handleOnClickNavBar('ACCOUNT_PAGE')"
               :class="{active: activeMenuItem === 'ACCOUNT_PAGE'}"
             >
               <nuxt-link to="/tai-khoan" class="nav-item">
@@ -64,7 +64,7 @@
             </li>
 
             <li
-              @click="updateNavBarStatus('WHOLE_COUNTRY_PAGE')"
+              @click="handleOnClickNavBar('WHOLE_COUNTRY_PAGE')"
               :class="{active: activeMenuItem === 'WHOLE_COUNTRY_PAGE'}"
             >
               <nuxt-link to="/toan-quoc" class="nav-item">
@@ -87,10 +87,20 @@
     props: {
       activeMenuItem: String
     },
+    computed: {
+      ...mapGetters({
+        searchingContent: 'searchingContent'
+      })
+    },
     methods: {
       ...mapActions({
-        updateNavBarStatus: 'updateNavBarStatus'
-      })
+        updateNavBarStatus: 'updateNavBarStatus',
+        updateSearchingContent: 'updateSearchingContent'
+      }),
+      handleOnClickNavBar(status) {
+        this.updateNavBarStatus(status);
+        this.updateSearchingContent('');
+      }
     }
   }
 </script>

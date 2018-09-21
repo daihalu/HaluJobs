@@ -4,7 +4,7 @@
       :span="6"
       class="item"
       :class="{active: activeMenuItem === 'RECRUITMENT_PAGE'}"
-      @click.native="updateNavBarStatus('RECRUITMENT_PAGE')"
+      @click.native="handleOnClickNavSearchBar('RECRUITMENT_PAGE')"
     >
       <nuxt-link to="/tuyen-dung">
         <font-awesome-icon icon="briefcase"/>
@@ -16,7 +16,7 @@
       :span="6"
       class="item"
       :class="{active: activeMenuItem === 'CANDIDATE_PAGE'}"
-      @click.native="updateNavBarStatus('CANDIDATE_PAGE')"
+      @click.native="handleOnClickNavSearchBar('CANDIDATE_PAGE')"
     >
       <nuxt-link to="/ung-vien">
           <font-awesome-icon :icon="['far', 'id-card']"/>
@@ -28,7 +28,7 @@
       :span="6"
       class="item"
       :class="{active: activeMenuItem === 'COMPANY_PAGE'}"
-      @click.native="updateNavBarStatus('COMPANY_PAGE')"
+      @click.native="handleOnClickNavSearchBar('COMPANY_PAGE')"
     >
       <nuxt-link to="/cong-ty">
           <font-awesome-icon :icon="['far', 'building']"/>
@@ -40,7 +40,7 @@
       :span="6"
       class="item"
       :class="{active: activeMenuItem === 'UNIVERSITY_PAGE'}"
-      @click.native="updateNavBarStatus('')"
+      @click.native="handleOnClickNavSearchBar('')"
     >
       <nuxt-link to="/danh-sach-truong">
           <font-awesome-icon icon="school"/>
@@ -57,13 +57,19 @@
     name: "NavSearchBar",
     computed: {
       ...mapGetters({
-        activeMenuItem: 'navBarStatus'
+        activeMenuItem: 'navBarStatus',
+        searchingContent: 'searchingContent'
       })
     },
     methods: {
       ...mapActions({
-        updateNavBarStatus: 'updateNavBarStatus'
-      })
+        updateNavBarStatus: 'updateNavBarStatus',
+        updateSearchingContent: 'updateSearchingContent'
+      }),
+      handleOnClickNavSearchBar(status) {
+        this.updateNavBarStatus(status);
+        this.updateSearchingContent('');
+      }
     }
   }
 </script>

@@ -5,7 +5,7 @@
       {{jobBoxTitle}}
     </h4>
     <div class="item">
-      <div v-for="item in keyWords" :key="item">
+      <div v-for="(item, index) in keyWords" :key="index">
         <a>{{item}}</a>
       </div>
     </div>
@@ -16,7 +16,12 @@
   export default {
     props: {
       jobBoxTitle: String,
-      keyWords: Array
+    },
+    data() {
+      return {
+        keyWords: ['Quản lý', 'Bán hàng', 'Nhân viên IT', 'Kỹ sư', 'Luật sư', 'Giáo viên', 'Thợ xây', 'Marketing',
+                   'Quản lý', 'Bán hàng', 'Nhân viên IT', 'Kỹ sư', 'Luật sư', 'Giáo viên', 'Thợ xây', 'Marketing']
+      }
     }
   }
 </script>
@@ -29,17 +34,19 @@
     div {
       display: inline-block;
       margin-bottom: 5px;
-      border: 1px solid #1ab394;
+      border: 1px solid $color-primary;
       margin-right: 5px;
       border-radius: 3px;
       padding: 5px 7px;
-      background-color: #d4f7e8;
+      background-color: $color-tags;
       line-height: 100%;
+      font-weight: $fw-base-500;
       transition: all 0.15s ease-in-out;
     }
 
     div:hover {
       background-color: $color-white;
+      cursor: pointer;
       a {
         color: $color-primary !important;
       }

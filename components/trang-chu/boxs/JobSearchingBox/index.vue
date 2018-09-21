@@ -9,81 +9,72 @@
       <el-input
         type="email"
         v-model="searchInput"
-        auto-complete="off"
         placeHolder="Vui lòng nhập ngành nghề"
         class="input"
       >
       </el-input>
-      <div class="job-searching-box--list">
-        <ul v-for="job in jobList" :key="job.value">
+      <scroll-bar class="job-searching-box--list">
+        <ul v-for="(job, index) in filteredList" :key="index">
           <nuxt-link to="/tuyen-dung">
-            <li>{{job.value}}</li>
+            <li>{{job.label}}</li>
           </nuxt-link>
         </ul>
-      </div>
+      </scroll-bar>
     </div>
   </div>
 </template>
 
 <script>
+  import ScrollBar from '~/components/public-components/bars/ScrollBar';
+  import {JobOption} from '~/assets/js/data-options';
+  import {ChangeAlias} from '~/assets/js/functions';
+
   export default {
-    props: {
-      jobList: Array
+    components: {
+      ScrollBar
     },
     data() {
+      const {jobs} = JobOption;
       return {
-        searchInput: ''
+        searchInput: '',
+        jobs: jobs,
       }
     },
+    computed: {
+      filteredList() {
+        return this.jobs.filter(job => {
+          let str = ChangeAlias(job.value);
+          let search = ChangeAlias(this.searchInput);
+          return str.toLowerCase().includes(search.toLowerCase())
+        })
+      }
+    },
+    created() {
+
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .content {
-    padding: $padding-border-box-10;
-  }
-
-  .input{
-    margin-bottom: 5px;
+  .input {
+    padding: 10px 10px 0 10px;
   }
 
   .job-searching-box--list {
-    overflow: auto;
-    height: 300px;
-  }
-
-  ul {
-    list-style-type: none;
-    padding-left: 5px;
+    height: 410px;
   }
 
   ul li {
+    list-style-type: none;
     line-height: $line-height-30;
     border-bottom: 1px dotted $color-primary;
-  }
+    transition: all 0.1s ease-in-out;
 
-  /* width */
-  .job-searching-box--list::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  .job-searching-box--list::-webkit-scrollbar-track:hover {
-    background: $color-gray;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Handle */
-  .job-searching-box--list::-webkit-scrollbar-thumb {
-    background: $color-scroll-bar;
-    border-radius: 8px;
-  }
-
-  /* Handle on hover */
-  .job-searching-box--list::-webkit-scrollbar-thumb:hover {
-    background: $color-scroll-bar--hover;
+    &:hover {
+      color: $color-primary;
+    }
   }
 
 </style>

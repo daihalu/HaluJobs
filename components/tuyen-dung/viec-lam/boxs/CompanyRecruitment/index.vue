@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
+  import AttractiveJobCard from '~/components/public-components/cards/PinkWorkAddressSalaryJobCard8';
 
   export default {
     props: {

@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <el-col :span="2" class="avatar">
+    <div class="avatar">
       <nuxt-link :to="jobUrl + jobId" :title="companyName.title">
         <img :src="logoUrl"/>
       </nuxt-link>
-    </el-col>
+    </div>
 
-    <el-col :span="14" class="job-card--content">
+    <div class="container">
       <el-tooltip
         effect="dark"
         :content="jobTitle.title"
@@ -23,32 +23,25 @@
         <font-awesome-icon :icon="['far', 'building']"/>
         <span>{{companyName.value}}</span>
       </p>
-    </el-col>
 
-    <el-col :span="8" class="">
-      <p class="salary" :title="salary">
-        <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
-        <span>{{salary}}</span>
-      </p>
+      <div class="items">
+        <p class="salary" :title="salary">
+          <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
+          <span>{{salary}}</span>
+        </p>
 
-      <el-row>
-        <el-col :span="12">
-          <p class="deadline" :title="deadline">
-            <font-awesome-icon :icon="['fas', 'user-clock']"/>
-            <span> {{deadline}}</span>
-          </p>
-        </el-col>
+        <p class="deadline" :title="deadline">
+          <font-awesome-icon :icon="['fas', 'user-clock']"/>
+          <span> {{deadline}}</span>
+        </p>
 
-        <el-col :span="12">
-          <p class="work-addresses " :title="workAddresses.title">
-            <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
-            {{workAddresses.value}}
-          </p>
-        </el-col>
+        <p class="work-addresses " :title="workAddresses.title">
+          <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
+          {{workAddresses.value}}
+        </p>
+      </div>
 
-
-      </el-row>
-    </el-col>
+    </div>
   </div>
 </template>
 
@@ -76,14 +69,14 @@
           title: this.jobInfo.workAddresses.join(', '),
           value: this.jobInfo.workAddresses.join(', ')
         },
-        salary: this.jobInfo.salary.min + ' triệu - ' + this.jobInfo.salary.max + ' triệu',
+        salary: this.jobInfo.salary.min + ' - ' + this.jobInfo.salary.max + ' triệu',
         deadline: this.jobInfo.deadline
       }
     },
     created() {
-      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 50);
-      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 50);
-      this.workAddresses.value = ConvertStringToShorterString(this.workAddresses.value, 0, 11);
+      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 32);
+      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 30);
+      this.workAddresses.value = ConvertStringToShorterString(this.workAddresses.value, 0, 6);
       this.deadline = FormattedDate(this.deadline);
     }
   }
@@ -92,28 +85,26 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
   .avatar {
-    height: 50px;
+    height: 70px;
     width: 70px;
   }
 
   img {
     border: 2px solid $color-gray;
     border-radius: $br-5;
-    width: 100%;
     height: 100%;
+  }
+
+  .container {
+    margin-left: 10px;
+    width: 100%;
   }
 
   .position {
     color: $color-primary;
     font-weight: $fw-base-500;
-    line-height: 25px;
+    padding-bottom: 5px;
 
     a {
       display: block;
@@ -128,7 +119,7 @@
 
   .company {
     opacity: 0.8;
-    line-height: 25px;
+    padding-bottom: 3px;
     text-transform: lowercase;
     display: flex;
     align-items: center;
@@ -145,26 +136,23 @@
     }
   }
 
-  .salary,
-  .work-addresses {
-    font-size: 14px;
+  .items {
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
     line-height: 25px;
-  }
 
-  .salary {
-    color: $color-pink;
-  }
+    .salary,
+    .work-addresses {
+      color: $color-pink;
+    }
 
-  .work-addresses {
-    opacity: 0.8;
-  }
+    .deadline {
+      opacity: 0.8;
 
-  .deadline {
-    line-height: 25px;
-    font-size: $fs-small-14;
-    opacity: 0.8;
-    &:hover {
-      opacity: 1;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -176,7 +164,6 @@
     text-align: left;
     height: 15px;
   }
-
-
 </style>
+
 

@@ -1,31 +1,55 @@
 <template>
-  <el-row class="box-container">
+  <el-row class="box-container" style="overflow: hidden">
     <h4 class="box-title">
       <font-awesome-icon :icon="['fas', 'briefcase']"/>
       {{jobBoxTitle}}
     </h4>
-    <div id="scroll-box">
-      <el-row :gutter="10">
-        <el-col :span="12" v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
-          <attractive-job-card
-            :jobInfo="jobList[0]"
-          />
-        </el-col>
-      </el-row>
-    </div>
+
+    <scroll-bar class="job-box">
+        <el-row :gutter="10">
+          <el-col
+            :span="12"
+            v-for="(item, index) in jobs"
+            :key="index"
+            class="mg-bottom-10"
+          >
+            <attractive-job-card
+              :jobInfo="item"
+            />
+          </el-col>
+        </el-row>
+    </scroll-bar>
+
   </el-row>
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryJobCard8';
+  import AttractiveJobCard from '~/components/public-components/cards/PinkWorkAddressSalaryJobCard8';
+  import ScrollBar from '~/components/public-components/bars/ScrollBar';
+  import {mapActions, mapState} from 'vuex';
 
   export default {
     components: {
-      AttractiveJobCard
+      AttractiveJobCard,
+      ScrollBar
     },
     props: {
       jobBoxTitle: String,
-      jobList: Array
+    },
+
+    computed: {
+      ...mapState('HOME_PAGE', {
+        jobs: 'attractiveJobs'
+      })
+    },
+
+    methods: {
+      ...mapActions('HOME_PAGE', {
+        fetchAttractiveJobs: 'fetchAttractiveJobs'
+      })
+    },
+    created() {
+      this.fetchAttractiveJobs();
     }
   }
 </script>
@@ -33,33 +57,8 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  #scroll-box {
-    overflow: auto;
-    height: 664px;
-    padding: 10px;
+  .job-box {
+    height: 658px;
   }
-
-  /* width */
-  #scroll-box::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  /* Track */
-  #scroll-box::-webkit-scrollbar-track:hover {
-    background: $color-gray;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Handle */
-  #scroll-box::-webkit-scrollbar-thumb {
-    background: $color-scroll-bar;
-    border-radius: 8px;
-  }
-
-  /* Handle on hover */
-  #scroll-box::-webkit-scrollbar-thumb:hover {
-    background: $color-scroll-bar--hover;
-  }
-
 </style>
 

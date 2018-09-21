@@ -7,7 +7,7 @@
       <breadcrumb :breadcrumbArr="breadcrumb.breadcrumbArr" :title="breadcrumb.title" class="mg-top-15"/>
 
       <quick-job-box
-        jobBoxTitle="Tuyển dụng nhanh"
+        :jobBoxTitle="'Tuyển dụng nhanh ' + searchingContent"
         class="mg-top-15"
       />
 
@@ -67,6 +67,7 @@
 
 
   export default {
+    name: '_industry',
     components: {
       NavBar,
       AdvancedSearch,
@@ -101,7 +102,8 @@
       ...mapState({
         breadcrumb: 'breadcrumb',
         searchingContent: 'searchingContent'
-      })
+      }),
+
     },
     methods: {
       ...mapActions({
@@ -109,24 +111,38 @@
         updateCurrentRouteName: 'updateCurrentRouteName'
       }),
     },
-
     created() {
-      console.log(this.$route.name);
+      console.log("Created", this.$route.name);
       const currentRouteName = this.$route.name;
-      const breadCrumbObject = {
-        breadcrumbArr: [
-          {
-            name: 'Trang chủ',
-            url: '/'
-          }
-        ],
-        title: 'Tuyển dụng'
-      };
-
-      this.updateBreadcrumb(breadCrumbObject);
+      const breadcrumb = this.searchingContent ? {
+          breadcrumbArr: [
+            {
+              name: 'Trang chủ',
+              url: '/'
+            },
+            {
+              name: 'Tuyển dụng',
+              url: '/tuyen-dung'
+            }
+          ],
+          title: this.searchingContent
+        }
+        :
+        {
+          breadcrumbArr: [
+            {
+              name: 'Trang chủ',
+              url: '/'
+            }
+          ],
+          title: 'Tuyển dụng'
+        };
+      this.updateBreadcrumb(breadcrumb);
       this.updateCurrentRouteName(currentRouteName);
-
+      this.title = 'Việc làm ' + this.searchingContent;
     }
+
+
   }
 </script>
 

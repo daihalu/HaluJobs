@@ -42,7 +42,7 @@
     <el-col :span="8">
       <div class="box-container">
         <div ref="header">
-          <p class="box-title"><span>10</span> công việc cho bạn</p>
+          <p class="box-title">Có <span>{{total}}</span> công việc dành cho bạn</p>
 
           <div class="selection-container">
             <selection-box
@@ -118,6 +118,7 @@
 
       return {
         title: 'Bản đồ công việc',
+        total: 0,
         center: {lat: 45.508, lng: -73.587},
         user: {},
         userLocationMarker: {
@@ -135,6 +136,7 @@
           border: '5px'
         },
         jobList: [],
+        jobList1: [],
         jobOptions: jobs,
         desiredSalaryOptions: desiredSalaries,
         radiusOptions: [
@@ -213,6 +215,8 @@
 
       handleOnSelectSalaryOptions(value) {
         this.salarySelection = value;
+        // this.jobList1 = this.jobList.filter(job => job.salary.range === value);
+        // console.log(this.jobList1);
         this.getJobs(this.user.position, this.radiusSelection || 10, this.salarySelection, this.industrySelection);
       },
 
@@ -222,7 +226,7 @@
       },
 
       handleOnDrag: _.debounce(function () {
-        console.log("Drag!");
+        console.log("Drag ended!");
 
         const centerCoordinates = {
           lat: this.$refs.haluMap.$mapObject.getCenter().lat(),
@@ -236,7 +240,6 @@
       }, 200),
 
       handleOnchangeZoomSize: _.debounce(function () {
-
         const zoomSize = this.$refs.haluMap.$mapObject.zoom;
         let radius = null;
 
@@ -265,7 +268,6 @@
         }
 
         console.log("change zoom size");
-
         this.getJobs(this.user.position, radius, this.salarySelection, this.industrySelection);
       }, 200),
 
@@ -274,6 +276,7 @@
         this.$axios.$get(url)
           .then(res => {
             console.log(res);
+            this.total = res._total;
             this.jobList = res.jobs.map(job => {
               return {...job, showJobInfo: false}
             });

@@ -31,7 +31,7 @@
         <!--</p>-->
         <p class="item location" :title="workAddressTitle">
           <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
-          <span> {{workAddress}}</span>
+          <span> {{workAddresses}}</span>
 
         </p>
       </div>
@@ -52,7 +52,7 @@
         closingDate: '',
         jobTitle: this.jobInfo.title,
         companyName: this.jobInfo.employer.name,
-        workAddress: this.jobInfo.locations.join(', '),
+        workAddresses: this.jobInfo.locations.join(', '),
         workAddressTitle: this.jobInfo.employer.address,
         salary: this.jobInfo.salary.range
       }

@@ -1,37 +1,35 @@
 <template>
   <div class="card">
     <div class="avatar">
-      <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.companyName">
-        <img :src="jobInfo.logoUrl"/>
+      <nuxt-link :to="jobUrl + jobId" :title="companyName.title">
+        <img :src="logoUrl"/>
       </nuxt-link>
     </div>
 
     <div class="container">
-      <el-tooltip class="item" effect="dark" :content="jobInfo.jobTitle" placement="top-start">
+      <el-tooltip effect="dark" :content="jobTitle.title" placement="top-start">
         <p class="position">
-          <nuxt-link :to="jobInfo.jobUrl" :title="jobInfo.jobTitle">
-            {{jobTitle}}
+          <nuxt-link :to="jobUrl + jobId">
+            {{jobTitle.value}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
-      <p class="company" :title="jobInfo.companyName">
+      <p class="company" :title="companyName.title">
         <font-awesome-icon :icon="['far', 'building']"/>
-        {{companyName}}
+        <span>{{companyName.value}}</span>
       </p>
 
-      <div class="item">
-        <p class="salary" :title="jobInfo.salary">
+      <div class="items">
+        <p class="salary" :title="salary">
           <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
-          {{jobInfo.salary}}
+          <span>{{salary}}</span>
         </p>
 
-        <p class="deadline" :title="jobInfo.deadline">
+        <p class="deadline" :title="deadline">
           <font-awesome-icon :icon="['fas', 'user-clock']"/>
-          {{jobInfo.deadline}}
+          <span> {{deadline}}</span>
         </p>
-
-        <p class="card-status" v-if="seenCard">Đã xem</p>
       </div>
 
     </div>
@@ -39,22 +37,33 @@
 </template>
 
 <script>
-  import {ConvertStringToShorterString} from '~/assets/js/functions';
+  import {ConvertStringToShorterString, FormattedDate, ConvertToSentenceCase} from '~/assets/js/functions';
 
   export default {
     props: {
-      jobInfo: Object
+      jobInfo: Object,
     },
     data() {
       return {
-        seenCard: this.jobInfo.seen,
-        jobTitle: this.jobInfo.jobTitle,
-        companyName: this.jobInfo.companyName
+        logoUrl: this.jobInfo.logoUrl,
+        jobUrl: this.jobInfo.jobUrl,
+        jobId: this.jobInfo._jobId,
+        jobTitle: {
+          title: this.jobInfo.jobTitle,
+          value: this.jobInfo.jobTitle
+        },
+        companyName: {
+          title: this.jobInfo.companyName,
+          value: this.jobInfo.companyName
+        },
+        salary: this.jobInfo.salary.min + ' triệu - ' + this.jobInfo.salary.max + ' triệu',
+        deadline: this.jobInfo.deadline
       }
     },
     created() {
-      this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 30);
-      this.companyName = ConvertStringToShorterString(this.companyName, 0, 28);
+      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 33);
+      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 32);
+      this.deadline = FormattedDate(this.deadline);
     }
   }
 </script>
@@ -82,50 +91,63 @@
     color: $color-primary;
     font-weight: $fw-base-500;
     padding-bottom: 5px;
+
+    a {
+      display: block;
+      text-transform: lowercase;
+      padding-left: 4px;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
   }
 
   .company {
     opacity: 0.8;
     padding-bottom: 3px;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+
+    span {
+      display: inline-block;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
-  .company:hover {
-    opacity: 1;
-  }
-
-  .deadline,
-  .salary {
+  .items {
     font-size: $fs-small-14;
+    display: flex;
+    justify-content: space-between;
     line-height: 25px;
-    display: inline;
-  }
 
-  .salary {
-    color: $color-pink;
-  }
+    .salary,
+    .work-addresses {
+      color: $color-pink;
+    }
 
-  .deadline {
+    .deadline {
+      opacity: 0.8;
 
-    opacity: 0.8;
-  }
-
-  .deadline:hover {
-    opacity: 1;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   svg {
     font-size: 14px;
     opacity: 0.7;
+    display: inline-block;
+    width: 20px !important;
+    text-align: left;
+    height: 15px;
   }
-
-  .card-status {
-    height: 100%;
-  }
-
-  .item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
 </style>

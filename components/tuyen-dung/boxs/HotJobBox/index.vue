@@ -4,11 +4,16 @@
       <font-awesome-icon icon="briefcase"/>
       {{jobBoxTitle}}
     </h4>
+
     <div class="scroll-box" id="scroll-box">
       <el-row :gutter="4">
-        <el-col v-for="item in 50" v-bind:key="item" class="mg-bottom-10">
-          <hot-job-card
-            :jobInfo="jobList[0]"
+        <el-col
+          v-for="(item, index) in jobs"
+          :key="index"
+          class="mg-bottom-10"
+        >
+          <high-salary-job-card
+            :jobInfo="item"
           />
         </el-col>
       </el-row>
@@ -17,15 +22,29 @@
 </template>
 
 <script>
-  import HotJobCard from '~/components/public-components/cards/PinkSalaryJobCard16';
+  import HighSalaryJobCard from '~/components/public-components/cards/PinkSalaryJobCard16';
+  import {mapActions, mapState} from 'vuex';
 
   export default {
     components: {
-      HotJobCard
+      HighSalaryJobCard
     },
     props: {
       jobBoxTitle: String,
-      jobList: Array
+    },
+    computed: {
+      ...mapState('RECRUITMENT_PAGE', {
+        jobs: 'hotJobs'
+      })
+    },
+
+    methods: {
+      ...mapActions('RECRUITMENT_PAGE', {
+        fetchHotJobs: 'fetchHotJobs'
+      })
+    },
+    created() {
+      this.fetchHotJobs();
     }
   }
 </script>
@@ -35,15 +54,8 @@
 
   .scroll-box {
     overflow: auto;
-    height: 720px;
+    height: 745px;
     padding: 10px;
-  }
-
-  h4 {
-    border-bottom: 1px solid $color-border;
-    padding: 10px;
-    font-size: $fs-large-18;
-    font-weight: $fw-base-500;
   }
 
   /* width */

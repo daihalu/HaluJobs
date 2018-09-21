@@ -97,7 +97,7 @@
                 </el-col>
 
               </el-row>
-              <el-row :gutter="10">
+              <el-row :gutter="10" class="mg-top-10" style="margin-bottom: 5px">
 
                 <el-col :span="8">
                   <selection-box
@@ -216,6 +216,7 @@
       },
       handleOnSelectSalary(value) {
         this.searchData.salary = value;
+        console.log(value);
       },
       handleOnSelectWorkExperience(value) {
         this.searchData.workExperience = value;
@@ -326,6 +327,7 @@
   .job-input {
     padding-left: 0 !important;
   }
+
 
   .advances-search-fade-enter-active {
     transition: all .2s ease;
