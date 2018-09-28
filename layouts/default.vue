@@ -11,15 +11,15 @@
     </div>
 
     <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="dialogFacebookVisible">
-      <el-row class="box-container padding-15">
+      <el-row :gutter="10" class="box-container padding-15">
         <el-col :span="10" class="description">
           <p>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?</p>
-          <p>Hãy nhấn nút "Thích" bên dưới để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.</p>
+          <p>Hãy nhấn nút "Thích" để nhận thông tin cập nhật liên tục từ chúng tôi trên Facebook.</p>
         </el-col>
         <el-col :span="14" class="ta-center">
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=760&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
-            width="500"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhalujobs%2F&tabs=timeline&width=400&height=450&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"
+            width="400"
             height="350"
             style="border:none;overflow:hidden"
             scrolling="no"
@@ -142,6 +142,7 @@
 
   .main {
     margin-top: $mg-top-nav-bar-60;
+    min-height: 100vh;
   }
 
   .fixed-contact-box {

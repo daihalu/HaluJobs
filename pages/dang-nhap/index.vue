@@ -469,7 +469,8 @@
 
   .box {
     border: 1px solid transparent;
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: rgba(15, 33, 33, .4);
     padding: $padding-border-box-15;
   }
 
@@ -534,6 +535,7 @@
     color: #fff;
     -webkit-transition: background-color 0.3s, color 0.3s;
     transition: background-color 0.3s, color 0.3s;
+    transition: all 1s ease-in-out;
   }
 
   .button--wapasha::before {
@@ -585,6 +587,7 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
+    transition: all 1s ease-in-out;
 
     .active {
       border: 2px solid $color-white !important;
@@ -594,6 +597,7 @@
       color: $color-black;
       text-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
       transform: inherit;
+
     }
 
     .button {

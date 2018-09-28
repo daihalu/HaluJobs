@@ -47,7 +47,7 @@
     },
     data() {
       return {
-        backgroundUrl: require('~/assets/images/bg.jpg')
+        backgroundUrl: require('~/assets/images/rawpixel-645294-unsplash.jpg')
       }
     },
     methods: {
@@ -55,7 +55,7 @@
         this.showScrollButton = window.scrollY > 600;
       },
       scrollTop() {
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       }
     },
     beforeMount() {
@@ -92,7 +92,7 @@
 
   .background-dark-5 {
     background-color: #000a1e;
-    opacity: 0.3;
+    opacity: 0.1;
   }
 
   .footer-bar {

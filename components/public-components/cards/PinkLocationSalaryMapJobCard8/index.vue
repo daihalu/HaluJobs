@@ -54,7 +54,7 @@
         companyName: this.jobInfo.employer.name,
         workAddresses: this.jobInfo.locations.join(', '),
         workAddressTitle: this.jobInfo.employer.address,
-        salary: this.jobInfo.salary.range
+        salary: this.jobInfo.salary.label
       }
     },
     methods: {
@@ -67,7 +67,7 @@
       this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 35);
       this.companyName = ConvertStringToShorterString(this.companyName, 0, 33);
       this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 12);
-      this.closingDate = this.formattedDate(this.jobInfo.closing_date);
+      this.closingDate = this.formattedDate(this.jobInfo.deadline);
     }
   }
 </script>

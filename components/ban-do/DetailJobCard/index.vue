@@ -66,7 +66,7 @@
       // this.jobTitle = ConvertStringToShorterString(this.jobTitle, 0, 32);
       // this.companyName = ConvertStringToShorterString(this.companyName, 0, 33);
       // this.workAddress = ConvertStringToShorterString(this.workAddress, 0, 5);
-      this.closingDate = this.formattedDate(this.jobInfo.closing_date);
+      this.closingDate = this.formattedDate(this.jobInfo.deadline);
     }
   }
 </script>

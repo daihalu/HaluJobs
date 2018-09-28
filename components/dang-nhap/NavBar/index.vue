@@ -1,94 +1,78 @@
 <template>
-  <el-container>
-    <el-header>
-      <el-row>
-        <el-col :span="4">
+  <el-container class="container">
+    <el-header class="header">
+      <el-row class="nav-bar">
+        <el-col :span="4" class="nav-bar--logo">
           <nuxt-link to="/">
-            <div class="inline-logo">
-              <img src="https://halutech.com.vn/images/logo.png"/>
-            </div>
+            <img
+              src="https://halutech.com.vn/images/logo.png"
+              @click="handleOnClickNavBar('HOME_PAGE')"
+            />
           </nuxt-link>
+          <p></p>
         </el-col>
-        <el-col :span="20">
-          <el-menu class="" @select="handleSelect">
-            <nuxt-link to="/" class="menu-item">
-              <el-menu-item
-                index="1"
-                @click="activeMenuItem = 'homepage'"
-                :class="{active: activeMenuItem === 'homepage' }">
-                <font-awesome-icon icon="home"/>
-                <p>TRANG CHỦ</p>
-              </el-menu-item>
-            </nuxt-link>
+        <el-col :span="20" class="nav-bar--container">
+          <ul class="nav-menu">
+            <li
+              @click="handleOnClickNavBar('HOME_PAGE')"
+              :class="{active: activeMenuItem === 'HOME_PAGE'}"
+            >
+              <nuxt-link to="/" class="nav-item">
+                <font-awesome-icon :icon="['fas', 'home']"/>
+                <p>Trang chủ</p>
+              </nuxt-link>
+            </li>
 
+            <li
+              @click="handleOnClickNavBar('RECRUITMENT_PAGE')"
+              :class="{active: activeMenuItem === 'RECRUITMENT_PAGE'}"
+            >
+              <nuxt-link to="/tuyen-dung" class="nav-item">
+                <font-awesome-icon :icon="['fas', 'briefcase']"/>
+                <p>Tuyển dụng</p>
+              </nuxt-link>
+            </li>
 
-            <nuxt-link to="/tuyen-dung">
-              <el-menu-item
-                index="2" class="menu-item"
-                @click="activeMenuItem = 'timvieclam'"
-                :class="{active: activeMenuItem === 'timvieclam' }">
-                <font-awesome-icon icon="briefcase"/>
-                <p>TUYỂN DỤNG</p>
-              </el-menu-item>
-            </nuxt-link>
-
-            <nuxt-link to="/ung-vien">
-              <el-menu-item
-                index="3"
-                class="menu-item"
-                @click="activeMenuItem = 'timungvien'"
-                :class="{active: activeMenuItem === 'timungvien' }">
+            <li
+              @click="handleOnClickNavBar('CANDIDATE_PAGE')"
+              :class="{active: activeMenuItem === 'CANDIDATE_PAGE'}"
+            >
+              <nuxt-link to="/ung-vien" class="nav-item">
                 <font-awesome-icon :icon="['far', 'id-card']"/>
-                <p>ỨNG VIÊN</p>
-              </el-menu-item>
-            </nuxt-link>
+                <p>Ứng viên</p>
+              </nuxt-link>
+            </li>
 
-            <nuxt-link to="/cong-ty">
-              <el-menu-item
-                index="4"
-                class="menu-item"
-                @click="activeMenuItem = 'timcongty'"
-                :class="{active: activeMenuItem === 'timcongty' }">
+            <li
+              @click="handleOnClickNavBar('COMPANY_PAGE')"
+              :class="{active: activeMenuItem === 'COMPANY_PAGE'}"
+            >
+              <nuxt-link to="/cong-ty" class="nav-item">
                 <font-awesome-icon :icon="['far', 'building']"/>
-                <p>CÔNG TY</p>
-              </el-menu-item>
-            </nuxt-link>
+                <p>Công ty</p>
+              </nuxt-link>
+            </li>
 
-            <nuxt-link to="/bang-gia">
-              <el-menu-item
-                index="5"
-                class="menu-item"
-                @click="activeMenuItem = 'item5'"
-                :class="{active: activeMenuItem === 'item5' }">
-                <font-awesome-icon icon="file-invoice-dollar"/>
-                <p>BẢNG GIÁ</p>
-              </el-menu-item>
-            </nuxt-link>
+            <li
+              @click="handleOnClickNavBar('ACCOUNT_PAGE')"
+              :class="{active: activeMenuItem === 'ACCOUNT_PAGE'}"
+            >
+              <nuxt-link to="/tai-khoan" class="nav-item">
+                <font-awesome-icon :icon="['fas', 'user-tie']"/>
+                <p>Tài khoản</p>
+              </nuxt-link>
+            </li>
 
-            <nuxt-link to="/tai-khoan">
-              <el-menu-item
-                index="6"
-                class="menu-item"
-                @click="activeMenuItem = 'item6'"
-                :class="{active: activeMenuItem === 'item6' }">
-                <font-awesome-icon icon="user-tie"/>
-                <p>TÀI KHOẢN</p>
-              </el-menu-item>
-            </nuxt-link>
-
-            <nuxt-link to="/toan-quoc">
-              <el-menu-item
-                index="7"
-                class="menu-item"
-                @click="activeMenuItem = 'item7'"
-                :class="{active: activeMenuItem === 'item7' }">
-                <font-awesome-icon icon="map-marker-alt"/>
-                <p class="over-country-p">TOÀN QUỐC</p>
-                <!--<i class="fas fa-chevron-down"></i>-->
-
-              </el-menu-item>
-            </nuxt-link>
-          </el-menu>
+            <li
+              @click="handleOnClickNavBar('WHOLE_COUNTRY_PAGE')"
+              :class="{active: activeMenuItem === 'WHOLE_COUNTRY_PAGE'}"
+            >
+              <nuxt-link to="/toan-quoc" class="nav-item">
+                <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
+                <p>Toàn quốc</p>
+              </nuxt-link>
+            </li>
+          </ul>
         </el-col>
       </el-row>
     </el-header>
@@ -97,17 +81,25 @@
 </template>
 
 <script>
+  import {mapState, mapGetters, mapActions} from 'vuex';
 
   export default {
-    data() {
-      return {
-        activeIndex: '1',
-        activeMenuItem: 'homepage'
-      }
+    props: {
+      activeMenuItem: String
+    },
+    computed: {
+      ...mapGetters({
+        searchingContent: 'searchingContent'
+      })
     },
     methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+      ...mapActions({
+        updateNavBarStatus: 'updateNavBarStatus',
+        updateSearchingContent: 'updateSearchingContent'
+      }),
+      handleOnClickNavBar(status) {
+        this.updateNavBarStatus(status);
+        this.updateSearchingContent('');
       }
     }
   }
@@ -116,84 +108,86 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  $color-bg: rgba(0, 0, 0, 0.5);
-
-  .el-container {
-    background-color: $color-bg;
+  .container {
+    background-color: rgba(15, 33, 33, .4);
     position: fixed;
     z-index: $index-top-1000;
     width: 100%;
+    height: 65px;
     top: 0;
     font-size: 20px;
     font-weight: $fw-small-400;
   }
 
-  .el-header {
+  .header {
     width: 90%;
     margin: 0 auto;
     padding: 0;
     height: 100% !important;
   }
 
-  .el-menu {
+  .nav-bar {
+    height: 100%;
+  }
+
+  .nav-bar--container {
+    height: 100%;
+
+    ul {
+      list-style: none;
+    }
+  }
+
+  .nav-menu {
     display: flex;
-    background-color: inherit;
-    border: none;
+    height: 100%;
     float: right;
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      padding: 10px 15px;
+      transition: all 0.2s ease-in-out;
+      color: $color-white;
+
+      svg {
+        font-size: 17px;
+      }
+
+      p {
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      &:hover {
+        border-bottom: 3px solid rgba(255, 255, 255, 1);
+      }
+    }
+
   }
 
-  .el-menu-item {
+  .nav-bar--logo {
+    height: 100%;
     display: flex;
-    padding-top: 10px;
-    justify-content: space-around;
-    color: $color-white;
+    align-items: center;
+
+    a {
+      display: inline-block;
+      height: 80%;
+      line-height: 80%;
+
+      img {
+        height: 100%;
+      }
+    }
   }
 
-  svg {
-    position: absolute;
-  }
-
-  p {
-    display: inline;
-  }
-
-  .inline-logo {
-
-  }
-
-  .inline-logo img {
-    margin-top: 5px;
-    height: 45px;
-    vertical-align: middle;
-  }
-
-  .el-menu-item:hover {
-    background-color: inherit;
-    border-bottom: 2px solid $color-white;
-    transition: all 0.1s linear;
-  }
-
-
-  a {
-    color: $color-white;
-    font-weight: $fw-small-400;
-  }
-
-  a:hover {
-    color: $color-white;
-  }
-
-  a:active {
-    cursor: pointer;
-    color: $color-white;
+  .active {
+    background-color: $color-secondary;
   }
 
 </style>
 
-<style lang="scss" scoped>
-
-  ul {
-    list-style-type: none;
-  }
-
-</style>

@@ -92,6 +92,7 @@
   import AttractiveJobCard from '~/components/public-components/cards/PinkLocationSalaryMapJobCard8';
   import SelectionBox from '~/components/public-components/boxs/SelectionBox';
   import DetailJobCard from '~/components/ban-do/DetailJobCard';
+  import axios from 'axios';
 
   import {JobOption} from '~/assets/js/data-options';
 
@@ -136,7 +137,6 @@
           border: '5px'
         },
         jobList: [],
-        jobList1: [],
         jobOptions: jobs,
         desiredSalaryOptions: desiredSalaries,
         radiusOptions: [
@@ -157,6 +157,7 @@
       }
     },
     mounted() {
+      console.log('Mounted');
       this.getCurrentUserCoordinate();
 
       this.jobBoxHeight = window.innerHeight - this.$refs.header.clientHeight - 10;
@@ -234,22 +235,24 @@
         };
         this.center = centerCoordinates;
 
-        console.log(centerCoordinates);
+        console.log('Center coords', centerCoordinates);
 
         this.getJobs(centerCoordinates, this.radiusSelection || 10, this.salarySelection, this.industrySelection);
       }, 200),
 
       handleOnchangeZoomSize: _.debounce(function () {
         const zoomSize = this.$refs.haluMap.$mapObject.zoom;
-        let radius = null;
+        let radius = this.mapZoomSize;
 
-        if (zoomSize >= this.mapZoomSize) {
+        if (zoomSize >= this.mapZoomSize || zoomSize <= 5) {
           return;
         } else {
-          if (zoomSize === 11) {
+          if (zoomSize === 12) {
             //20
             radius = this.radiusSelection ? this.radiusSelection : 20;
-
+          } else if (zoomSize === 11) {
+            //40
+            radius = this.radiusSelection ? this.radiusSelection : 40;
           } else if (zoomSize === 10) {
             //50
             radius = this.radiusSelection ? this.radiusSelection : 50;
@@ -260,27 +263,28 @@
             //500
             radius = this.radiusSelection ? this.radiusSelection : 500;
           } else if (zoomSize === 7) {
-            //500
+            //800
             radius = this.radiusSelection ? this.radiusSelection : 800;
-          } else {
-            radius = this.radiusSelection ? this.radiusSelection : 3000;
+          } else if (zoomSize === 6) {
+            radius = this.radiusSelection ? this.radiusSelection : 1000;
           }
+          console.log("change zoom size", radius, zoomSize);
+          this.getJobs(this.user.position, radius, this.salarySelection, this.industrySelection);
         }
-
-        console.log("change zoom size");
-        this.getJobs(this.user.position, radius, this.salarySelection, this.industrySelection);
       }, 200),
 
       getJobs(coordinates, radius, salary, industry) {
+        console.log("Get job");
+        this.jobList = [];
         const url = `/api/jobs?coords=${coordinates.lat},${coordinates.lng}&radius=${radius}&salary=${salary}&industry=${industry}`;
-        this.$axios.$get(url)
+        const url1 = `/jobs/_map?coords=${coordinates.lat},${coordinates.lng}&radius=${radius}&salary=${salary}&industry=${industry}`;
+        this.$axios.$get(url1)
           .then(res => {
-            console.log(res);
             this.total = res._total;
             this.jobList = res.jobs.map(job => {
               return {...job, showJobInfo: false}
             });
-            console.log(this.jobList)
+            console.log('Joblist at getJobs', this.jobList)
           })
       },
 
