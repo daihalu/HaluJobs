@@ -16,7 +16,7 @@
         class="mg-top-15"
       />
 
-      <banner class="mg-top-15"/>
+      <!--<banner class="mg-top-15"/>-->
 
       <job-cover
         :title="job.jobInfo.title"

@@ -12,7 +12,7 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 /* Colors
 -------------------------- */
 $--color-white: #fff !default;
-$--color-black: #000 !default;
+$--color-black: #222222 !default;
 
 $--color-primary: $color-primary !default;
 $--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
@@ -64,7 +64,7 @@ $--border-color-lighter: #ebeef5 !default;
 $--border-color-extra-light: #f2f6fc !default;
 $--border-color-hover: $--color-text-placeholder !default;
 $--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
-$--border-radius-base: 4px !default;
+$--border-radius-base: 2px !default;
 $--border-radius-small: 2px !default;
 $--border-radius-circle: 100% !default;
 
@@ -314,7 +314,7 @@ $--notification-danger-color: $--color-danger !default;
 /* Input
 -------------------------- */
 $--input-font-size: $--font-size-base !default;
-$--input-color: $--color-text-regular !default;
+$--input-color: $--color-text-primary !default;
 $--input-width: 140px !default;
 $--input-height: 40px !default;
 $--input-border: $--border-base !default;

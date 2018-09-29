@@ -66,8 +66,8 @@
           value: this.jobInfo.companyName
         },
         workAddresses: {
-          title: this.jobInfo.workAddresses.join(', '),
-          value: this.jobInfo.workAddresses.join(', ')
+          title: this.jobInfo.workAddresses,
+          value: this.jobInfo.workAddresses
         },
         salary: this.jobInfo.salary.min + ' - ' + this.jobInfo.salary.max + ' triệu',
         deadline: this.jobInfo.deadline

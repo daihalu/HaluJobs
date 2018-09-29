@@ -91,7 +91,7 @@
   }
 
   .background-dark-5 {
-    background-color: #000a1e;
+    /*background-color: #000a1e;*/
     opacity: 0.1;
   }
 

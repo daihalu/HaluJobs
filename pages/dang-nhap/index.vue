@@ -533,9 +533,19 @@
     background: transparent;
     border-radius: 0 !important;
     color: #fff;
-    -webkit-transition: background-color 0.3s, color 0.3s;
-    transition: background-color 0.3s, color 0.3s;
-    transition: all 1s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out, background-color 0.3s, color 0.3s;
+    transition: all 0.3s ease-in-out, background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: transparent;
+      color: #ffffff;
+      border: none;
+    }
+
+    &:focus {
+      border: 1px solid $color-white;
+      outline: none;
+    }
   }
 
   .button--wapasha::before {
@@ -557,13 +567,6 @@
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   }
 
-  .button--wapasha:hover {
-    background-color: transparent;
-
-    color: #ffffff;
-    border: none;
-  }
-
   .button--wapasha:hover::before {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
@@ -576,11 +579,6 @@
     border: 1px solid $color-white;
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     transition: transform 0.3s, opacity 0.3s;
-  }
-
-  .button--wapasha:focus {
-    border: 1px solid $color-white;
-    outline: none;
   }
 
   .btn-after {

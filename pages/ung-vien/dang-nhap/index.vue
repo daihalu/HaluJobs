@@ -1,6 +1,6 @@
 <template>
-  <div class="sign-in-container">
-    <el-row :gutter="10">
+  <div class="wrapper">
+    <el-row :gutter="10" class="">
       <el-col :span="16">
         <div class="box-left">
           <h2>Đăng nhập ứng viên</h2>
@@ -26,58 +26,93 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <div class="sign-in-form">
+        <div class="box-right box-container">
           <h3>
             <font-awesome-icon icon="user-tie"/>
-            Ứng viên đăng nhập
+            Đăng nhập ứng viên
           </h3>
-          <el-form :model="signInForm" :rules="rules" ref="signInForm" label-width="120px" label-position="top" class="demo-dynamic">
-            <div class="account-info">
+          <el-form :model="signInForm" :rules="rules" ref="signInForm" label-width="120px" label-position="top"
+                   class="demo-dynamic">
+            <div class="login-inputs">
               <el-form-item
-                prop="email"
-                label="Nhập email">
+                prop="phoneNumber"
+
+              >
                 <div class="form-input">
-                  <font-awesome-icon :icon="['far', 'envelope']" class="icon"/>
-                  <el-input type="email" v-model="signInForm.email" auto-complete="off" prefix-icon="el-icon-dai"
-                            placeHolder="Vui lòng nhập email"></el-input>
+                  <font-awesome-icon :icon="['fas', 'phone']" class="icon"/>
+                  <el-input
+                    v-model="signInForm.phoneNumber"
+                    auto-complete="off"
+                    prefix-icon="el-icon-dai"
+                    placeHolder="Vui lòng nhập số điện thoại"
+                  >
+                  </el-input>
                 </div>
               </el-form-item>
 
               <el-form-item
                 prop="password"
-                label="Nhập mật khẩu">
+              >
                 <div class="form-input">
                   <font-awesome-icon icon="lock" class="icon"/>
                   <el-input type="password" v-model="signInForm.password" auto-complete="off" prefix-icon="el-icon-dai"
                             placeHolder="Vui lòng nhập mật khẩu"></el-input>
                 </div>
               </el-form-item>
+
+              <div class="forgot-password">
+                <span @click="handleOnOpenForgotPasswordDialog">Quên mật khẩu?</span>
+              </div>
+            </div>
+
+            <el-button class="btn" @click="submitForm('signInForm')">Đăng nhập</el-button>
+
+          </el-form>
+          <div class="svo-sign-in">
+            <div class="text-or">
+              Hoặc
             </div>
             <div>
-              <el-button type="primary" @click="submitForm('signInForm')">Đăng nhập</el-button>
+              <el-button class="btn">Đăng nhập qua SVOnline</el-button>
             </div>
-
-            <div class="svo-sign-in">
-              <div class="text-or">
-                <hr>
-                <p>Hoặc</p>
-
-              </div>
-              <div>
-                <el-button type="primary">Đăng nhập qua SVOnline</el-button>
-              </div>
-              <div>
-                <p>Bạn chưa có tài khoản <nuxt-link to="/ung-vien/dang-ky">Đăng ký</nuxt-link></p>
-              </div>
+            <div>
+              <p>Bạn chưa có tài khoản
+                <nuxt-link to="/ung-vien/dang-ky" class="sign-up">Đăng ký</nuxt-link>
+              </p>
             </div>
-          </el-form>
+          </div>
         </div>
       </el-col>
     </el-row>
+
+    <el-dialog title="Khôi phục mật khẩu" :visible.sync="dialogRecoveryPassword">
+      <div>
+        <h3>Nhập số điện thoại hoặc email để nhận mật khẩu mới.</h3>
+        <el-input
+          v-model="inputOfRecoveryPasswordDialog"
+          placeholder="Vui lòng nhập số điện thoại hoặc email"
+          autofocus="true"
+          class="mg-top-15"
+        >
+        </el-input>
+        <div v-if="showAlert" class="alert mg-top-15">Vui lòng nhập chính xác số điện thoại hoặc email</div>
+        <div class="ta-center">
+          <el-button
+            @click="handleOnSubmitRecoveryPassword"
+            :loading="isLoading"
+            class="mg-top-15"
+          >
+            Khôi phục mật khẩu
+          </el-button>
+        </div>
+
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+  import {Vld} from '~/assets/js/functions';
 
   export default {
     head() {
@@ -90,13 +125,17 @@
       return {
         title: 'Đăng nhập ứng viên',
         signInForm: {
-          email: '',
+          phoneNumber: '',
           password: '',
         },
+        inputOfRecoveryPasswordDialog: '',
+        showAlert: false,
+        dialogRecoveryPassword: false,
+        isLoading: false,
+        isAnAccount: true,
         rules: {
-          email: [
-            {required: true, message: 'Vui lòng nhập email', trigger: 'blur'},
-            {type: 'email', message: 'Email không đúng định dạng', trigger: ['blur', 'change']}
+          phoneNumber: [
+            {required: true, message: 'Vui lòng nhập lại số điện thoại', trigger: 'blur'},
           ],
           password: [
             {required: true, min: 6, message: 'Độ  dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
@@ -114,6 +153,45 @@
             return false;
           }
         });
+      },
+
+      handleOnOpenForgotPasswordDialog() {
+        this.dialogRecoveryPassword = true;
+      },
+
+      handleOnSubmitRecoveryPassword() {
+        if (Vld.isMobile(this.inputOfRecoveryPasswordDialog) || Vld.isEmail(this.inputOfRecoveryPasswordDialog)) {
+          this.showAlert = false;
+          this.isLoading = true;
+          setTimeout(() => {
+            this.isLoading = false;
+            if (this.isAnAccount) {
+              this.success(`Mật khẩu mới đã được gửi tới ${this.inputOfRecoveryPasswordDialog}. Quý khách vui lòng kiểm tra.`);
+              this.dialogRecoveryPassword = false;
+              this.inputOfRecoveryPasswordDialog = '';
+            } else {
+              this.error('Tài khoản không tồn tại trên hệ thống!');
+            }
+          }, 2000);
+        } else {
+          this.showAlert = true;
+        }
+      },
+
+      success(status) {
+        this.$notify({
+          title: 'Thông báo',
+          message: status,
+          type: 'success'
+        });
+      },
+
+      error(status) {
+        this.$notify({
+          title: 'Thông báo',
+          message: status,
+          type: 'warning'
+        });
       }
     }
   }
@@ -123,46 +201,53 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .sign-in-container {
+  .wrapper {
     width: $page-width;
-    margin: 15vh auto !important;
+    margin: 0 auto !important;
   }
 
   .box-left {
     color: $color-white;
-    margin-top: 10vh;
+    margin-top: 20vh;
+    h2 {
+      font-size: 45px;
+      font-weight: 500;
+      line-height: 60px;
+    }
+
+    p {
+      line-height: 40px;
+      font-size: $fs-large-18;
+      display: flex;
+      align-items: center;
+
+      svg {
+        font-size: 25px;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        padding: 5px;
+        margin-right: 5px;
+      }
+    }
   }
 
-  .box-left h2 {
-    font-size: 45px;
-    font-weight: 500;
-    line-height: 60px;
-  }
-
-  .box-left p {
-    line-height: 40px;
-    font-size: $fs-large-18;
-    display: flex;
-    align-items: center;
-  }
-
-  .box-left p svg {
-    font-size: 25px;
-    border: 1px solid $color-white;
-    border-radius: 50%;
-    padding: 5px;
-    margin-right: 5px;
-  }
-
-  .sign-in-form {
-    border: 1px solid $color-border;
-    border-radius: $br-5;
-    background-color: $color-white;
+  .box-right {
     padding: $padding-border-box-15;
-    margin-top: 50px;
+    margin-top: 20vh;
+
+    h3 {
+      color: #48576a;
+      display: flex;
+      align-items: center;
+      margin-left: 5px;
+
+      svg {
+        margin-right: 5px;
+      }
+    }
   }
 
-  .account-info {
+  .login-inputs {
     margin: 10px auto;
     border: 1px solid $color-border;
     border-radius: 3px;
@@ -170,23 +255,25 @@
     padding: $padding-border-box-10;
   }
 
-
-  .el-button {
+  .btn {
     background-color: $color-primary;
+    border: 1px solid $color-primary;
     color: $color-white;
-    font-weight: $fw-big-700;
+    font-weight: 600;
     margin: 5px 0;
     width: 100%;
-  }
+    border-radius: 2px;
 
-  .el-button:hover {
-    background-color: $color-secondary;
-    box-shadow: 0 0 5px $color-secondary;
-  }
-  .el-button:active {
-    box-shadow: 0 0 0 transparent;
-    background-color: $color-primary;
-    transition: none;
+    &:hover {
+      box-shadow: 0 0 3px $color-primary;
+      background-color: #009688;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 transparent;
+      background-color: $color-primary;
+      transition: none;
+    }
   }
 
   a:hover {
@@ -198,55 +285,67 @@
   }
 
   .text-or {
-    margin: 10px auto;
     display: flex;
-    position: relative;
-    align-items: center;
-    opacity: 0.5;
-  }
-
-  .text-or p {
-    font-weight: $fw-big-700;
-    margin: 0 auto;
-    z-index: 3;
-    background-color: $color-white;
-  }
-
-  .text-or hr {
-    position: absolute;
-    background-color: $color-black;
     width: 100%;
-    bottom: 8px;
+    align-items: center;
+    margin: 15px auto;
+
+    &::after,
+    &::before {
+      content: "";
+      background: gray;
+      height: 0.1em;
+      margin: .3em;
+      flex: 1;
+    }
   }
 
   .form-input {
     position: relative;
+    .icon {
+      display: inline-block;
+      width: 17px;
+      color: $color-icon;
+      position: absolute;
+      top: 10px;
+      font-size: $fs-large-18;
+      z-index: 3;
+      left: 10px;
+    }
   }
 
-  .icon {
-    color: $color-icon;
-    position: absolute;
-    top: 10px;
-    font-size: $fs-large-18;
-    z-index: 3;
-    left: 10px;
-  }
-
-  .forgot-pass {
+  .forgot-password {
     color: $color-primary;
+    text-align: right;
+
+    span {
+      font-weight: 500;
+      &:hover {
+        color: $color-secondary;
+        cursor: pointer;
+      }
+
+      &:active {
+        color: $color-primary;
+      }
+    }
   }
 
-  .forgot-pass div:hover {
-    color: $color-secondary;
-  }
-
-  .forgot-pass div:active {
+  .sign-up {
     color: $color-primary;
-  }
+    font-weight: 500;
 
-  .sign-up-navigation a {
-    float: right;
+    &:hover {
+      color: $color-secondary;
+    }
   }
+</style>
 
+<style lang="scss" scoped>
+  @import "~assets/css/halujobs_variables";
+
+  .alert {
+    color: $color-pink;
+  }
 
 </style>

@@ -26,8 +26,8 @@
       </div>
 
     </div>
-    <nuxt/>
-    <Footer class="footer"/>
+    <nuxt class="main"/>
+    <Footer/>
   </div>
 </template>
 
@@ -70,6 +70,11 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
+  .main {
+    margin-top: $mg-top-nav-bar-60;
+    min-height: 100vh;
+  }
+
   .overlay-container {
     height: 100%;
   }
@@ -93,11 +98,6 @@
     opacity: 0.3;
   }
 
-  .footer {
-    position: absolute;
-    z-index: 2;
-    top: 100vh;
-  }
 
 
 </style>

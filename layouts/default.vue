@@ -31,6 +31,7 @@
         </el-col>
       </el-row>
     </el-dialog>
+
     <el-dialog :visible.sync="dialogPhoneVisible">
       <el-row class="box-container hot-line-container">
         <div class="header">
@@ -90,6 +91,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import NavBar from '~/components/public-components/bars/NavBar';
   import Footer from '~/components/public-components/bars/Footer';
