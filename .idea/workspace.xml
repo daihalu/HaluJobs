@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5aee19c-31e4-4fb1-8b85-086668c70233" name="Default" comment="&quot;Development&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/element-variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/element-variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/public-components/cards/PinkWorkAddressSalaryJobCard8/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/cards/PinkWorkAddressSalaryJobCard8/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/candidate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/candidate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/dang-nhap/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/dang-nhap/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/tuyen-dung/viec-lam/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tuyen-dung/viec-lam/_id.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -214,7 +207,7 @@
           <entry key="js" value="3576" />
           <entry key="json" value="13" />
           <entry key="scss" value="18" />
-          <entry key="vue" value="15563" />
+          <entry key="vue" value="17860" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -222,11 +215,11 @@
           <entry key="gitignore" value="1" />
           <entry key="html" value="4" />
           <entry key="jpg" value="3" />
-          <entry key="js" value="79" />
+          <entry key="js" value="80" />
           <entry key="json" value="13" />
           <entry key="png" value="1" />
           <entry key="scss" value="14" />
-          <entry key="vue" value="182" />
+          <entry key="vue" value="185" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -235,7 +228,7 @@
           <entry key="JavaScript" value="3576" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SCSS" value="18" />
-          <entry key="Vue.js" value="15563" />
+          <entry key="Vue.js" value="17860" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -243,10 +236,10 @@
           <entry key="HTML" value="4" />
           <entry key="Image" value="4" />
           <entry key="JSON" value="13" />
-          <entry key="JavaScript" value="79" />
+          <entry key="JavaScript" value="80" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SCSS" value="14" />
-          <entry key="Vue.js" value="182" />
+          <entry key="Vue.js" value="185" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -279,26 +272,46 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="335" column="21" selection-start-line="335" selection-start-column="21" selection-end-line="335" selection-end-column="21" />
+            <state relative-caret-position="466">
+              <caret line="305" column="27" selection-start-line="305" selection-start-column="27" selection-end-line="305" selection-end-column="27" />
               <folding>
                 <element signature="n#div#0;n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#3577#3802#0" />
+                <element signature="n#el-form-item#0;n#div#0;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-form-item#1;n#div#0;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#3;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#nuxt-link#0;n#div#0;n#div#3;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#11343#11385#0" expanded="true" />
+                <element signature="e#14166#14375#0" />
+                <element signature="n#style#0;n#!!top" />
                 <element signature="e#3982#4403#0" />
+                <element signature="e#9559#9795#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/functions.js">
+        <entry file="file://$PROJECT_DIR$/pages/dang-nhap/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+            <state relative-caret-position="114">
+              <caret line="248" column="6" lean-forward="true" selection-start-line="248" selection-start-column="6" selection-end-line="250" selection-end-column="20" />
               <folding>
-                <element signature="n#!!block;n#ConvertStringToShorterString#0" />
-                <element signature="n#!!block;n#ChangeAlias#0" />
-                <element signature="n#!!block;n#ConvertToKebabCase#0" />
+                <element signature="n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#transition#0;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#transition#1;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#transition#2;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#transition#3;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#transition#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#nuxt-link#0;n#div#0;n#el-dialog#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#8887#8915#0" expanded="true" />
+                <element signature="e#10967#11926#0" />
+                <element signature="e#11977#13079#0" />
+                <element signature="e#13116#13952#0" />
+                <element signature="e#13986#14077#0" />
+                <element signature="e#14112#14330#0" />
+                <element signature="e#14361#14570#0" />
+                <element signature="e#16978#17500#0" />
               </folding>
             </state>
           </provider>
@@ -320,29 +333,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>currentRoutePath</find>
-      <find>this.initialNavBarStatus(</find>
-      <find>initialNavBarStatus</find>
-      <find>updateNavBarStatus</find>
-      <find>border</find>
-      <find>NewJobBox</find>
-      <find>dialog-mail-container</find>
-      <find>sample-add</find>
-      <find>add.vue</find>
-      <find>jobList</find>
-      <find>console</find>
-      <find>entry</find>
-      <find>render</find>
-      <find>&quot;btn&quot;</find>
-      <find>button--wapasha</find>
-      <find>nuxt</find>
-      <find>sign-in-form</find>
-      <find>P</find>
-      <find>form-input</find>
-      <find>sign-up-navigation</find>
-      <find>account-info</find>
-      <find>footer</find>
-      <find>color-text-regular</find>
       <find>font-size-base</find>
       <find>el-dialog__body</find>
       <find>box-right</find>
@@ -350,15 +340,31 @@
       <find>hasInputPasswordValidated</find>
       <find>Footer</find>
       <find>forgot-pass</find>
+      <find>handleOnOpenForgotPasswordDialog</find>
+      <find>login-inputs</find>
+      <find>btn</find>
+      <find>dialogPasswordRecovery</find>
+      <find>dialogSignUp</find>
+      <find>font-a</find>
+      <find>B</find>
+      <find>sign-up-box</find>
+      <find>forgot</find>
+      <find>password-recovery-dialog</find>
+      <find>sign-up</find>
+      <find>small-box</find>
+      <find>function-box</find>
+      <find>sign-up-dialog</find>
+      <find>signUpForm.type</find>
+      <find>dialogIndex</find>
+      <find>input-container</find>
+      <find>onConfirmInformation</find>
+      <find>confirmInfoDialogVisible</find>
+      <find>activeBtyn</find>
+      <find>employerForm</find>
+      <find>candidateForm</find>
+      <find>dialog-footer</find>
     </findStrings>
     <replaceStrings>
-      <replace>wraper</replace>
-      <replace>container</replace>
-      <replace>content</replace>
-      <replace>box-left</replace>
-      <replace>btn</replace>
-      <replace>btn-after</replace>
-      <replace>btnAfter</replace>
       <replace>keyPress</replace>
       <replace>keypress</replace>
       <replace>keydown</replace>
@@ -382,6 +388,13 @@
       <replace>login-inputs</replace>
       <replace>hasInputValidated</replace>
       <replace>box-right</replace>
+      <replace>handleOnOpenPasswordRecoveryDialog</replace>
+      <replace>passwordRecoveryDialog</replace>
+      <replace>userType</replace>
+      <replace>signUpDialogItemIndex</replace>
+      <replace>handleOnConfirmInfo</replace>
+      <replace>candidateSignUpInfo</replace>
+      <replace>signUpDialog</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\IT\Halu Projects\HaluJobs\components\public-components\cards\AttractiveJobCard</dir>
@@ -435,7 +448,6 @@
         <option value="$PROJECT_DIR$/assets/css/halujobs_globals.scss" />
         <option value="$PROJECT_DIR$/components/dang-nhap/NavBar/index.vue" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/pages/dang-nhap/index.vue" />
         <option value="$PROJECT_DIR$/layouts/login.vue" />
         <option value="$PROJECT_DIR$/components/public-components/cards/PinkWorkAddressSalaryJobCard8/index.vue" />
         <option value="$PROJECT_DIR$/pages/tuyen-dung/viec-lam/_id.vue" />
@@ -444,6 +456,7 @@
         <option value="$PROJECT_DIR$/assets/css/halujobs_variables.scss" />
         <option value="$PROJECT_DIR$/assets/css/element-variables.scss" />
         <option value="$PROJECT_DIR$/assets/js/functions.js" />
+        <option value="$PROJECT_DIR$/pages/dang-nhap/index.vue" />
         <option value="$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue" />
       </list>
     </option>
@@ -503,6 +516,45 @@
             <path>
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="bars" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="bars" type="462c0819:PsiDirectoryNode" />
+              <item name="NavBar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="trang-chu" type="462c0819:PsiDirectoryNode" />
+              <item name="boxs" type="462c0819:PsiDirectoryNode" />
+              <item name="FunctionBox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -514,13 +566,6 @@
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
               <item name="dang-nhap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -681,7 +726,7 @@
       <workItem from="1538096880391" duration="4931000" />
       <workItem from="1538104503984" duration="1579000" />
       <workItem from="1538181271997" duration="533000" />
-      <workItem from="1538182109781" duration="12727000" />
+      <workItem from="1538182109781" duration="26147000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Development&quot;">
       <created>1533887616412</created>
@@ -694,7 +739,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="999042000" />
+    <option name="totallyTimeSpent" value="1012462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -799,7 +844,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/dang-nhap/index.vue</url>
-          <line>71</line>
+          <line>70</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -850,28 +895,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue</url>
-          <line>146</line>
+          <line>176</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="48" />
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/public-components/cards/ColorlessJobCard16/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1747">
-          <caret line="116" column="24" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/cards/PinkSalaryJobCard16/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="133" column="24" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/AttractiveJobBox/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -1057,17 +1088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/dang-nhap/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16268">
-          <caret line="581" column="3" selection-start-line="581" selection-start-column="3" selection-end-line="581" selection-end-column="3" />
-          <folding>
-            <element signature="n#style#0;n#nuxt-link#0;n#div#0;n#el-dialog#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#8887#8915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nuxt.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
@@ -1106,13 +1126,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="21" column="26" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/font-awesome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1176,14 +1189,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/font-awesome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1372">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/trang-chu/boxs/FunctionBox/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="51" column="2" lean-forward="true" selection-start-line="51" selection-start-column="2" selection-end-line="72" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/bars/NavBar/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="14" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/dang-nhap/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="248" column="6" lean-forward="true" selection-start-line="248" selection-start-column="6" selection-end-line="250" selection-end-column="20" />
+          <folding>
+            <element signature="n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#transition#0;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#transition#1;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#transition#2;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#transition#3;n#el-form#0;n#div#0;n#transition#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#transition#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#nuxt-link#0;n#div#0;n#el-dialog#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#8887#8915#0" expanded="true" />
+            <element signature="e#10967#11926#0" />
+            <element signature="e#11977#13079#0" />
+            <element signature="e#13116#13952#0" />
+            <element signature="e#13986#14077#0" />
+            <element signature="e#14112#14330#0" />
+            <element signature="e#14361#14570#0" />
+            <element signature="e#16978#17500#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="335" column="21" selection-start-line="335" selection-start-column="21" selection-end-line="335" selection-end-column="21" />
+        <state relative-caret-position="466">
+          <caret line="305" column="27" selection-start-line="305" selection-start-column="27" selection-end-line="305" selection-end-column="27" />
           <folding>
             <element signature="n#div#0;n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#3577#3802#0" />
+            <element signature="n#el-form-item#0;n#div#0;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-form-item#1;n#div#0;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#nuxt-link#0;n#div#0;n#div#3;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#11343#11385#0" expanded="true" />
+            <element signature="e#14166#14375#0" />
+            <element signature="n#style#0;n#!!top" />
             <element signature="e#3982#4403#0" />
+            <element signature="e#9559#9795#0" />
           </folding>
         </state>
       </provider>

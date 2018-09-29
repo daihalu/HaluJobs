@@ -47,7 +47,6 @@
 
             <transition name="fade-in-up">
               <div v-if="activeBtn === 'timungvien'" class="input-container">
-
                 <el-form
                   :model="employerForm"
                   :rules="rules"
@@ -163,7 +162,6 @@
                       label="Chọn lĩnh vực muốn làm việc"
                       v-if="hasChangeCandidatePhoneNumberInput"
                     >
-
                       <el-select v-model="candidateForm.professions" placeholder="Chọn lĩnh vực muốn làm việc...">
                         <el-option
                           v-for="item in professionOptions"
