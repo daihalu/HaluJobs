@@ -118,6 +118,7 @@
         </div>
         <div class="ta-center">
           <el-button
+            type="primary"
             @click="handleOnSubmitPasswordRecovery"
             :loading="isLoading"
             class="mg-top-15"
@@ -134,7 +135,7 @@
       class="sign-up-dialog"
       :close-on-press-escape="false"
       :close-on-click-modal="false"
-      @close="handleOnCloseSignUpDialog"
+      :before-close="handleOnCloseSignUpDialog"
     >
       <div v-if="signUpDialogItemIndex === 1" class="user-type">
         <div class="title">Bạn là nhà tuyển dụng hay ứng viên?</div>
@@ -142,104 +143,114 @@
           <div
             class="small-box"
             :class="{active: userType === 'employer'}"
-            @click="userType = 'employer'"
+            @click="handleOnClickEmployerBtn"
           >
             <font-awesome-icon :icon="['fas', 'user-tie']"/>
             <span>Nhà tuyển dụng</span>
           </div>
+
           <div
             class="small-box"
             :class="{active: userType === 'candidate'}"
-            @click="userType = 'candidate'"
+            @click="handleOnClickCandidateBtn"
           >
             <font-awesome-icon :icon="['fas', 'briefcase']"/>
             <span>Ứng viên</span>
           </div>
         </div>
-        <el-button
-          class="mg-top-15"
-          @click="handleOnClickContinueBtn"
-          :disabled="!userType"
-        >
-          Tiếp tục
-        </el-button>
+
       </div>
 
-      <div v-else-if="signUpDialogItemIndex === 2">
-        <div class="title">Đăng ký tài khoản {{userType === 'employer' ? 'Nhà tuyển dụng' : 'Ứng viên'}}</div>
+      <transition name="slide-fade">
+        <div v-if="signUpDialogItemIndex === 2">
+          <div class="title">Đăng ký tài khoản {{userType === 'employer' ? 'Nhà tuyển dụng' : 'Ứng viên'}}</div>
 
-        <div v-if="userType === 'employer'">
-          <el-form
-            :model="employerSignUpInfo"
-            :rules="rules"
-            ref="employerSignUpInfo"
-            label-position="top"
-          >
+          <div v-if="userType === 'employer'">
+            <el-form
+              :model="employerSignUpInfo"
+              :rules="rules"
+              ref="employerSignUpInfo"
+              label-position="top"
+            >
 
-            <transition name="fade-in-up">
-              <el-form-item
-                prop="name"
-                label="Nhập họ và tên"
-                class="mg-top-15"
-              >
-                <el-input
-                  v-model="employerSignUpInfo.name"
-                  auto-complete="on"
-                  autofocus="true"
-                  placeholder="Nhập họ và tên..."
-                ></el-input>
-              </el-form-item>
-            </transition>
+              <transition name="fade-in-up">
+                <el-row :gutter="10">
+                  <el-col :span="12">
+                    <el-form-item
+                      prop="firstName"
+                      label="Nhập họ: "
+                      class="mg-top-15"
+                    >
+                      <el-input
+                        v-model="employerSignUpInfo.firstName"
+                        auto-complete="on"
+                        autofocus="true"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="12">
+                    <el-form-item
+                      prop="lastName"
+                      label="Nhập tên:"
+                      class="mg-top-15"
+                    >
+                      <el-input
+                        v-model="employerSignUpInfo.lastName"
+                        auto-complete="on"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </transition>
 
-            <transition name="fade-in-up">
-              <el-form-item
-                prop="phoneNumber"
-                label="Nhập số điện thoại"
-                v-if="hasChangeEmployerNameInput"
-              >
-                <el-input
-                  v-model="employerSignUpInfo.phoneNumber"
-                  auto-complete="on"
-                  placeholder="Nhập số điện thoại..."
+              <transition name="fade-in-up">
+                <el-form-item
+                  prop="phoneNumber"
+                  label="Nhập số điện thoại"
+                  v-if="hasChangeEmployerNameInput"
                 >
-                  <!--<template slot="prepend">-->
-                  <!--<img :src="flagUrl" width="30px" height="20px"/>-->
-                  <!--</template>-->
-                </el-input>
-              </el-form-item>
-            </transition>
+                  <el-input
+                    v-model="employerSignUpInfo.phoneNumber"
+                    auto-complete="on"
+                  >
+                    <!--<template slot="prepend">-->
+                    <!--<img :src="flagUrl" width="30px" height="20px"/>-->
+                    <!--</template>-->
+                  </el-input>
+                </el-form-item>
+              </transition>
 
-            <transition name="fade-in-up">
-              <el-form-item
-                prop="companyName"
-                label="Nhập tên công ty"
-                v-if="hasChangeCompanyPhoneNumberInput"
-              >
-                <el-input
-                  v-model="employerSignUpInfo.companyName"
-                  auto-complete="on"
-                  placeholder="Nhập tên công ty..."
-                ></el-input>
-              </el-form-item>
-            </transition>
-
-            <transition name="fade-in-up">
-              <el-form-item
-                v-if="hasChangeCompanyNameInput"
-              >
-                <el-button
-                  @click="handleOnSubmitSignUpForm"
-                  class="mg-top-15 button button--wapasha done-btn"
+              <transition name="fade-in-up">
+                <el-form-item
+                  prop="companyName"
+                  label="Nhập tên công ty"
+                  v-if="hasChangeCompanyPhoneNumberInput"
                 >
-                  Tiếp tục
-                </el-button>
-              </el-form-item>
-            </transition>
+                  <el-input
+                    v-model="employerSignUpInfo.companyName"
+                    auto-complete="on"
+                  ></el-input>
+                </el-form-item>
+              </transition>
 
-          </el-form>
-        </div>
-        
-        <div v-if="userType === 'candidate'">
+              <transition name="fade-in-up">
+                <el-form-item
+                  v-if="hasChangeCompanyNameInput"
+                >
+                  <el-button
+                    type="primary"
+                    @click="handleOnSubmitEmployerSignUpForm('employerSignUpInfo')"
+                    class=""
+                  >
+                    Tiếp tục
+                  </el-button>
+                </el-form-item>
+              </transition>
+
+            </el-form>
+          </div>
+
+          <div v-if="userType === 'candidate'">
             <el-form
               :model="candidateSignUpInfo"
               :rules="rules"
@@ -247,18 +258,33 @@
               label-position="top"
             >
               <transition name="fade-in-up">
-                <el-form-item
-                  prop="name"
-                  label="Nhập họ và tên"
-                  class="mg-top-15"
-                >
-                  <el-input
-                    v-model="candidateSignUpInfo.name"
-                    auto-complete="on"
-                    autofocus="true"
-                    placeholder="Nhập họ và tên..."
-                  ></el-input>
-                </el-form-item>
+                <el-row :gutter="10">
+                  <el-col :span="12">
+                    <el-form-item
+                      prop="firstName"
+                      label="Nhập họ: "
+                      class="mg-top-15"
+                    >
+                      <el-input
+                        v-model="candidateSignUpInfo.firstName"
+                        auto-complete="on"
+                        autofocus="true"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="12">
+                    <el-form-item
+                      prop="lastName"
+                      label="Nhập tên:"
+                      class="mg-top-15"
+                    >
+                      <el-input
+                        v-model="candidateSignUpInfo.lastName"
+                        auto-complete="on"
+                      ></el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
               </transition>
 
               <transition name="fade-in-up">
@@ -270,74 +296,118 @@
                   <el-input
                     v-model="candidateSignUpInfo.phoneNumber"
                     auto-complete="on"
-                    placeholder="Nhập số điện thoại..."
                   ></el-input>
                 </el-form-item>
               </transition>
 
               <transition name="fade-in-up">
-                <el-form-item
-                  prop="professions"
-                  label="Chọn lĩnh vực muốn làm việc"
-                  v-if="hasChangeCandidatePhoneNumberInput"
-                >
-                  <el-select v-model="candidateSignUpInfo.professions" placeholder="Chọn lĩnh vực muốn làm việc...">
-                    <el-option
-                      v-for="item in professionOptions"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value">
-                    </el-option>
-                  </el-select>
-                </el-form-item>
+
+                <el-row :gutter="10" v-if="hasChangeCandidatePhoneNumberInput">
+                  <el-col :span="12">
+                    <el-form-item
+                      prop="professions"
+                      label="Chọn lĩnh vực muốn làm việc"
+                    >
+                      <el-select
+                        v-model="candidateSignUpInfo.professions"
+                        placeholder="Chọn lĩnh vực"
+                      >
+                        <el-option
+                          v-for="item in professionOptions"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                  <el-col :span="12">
+                    <el-form-item
+                      prop="professions"
+                      label="Chọn địa điểm muốn làm việc"
+                    >
+                      <el-select
+                        v-model="candidateSignUpInfo.workAddress"
+                        placeholder="Chọn địa điểm"
+                      >
+                        <el-option
+                          v-for="item in workAddressOptions"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value"
+                        >
+                        </el-option>
+                      </el-select>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+
+
               </transition>
 
               <transition name="fade-in-up">
                 <el-form-item
-                  v-if="hasChangeCandidateProfessionInput"
+                  v-if="hasChangeCandidateWorkAddressInput"
                 >
                   <el-button
-                    @click="handleOnSubmitSignUpForm"
-                    class="mg-top-15 button button--wapasha done-btn"
+                    type="primary"
+                    @click="handleOnSubmitCandidateSignUpForm('candidateSignUpInfo')"
+                    class=""
                   >
                     Tiếp tục
                   </el-button>
                 </el-form-item>
               </transition>
             </el-form>
+          </div>
         </div>
-      </div>
+      </transition>
 
-      <div  v-else-if="signUpDialogItemIndex === 3">
-        <div class="title">Xác nhận thông tin</div>
-        <p>Thông tin {{userType === 'candidate' ? 'Ứng viên' : 'Nhà tuyển dụng'}}: </p>
-        <p>Họ tên: {{userType === 'candidate' ? candidateSignUpInfo.name : employerSignUpInfo.name}}</p>
-        <p>Số điện thoại: {{userType === 'candidate' ? candidateSignUpInfo.phoneNumber :
-          employerSignUpInfo.phoneNumber}}</p>
-        <p v-if="userType === 'employer'">Tên công ty: {{employerSignUpInfo.companyName}}</p>
-        <p v-if="userType === 'candidate'">Lĩnh vực muốn làm việc: {{candidateSignUpInfo.professions}}</p>
-        <p>Bạn có chắc chắn thông tin đã cung cấp là xác thực?</p>
+      <transition name="slide-fade">
+        <div v-if="signUpDialogItemIndex === 3">
+          <div class="title">Xác nhận thông tin</div>
+          <p>Thông tin {{userType === 'candidate' ? 'Ứng viên' : 'Nhà tuyển dụng'}}: </p>
+          <p>
+            Họ tên:
+            {{userType === 'candidate'
+            ? candidateSignUpInfo.firstName + ' ' + candidateSignUpInfo.lastName
+            : employerSignUpInfo.firstName + ' ' + employerSignUpInfo.lastName }}
+          </p>
+          <p>
+            Số điện thoại:
+            {{userType === 'candidate'
+            ? candidateSignUpInfo.phoneNumber
+            : employerSignUpInfo.phoneNumber}}
+          </p>
+          <p v-if="userType === 'employer'">Tên công ty: {{employerSignUpInfo.companyName}}</p>
+          <div v-if="userType === 'candidate'">
+            <p>Lĩnh vực muốn làm việc: {{candidateSignUpInfo.professions}}</p>
+            <p>Địa điểm muốn làm việc: {{candidateSignUpInfo.workAddress}}</p>
+          </div>
 
-        <div slot="footer" class="dialog-footer">
-          <el-button @click="signUpDialogItemIndex = 2">Sửa lại</el-button>
-          <el-button type="primary" @click="handleOnDoneSigningUp">Xác nhận</el-button>
+          <p>Bạn có chắc chắn thông tin đã cung cấp là xác thực?</p>
+
+          <div slot="footer" class="dialog-footer">
+            <el-button @click="signUpDialogItemIndex = 2">Sửa lại</el-button>
+            <el-button type="primary" @click="handleOnDoneSigningUp">Xác nhận</el-button>
+          </div>
         </div>
-      </div>
+      </transition>
 
-      <div v-else-if="signUpDialogItemIndex === 4">
-        <div class="title">Hoàn thành đăng ký</div>
-        <p>Bộ phận chăm sóc khách hàng của HaluJobs sẽ liên hệ với quý khách trong vòng 5 phút!</p>
-        <div slot="footer" class="dialog-footer">
-          <nuxt-link to="/" style="color: #ffffff">
-            <el-button @click="doneRegisterDialogVisible = false" type="primary">
-              Đi đến trang chủ
-            </el-button>
-          </nuxt-link>
+      <transition name="slide-fade">
+        <div v-if="signUpDialogItemIndex === 4">
+          <div class="title">Hoàn thành đăng ký</div>
+          <p>Bộ phận chăm sóc khách hàng của HaluJobs sẽ liên hệ với quý khách trong vòng 5 phút!</p>
+          <div slot="footer" class="dialog-footer">
+            <nuxt-link to="/" style="color: #ffffff">
+              <el-button @click="doneRegisterDialogVisible = false" type="primary">
+                Đi đến trang chủ
+              </el-button>
+            </nuxt-link>
+          </div>
         </div>
-      </div>
+      </transition>
     </el-dialog>
-
-
   </div>
 </template>
 
@@ -354,7 +424,8 @@
     layout: 'candidate',
     data() {
       const {
-        jobs
+        jobs,
+        workAddresses
       } = JobOption;
       return {
         title: 'Đăng nhập ứng viên',
@@ -364,14 +435,17 @@
         },
         userType: '',
         employerSignUpInfo: {
-          name: '',
+          firstName: '',
+          lastName: '',
           phoneNumber: '',
           companyName: ''
         },
         candidateSignUpInfo: {
-          name: '',
+          firstName: '',
+          lastName: '',
           phoneNumber: '',
-          professions: ''
+          professions: '',
+          workAddress: ''
         },
         inputOfPasswordRecoveryDialog: '',
         showAlert: false,
@@ -387,17 +461,20 @@
         hasChangeCompanyNameInput: false,
         hasChangeCandidatePhoneNumberInput: false,
         hasChangeCandidateNameInput: false,
-        hasChangeCandidateProfessionInput: false,
+        hasChangeCandidateWorkAddressInput: false,
         doneRegisterDialogVisible: false,
         professionOptions: jobs,
+        workAddressOptions: workAddresses,
 
         rules: {
           password: [
             {required: true, min: 6, message: 'Độ  dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
           ],
-          name: [
-            {required: true, message: 'Vui lòng nhập họ và tên', trigger: 'blur'},
-            {required: true, min: 5, message: 'Độ dài tên phải có ít nhất 5 ký tự', trigger: 'blur'}
+          firstName: [
+            {required: true, message: 'Vui lòng nhập họ của bạn', trigger: 'blur'},
+          ],
+          lastName: [
+            {required: true, message: 'Vui lòng nhập tên của bạn', trigger: 'blur'},
           ],
           phoneNumber: [
             {required: true, message: 'Vui lòng nhập số điện thoại', trigger: 'blur, change'},
@@ -418,7 +495,7 @@
       employerSignUpInfo: {
         handler(newValue, oldValue) {
 
-          if (newValue.name.length >= 10) {
+          if (newValue.lastName) {
             this.hasChangeEmployerNameInput = true;
           }
 
@@ -434,7 +511,7 @@
       },
       candidateSignUpInfo: {
         handler(newValue, oldValue) {
-          if (newValue.name.length >= 10) {
+          if (newValue.lastName) {
             this.hasChangeCandidateNameInput = true;
           }
 
@@ -442,8 +519,8 @@
             this.hasChangeCandidatePhoneNumberInput = true;
           }
 
-          if (newValue.professions) {
-            this.hasChangeCandidateProfessionInput = true;
+          if (newValue.workAddress) {
+            this.hasChangeCandidateWorkAddressInput = true;
           }
         },
         deep: true
@@ -510,9 +587,26 @@
         this.signUpDialogItemIndex++;
       },
 
-      handleOnCloseSignUpDialog() {
-        this.userType = '';
-        this.signUpDialogItemIndex = 1;
+      handleOnClickEmployerBtn() {
+        this.signUpDialogItemIndex++;
+        this.userType = 'employer'
+      },
+
+      handleOnClickCandidateBtn() {
+        this.signUpDialogItemIndex++;
+        this.userType = 'candidate'
+      },
+
+      async handleOnCloseSignUpDialog(done) {
+        await this.$confirm('Bạn có chắc là muốn huỷ đăng ký tài khoản?')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+        setTimeout(() => {
+          this.userType = '';
+          this.signUpDialogItemIndex = 1;
+        }, 300);
       },
 
       handleOnConfirmInfo() {
@@ -522,9 +616,82 @@
         console.log(this.doneRegisterDialogVisible);
       },
 
-      handleOnSubmitSignUpForm() {
-        this.signUpDialogItemIndex++;
-        console.log(this.employerSignUpInfo);
+      handleOnSubmitEmployerSignUpForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (
+            valid
+            && Vld.isName(this.employerSignUpInfo.firstName)
+            && Vld.isName(this.employerSignUpInfo.lastName)
+            && Vld.isName(this.employerSignUpInfo.companyName)
+            && Vld.isMobile(this.employerSignUpInfo.phoneNumber)
+          ) {
+            // alert('submit!');
+            this.signUpDialogItemIndex++;
+          } else {
+            if (!Vld.isName(this.employerSignUpInfo.firstName)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại họ của bạn!');
+              }, 200);
+            }
+
+            if (!Vld.isName(this.employerSignUpInfo.lastName)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại tên của bạn!');
+              }, 300);
+
+            }
+
+            if (!Vld.isMobile(this.employerSignUpInfo.phoneNumber)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại số điện thoại của bạn!');
+              }, 400);
+
+            }
+
+            if (!Vld.isName(this.employerSignUpInfo.companyName)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại tên công ty!');
+              }, 500);
+            }
+            return false;
+          }
+        });
+      },
+
+      handleOnSubmitCandidateSignUpForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (
+            valid
+            && Vld.isName(this.candidateSignUpInfo.firstName)
+            && Vld.isName(this.candidateSignUpInfo.lastName)
+            && Vld.isName(this.candidateSignUpInfo.companyName)
+            && Vld.isMobile(this.candidateSignUpInfo.phoneNumber)
+          ) {
+            // alert('submit!');
+            this.signUpDialogItemIndex++;
+          } else {
+            if (!Vld.isName(this.candidateSignUpInfo.firstName)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại họ của bạn!');
+              }, 200);
+            }
+
+            if (!Vld.isName(this.candidateSignUpInfo.lastName)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại tên của bạn!');
+              }, 300);
+
+            }
+
+            if (!Vld.isMobile(this.candidateSignUpInfo.phoneNumber)) {
+              setTimeout(() => {
+                this.showErrorAlert('Vui lòng nhập lại số điện thoại của bạn!');
+              }, 400);
+
+            }
+            return false;
+          }
+        });
       },
 
       handleOnDoneSigningUp() {
@@ -692,7 +859,7 @@
   .sign-up-dialog {
     width: 60%;
     margin: 0 auto;
-    
+    overflow: hidden;
   }
 
   .user-type {
@@ -701,14 +868,15 @@
     .container {
       display: flex;
       justify-content: space-around;
+      margin-bottom: 20px;
 
       .small-box {
-        width: 160px;
+        width: 170px;
         height: 110px;
-        border: 1px solid $color-primary;
+        border: 2px solid $color-primary;
         padding: $padding-base-20;
         color: $color-primary;
-        font-size: 16px;
+        font-size: 17px;
         border-radius: 2px;
         display: flex;
         flex-direction: column;
@@ -754,5 +922,39 @@
     opacity: 0 !important;
   }
 
+  .el-select {
+    width: 100% !important;
+  }
 
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transform: translateY(1000px);
+  }
+
+  .slide-fade-leave-to {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+
+  .slide-fade-enter
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+</style>
+
+<style lang="scss">
+  .el-form-item.is-required {
+    .el-form-item__label {
+      font-size: 15px;
+      padding-bottom: 5px !important;
+      &:before {
+        display: none !important;
+      }
+    }
+  }
 </style>
