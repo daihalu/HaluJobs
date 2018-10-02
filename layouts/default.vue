@@ -188,9 +188,6 @@
     cursor: pointer;
   }
 
-  .el-dialog__body {
-    padding: 0 20px 20px 20px;
-  }
 
   .hot-line-container {
     padding: $padding-border-box-15;
