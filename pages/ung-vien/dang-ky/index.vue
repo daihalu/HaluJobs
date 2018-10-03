@@ -1,5 +1,5 @@
 <template>
-  <div class="sign-up-container">
+  <div class="wrapper">
     <el-row :gutter="10">
       <el-col :span="10">
         <div class="box-left">
@@ -26,7 +26,7 @@
         </div>
       </el-col>
       <el-col :span="14">
-        <div class="sign-up-form">
+        <div class="box-right">
           <h3 class="sign-up-form__title">
             <font-awesome-icon icon="user-tie"/>
             Đăng ký tài khoản ứng viên
@@ -131,8 +131,8 @@
                       >
                         <el-select v-model="signUpForm.gender" placeholder="Chọn giới tính">
                           <el-option
-                            v-for="item in genderOptions"
-                            :key="item.value"
+                            v-for="(item, index) in genderOptions"
+                            :key="index"
                             :label="item.label"
                             :value="item.value">
                           </el-option>
@@ -175,8 +175,8 @@
                       >
                         <el-select v-model="signUpForm.marriageStatus" placeholder="Tình trạng hôn nhân">
                           <el-option
-                            v-for="item in marriageStatusOptions"
-                            :key="item.value"
+                            v-for="(item, index) in marriageStatusOptions"
+                            :key="index"
                             :label="item.label"
                             :value="item.value">
                           </el-option>
@@ -208,8 +208,8 @@
                         <el-select v-model="signUpForm.workAddresses" multiple
                                    placeholder="Vui lòng chọn tối đa 3 địa điểm">
                           <el-option
-                            v-for="item in workAddressOptions"
-                            :key="item.value"
+                            v-for="(item, index) in workAddressOptions"
+                            :key="index"
                             :label="item.label"
                             :value="item.value">
                           </el-option>
@@ -223,8 +223,8 @@
                       >
                         <el-select v-model="signUpForm.jobTypes" multiple placeholder="Vui lòng chọn tối đa 3 lĩnh vực">
                           <el-option
-                            v-for="item in jobOptions"
-                            :key="item.value"
+                            v-for="(item, index) in jobOptions"
+                            :key="index"
                             :label="item.label"
                             :value="item.value">
                           </el-option>
@@ -241,8 +241,8 @@
                       >
                         <el-select v-model="signUpForm.jobTitle" placeholder="Chọn cấp bậc mong muốn">
                           <el-option
-                            v-for="item in jobTitleOptions"
-                            :key="item.value"
+                            v-for="(item, index) in jobTitleOptions"
+                            :key="index"
                             :label="item.label"
                             :value="item.value">
                           </el-option>
@@ -256,8 +256,8 @@
                       >
                         <el-select v-model="signUpForm.salary" placeholder="Chọn mức lương mong muốn">
                           <el-option
-                            v-for="item in desiredSalaryOptions"
-                            :key="item.value"
+                            v-for="(item, index) in desiredSalaryOptions"
+                            :key="index"
                             :label="item.label"
                             :value="item.value">
                           </el-option>
@@ -272,8 +272,8 @@
                   >
                     <el-select v-model="signUpForm.professions" placeholder="Chọn loại hình công việc bạn muốn">
                       <el-option
-                        v-for="item in jobTypeOptions"
-                        :key="item.value"
+                        v-for="(item, index) in jobTypeOptions"
+                        :key="index"
                         :label="item.label"
                         :value="item.value">
                       </el-option>
@@ -472,16 +472,43 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .sign-up-container {
+  .wrapper {
     width: $page-width;
-    margin: 15vh auto !important;
+    margin: 0 auto !important;
   }
 
-  .sign-up-form {
+  .box-left {
+    color: $color-white;
+    margin-top: 20vh;
+
+    h2 {
+      font-size: 45px;
+      font-weight: 500;
+      line-height: 60px;
+    }
+
+    p {
+      line-height: 40px;
+      font-size: $fs-large-18;
+      display: flex;
+      align-items: center;
+      svg {
+        font-size: 25px;
+        border: 1px solid $color-white;
+        border-radius: 50%;
+        padding: 5px;
+        margin-right: 5px;
+      }
+
+    }
+  }
+
+  .box-right {
     border: 1px solid $color-border;
     border-radius: $br-5;
     background-color: $color-white;
     padding: $padding-border-box-15;
+    margin-top: 20vh;
   }
 
   .account-info {
@@ -584,31 +611,7 @@
     color: $color-primary;
   }
 
-  .box-left {
-    color: $color-white;
-    margin-top: 10vh;
-  }
 
-  .box-left h2 {
-    font-size: 45px;
-    font-weight: 500;
-    line-height: 60px;
-  }
-
-  .box-left p {
-    line-height: 40px;
-    font-size: $fs-large-18;
-    display: flex;
-    align-items: center;
-  }
-
-  .box-left p svg {
-    font-size: 25px;
-    border: 1px solid $color-white;
-    border-radius: 50%;
-    padding: 5px;
-    margin-right: 5px;
-  }
 
   .el-form-item {
     margin-bottom: 15px !important;
