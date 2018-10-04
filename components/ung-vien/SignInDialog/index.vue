@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <div>Bằng việc đăng nhập bạn đã đồng ý với Thỏa thuận sử dụng của HaluJobs</div>
+    <div>Bằng việc đăng nhập bạn đã đồng ý với <nuxt-link to="thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link> của HaluJobs</div>
     <div class="svo-sign-in mg-top-15">
       <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
       <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
@@ -11,9 +11,14 @@
       Hoặc
     </div>
 
-    <div v-if="!isForgottingPassword">
-      <el-form :model="signInForm" :rules="rules" ref="signInForm" label-width="120px" label-position="top"
-               class="mg-top-15">
+    <div v-if="!isForgettingPassword">
+      <el-form
+        :model="signInForm"
+        :rules="rules"
+        ref="signInForm"
+        label-width="120px"
+        label-position="top"
+        class="mg-top-15">
 
         <el-form-item
           prop="phoneNumber"
@@ -56,7 +61,7 @@
       </div>
     </div>
 
-    <div v-if="isForgottingPassword">
+    <div v-if="isForgettingPassword">
       <div>
         Vui lòng nhập số điện thoại để nhận mật khẩu mới
       </div>
@@ -67,8 +72,9 @@
         class="mg-top-15"
       ></el-input>
       <div class="mg-top-15">
-        <el-button>Quay lại đăng nhập</el-button>
-        <el-button>Khôi phục mật khẩu</el-button>
+        <el-button @click="handleOnBackToLogin">Quay lại</el-button>
+        <el-button type="primary" @click="handleOnSubmitPasswordRecovery" :loading="isLoading">Khôi phục mật khẩu
+        </el-button>
       </div>
     </div>
 
@@ -76,7 +82,7 @@
     <div class="ta-center mg-top-15">
       <hr class="hr-1"/>
       <p class="mg-top-15">Bạn chưa có tài khoản?
-        <span class="sign-up-text" @click="handleOnClickSignUp">Đăng ký</span>
+        <span class="sign-up-text" @click="handleOnClickSignUpText">Đăng ký</span>
       </p>
     </div>
   </div>
@@ -93,8 +99,7 @@
           password: '',
         },
         inputOfPasswordRecoveryDialog: '',
-        showAlert: false,
-        isForgottingPassword: false,
+        isForgettingPassword: false,
         isLoading: false,
         isAnAccount: true,
 
@@ -113,25 +118,22 @@
     },
     methods: {
       handleOnOClickForgotPassword() {
-        this.isForgottingPassword = true;
+        this.isForgettingPassword = true;
       },
 
       handleOnSubmitPasswordRecovery() {
         if (Vld.isMobile(this.inputOfPasswordRecoveryDialog) || Vld.isEmail(this.inputOfPasswordRecoveryDialog)) {
-          this.showAlert = false;
           this.isLoading = true;
           setTimeout(() => {
             this.isLoading = false;
             if (this.isAnAccount) {
-              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}. Quý khách vui lòng kiểm tra.`);
-              this.passwordRecoveryDialog = false;
-              this.inputOfPasswordRecoveryDialog = '';
+              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}.`);
             } else {
               this.showErrorAlert('Tài khoản không tồn tại trên hệ thống!');
             }
           }, 2000);
         } else {
-          this.showAlert = true;
+          this.showErrorAlert('Vui lòng nhập số điện thoại hoặc email để nhận mật khẩu mới!');
         }
       },
 
@@ -168,9 +170,13 @@
         });
       },
 
-      handleOnClickSignUp() {
-        this.$emit('on_change_form_status', "sign_up");
+      handleOnClickSignUpText() {
+        this.$emit('on_click_sign_up', "sign_up");
       },
+
+      handleOnBackToLogin() {
+        this.isForgettingPassword = false;
+      }
     }
   }
 
@@ -220,10 +226,6 @@
     background-color: #3b5998;
     border: transparent;
     margin-left: 0 !important;
-  }
-
-  a:hover {
-    cursor: pointer;
   }
 
   .svo-sign-in {
@@ -277,14 +279,6 @@
     }
   }
 
-  .password-recovery-dialog {
-    width: 70%;
-    margin: 0 auto;
-  }
-
-  .alert {
-    color: $color-pink;
-  }
 
   .sign-up-text {
     color: $color-primary;

@@ -2,34 +2,12 @@
   <div class="wrapper">
     <el-row :gutter="10" class="">
       <el-col :span="16">
-        <div class="box-left">
-          <h2>Đăng nhập ứng viên</h2>
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Tiếp cận hàng triệu công việc hoàn toàn miễn phí</span>
-          </p>
-
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Ứng tuyển nhanh chóng, dễ dàng</span>
-          </p>
-
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Nhận bản tin công việc phù hợp định kỳ</span>
-          </p>
-
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Nâng cao cơ hội tìm việc với chương trình ứng viên năng động</span>
-          </p>
-        </div>
+        <introduction-box class="box-left"/>
       </el-col>
       <el-col :span="8">
         <div class="box-right box-container">
-          <h3>
-            <font-awesome-icon icon="user-tie"/>
-            Đăng nhập ứng viên
+          <h3 class="ta-center">
+            Đăng nhập cùng HaluJobs
           </h3>
 
           <div class="svo-sign-in mg-top-15">
@@ -44,7 +22,7 @@
 
           </div>
 
-          <el-form :model="signInForm" :rules="rules" ref="signInForm" label-width="120px" label-position="top"
+          <el-form :model="signInInfo" :rules="rules" ref="signInInfo" label-width="120px" label-position="top"
                    class="mg-top-15">
 
             <el-form-item
@@ -54,8 +32,9 @@
               <div class="form-input">
                 <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
                 <el-input
-                  v-model="signInForm.phoneNumber"
+                  v-model="signInInfo.phoneNumber"
                   auto-complete="off"
+                  autofocus="true"
                   prefix-icon="el-icon-dai"
                   placeHolder="Vui lòng nhập số điện thoại"
                 >
@@ -68,19 +47,18 @@
             >
               <div class="form-input">
                 <font-awesome-icon icon="lock" class="icon"/>
-                <el-input type="password" v-model="signInForm.password" auto-complete="off" prefix-icon="el-icon-dai"
+                <el-input type="password" v-model="signInInfo.password" auto-complete="off" prefix-icon="el-icon-dai"
                           placeHolder="Vui lòng nhập mật khẩu"></el-input>
               </div>
             </el-form-item>
 
             <el-button
-              class="btn btn-halu"
-              @click="handleOnLogin('signInForm')"
+              @click="handleOnSignInBtn('signInInfo')"
               :loading="isLoading"
+              class="button button--ujarak"
             >
               Đăng nhập
             </el-button>
-            <el-button class="button button--ujarak button--border-thin button--text-thick">Đăng nhập</el-button>
 
           </el-form>
 
@@ -89,8 +67,8 @@
           </div>
 
           <div class="ta-center">
-            <p>Bạn chưa có tài khoản
-              <span class="sign-up-text" @click="handleOnClickSignUp">Đăng ký</span>
+            <p>Bạn chưa có tài khoản?
+              <span class="sign-up-text" @click="handleOnClickSignUpText">Đăng ký</span>
             </p>
           </div>
         </div>
@@ -112,12 +90,12 @@
         >
         </el-input>
         <div
-          v-if="showAlert"
+          v-if="alertVisible"
           class="alert mg-top-15"
         >
           Vui lòng nhập chính xác số điện thoại hoặc email
         </div>
-        <div class="ta-center">
+        <div>
           <el-button
             type="primary"
             @click="handleOnSubmitPasswordRecovery"
@@ -131,143 +109,204 @@
       </div>
     </el-dialog>
 
-    <sign-up-dialog/>
+    <el-dialog
+      :visible.sync="signUpDialogVisible"
+      class="sign-up-dialog"
+      :width="signUpDialogWidth"
+      :close-on-press-escape="false"
+      :close-on-click-modal="false"
+      :before-close="handleOnCloseSignUpDialog"
+    >
+      <el-carousel
+        indicator-position="none"
+        arrow="never"
+        :autoplay="false"
+        @change="handleOnChangeCarouselItem"
+        ref="signUpCarousel"
+        :height="signUpCarouselHeight"
+        v-if="signUpDialogVisible"
+      >
 
+        <el-carousel-item>
+          <div class="user-type" v-if="!signUpInfo.userType">
+            <div class="title">Bạn là nhà tuyển dụng hay ứng viên?</div>
+            <div class="container mg-top-15">
+              <div
+                class="small-box"
+                :class="{active: signUpInfo.userType === 'employer'}"
+                @click="handleOnClickEmployerBtn"
+              >
+                <font-awesome-icon :icon="['fas', 'user-tie']"/>
+                <span>Nhà tuyển dụng</span>
+              </div>
 
+              <div
+                class="small-box"
+                :class="{active: signUpInfo.userType === 'candidate'}"
+                @click="handleOnClickCandidateBtn"
+              >
+                <font-awesome-icon :icon="['fas', 'briefcase']"/>
+                <span>Ứng viên</span>
+              </div>
+            </div>
+
+          </div>
+        </el-carousel-item>
+
+        <el-carousel-item>
+          <el-row :gutter="10">
+            <el-col :span="12" class="sign-up-dialog--box-left">
+              <h3>Đăng ký để kết nối ngay với hàng triệu nhà tuyển dụng hàng đầu và ứng viên chất lượng</h3>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Tiếp cận hàng triệu công việc hoàn toàn miễn phí</span>
+              </p>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Ứng tuyển nhanh chóng, dễ dàng</span>
+              </p>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Nhận bản tin công việc phù hợp định kỳ</span>
+              </p>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Nâng cao cơ hội tìm việc với chương trình ứng viên năng động</span>
+              </p>
+            </el-col>
+            <el-col :span="12">
+              <div class="sign-up-dialog--box-left">
+                <div>Bằng việc đăng kí bạn đã đồng ý với <nuxt-link to="/thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link> của HaluJobs</div>
+                <div class="svo-sign-in mg-top-15">
+                  <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
+                  <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
+
+                  <div class="text-or">
+                    Hoặc
+                  </div>
+                </div>
+
+                <el-form
+                  :model="signUpInfo"
+                  :rules="rules" ref="signUpInfo"
+                  class="mg-top-15"
+                >
+                  <el-form-item prop="phoneNumber">
+                    <div class="form-input">
+                      <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
+                      <el-input
+                        ref="phoneNumberInput"
+                        v-model="signUpInfo.phoneNumber"
+                        auto-complete="off"
+                        prefix-icon="el-icon-halu"
+                        placeHolder="Vui lòng nhập số điện thoại"
+                      >
+                      </el-input>
+                    </div>
+                  </el-form-item>
+
+                  <el-form-item prop="password">
+                    <div class="form-input">
+                      <font-awesome-icon icon="lock" class="icon"/>
+                      <el-input
+                        type="password"
+                        v-model="signUpInfo.password"
+                        auto-complete="off"
+                        prefix-icon="el-icon-dai"
+                        placeHolder="Vui lòng nhập mật khẩu"
+                      >
+                      </el-input>
+                    </div>
+                  </el-form-item>
+
+                  <el-button
+                    class="button button--ujarak"
+                    @click="handleOnSubmitSignUpForm('signUpInfo')"
+                  >
+                    Đăng ký
+                  </el-button>
+
+                </el-form>
+              </div>
+            </el-col>
+          </el-row>
+          <hr class="hr-1 mg-top-15"/>
+          <div class="ta-center mg-top-15">
+            <p>Bạn đã có tài khoản?
+              <span class="sign-up-text" @click="handleOnClickSignInText">Đăng nhập</span>
+            </p>
+          </div>
+        </el-carousel-item>
+      </el-carousel>
+      <el-dialog
+        width="30%"
+        :visible.sync="innerCloseDialogVisible"
+        append-to-body
+        class="mg-top-15"
+      >
+        <div class="mg-bottom-15" style="font-size: 18px">Quý khách có chắc chắn là muốn huỷ đăng ký tài khoản?</div>
+        <el-button @click="handleOnCancelingCloseSignUpDialog">Huỷ bỏ</el-button>
+        <el-button type="primary" @click="handleOnAcceptingCloseSignUpDialog">Đồng ý</el-button>
+      </el-dialog>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import SignUpDialog from '~/components/ung-vien/SignUpDialog';
+  import IntroductionBox from '~/components/ung-vien/boxs/IntroductionBox';
 
   import {Vld} from '~/assets/js/functions';
-  import {JobOption} from '~/assets/js/data-options';
 
   export default {
-    components: {
-      SignUpDialog
-    },
-
     head() {
       return {
         title: this.title
       };
     },
+
+    components: {
+      IntroductionBox
+    },
+
     layout: 'candidate',
     data() {
-      const {
-        jobs,
-        workAddresses
-      } = JobOption;
       return {
-        title: 'Đăng nhập ứng viên',
-        signInForm: {
+        title: 'Đăng nhập',
+        signInInfo: {
           phoneNumber: '',
           password: '',
         },
-        userType: '',
-        employerSignUpInfo: {
-          firstName: '',
-          lastName: '',
+        signUpInfo: {
+          userType: '',
           phoneNumber: '',
-          companyName: '',
-          password: ''
-        },
-        candidateSignUpInfo: {
-          firstName: '',
-          lastName: '',
-          phoneNumber: '',
-          professions: '',
-          workAddress: '',
           password: ''
         },
         inputOfPasswordRecoveryDialog: '',
-        showAlert: false,
+        alertVisible: false,
         passwordRecoveryDialog: false,
         isLoading: false,
         isAnAccount: true,
 
-        signUpDialog: true,
+        signUpDialogVisible: false,
+        innerCloseDialogVisible: false,
         signUpDialogWidth: '450px',
         signUpCarouselHeight: '200px',
-
-        hasChangedCompanyPhoneNumberInput: false,
-        hasChangedEmployerNameInput: false,
-        hasChangedCompanyNameInput: false,
-        hasChangedCandidatePhoneNumberInput: false,
-        hasChangedCandidateNameInput: false,
-        hasSelectedCandidateWorkAddressInput: false,
-        doneRegisterDialogVisible: false,
-        hasCarouselChange: false,
-
-        professionOptions: jobs,
-        workAddressOptions: workAddresses,
-
         rules: {
           password: [
-            {required: true, min: 6, message: 'Độ  dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
-          ],
-          firstName: [
-            {required: true, message: 'Vui lòng nhập họ của bạn', trigger: 'blur'},
-          ],
-          lastName: [
-            {required: true, message: 'Vui lòng nhập tên của bạn', trigger: 'blur'},
+            {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
+            {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'},
           ],
           phoneNumber: [
             {required: true, message: 'Vui lòng nhập số điện thoại', trigger: 'blur'},
             {min: 10, message: 'Độ dài số điện thoại phải có ít nhất 10 số', trigger: 'blur'},
             {max: 11, message: 'Độ dài số điện thoại tối đa là 11 số', trigger: 'blur'}
           ],
-          professions: [
-            {required: true, message: 'Vui lòng chọn lĩnh vực bạn muốn làm việc', trigger: 'blur'},
-          ],
-          companyName: [
-            {required: true, message: 'Vui lòng nhập tên công ty', trigger: 'blur'},
-            {required: true, min: 5, message: 'Độ dài tên công ty phải có ít nhất 5 ký tự', trigger: 'blur'}
-          ],
         }
       }
-    },
-    watch: {
-      employerSignUpInfo: {
-        handler(newValue, oldValue) {
-
-          if (newValue.lastName) {
-            this.signUpCarouselHeight = '230px';
-            this.hasChangedEmployerNameInput = true;
-          }
-
-          if (newValue.phoneNumber.length >= 10) {
-            this.signUpCarouselHeight = '300px';
-            this.hasChangedCompanyPhoneNumberInput = true;
-          }
-
-          if (newValue.companyName.length >= 5) {
-            this.signUpCarouselHeight = '360px';
-            this.hasChangedCompanyNameInput = true;
-          }
-        },
-        deep: true
-      },
-      candidateSignUpInfo: {
-        handler(newValue, oldValue) {
-          if (newValue.lastName) {
-            this.signUpCarouselHeight = '230px';
-            this.hasChangedCandidateNameInput = true;
-          }
-
-          if (newValue.phoneNumber.length >= 10) {
-            this.signUpCarouselHeight = '300px';
-            this.hasChangedCandidatePhoneNumberInput = true;
-          }
-
-          if (newValue.workAddress) {
-            this.signUpCarouselHeight = '360px';
-            this.hasSelectedCandidateWorkAddressInput = true;
-          }
-        },
-        deep: true
-      },
     },
     methods: {
       handleOnOpenPasswordRecoveryDialog() {
@@ -276,7 +315,7 @@
 
       handleOnSubmitPasswordRecovery() {
         if (Vld.isMobile(this.inputOfPasswordRecoveryDialog) || Vld.isEmail(this.inputOfPasswordRecoveryDialog)) {
-          this.showAlert = false;
+          this.alertVisible = false;
           this.isLoading = true;
           setTimeout(() => {
             this.isLoading = false;
@@ -289,11 +328,11 @@
             }
           }, 2000);
         } else {
-          this.showAlert = true;
+          this.alertVisible = true;
         }
       },
 
-      handleOnLogin(formName) {
+      handleOnSignInBtn(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             // alert('submit!');
@@ -326,166 +365,79 @@
         });
       },
 
-      handleOnClickSignUp() {
-        this.signUpDialog = true;
-        // this.signUpCarouselHeight = '200px';
+      handleOnClickSignUpText() {
+        this.signUpDialogVisible = true;
+        this.signUpCarouselHeight = '200px';
       },
 
       handleOnClickEmployerBtn() {
-        this.userType = 'employer';
+        this.signUpInfo.userType = 'employer';
         this.$refs.signUpCarousel.activeIndex = 1;
-        // this.signUpCarouselHeight = '150px';
-        this.signUpCarouselHeight = '450px';
+        this.signUpCarouselHeight = '440px';
         this.signUpDialogWidth = '750px'
       },
 
       handleOnClickCandidateBtn() {
-        this.userType = 'candidate';
+        this.signUpInfo.userType = 'candidate';
         this.$refs.signUpCarousel.activeIndex = 1;
-        this.signUpCarouselHeight = '450px';
+        this.signUpCarouselHeight = '440px';
         this.signUpDialogWidth = '750px'
       },
 
-      handleOnCloseSignUpDialog(done) {
-        this.$confirm('Bạn có chắc là muốn huỷ đăng ký tài khoản?')
-          .then(_ => {
-            done();
-            this.$refs.signUpCarousel.activeIndex = 0;
-            this.userType = '';
-            //nếu set thuộc tính :visible.sync của carousel thì không cần set this.signUpDialog = false
-            // this.signUpDialog = false;
-            this.signUpCarouselHeight = '200px';
-
-            //reset employer sign up info
-            let employerSignUpInfoKeys = Object.getOwnPropertyNames(this.employerSignUpInfo); //take keys of object
-            for (let i = 0; i < employerSignUpInfoKeys.length; i++) {
-              this.employerSignUpInfo[employerSignUpInfoKeys[i]] = '';
-            }
-            this.hasChangedEmployerNameInput = false;
-            this.hasChangedCompanyPhoneNumberInput = false;
-            this.hasChangedCompanyNameInput = false;
-
-            //reset candidate sign up info
-            let candidateSignUpInfoKeys = Object.getOwnPropertyNames(this.candidateSignUpInfo); //take keys of object
-            for (let i = 0; i < candidateSignUpInfoKeys.length; i++) {
-              this.candidateSignUpInfo[candidateSignUpInfoKeys[i]] = '';
-            }
-            this.hasChangedCandidateNameInput = false;
-            this.hasChangedCandidatePhoneNumberInput = false;
-            this.hasSelectedCandidateWorkAddressInput = false;
-          })
-          .catch(_ => {
-          });
+      handleOnCloseSignUpDialog() {
+        this.innerCloseDialogVisible = true;
       },
 
-      handleOnConfirmInfo() {
-        console.log(this.doneRegisterDialogVisible);
-        this.confirmInfoDialogVisible = false;
-        this.doneRegisterDialogVisible = true;
-        console.log(this.doneRegisterDialogVisible);
+      handleOnCancelingCloseSignUpDialog() {
+        this.innerCloseDialogVisible = false;
       },
 
-      handleOnSubmitEmployerSignUpForm(formName) {
+      handleOnAcceptingCloseSignUpDialog() {
+        this.innerCloseDialogVisible = false;
+        this.signUpDialogVisible = false;
+        this.signUpInfo.userType = '';
+        this.signUpCarouselHeight = '200px';
+        this.signUpDialogWidth = '440px';
+        this.signUpInfo.phoneNumber = '';
+        this.signUpInfo.password = '';
+      },
+
+      handleOnSubmitSignUpForm(formName) {
         this.$refs[formName].validate((valid) => {
-          if (
-            valid
-            && Vld.isName(this.employerSignUpInfo.firstName)
-            && Vld.isName(this.employerSignUpInfo.lastName)
-            && Vld.isName(this.employerSignUpInfo.companyName)
-            && Vld.isMobile(this.employerSignUpInfo.phoneNumber)
-          ) {
-            this.$refs.signUpCarousel.activeIndex = 2;
+          if (valid && Vld.isMobile(this.signUpInfo.phoneNumber)) {
+            this.showSuccessAlert("Đăng ký tài khoản thành công");
+            this.$router.push("/");
           } else {
-            if (!Vld.isName(this.employerSignUpInfo.firstName)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại họ của bạn!');
-              }, 200);
-            }
-
-            if (!Vld.isName(this.employerSignUpInfo.lastName)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại tên của bạn!');
-              }, 300);
-
-            }
-
-            if (!Vld.isMobile(this.employerSignUpInfo.phoneNumber)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại số điện thoại của bạn!');
-              }, 400);
-
-            }
-
-            if (!Vld.isName(this.employerSignUpInfo.companyName)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại tên công ty!');
-              }, 500);
-            }
             return false;
           }
         });
       },
 
-      handleOnSubmitCandidateSignUpForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (
-            valid
-            && Vld.isName(this.candidateSignUpInfo.firstName)
-            && Vld.isName(this.candidateSignUpInfo.lastName)
-            && Vld.isName(this.candidateSignUpInfo.companyName)
-            && Vld.isMobile(this.candidateSignUpInfo.phoneNumber)
-          ) {
-            this.$refs.signUpCarousel.activeIndex = 2;
-          } else {
-            if (!Vld.isName(this.candidateSignUpInfo.firstName)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại họ của bạn!');
-              }, 200);
-            }
-
-            if (!Vld.isName(this.candidateSignUpInfo.lastName)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại tên của bạn!');
-              }, 300);
-
-            }
-
-            if (!Vld.isMobile(this.candidateSignUpInfo.phoneNumber)) {
-              setTimeout(() => {
-                this.showErrorAlert('Vui lòng nhập lại số điện thoại của bạn!');
-              }, 400);
-
-            }
-            return false;
-          }
-        });
-      },
-
-      handleOnDoneSigningUp() {
-        this.$refs.signUpCarousel.activeIndex = 3;
-      },
-
-      handleOnBackForward() {
-        this.$refs.signUpCarousel.activeIndex = 1;
-      },
 
       handleOnChangeCarouselItem(value) {
         if (value === 1) {
           //setTimeOut 200ms để tránh trùng event change của carousel vs focus của input
           setTimeout(() => {
             //this.$nextTick(() => {
-            if (this.userType === 'employer') {
-              this.$refs.employerFirstName.focus();
-            } else {
-              this.$refs.candidateFirstName.focus();
-            }
+            this.$refs.phoneNumberInput.focus();
             // })
           }, 200);
         }
+      },
+
+      handleOnClickSignInText() {
+        this.signUpDialogVisible = false;
+        this.signUpInfo.userType = '';
+        //nếu set thuộc tính :visible.sync của carousel thì không cần set this.signUpDialog = false
+        // this.signUpDialog = false;
+        this.signUpCarouselHeight = '200px';
+        this.signUpDialogWidth = '440px';
+        this.signUpInfo.phoneNumber = '';
+        this.signUpInfo.password = '';
       }
+
     }
   }
-
 </script>
 
 <style lang="scss" scoped>
@@ -497,28 +449,7 @@
   }
 
   .box-left {
-    color: $color-black;
     margin-top: 20vh;
-    h2 {
-      font-size: 45px;
-      font-weight: 500;
-      line-height: 60px;
-    }
-
-    p {
-      line-height: 40px;
-      font-size: $fs-large-18;
-      display: flex;
-      align-items: center;
-
-      svg {
-        font-size: 25px;
-        border: 1px solid $color-white;
-        border-radius: 50%;
-        padding: 5px;
-        margin-right: 5px;
-      }
-    }
   }
 
   .box-right {
@@ -529,7 +460,7 @@
       color: #48576a;
       display: flex;
       align-items: center;
-      margin-left: 5px;
+      justify-content: center;
 
       svg {
         margin-right: 5px;
@@ -779,7 +710,6 @@
           cursor: pointer;
           background-color: $color-primary;
           color: $color-white !important;
-          box-shadow: 0 0 10px $color-primary;
         }
 
         svg {
@@ -818,14 +748,3 @@
 
 </style>
 
-<style lang="scss">
-  .el-form-item.is-required {
-    .el-form-item__label {
-      font-size: 15px;
-      padding-bottom: 5px !important;
-      &:before {
-        display: none !important;
-      }
-    }
-  }
-</style>

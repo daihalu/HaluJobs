@@ -154,14 +154,14 @@
             <hr class="hr-1 mg-top-15"/>
             <div class="ta-center mg-top-15">
               <p>Bạn đã có tài khoản?
-                <span class="sign-up-text" @click="handleOnClickSignIn">Đăng nhập</span>
+                <span class="sign-up-text" @click="handleOnClickSignInText">Đăng nhập</span>
               </p>
             </div>
           </div>
 
           
           
-          <sign-in-dialog v-if="showSignInForm" @on_change_form_status="handleOnChangeDialogStatus"/>
+          <sign-in-dialog v-if="showSignInForm" @on_click_sign_up="handleOnClickSignUpText"/>
         </el-carousel-item>
 
         <!--<el-carousel-item>-->
@@ -423,6 +423,10 @@
     components: {
       SignInDialog  
     },
+
+    props: {
+      signUpDialogVisible: Boolean
+    },
     
     head() {
       return {
@@ -466,7 +470,7 @@
         showSignInForm: false,
         showSignUpForm: true,
         
-        signUpDialog: true,
+        signUpDialog: this.signUpDialogVisible,
         signUpDialogWidth: '450px',
         signUpCarouselHeight: '200px',
 
@@ -484,7 +488,8 @@
 
         rules: {
           password: [
-            {required: true, min: 6, message: 'Độ  dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
+            {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
+            {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
           ],
           firstName: [
             {required: true, message: 'Vui lòng nhập họ của bạn', trigger: 'blur'},
@@ -547,7 +552,18 @@
         },
         deep: true
       },
+      signUpDialog(newValue, oldValue) {
+        console.log('New value:', newValue);
+      }
     },
+    created() {
+      console.log('Sign up dialog before', this.signUpDialogVisible);
+      console.log('Sign up dialog Visible', this.signUpDialogVisible);
+      this.signUpDialog = this.signUpDialogVisible ? this.signUpDialogVisible : this.signUpDialog;
+      console.log('Sign up dialog after', this.signUpDialogVisible);
+      console.log('Sign up dialog Visible', this.signUpDialogVisible);
+    },
+
     methods: {
       handleOnOpenPasswordRecoveryDialog() {
         this.passwordRecoveryDialog = true;
@@ -763,15 +779,16 @@
         }
       },
 
-      handleOnClickSignIn() {
+      handleOnClickSignInText() {
+        console.log('On click sign in text', this.$refs.signUpCarousel.activeIndex);
         this.showSignInForm = true;
         this.showSignUpForm = false;
         this.signUpDialogWidth = '450px';
         this.signUpCarouselHeight = '450px';
       },
 
-      handleOnChangeDialogStatus() {
-        this.$refs.signUpCarousel.activeIndex = 1;
+      handleOnClickSignUpText() {
+        console.log('On click sign up text', this.$refs.signUpCarousel.activeIndex);
         this.showSignUpForm = true;
         this.showSignInForm = false;
         this.signUpDialogWidth = "750px";

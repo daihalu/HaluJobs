@@ -1,7 +1,7 @@
 
 .hr-1 {
   border: 0;
-  height: 0.7px;
+  height: 1px;
   color: $color-black;
   opacity: 0.5;
   margin-top: 10px;
@@ -108,4 +108,74 @@
 
 .ta-center {
   text-align: center;
+}
+
+/*=====================TEXT COLOR====================*/
+
+.t-navy {
+  color: $color-primary;
+}
+
+.t-pink {
+  color: $color-pink;
+}
+
+
+/*=======================BUTTON========================*/
+
+.button-halu {
+  display: block;
+  background-color: $color-primary;
+  border-radius: 2px;
+  margin-left: 0 !important;
+  margin-top: 1em;
+  width: 100%;
+  border: none;
+  color: #ffffff;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: border-color 0.4s, color 0.4s;
+  transition: border-color 0.4s, color 0.4s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #009688;
+    border-radius: 2px;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: scale3d(0.7, 1, 1);
+    transform: scale3d(0.7, 1, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  }
+
+  &:hover {
+    color: #fff;
+    border-color: #009688;
+    border-radius: 2px;
+
+    &::before {
+      opacity: 1;
+      border-radius: 2px;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.2 s;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
