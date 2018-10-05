@@ -1,324 +1,265 @@
 <template>
   <div class="wrapper">
-    <el-row :gutter="10">
-      <el-col :span="10">
-        <div class="box-left">
-          <h2>Đăng ký ứng viên</h2>
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Tiếp cận hàng triệu công việc hoàn toàn miễn phí</span>
-          </p>
-
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Ứng tuyển nhanh chóng, dễ dàng</span>
-          </p>
-
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Nhận bản tin công việc phù hợp định kỳ</span>
-          </p>
-
-          <p>
-            <font-awesome-icon :icon="['fas', 'check']"/>
-            <span>Nâng cao cơ hội tìm việc với chương trình ứng viên năng động</span>
-          </p>
-        </div>
+    <el-row :gutter="10" class="">
+      <el-col :span="16">
+        <introduction-box class="box-left"/>
       </el-col>
-      <el-col :span="14">
-        <div class="box-right">
-          <h3 class="sign-up-form__title">
-            <font-awesome-icon icon="user-tie"/>
-            Đăng ký tài khoản ứng viên
+      <el-col :span="8">
+        <div class="box-right box-container">
+          <h3 class="ta-center">
+            Đăng nhập cùng HaluJobs
           </h3>
 
-          <el-form :model="signUpForm" :rules="rules" ref="signUpForm" label-width="120px" class="demo-dynamic"
-                   label-position="top">
-            <el-tabs v-model="activeTab" @tab-click="handleClick">
-              <el-tab-pane label="Tài khoản" name="account">
+          <div class="svo-sign-in mg-top-15">
 
-                <div class="account-info">
-
-                  <el-form-item
-                    prop="name"
-                    label="Nhập họ và tên">
-                    <div class="form-input">
-                      <font-awesome-icon icon="user-tie" class="icon"/>
-                      <el-input v-model="signUpForm.contact" auto-complete="off" suffix-icon="el-icon-dai"
-                                placeHolder="Vui lòng nhập họ tên"></el-input>
-                    </div>
-                  </el-form-item>
-
-                  <el-row :gutter="10">
-                    <el-col :span="12">
-                      <el-form-item
-                        prop="email"
-                        label="Nhập email">
-                        <div class="form-input">
-                          <font-awesome-icon :icon="['far', 'envelope']" class="icon"/>
-                          <el-input type="email" v-model="signUpForm.email" auto-complete="off"
-                                    suffix-icon="el-icon-dai"
-                                    placeHolder="Vui lòng nhập email"></el-input>
-                        </div>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                      <el-form-item
-                        prop="phoneNumber"
-                        label="Nhập số điện thoại">
-                        <div class="form-input">
-                          <font-awesome-icon icon="phone" class="icon"/>
-                          <el-input v-model.number="signUpForm.phoneNumber" auto-complete="off"
-                                    suffix-icon="el-icon-dai"
-                                    placeHolder="Vui lòng nhập số điện thoại"></el-input>
-                        </div>
-                      </el-form-item>
-                    </el-col>
-                  </el-row>
-
-                  <el-row :gutter="10">
-                    <el-col :span="12">
-                      <el-form-item
-                        prop="password"
-                        label="Nhập mật khẩu">
-                        <div class="form-input">
-                          <font-awesome-icon icon="lock" class="icon"/>
-                          <el-input type="password" v-model="signUpForm.password" auto-complete="off"
-                                    suffix-icon="el-icon-dai"
-                                    placeHolder="Vui lòng nhập mật khẩu"></el-input>
-                        </div>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                      <el-form-item
-                        prop="checkPassword"
-                        label="Nhập lại mật khẩu">
-                        <div class="form-input">
-                          <font-awesome-icon icon="lock" class="icon"/>
-                          <el-input type="password" v-model="signUpForm.checkPassword" auto-complete="off"
-                                    suffix-icon="el-icon-dai"
-                                    placeHolder="Vui lòng nhập lại mật khẩu"></el-input>
-                        </div>
-                      </el-form-item>
-                    </el-col>
-                  </el-row>
-
-                  <el-form-item
-                    prop="hasCheckedRules">
-                    <el-checkbox label="" name="hasCheckedRules" v-model="signUpForm.hasCheckedRules">
-                      <span>Đồng ý với các <nuxt-link to="/quy-dinh-bao-mat">Quy định bảo mật</nuxt-link> & <nuxt-link
-                        to="/thoa-thuan-su-dung">Thỏa thuận sử dụng </nuxt-link>của Halujob</span>
-                    </el-checkbox>
-                  </el-form-item>
-                </div>
-                <el-button type="primary" @click="submitForm('signUpForm')" class="btn btn-sign-up">Đăng ký
-                </el-button>
-                <div class="sign-in-now">
-                  <p>Bạn đã có tài khoản?
-                    <nuxt-link to="/ung-vien/dang-nhap">Đăng nhập ngay</nuxt-link>
-                  </p>
-                </div>
-              </el-tab-pane>
-
-              <el-tab-pane label="Thông tin cá nhân" name="personalInfo">
-                <div class="account-info">
-
-                  <el-row :gutter="10">
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Giới tính"
-                        prop="gender"
-                      >
-                        <el-select v-model="signUpForm.gender" placeholder="Chọn giới tính">
-                          <el-option
-                            v-for="(item, index) in genderOptions"
-                            :key="index"
-                            :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Ngày sinh"
-                        prop="dateOfBirth">
-                        <el-date-picker
-                          v-model="signUpForm.dateOfBirth"
-                          type="date"
-                          placeholder="Ngày sinh"
-                          format="dd/MM/yyyy"
-                        >
-                        </el-date-picker>
-                      </el-form-item>
-                    </el-col>
-                  </el-row>
-
-                  <el-row :gutter="10">
-                    <el-col :span="12">
-                      <el-form-item
-                        prop="address"
-                        label="Địa chỉ">
-                        <div class="form-input">
-                          <el-input
-                            v-model="signUpForm.address"
-                            auto-complete="off"
-                            placeHolder="Vui lòng nhập địa chỉ">
-                          </el-input>
-                        </div>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Tình trạng hôn nhân"
-                        prop="marriageStatus"
-                      >
-                        <el-select v-model="signUpForm.marriageStatus" placeholder="Tình trạng hôn nhân">
-                          <el-option
-                            v-for="(item, index) in marriageStatusOptions"
-                            :key="index"
-                            :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                    </el-col>
-                  </el-row>
-
-                </div>
-
-                <div class="sign-up-form-continue">
-                  <el-button type="primary" @click="submitForm('signUpForm')" class="btn btn-continue">Tiếp tục
-                  </el-button>
-                  <p>
-                    <nuxt-link to="/">Để sau</nuxt-link>
-                  </p>
-                </div>
-              </el-tab-pane>
-
-              <el-tab-pane label="Công việc mong muốn" name="desiredJob">
-                <div class="account-info">
-
-                  <el-row :gutter="10">
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Bạn mong muốn làm việc ở đâu?"
-                        prop="workAddresses"
-                      >
-                        <el-select v-model="signUpForm.workAddresses" multiple
-                                   placeholder="Vui lòng chọn tối đa 3 địa điểm">
-                          <el-option
-                            v-for="(item, index) in workAddressOptions"
-                            :key="index"
-                            :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Bạn mong muốn làm việc trong lĩnh vực nào?"
-                        prop="jobTypes"
-                      >
-                        <el-select v-model="signUpForm.jobTypes" multiple placeholder="Vui lòng chọn tối đa 3 lĩnh vực">
-                          <el-option
-                            v-for="(item, index) in jobOptions"
-                            :key="index"
-                            :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                    </el-col>
-                  </el-row>
-
-                  <el-row :gutter="10">
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Cấp bậc mong muốn"
-                        prop="jobTitle"
-                      >
-                        <el-select v-model="signUpForm.jobTitle" placeholder="Chọn cấp bậc mong muốn">
-                          <el-option
-                            v-for="(item, index) in jobTitleOptions"
-                            :key="index"
-                            :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                      <el-form-item
-                        label="Mức lương mong muốn"
-                        prop="desiredSalary"
-                      >
-                        <el-select v-model="signUpForm.salary" placeholder="Chọn mức lương mong muốn">
-                          <el-option
-                            v-for="(item, index) in desiredSalaryOptions"
-                            :key="index"
-                            :label="item.label"
-                            :value="item.value">
-                          </el-option>
-                        </el-select>
-                      </el-form-item>
-                    </el-col>
-                  </el-row>
-
-                  <el-form-item
-                    label="Loại hình công việc bạn muốn tham gia?"
-                    prop="professions"
-                  >
-                    <el-select v-model="signUpForm.professions" placeholder="Chọn loại hình công việc bạn muốn">
-                      <el-option
-                        v-for="(item, index) in jobTypeOptions"
-                        :key="index"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
-                  </el-form-item>
-
-                  <el-form-item
-                    label="Mục tiêu nghề nghiệp"
-                    prop="jobGoals"
-                  >
-                    <el-checkbox-group v-model="signUpForm.jobGoals">
-                      <el-row :gutter="10">
-                        <el-col :span="12">
-                          <el-checkbox label="Mong muốn tìm được chỗ làm ổn định lâu dài"></el-checkbox>
-                          <el-checkbox label="Mong muốn tìm được chỗ làm có cơ hội thăng tiến tốt"></el-checkbox>
-                        </el-col>
-                        <el-col :span="12">
-                          <el-checkbox label="Mong muốn tìm được chỗ làm có mức lương tốt"></el-checkbox>
-                          <el-checkbox label="Mong muốn tìm được nơi có cơ hội thăng tiến tốt"></el-checkbox>
-                        </el-col>
-                      </el-row>
+            <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
+            <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
 
 
-                    </el-checkbox-group>
-                  </el-form-item>
-                </div>
+            <div class="text-or">
+              Hoặc
+            </div>
 
-                <div class="sign-up-form-continue">
-                  <el-button type="primary" @click="submitForm('signUpForm')" class="btn btn-continue">Tiếp tục
-                  </el-button>
-                  <p>
-                    <nuxt-link to="/">Để sau</nuxt-link>
-                  </p>
-                </div>
-              </el-tab-pane>
-            </el-tabs>
+          </div>
+
+          <el-form :model="signInInfo" :rules="rules" ref="signInInfo" label-width="120px" label-position="top"
+                   class="mg-top-15">
+
+            <el-form-item
+              prop="emailOrPhoneNumber"
+            >
+              <div class="form-input">
+                <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
+                <el-input
+                  v-model="signInInfo.phoneNumber"
+                  auto-complete="off"
+                  autofocus="true"
+                  prefix-icon="el-icon-dai"
+                  placeHolder="Nhập email hoặc số điện thoại"
+                >
+                </el-input>
+              </div>
+            </el-form-item>
+
+            <el-form-item
+              prop="password"
+            >
+              <div class="form-input">
+                <font-awesome-icon icon="lock" class="icon"/>
+                <el-input type="password" v-model="signInInfo.password" auto-complete="off" prefix-icon="el-icon-dai"
+                          placeHolder="Nhập mật khẩu"></el-input>
+              </div>
+            </el-form-item>
+
+            <el-button
+              @click="handleOnClickSignInBtn('signInInfo')"
+              :loading="isLoading"
+              class="button button--ujarak"
+            >
+              Đăng nhập
+            </el-button>
+
           </el-form>
+
+          <div class="forgot-password mg-top-15">
+            <span @click="handleOnOpenPasswordRecoveryDialog">Quên mật khẩu?</span>
+          </div>
+          <hr class="hr-1 mg-bottom-10"/>
+
+          <div class="ta-center">
+            <p>Bạn chưa có tài khoản?
+              <span class="sign-up-text" @click="handleOnClickSignUpText">Đăng ký</span>
+            </p>
+          </div>
         </div>
       </el-col>
     </el-row>
+
+    <el-dialog
+      title="Khôi phục mật khẩu"
+      :visible.sync="passwordRecoveryDialog"
+      class="password-recovery-dialog"
+    >
+      <div>
+        <h3>Nhập số điện thoại hoặc email để nhận mật khẩu mới.</h3>
+        <el-input
+          v-model="inputOfPasswordRecoveryDialog"
+          placeholder="Nhập email hoặc số điện thoại"
+          autofocus="true"
+          class="mg-top-15"
+        >
+        </el-input>
+        <div
+          v-if="alertVisible"
+          class="alert mg-top-15"
+        >
+          Nhập chính xác số điện thoại hoặc email
+        </div>
+        <div>
+          <el-button
+            type="primary"
+            @click="handleOnSubmitPasswordRecovery"
+            :loading="isLoading"
+            class="mg-top-15"
+          >
+            Khôi phục mật khẩu
+          </el-button>
+        </div>
+
+      </div>
+    </el-dialog>
+
+    <el-dialog
+      :visible.sync="signUpDialogVisible"
+      class="sign-up-dialog"
+      :width="signUpDialogWidth"
+      :close-on-press-escape="false"
+      :close-on-click-modal="false"
+      :before-close="handleOnCloseSignUpDialog"
+    >
+      <el-carousel
+        indicator-position="none"
+        arrow="never"
+        :autoplay="false"
+        @change="handleOnChangeCarouselItem"
+        ref="signUpCarousel"
+        :height="signUpCarouselHeight"
+        v-if="signUpDialogVisible"
+      >
+
+        <el-carousel-item>
+          <div class="user-type" v-if="!signUpInfo.userType">
+            <div class="title">Bạn là nhà tuyển dụng hay ứng viên?</div>
+            <div class="container mg-top-15">
+              <div
+                class="small-box"
+                :class="{active: signUpInfo.userType === 'employer'}"
+                @click="handleOnClickEmployerBtn"
+              >
+                <font-awesome-icon :icon="['fas', 'user-tie']"/>
+                <span>Nhà tuyển dụng</span>
+              </div>
+
+              <div
+                class="small-box"
+                :class="{active: signUpInfo.userType === 'candidate'}"
+                @click="handleOnClickCandidateBtn"
+              >
+                <font-awesome-icon :icon="['fas', 'briefcase']"/>
+                <span>Ứng viên</span>
+              </div>
+            </div>
+
+          </div>
+        </el-carousel-item>
+
+        <el-carousel-item>
+          <el-row :gutter="10">
+            <el-col :span="12" class="sign-up-dialog--box-left">
+              <h3>Đăng ký để kết nối ngay với hàng triệu nhà tuyển dụng hàng đầu và ứng viên chất lượng</h3>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Tiếp cận hàng triệu công việc hoàn toàn miễn phí</span>
+              </p>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Ứng tuyển nhanh chóng, dễ dàng</span>
+              </p>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Nhận bản tin công việc phù hợp định kỳ</span>
+              </p>
+
+              <p>
+                <font-awesome-icon :icon="['fas', 'check']"/>
+                <span>Nâng cao cơ hội tìm việc với chương trình ứng viên năng động</span>
+              </p>
+            </el-col>
+            <el-col :span="12">
+              <div class="sign-up-dialog--box-left">
+                <div>Bằng việc đăng kí bạn đã đồng ý với <nuxt-link to="/thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link> của HaluJobs</div>
+                <div class="svo-sign-in mg-top-15">
+                  <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
+                  <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
+
+                  <div class="text-or">
+                    Hoặc
+                  </div>
+                </div>
+
+                <el-form
+                  :model="signUpInfo"
+                  :rules="rules" ref="signUpInfo"
+                  class="mg-top-15"
+                >
+                  <el-form-item prop="emailOrPhoneNumber">
+                    <div class="form-input">
+                      <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
+                      <el-input
+                        ref="phoneNumberInput"
+                        v-model="signUpInfo.phoneNumber"
+                        auto-complete="off"
+                        prefix-icon="el-icon-halu"
+                        placeHolder="Nhập email hoặc số điện thoại"
+                      >
+                      </el-input>
+                    </div>
+                  </el-form-item>
+
+                  <el-form-item prop="password">
+                    <div class="form-input">
+                      <font-awesome-icon icon="lock" class="icon"/>
+                      <el-input
+                        type="password"
+                        v-model="signUpInfo.password"
+                        auto-complete="off"
+                        prefix-icon="el-icon-dai"
+                        placeHolder="Nhập mật khẩu"
+                      >
+                      </el-input>
+                    </div>
+                  </el-form-item>
+
+                  <el-button
+                    class="button button--ujarak"
+                    @click="handleOnSubmitSignUpForm('signUpInfo')"
+                  >
+                    Đăng ký
+                  </el-button>
+
+                </el-form>
+              </div>
+            </el-col>
+          </el-row>
+          <hr class="hr-1 mg-top-15"/>
+          <div class="ta-center mg-top-15">
+            <p>Bạn đã có tài khoản?
+              <span class="sign-up-text" @click="handleOnClickSignInText">Đăng nhập</span>
+            </p>
+          </div>
+        </el-carousel-item>
+      </el-carousel>
+      <el-dialog
+        width="30%"
+        :visible.sync="innerCloseDialogVisible"
+        append-to-body
+        style="margin-top: 25vh;"
+      >
+        <div class="mg-bottom-15" style="font-size: 18px">Quý khách có chắc chắn là muốn huỷ đăng ký tài khoản?</div>
+        <el-button @click="handleOnCancelingCloseSignUpDialog">Huỷ bỏ</el-button>
+        <el-button type="primary" @click="handleOnAcceptingCloseSignUpDialog">Đồng ý</el-button>
+      </el-dialog>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-  import {JobOption} from '~/assets/js/data-options';
+  import IntroductionBox from '~/components/ung-vien/boxs/IntroductionBox';
+
+  import {Vld} from '~/assets/js/functions';
 
   export default {
     head() {
@@ -326,144 +267,172 @@
         title: this.title
       };
     },
+
+    components: {
+      IntroductionBox
+    },
+
     layout: 'candidate',
     data() {
-
-
-      const validatePassword = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('Vui lòng nhập mật khẩu của bạn'));
-        } else {
-          if (this.signUpForm.checkPassword !== '') {
-            this.$refs.signUpForm.validateField('checkPassword');
-          }
-          callback();
-        }
-      };
-      const validateCheckPassword = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('Vui lòng nhập lại mật khẩu của bạn'));
-        } else if (value !== this.signUpForm.password) {
-          callback(new Error('Mật khẩu nhập lại không khớp'));
-        } else {
-          callback();
-        }
-      };
-      const {
-        jobTitles,
-        jobs,
-        workAddresses,
-        jobTypes,
-        desiredSalaries,
-        genders,
-        marriageStatuses
-      } = JobOption;
-
       return {
-        title: 'Đăng ký ứng viên',
-        signUpForm: {
-          email: '',
-          password: '',
-          checkPassword: '',
-          contact: '',
+        title: 'Đăng nhập',
+        signInInfo: {
           phoneNumber: '',
-          hasCheckedRules: '',
-          address: '',
-          gender: '',
-          marriageStatus: '',
-          dateOfBirth: '',
-          workAddresses: [],
-          professions: [],
-          jobTypes: '',
-          jobTitle: '',
-          salary: '',
-          jobGoals: [],
+          password: '',
         },
-        activeTab: 'account',
+        signUpInfo: {
+          userType: '',
+          phoneNumber: '',
+          password: ''
+        },
+        inputOfPasswordRecoveryDialog: '',
+        alertVisible: false,
+        passwordRecoveryDialog: false,
+        isLoading: false,
+        isAnAccount: true,
+
+        signUpDialogVisible: false,
+        innerCloseDialogVisible: false,
+        signUpDialogWidth: '450px',
+        signUpCarouselHeight: '200px',
         rules: {
-          email: [
-            {required: true, message: 'Vui lòng nhập email', trigger: 'blur'},
-            {type: 'email', message: 'Email không đúng định dạng', trigger: ['blur', 'change']}
-          ],
           password: [
-            {required: true, validator: validatePassword, trigger: 'blur'},
-            {min: 6, message: 'Độ  dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
+            {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
+            {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'},
           ],
-          checkPassword: [
-            {required: true, validator: validateCheckPassword, trigger: 'blur'}
+          emailOrPhoneNumber: [
+            {required: true, message: 'Vui lòng nhập số điện thoại hoặc email', trigger: 'blur'},
           ],
-          contact: [
-            {required: true, message: 'Vui lòng nhập họ tên người liên hệ', trigger: 'blur'},
-            {min: 1, message: 'Độ dài tên phải có ít nhất 1 ký tự', trigger: 'blur'}
-          ],
-          phoneNumber: [
-            {
-              required: true, message: 'Vui lòng nhập số điện thoại', trigger: 'blur'
-            }
-          ],
-          hasCheckedRules: [
-            {
-              required: true,
-              message: 'Vui lòng chọn đồng ý với các quy định bảo mật & thỏa thuận sử dụng của Halujob',
-              trigger: 'change'
-            }
-          ],
-          address: [
-            {required: true, message: 'Vui lòng nhập địa chỉ', trigger: 'blur'}
-          ],
-          gender: [
-            {required: true, message: 'Vui lòng chọn giới tính', trigger: 'blur'}
-          ],
-          marriageStatus: [
-            {required: true, message: 'Vui lòng chọn tình trạng quan hệ hôn nhân', trigger: 'blur'}
-          ],
-          dateOfBirth: [
-            {required: true, message: 'Vui lòng chọn ngày sinh', trigger: 'blur'}
-          ],
-          workAddresses: [
-            {required: true, message: 'Vui lòng chọn địa điểm bạn muốn làm việc', trigger: 'blur'},
-          ],
-          professions: [
-            {required: true, message: 'Vui lòng chọn lĩnh vực bạn muốn làm việc', trigger: 'blur'},
-          ],
-          jobTypes: [
-            {required: true, message: 'Vui lòng chọn loại hình công việc', trigger: 'blur'}
-          ],
-          jobTitle: [
-            {required: true, message: 'Vui lòng chọn cấp bậc mong muốn', trigger: 'blur'}
-          ],
-          salary: [
-            {required: true, message: 'Vui lòng chọn mức lương mong muốn', trigger: 'blur'}
-          ],
-          jobGoals: [
-            {required: true, message: 'Vui lòng mục tiêu nghề nghiệp', trigger: 'blur'}
-          ],
-        },
-        workAddressOptions: workAddresses,
-        marriageStatusOptions: marriageStatuses,
-        genderOptions: genders,
-        jobOptions: jobs,
-        jobTypeOptions: jobTypes,
-        jobTitleOptions: jobTitles,
-        desiredSalaryOptions: desiredSalaries,
+        }
       }
     },
     methods: {
-      submitForm(formName) {
+      handleOnOpenPasswordRecoveryDialog() {
+        this.passwordRecoveryDialog = true;
+      },
+
+      handleOnSubmitPasswordRecovery() {
+        if (Vld.isMobile(this.inputOfPasswordRecoveryDialog) || Vld.isEmail(this.inputOfPasswordRecoveryDialog)) {
+          this.alertVisible = false;
+          this.isLoading = true;
+          setTimeout(() => {
+            this.isLoading = false;
+            if (this.isAnAccount) {
+              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}. Quý khách vui lòng kiểm tra.`);
+              this.passwordRecoveryDialog = false;
+              this.inputOfPasswordRecoveryDialog = '';
+            } else {
+              this.showErrorAlert('Tài khoản không tồn tại trên hệ thống!');
+            }
+          }, 2000);
+        } else {
+          this.alertVisible = true;
+        }
+      },
+
+      handleOnClickSignInBtn(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
+          if (valid && (Vld.isEmail(this.signInInfo) || Vld.isMobile(this.signInInfo))) {
+            // alert('submit!');
+            this.isLoading = true;
+            setTimeout(() => {
+              this.isLoading = false;
+              this.$router.push("/");
+
+            }, 2000)
           } else {
-            console.log('error submit!!');
+            this.showErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
             return false;
           }
         });
       },
-      handleClick(tab, event) {
-        console.log(tab, event);
+
+      showSuccessAlert(message) {
+        this.$notify({
+          title: 'Thông báo',
+          message: message,
+          type: 'success'
+        });
+      },
+
+      showErrorAlert(message) {
+        this.$notify({
+          title: 'Thông báo',
+          message: message,
+          type: 'warning'
+        });
+      },
+
+      handleOnClickEmployerBtn() {
+        this.signUpInfo.userType = 'employer';
+        this.$refs.signUpCarousel.activeIndex = 1;
+        this.signUpCarouselHeight = '440px';
+        this.signUpDialogWidth = '750px'
+      },
+
+      handleOnClickCandidateBtn() {
+        this.signUpInfo.userType = 'candidate';
+        this.$refs.signUpCarousel.activeIndex = 1;
+        this.signUpCarouselHeight = '440px';
+        this.signUpDialogWidth = '750px'
+      },
+
+      handleOnCloseSignUpDialog() {
+        this.innerCloseDialogVisible = true;
+      },
+
+      handleOnCancelingCloseSignUpDialog() {
+        this.innerCloseDialogVisible = false;
+      },
+
+      handleOnAcceptingCloseSignUpDialog() {
+        this.innerCloseDialogVisible = false;
+        this.signUpDialogVisible = false;
+        this.signUpInfo.userType = '';
+        this.signUpCarouselHeight = '200px';
+        this.signUpDialogWidth = '440px';
+        this.signUpInfo.phoneNumber = '';
+        this.signUpInfo.password = '';
+      },
+
+      handleOnSubmitSignUpForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid && (Vld.isMobile(this.signUpInfo.phoneNumber) || Vld.isEmail(this.signUpInfo))) {
+            this.showSuccessAlert("Đăng ký tài khoản thành công.");
+            this.$router.push("/");
+          } else {
+            this.showErrorAlert("Email hoặc số điện thoại không đúng định dạng. Vui lòng nhập lại.");
+            return false;
+          }
+        });
+      },
+
+      handleOnChangeCarouselItem(value) {
+        if (value === 1) {
+          //setTimeOut 200ms để tránh trùng event change của carousel vs focus của input
+          setTimeout(() => {
+            //this.$nextTick(() => {
+            this.$refs.phoneNumberInput.focus();
+            // })
+          }, 200);
+        }
+      },
+
+      handleOnClickSignUpText() {
+        this.signUpDialogVisible = true;
+        this.signUpCarouselHeight = '200px';
+      },
+
+      handleOnClickSignInText() {
+        this.signUpDialogVisible = false;
+        this.signUpInfo.userType = '';
+        //nếu set thuộc tính :visible.sync của carousel thì không cần set this.signUpDialog = false
+        // this.signUpDialog = false;
+        this.signUpCarouselHeight = '200px';
+        this.signUpDialogWidth = '440px';
+        this.signUpInfo.phoneNumber = '';
+        this.signUpInfo.password = '';
       }
-    },
-    mounted() {
 
     }
   }
@@ -478,159 +447,302 @@
   }
 
   .box-left {
-    color: $color-white;
     margin-top: 20vh;
-
-    h2 {
-      font-size: 45px;
-      font-weight: 500;
-      line-height: 60px;
-    }
-
-    p {
-      line-height: 40px;
-      font-size: $fs-large-18;
-      display: flex;
-      align-items: center;
-      svg {
-        font-size: 25px;
-        border: 1px solid $color-white;
-        border-radius: 50%;
-        padding: 5px;
-        margin-right: 5px;
-      }
-
-    }
   }
 
   .box-right {
-    border: 1px solid $color-border;
-    border-radius: $br-5;
-    background-color: $color-white;
     padding: $padding-border-box-15;
     margin-top: 20vh;
-  }
 
-  .account-info {
-    margin-bottom: 5px;
-    border: 1px solid $color-border;
-    border-radius: $br-3;
-    background-color: $bc-border-box;
-    padding: $padding-border-box-10;
-  }
+    h3 {
+      color: #48576a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-  .sign-up-form p {
-    margin: 10px 0;
-  }
-
-  .account-info h4 {
-    margin-bottom: 10px;
-  }
-
-  .el-select, .el-date-editor {
-    width: 100%;
-  }
-
-  .sign-up-form-continue {
-    text-align: center;
-  }
-
-  .sign-up-form-continue p:hover {
-    cursor: pointer;
+      svg {
+        margin-right: 5px;
+      }
+    }
   }
 
   .btn {
-    background-color: $color-primary;
     color: $color-white;
-    font-weight: $fw-big-700;
-    margin: 5px 0;
+    font-weight: 500;
+    margin: 0 auto;
     width: 100%;
+    border-radius: 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 transparent;
+      transition: none;
+    }
   }
 
-  .btn-sign-up {
-    background-color: $color-pink;
-    font-size: $fs-large-18;
-  }
-
-  .btn-sign-up:hover {
-    box-shadow: 0 0 5px $color-pink;
-    opacity: 0.8;
-  }
-
-  .btn-sign-up:active {
-    box-shadow: 0 0 0 transparent;
-    opacity: 1;
-    transition: none;
-  }
-
-  .btn-continue {
+  .btn-halu {
     background-color: $color-primary;
-    font-size: $fs-large-18;
+    border: transparent;
   }
 
-  .btn-continue:hover {
-    background-color: $color-secondary;
-    box-shadow: 0 0 5px $color-secondary;
+  .btn-facebook {
+    background-color: #3b5998;
+    border: transparent;
+    margin-left: 0 !important;
   }
 
-  .btn-continue:active {
-    box-shadow: 0 0 0 transparent;
-    background-color: $color-primary;
-    transition: none;
+  a:hover {
+    cursor: pointer;
+  }
+
+  .svo-sign-in {
+    text-align: center;
+  }
+
+  .text-or {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 15px auto;
+
+    &::after,
+    &::before {
+      content: "";
+      background: gray;
+      height: 1px;
+      margin: .3em;
+      flex: 1;
+    }
   }
 
   .form-input {
     position: relative;
+    .icon {
+      display: inline-block;
+      width: 17px;
+      color: $color-icon;
+      position: absolute;
+      top: 10px;
+      font-size: $fs-large-18;
+      z-index: 3;
+      left: 10px;
+    }
   }
 
-  .icon {
-    position: absolute;
-    color: $color-icon;
-    top: 10px;
-    font-size: $fs-large-18;
-    z-index: 3;
-    right: 10px;
-  }
-
-  .job-goal-1 {
-    margin-left: 30px;
-  }
-
-  .sign-in-now p span {
+  .forgot-password {
     color: $color-primary;
-    font-weight: $fw-base-500;
+    text-align: center;
+
+    span {
+      font-weight: 500;
+      &:hover {
+        color: $color-secondary;
+        cursor: pointer;
+      }
+
+      &:active {
+        color: $color-primary;
+      }
+    }
   }
 
-  .sign-in-now p span:hover {
-    cursor: pointer;
-    color: $color-secondary;
+  .password-recovery-dialog {
+    width: 70%;
+    margin: 0 auto;
   }
 
-  .sign-in-now p span:active {
-    cursor: pointer;
+  .alert {
+    color: $color-pink;
+  }
+
+  .sign-up-text {
     color: $color-primary;
+    font-weight: 500;
+
+    &:hover {
+      color: $color-secondary;
+      cursor: pointer;
+    }
   }
-
-
-
-  .el-form-item {
-    margin-bottom: 15px !important;
-  }
-
-  .el-checkbox + .el-checkbox {
-    margin-left: 0 !important;
-  }
-
 </style>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .el-col-12 .el-checkbox__label {
-    font-size: 12px !important;
-    font-weight: $fw-base-500 !important;
+  .button {
+    display: block;
+    border-radius: 2px;
+    margin-left: 0 !important;
+    margin-top: 1em;
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  .button:focus {
+    outline: none;
+  }
+
+  .button > span {
+    vertical-align: middle;
+  }
+
+  /* Ujarak */
+  .button--ujarak {
+    -webkit-transition: border-color 0.4s, color 0.4s;
+    transition: border-color 0.4s, color 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    background-color: #1ab394;
+    border-radius: 2px;
+  }
+
+  .button--ujarak::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #009688;
+    border-radius: 2px;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: scale3d(0.7, 1, 1);
+    transform: scale3d(0.7, 1, 1);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  }
+
+  .button--ujarak:hover {
+    color: #fff;
+    border-color: #009688;
+    border-radius: 2px;
+  }
+
+  .button--ujarak:hover::before {
+    opacity: 1;
+    border-radius: 2px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  /*==============================================*/
+
+  .password-recovery-dialog {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .alert {
+    color: $color-pink;
+  }
+
+  .sign-up-dialog {
+
+    margin: 0 auto;
+    overflow: hidden;
+
+    .sign-up-dialog--box-left {
+      font-size: 18px;
+      color: $color-black;
+      h3 {
+        font-weight: 500;
+        margin-bottom: 30px;
+        /*line-height: 60px;*/
+      }
+
+      p {
+        line-height: 25px;
+        font-size: $fs-base-16;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+
+        svg {
+          font-size: 20px;
+          border: 1px solid $color-primary;
+          color: $color-primary;
+          border-radius: 50%;
+          padding: 3px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .user-type {
+    /*text-align: center;*/
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+
+      .small-box {
+        width: 170px;
+        height: 110px;
+        border: 2px solid $color-primary;
+        padding: $padding-base-20;
+        color: $color-primary;
+        font-size: 17px;
+        border-radius: 2px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $color-primary;
+          color: $color-white !important;
+        }
+
+        svg {
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          margin-bottom: 15px;
+        }
+      }
+
+      .active {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .fade-in-up-leave-active,
+  .fade-in-up-enter-active {
+    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0) !important;
+  }
+
+  .fade-in-up-enter,
+  .fade-in-up-leave-to {
+    transform: translateY(10px) !important;
+    opacity: 0 !important;
+  }
+
+  .el-select {
+    width: 100% !important;
+  }
+
 </style>
-
-
 

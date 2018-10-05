@@ -15,7 +15,7 @@ const store = () => {
         getItem: key => Cookies.get(key),
         // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
         setItem: (key, value) =>
-          Cookies.set(key, value, { expires: 3, secure: true }),
+          Cookies.set(key, value, {expires: 3, secure: true}),
         removeItem: key => Cookies.remove(key),
       },
     }),],
@@ -26,6 +26,7 @@ const store = () => {
 
     state: {
       navBarStatus: 'HOME_PAGE',
+      hasSignIn: false,
       breadcrumb: {breadcrumbArr: [], title: ''},
       searchingContent: '',
       currentRouteName: ''
@@ -38,11 +39,16 @@ const store = () => {
 
       searchingContent(state) {
         return state.searchingContent;
+      },
+
+      hasSignIn(state) {
+        return state.hasSignIn;
       }
     },
 
     actions: {
-      updateNavBarStatus({commit}, status) {
+      updateNavBarStatus({commit, state}, status) {
+        if (status === state.navBarStatus) return;
         commit(types.UPDATE_NAV_BAR_STATUS, status);
       },
 
@@ -50,7 +56,8 @@ const store = () => {
         commit(types.UPDATE_BREADCRUMB, breadcrumbObj);
       },
 
-      updateSearchingContent({commit}, value) {
+      updateSearchingContent({commit, state}, value) {
+        if (value === state.searchingContent) return;
         commit(types.UPDATE_SEARCHING_CONTENT, value);
       },
 

@@ -26,8 +26,7 @@
                    class="mg-top-15">
 
             <el-form-item
-              prop="phoneNumber"
-
+              prop="emailOrPhoneNumber"
             >
               <div class="form-input">
                 <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
@@ -36,7 +35,7 @@
                   auto-complete="off"
                   autofocus="true"
                   prefix-icon="el-icon-dai"
-                  placeHolder="Vui lòng nhập số điện thoại"
+                  placeHolder="Nhập email hoặc số điện thoại"
                 >
                 </el-input>
               </div>
@@ -48,12 +47,12 @@
               <div class="form-input">
                 <font-awesome-icon icon="lock" class="icon"/>
                 <el-input type="password" v-model="signInInfo.password" auto-complete="off" prefix-icon="el-icon-dai"
-                          placeHolder="Vui lòng nhập mật khẩu"></el-input>
+                          placeHolder="Nhập mật khẩu"></el-input>
               </div>
             </el-form-item>
 
             <el-button
-              @click="handleOnSignInBtn('signInInfo')"
+              @click="handleOnClickSignInBtn('signInInfo')"
               :loading="isLoading"
               class="button button--ujarak"
             >
@@ -65,6 +64,7 @@
           <div class="forgot-password mg-top-15">
             <span @click="handleOnOpenPasswordRecoveryDialog">Quên mật khẩu?</span>
           </div>
+          <hr class="hr-1 mg-bottom-10"/>
 
           <div class="ta-center">
             <p>Bạn chưa có tài khoản?
@@ -84,7 +84,7 @@
         <h3>Nhập số điện thoại hoặc email để nhận mật khẩu mới.</h3>
         <el-input
           v-model="inputOfPasswordRecoveryDialog"
-          placeholder="Vui lòng nhập số điện thoại hoặc email"
+          placeholder="Nhập email hoặc số điện thoại"
           autofocus="true"
           class="mg-top-15"
         >
@@ -93,7 +93,7 @@
           v-if="alertVisible"
           class="alert mg-top-15"
         >
-          Vui lòng nhập chính xác số điện thoại hoặc email
+          Nhập chính xác số điện thoại hoặc email
         </div>
         <div>
           <el-button
@@ -195,7 +195,7 @@
                   :rules="rules" ref="signUpInfo"
                   class="mg-top-15"
                 >
-                  <el-form-item prop="phoneNumber">
+                  <el-form-item prop="emailOrPhoneNumber">
                     <div class="form-input">
                       <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
                       <el-input
@@ -203,7 +203,7 @@
                         v-model="signUpInfo.phoneNumber"
                         auto-complete="off"
                         prefix-icon="el-icon-halu"
-                        placeHolder="Vui lòng nhập số điện thoại"
+                        placeHolder="Nhập email hoặc số điện thoại"
                       >
                       </el-input>
                     </div>
@@ -217,7 +217,7 @@
                         v-model="signUpInfo.password"
                         auto-complete="off"
                         prefix-icon="el-icon-dai"
-                        placeHolder="Vui lòng nhập mật khẩu"
+                        placeHolder="Nhập mật khẩu"
                       >
                       </el-input>
                     </div>
@@ -246,7 +246,7 @@
         width="30%"
         :visible.sync="innerCloseDialogVisible"
         append-to-body
-        class="mg-top-15"
+        style="margin-top: 25vh;"
       >
         <div class="mg-bottom-15" style="font-size: 18px">Quý khách có chắc chắn là muốn huỷ đăng ký tài khoản?</div>
         <el-button @click="handleOnCancelingCloseSignUpDialog">Huỷ bỏ</el-button>
@@ -300,10 +300,8 @@
             {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
             {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'},
           ],
-          phoneNumber: [
-            {required: true, message: 'Vui lòng nhập số điện thoại', trigger: 'blur'},
-            {min: 10, message: 'Độ dài số điện thoại phải có ít nhất 10 số', trigger: 'blur'},
-            {max: 11, message: 'Độ dài số điện thoại tối đa là 11 số', trigger: 'blur'}
+          emailOrPhoneNumber: [
+            {required: true, message: 'Vui lòng nhập số điện thoại hoặc email', trigger: 'blur'},
           ],
         }
       }
@@ -332,9 +330,9 @@
         }
       },
 
-      handleOnSignInBtn(formName) {
+      handleOnClickSignInBtn(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid) {
+          if (valid && (Vld.isEmail(this.signInInfo) || Vld.isMobile(this.signInInfo))) {
             // alert('submit!');
             this.isLoading = true;
             setTimeout(() => {
@@ -363,11 +361,6 @@
           message: message,
           type: 'warning'
         });
-      },
-
-      handleOnClickSignUpText() {
-        this.signUpDialogVisible = true;
-        this.signUpCarouselHeight = '200px';
       },
 
       handleOnClickEmployerBtn() {
@@ -404,15 +397,15 @@
 
       handleOnSubmitSignUpForm(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid && Vld.isMobile(this.signUpInfo.phoneNumber)) {
-            this.showSuccessAlert("Đăng ký tài khoản thành công");
+          if (valid && (Vld.isMobile(this.signUpInfo.phoneNumber) || Vld.isEmail(this.signUpInfo))) {
+            this.showSuccessAlert("Đăng ký tài khoản thành công.");
             this.$router.push("/");
           } else {
+            this.showErrorAlert("Email hoặc số điện thoại không đúng định dạng. Vui lòng nhập lại.");
             return false;
           }
         });
       },
-
 
       handleOnChangeCarouselItem(value) {
         if (value === 1) {
@@ -423,6 +416,11 @@
             // })
           }, 200);
         }
+      },
+
+      handleOnClickSignUpText() {
+        this.signUpDialogVisible = true;
+        this.signUpCarouselHeight = '200px';
       },
 
       handleOnClickSignInText() {

@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <div>Bằng việc đăng nhập bạn đã đồng ý với <nuxt-link to="thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link> của HaluJobs</div>
     <div class="svo-sign-in mg-top-15">
       <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
@@ -21,16 +20,16 @@
         class="mg-top-15">
 
         <el-form-item
-          prop="phoneNumber"
-
+          prop="emailOrPhoneNumber"
         >
           <div class="form-input">
             <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
             <el-input
+              ref="emailOrPhoneNumberInput"
               v-model="signInForm.phoneNumber"
               auto-complete="off"
               prefix-icon="el-icon-dai"
-              placeHolder="Vui lòng nhập số điện thoại"
+              placeHolder="Vui lòng nhập email hoặc số điện thoại"
             >
             </el-input>
           </div>
@@ -63,9 +62,10 @@
 
     <div v-if="isForgettingPassword">
       <div>
-        Vui lòng nhập số điện thoại để nhận mật khẩu mới
+        Nhập số điện thoại để nhận mật khẩu mới
       </div>
       <el-input
+        ref="inputOfPasswordRecovery"
         v-model="inputOfPasswordRecoveryDialog"
         placeholder="Vui lòng nhập số điện thoại"
         autofocus="true"
@@ -79,7 +79,7 @@
     </div>
 
 
-    <div class="ta-center mg-top-15">
+    <div class="ta-center mg-top-25">
       <hr class="hr-1"/>
       <p class="mg-top-15">Bạn chưa có tài khoản?
         <span class="sign-up-text" @click="handleOnClickSignUpText">Đăng ký</span>
@@ -90,6 +90,7 @@
 
 <script>
   import {Vld} from '~/assets/js/functions';
+  import {EventTypes} from '~/assets/js/event-types';
 
   export default {
     data() {
@@ -104,21 +105,38 @@
         isAnAccount: true,
 
         rules: {
+          emailOrPhoneNumber: [
+            {required: true, message: 'Vui lòng nhập email hoặc số điện thoại', trigger: 'blur'},
+          ],
           password: [
             {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
             {min: 6, message: 'Độ  dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
           ],
-          phoneNumber: [
-            {required: true, message: 'Vui lòng nhập số điện thoại', trigger: 'blur'},
-            {min: 10, message: 'Độ dài số điện thoại phải có ít nhất 10 số', trigger: 'blur'},
-            {max: 11, message: 'Độ dài số điện thoại tối đa là 11 số', trigger: 'blur'}
-          ]
         }
       }
     },
     methods: {
       handleOnOClickForgotPassword() {
         this.isForgettingPassword = true;
+        setTimeout(() => {
+          this.$refs.inputOfPasswordRecovery.focus();
+        }, 100);
+      },
+
+      ShowSuccessAlert(message) {
+        this.$notify({
+          title: 'Thông báo',
+          message: message,
+          type: 'success'
+        });
+      },
+
+      ShowErrorAlert(message) {
+        this.$notify({
+          title: 'Thông báo',
+          message: message,
+          type: 'warning'
+        });
       },
 
       handleOnSubmitPasswordRecovery() {
@@ -127,19 +145,19 @@
           setTimeout(() => {
             this.isLoading = false;
             if (this.isAnAccount) {
-              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}.`);
+              this.ShowSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}.`);
             } else {
-              this.showErrorAlert('Tài khoản không tồn tại trên hệ thống!');
+              this.ShowErrorAlert('Tài khoản không tồn tại trên hệ thống!');
             }
           }, 2000);
         } else {
-          this.showErrorAlert('Vui lòng nhập số điện thoại hoặc email để nhận mật khẩu mới!');
+          this.ShowErrorAlert('Vui lòng nhập số điện thoại hoặc email để nhận mật khẩu mới!');
         }
       },
 
       handleOnLogin(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid && Vld.isMobile(this.signInForm.phoneNumber)) {
+          if (valid && (Vld.isEmail(this.signInInfo) || Vld.isMobile(this.signInInfo))) {
             // alert('submit!');
             this.isLoading = true;
             setTimeout(() => {
@@ -148,35 +166,27 @@
 
             }, 2000)
           } else {
-            this.showErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
+            this.ShowErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
             return false;
           }
         });
       },
 
-      showSuccessAlert(message) {
-        this.$notify({
-          title: 'Thông báo',
-          message: message,
-          type: 'success'
-        });
-      },
-
-      showErrorAlert(message) {
-        this.$notify({
-          title: 'Thông báo',
-          message: message,
-          type: 'warning'
-        });
-      },
-
       handleOnClickSignUpText() {
-        this.$emit('on_click_sign_up', "sign_up");
+        this.$emit('on_click_sign_up_text', "sign_up");
       },
 
       handleOnBackToLogin() {
         this.isForgettingPassword = false;
+        setTimeout(() => {
+          this.$refs.emailOrPhoneNumberInput.focus();
+        }, 100);
       }
+    },
+    created() {
+      setTimeout(() => {
+        this.$refs.emailOrPhoneNumberInput.focus();
+      }, 100);
     }
   }
 
@@ -186,7 +196,7 @@
   @import "~assets/css/halujobs_variables";
 
   .container {
-    height: 450px;
+    transition: all 2s ease-in-out;
 
     h3 {
       color: #48576a;

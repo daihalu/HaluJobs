@@ -54,13 +54,15 @@
             </li>
 
             <li
-              @click="handleOnClickNavBar('ACCOUNT_PAGE')"
+              @click="handleOnClick"
               :class="{active: activeMenuItem === 'ACCOUNT_PAGE'}"
             >
-              <nuxt-link to="/tai-khoan" class="nav-item">
+              <!--<nuxt-link to="/tai-khoan" class="nav-item">-->
+              <a class="nav-item">
                 <font-awesome-icon :icon="['fas', 'user-tie']"/>
                 <p>Tài khoản</p>
-              </nuxt-link>
+              </a>
+              <!--</nuxt-link>-->
             </li>
 
             <li
@@ -82,6 +84,7 @@
 
 <script>
   import {mapState, mapGetters, mapActions} from 'vuex';
+  import {EventTypes} from '~/assets/js/event-types';
 
   export default {
     props: {
@@ -100,6 +103,10 @@
       handleOnClickNavBar(status) {
         this.updateNavBarStatus(status);
         this.updateSearchingContent('');
+      },
+      handleOnClick() {
+        this.handleOnClickNavBar('ACCOUNT_PAGE');
+        this.$emit('on_click_account_text_on_nav_bar');
       }
     }
   }
@@ -164,6 +171,7 @@
 
       &:hover {
         background-color: $color-secondary;
+        cursor: pointer;
       }
     }
 

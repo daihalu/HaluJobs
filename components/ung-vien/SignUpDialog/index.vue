@@ -414,7 +414,7 @@
 </template>
 
 <script>
-  import SignInDialog from '~/components/ung-vien/SignInDialog';
+  import SignInDialog from '~/components/ung-vien/SignInForm';
   
   import {Vld} from '~/assets/js/functions';
   import {JobOption} from '~/assets/js/data-options';
