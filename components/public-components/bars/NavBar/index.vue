@@ -105,7 +105,6 @@
         this.updateSearchingContent('');
       },
       handleOnClick() {
-        this.handleOnClickNavBar('ACCOUNT_PAGE');
         this.$emit('on_click_account_text_on_nav_bar');
       }
     }

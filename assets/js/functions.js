@@ -130,18 +130,3 @@ export const Vld = {
 
 export default Vld;
 
-export function ShowSuccessAlert(message) {
-  this.$notify({
-    title: 'Thông báo',
-    message: message,
-    type: 'success'
-  });
-};
-
-export function ShowErrorAlert(message) {
-  this.$notify({
-    title: 'Thông báo',
-    message: message,
-    type: 'warning'
-  });
-};

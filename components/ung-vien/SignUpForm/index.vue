@@ -38,7 +38,8 @@
 
           <el-form
             :model="signUpInfo"
-            :rules="rules" ref="signUpInfo"
+            :rules="rules"
+            ref="signUpInfo"
             class="mg-top-15"
           >
             <el-form-item prop="emailOrPhoneNumber">
@@ -46,9 +47,8 @@
                 <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
                 <el-input
                   ref="emailOrPhoneNumberInput"
-                  v-model="signUpInfo.phoneNumber"
+                  v-model="signUpInfo.emailOrPhoneNumber"
                   auto-complete="off"
-                  :autofocus="autoFocusValue"
                   prefix-icon="el-icon-halu"
                   placeHolder="Nhập email hoặc số điện thoại"
                 >
@@ -58,7 +58,7 @@
 
             <el-form-item prop="password">
               <div class="form-input">
-                <font-awesome-icon icon="lock" class="icon"/>
+                <font-awesome-icon :icon="['fas', 'lock']" class="icon"/>
                 <el-input
                   type="password"
                   v-model="signUpInfo.password"
@@ -73,6 +73,7 @@
             <el-button
               class="button button--ujarak"
               @click="handleOnSubmitSignUpForm('signUpInfo')"
+              :loading="isLoading"
             >
               Đăng ký
             </el-button>
@@ -96,24 +97,20 @@
   import {Vld} from '~/assets/js/functions';
 
   export default {
-    props: {
-      autoFocus: Boolean
-    },
-
     data() {
       return {
         signUpInfo: {
-          userType: '',
-          phoneNumber: '',
+          emailOrPhoneNumber: '',
           password: ''
         },
         signUpDialogWidth: '440px',
         signUpCarouselHeight: '200px',
-        autoFocusValue: false,
+        isLoading: false,
 
         rules: {
           emailOrPhoneNumber: [
             {required: true, message: 'Vui lòng nhập email hoặc số điện thoại', trigger: 'blur'},
+            {min: 10, message: 'Độ dài email hoặc số điện thoại phải có it nhất 10 ký tự ', trigger: 'blur'}
           ],
           password: [
             {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
@@ -133,7 +130,7 @@
       })
     },
     methods: {
-      ShowSuccessAlert(message) {
+      showSuccessAlert(message) {
         this.$notify({
           title: 'Thông báo',
           message: message,
@@ -141,7 +138,7 @@
         });
       },
 
-      ShowErrorAlert(message) {
+      showErrorAlert(message) {
         this.$notify({
           title: 'Thông báo',
           message: message,
@@ -151,15 +148,20 @@
 
       handleOnSubmitSignUpForm(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid && (Vld.isMobile(this.signUpInfo.phoneNumber) || Vld.isEmail(this.signUpInfo))) {
-            this.ShowSuccessAlert("Đăng ký tài khoản thành công.");
-            this.$router.push("/");
+          if (valid && (Vld.isMobile(this.signUpInfo.emailOrPhoneNumber) || Vld.isEmail(this.signUpInfo.emailOrPhoneNumber))) {
+            this.isLoading = true;
+            setTimeout(() => {
+              this.isLoading = false;
+              this.showSuccessAlert("Đăng ký tài khoản thành công.");
+              // this.$router.push("/");
+              this.$emit('on_submit_sign_up_form', this.signUpInfo);
+            }, 1000);
           } else {
             if (!this.signUpInfo.password) {
-              this.ShowErrorAlert("Vui lòng nhập email hoặc số điện thoại và mật khẩu.");
-              return;
+              this.showErrorAlert("Vui lòng nhập email hoặc số điện thoại và mật khẩu.");
+              return false;
             }
-            this.ShowErrorAlert("Email hoặc số điện thoại không đúng định dạng. Vui lòng nhập lại.");
+            this.showErrorAlert("Email hoặc số điện thoại không đúng định dạng. Vui lòng nhập lại.");
             return false;
           }
         });
@@ -181,6 +183,33 @@
 
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
+
+  .box-left {
+    font-size: 18px;
+    color: $color-black;
+    h3 {
+      font-weight: 500;
+      margin-bottom: 30px;
+      /*line-height: 60px;*/
+    }
+
+    p {
+      line-height: 25px;
+      font-size: $fs-base-16;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+
+      svg {
+        font-size: 20px;
+        border: 1px solid $color-primary;
+        color: $color-primary;
+        border-radius: 50%;
+        padding: 3px;
+        margin-right: 5px;
+      }
+    }
+  }
 
   .btn {
     color: $color-white;
@@ -261,8 +290,6 @@
   .button {
     display: block;
     border-radius: 2px;
-    margin-left: 0 !important;
-    margin-top: 1em;
     width: 100%;
     border: none;
     color: #ffffff;
@@ -271,14 +298,10 @@
     z-index: 1;
     -webkit-backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
-  }
 
-  .button:focus {
-    outline: none;
-  }
-
-  .button > span {
-    vertical-align: middle;
+    &:focus {
+      outline: none;
+    }
   }
 
   /* Ujarak */
@@ -289,65 +312,36 @@
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     background-color: #1ab394;
     border-radius: 2px;
-  }
 
-  .button--ujarak::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #009688;
-    border-radius: 2px;
-    z-index: -1;
-    opacity: 0;
-    -webkit-transform: scale3d(0.7, 1, 1);
-    transform: scale3d(0.7, 1, 1);
-    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
-    transition: transform 0.4s, opacity 0.4s;
-    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-  }
-
-  .button--ujarak:hover {
-    color: #fff;
-    border-color: #009688;
-    border-radius: 2px;
-  }
-
-  .button--ujarak:hover::before {
-    opacity: 1;
-    border-radius: 2px;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  /*==============================================*/
-
-  .box-left {
-    font-size: 18px;
-    color: $color-black;
-    h3 {
-      font-weight: 500;
-      margin-bottom: 30px;
-      /*line-height: 60px;*/
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #009688;
+      border-radius: 2px;
+      z-index: -1;
+      opacity: 0;
+      -webkit-transform: scale3d(0.7, 1, 1);
+      transform: scale3d(0.7, 1, 1);
+      -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+      transition: transform 0.4s, opacity 0.4s;
+      -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+      transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     }
 
-    p {
-      line-height: 25px;
-      font-size: $fs-base-16;
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
+    &:hover {
+      color: #fff;
+      border-color: #009688;
+      border-radius: 2px;
 
-      svg {
-        font-size: 20px;
-        border: 1px solid $color-primary;
-        color: $color-primary;
-        border-radius: 50%;
-        padding: 3px;
-        margin-right: 5px;
+      &::before {
+        opacity: 1;
+        border-radius: 2px;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
       }
     }
   }

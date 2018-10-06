@@ -10,44 +10,46 @@
       Hoặc
     </div>
 
-    <div v-if="!isForgettingPassword">
+    <div v-if="!forgetPasswordDialogVisible">
       <el-form
-        :model="signInForm"
+        :model="signInInfo"
         :rules="rules"
-        ref="signInForm"
+        ref="signInInfo"
         label-width="120px"
         label-position="top"
         class="mg-top-15">
 
-        <el-form-item
-          prop="emailOrPhoneNumber"
-        >
+        <el-form-item prop="emailOrPhoneNumber">
           <div class="form-input">
             <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
             <el-input
               ref="emailOrPhoneNumberInput"
-              v-model="signInForm.phoneNumber"
+              v-model="signInInfo.emailOrPhoneNumber"
               auto-complete="off"
               prefix-icon="el-icon-dai"
-              placeHolder="Vui lòng nhập email hoặc số điện thoại"
+              placeHolder="Nhập email hoặc số điện thoại"
             >
             </el-input>
           </div>
         </el-form-item>
 
-        <el-form-item
-          prop="password"
-        >
+        <el-form-item prop="password">
           <div class="form-input">
             <font-awesome-icon icon="lock" class="icon"/>
-            <el-input type="password" v-model="signInForm.password" auto-complete="off" prefix-icon="el-icon-dai"
-                      placeHolder="Vui lòng nhập mật khẩu"></el-input>
+            <el-input
+              type="password"
+              v-model="signInInfo.password"
+              auto-complete="off"
+              prefix-icon="el-icon-dai"
+              placeHolder="Nhập mật khẩu"
+            >
+            </el-input>
           </div>
         </el-form-item>
 
         <el-button
           class="button button--ujarak"
-          @click="handleOnLogin('signInForm')"
+          @click="handleOnLogin('signInInfo')"
           :loading="isLoading"
         >
           Đăng nhập
@@ -56,24 +58,29 @@
       </el-form>
 
       <div class="forgot-password mg-top-15">
-        <span @click="handleOnOClickForgotPassword">Quên mật khẩu?</span>
+        <span @click="handleOnOClickForgetPassword">Quên mật khẩu?</span>
       </div>
     </div>
 
-    <div v-if="isForgettingPassword">
-      <div>
-        Nhập số điện thoại để nhận mật khẩu mới
-      </div>
+    <div v-if="forgetPasswordDialogVisible">
+      <p>
+        Nhập số điện thoại hoặc email để nhận mật khẩu mới
+      </p>
       <el-input
         ref="inputOfPasswordRecovery"
         v-model="inputOfPasswordRecoveryDialog"
-        placeholder="Vui lòng nhập số điện thoại"
+        placeholder="Nhập email hoặc số điện thoại"
         autofocus="true"
         class="mg-top-15"
       ></el-input>
       <div class="mg-top-15">
         <el-button @click="handleOnBackToLogin">Quay lại</el-button>
-        <el-button type="primary" @click="handleOnSubmitPasswordRecovery" :loading="isLoading">Khôi phục mật khẩu
+        <el-button
+          type="primary"
+          @click="handleOnSubmitPasswordRecovery"
+          :loading="isLoading"
+        >
+          Khôi phục mật khẩu
         </el-button>
       </div>
     </div>
@@ -93,20 +100,22 @@
   import {EventTypes} from '~/assets/js/event-types';
 
   export default {
+
     data() {
       return {
-        signInForm: {
-          phoneNumber: '',
+        signInInfo: {
+          emailOrPhoneNumber: '',
           password: '',
         },
         inputOfPasswordRecoveryDialog: '',
-        isForgettingPassword: false,
+        forgetPasswordDialogVisible: false,
         isLoading: false,
         isAnAccount: true,
 
         rules: {
           emailOrPhoneNumber: [
             {required: true, message: 'Vui lòng nhập email hoặc số điện thoại', trigger: 'blur'},
+            {min: 10, message: 'Độ dài email hoặc số điện thoại phải có it nhất 10 ký tự ', trigger: 'blur'}
           ],
           password: [
             {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
@@ -116,14 +125,14 @@
       }
     },
     methods: {
-      handleOnOClickForgotPassword() {
-        this.isForgettingPassword = true;
+      handleOnOClickForgetPassword() {
+        this.forgetPasswordDialogVisible = true;
         setTimeout(() => {
           this.$refs.inputOfPasswordRecovery.focus();
         }, 100);
       },
 
-      ShowSuccessAlert(message) {
+      showSuccessAlert(message) {
         this.$notify({
           title: 'Thông báo',
           message: message,
@@ -131,7 +140,7 @@
         });
       },
 
-      ShowErrorAlert(message) {
+      showErrorAlert(message) {
         this.$notify({
           title: 'Thông báo',
           message: message,
@@ -145,28 +154,27 @@
           setTimeout(() => {
             this.isLoading = false;
             if (this.isAnAccount) {
-              this.ShowSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}.`);
+              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}.`);
             } else {
-              this.ShowErrorAlert('Tài khoản không tồn tại trên hệ thống!');
+              this.showErrorAlert('Tài khoản không tồn tại trên hệ thống!');
             }
-          }, 2000);
+          }, 1000);
         } else {
-          this.ShowErrorAlert('Vui lòng nhập số điện thoại hoặc email để nhận mật khẩu mới!');
+          this.showErrorAlert('Vui lòng nhập email hoặc số điện thoại để nhận mật khẩu mới!');
         }
       },
 
       handleOnLogin(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid && (Vld.isEmail(this.signInInfo) || Vld.isMobile(this.signInInfo))) {
-            // alert('submit!');
+          if (valid && (Vld.isEmail(this.signInInfo.emailOrPhoneNumber) || Vld.isMobile(this.signInInfo.emailOrPhoneNumber))) {
             this.isLoading = true;
             setTimeout(() => {
               this.isLoading = false;
               this.$router.push("/");
-
-            }, 2000)
+              this.$emit('on_submit_sign_in_form', this.signInInfo)
+            }, 1000)
           } else {
-            this.ShowErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
+            this.showErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
             return false;
           }
         });
@@ -177,7 +185,7 @@
       },
 
       handleOnBackToLogin() {
-        this.isForgettingPassword = false;
+        this.forgetPasswordDialogVisible = false;
         setTimeout(() => {
           this.$refs.emailOrPhoneNumberInput.focus();
         }, 100);
@@ -363,7 +371,7 @@
   }
 
   .button--ujarak:hover {
-    color: #fff;
+    color: #ffffff;
     border-color: #009688;
     border-radius: 2px;
   }

@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5aee19c-31e4-4fb1-8b85-086668c70233" name="Default" comment="&quot;Development&quot;">
-      <change afterPath="$PROJECT_DIR$/assets/js/event-types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/ung-vien/dang-ky-1/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/public-components/bars/NavBar/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/public-components/bars/NavBar/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ung-vien/SignInDialog/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ung-vien/SignUpDialog/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ung-vien/SignUpDialog/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/ung-vien/dang-ky/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ung-vien/dang-ky/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -186,7 +183,7 @@
     <session id="1222425055">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="37" />
+          <entry key="project.closed" value="39" />
           <entry key="project.open.time.0" value="8" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.13" value="1" />
@@ -201,20 +198,21 @@
           <entry key="project.open.time.29" value="3" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.32" value="2" />
+          <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.51" value="1" />
-          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="40" />
+          <entry key="project.opened" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
         <counts>
-          <entry key="ESLintLanguageService" value="39" />
+          <entry key="ESLintLanguageService" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -222,8 +220,8 @@
           <entry key="gitignore" value="2" />
           <entry key="js" value="3918" />
           <entry key="json" value="13" />
-          <entry key="scss" value="198" />
-          <entry key="vue" value="26746" />
+          <entry key="scss" value="201" />
+          <entry key="vue" value="28143" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -231,20 +229,20 @@
           <entry key="gitignore" value="1" />
           <entry key="html" value="4" />
           <entry key="jpg" value="3" />
-          <entry key="js" value="94" />
+          <entry key="js" value="96" />
           <entry key="json" value="13" />
           <entry key="png" value="1" />
-          <entry key="scss" value="19" />
-          <entry key="vue" value="206" />
+          <entry key="scss" value="21" />
+          <entry key="vue" value="212" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="13" />
-          <entry key="JavaScript" value="3922" />
+          <entry key="JavaScript" value="3923" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="SCSS" value="198" />
-          <entry key="Vue.js" value="26742" />
+          <entry key="SCSS" value="201" />
+          <entry key="Vue.js" value="28138" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -252,10 +250,10 @@
           <entry key="HTML" value="4" />
           <entry key="Image" value="4" />
           <entry key="JSON" value="13" />
-          <entry key="JavaScript" value="94" />
+          <entry key="JavaScript" value="96" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SCSS" value="19" />
-          <entry key="Vue.js" value="206" />
+          <entry key="SCSS" value="21" />
+          <entry key="Vue.js" value="212" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -269,8 +267,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="267" column="39" selection-start-line="267" selection-start-column="39" selection-end-line="267" selection-end-column="39" />
+            <state relative-caret-position="181">
+              <caret line="107" column="29" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="29" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
@@ -278,57 +276,80 @@
                 <element signature="n#el-row#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-row#1;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-carousel-item#0;n#el-carousel#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#el-carousel-item#0;n#el-carousel#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#el-dialog#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#5575#5639#0" expanded="true" />
+                <element signature="e#5865#5929#0" expanded="true" />
                 <element signature="n#style#0;n#!!top" />
-                <element signature="n#style#1;n#!!top" />
-                <element signature="n#style#2;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue">
+        <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2421">
-              <caret line="173" column="6" selection-start-line="173" selection-start-column="6" selection-end-line="175" selection-end-column="14" />
+            <state relative-caret-position="243">
+              <caret line="696" column="4" selection-start-line="696" selection-start-column="4" selection-end-line="696" selection-end-column="23" />
               <folding>
-                <element signature="n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#3154#3186#0" />
-                <element signature="e#3200#3821#0" />
-                <element signature="e#3837#4041#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/ung-vien/SignUpDialog/index.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4884">
-              <caret line="465" column="38" selection-start-line="465" selection-start-column="38" selection-end-line="465" selection-end-column="38" />
-              <folding>
-                <element signature="n#el-row#0;n#div#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#0;n#template#0;n#!!top" />
-                <element signature="n#el-col#0;n#el-row#0;n#div#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#0;n#template#0;n#!!top" />
-                <element signature="n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#!!top" />
-                <element signature="n#style#1;n#!!top" />
-                <marker date="1538705716891" expanded="false" signature="6434:14913" ph="..." />
+                <element signature="n#style#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-ky/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="622" column="4" selection-start-line="622" selection-start-column="4" selection-end-line="622" selection-end-column="23" />
+              <folding>
+                <element signature="n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#3;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#4;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#8151#8224#0" expanded="true" />
+                <element signature="e#10707#11248#0" />
+                <element signature="e#11283#11411#0" />
+                <element signature="e#11444#11572#0" />
+                <element signature="e#11608#11801#0" />
+                <element signature="e#11838#12032#0" />
+                <element signature="e#12612#13385#0" />
+                <element signature="e#10679#11299#0" />
+                <element signature="n#style#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
+            <state relative-caret-position="429">
+              <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
               <folding>
-                <element signature="e#2795#3421#0" />
+                <element signature="e#2863#2905#0" expanded="true" />
+                <element signature="e#4386#5006#0" />
+                <element signature="e#5039#5614#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="684">
+              <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+              <folding>
+                <element signature="n#!!block;n#ConvertStringToShorterString#0" />
+                <element signature="n#!!block;n#ConvertToKebabCase#0" />
               </folding>
             </state>
           </provider>
@@ -350,46 +371,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>wrapper</find>
-      <find>btn</find>
-      <find>svo-sign-in</find>
-      <find>alert</find>
-      <find>sign-up-text</find>
-      <find>sign-up-dialog</find>
-      <find>password-recovery-dialog</find>
-      <find>sign-up-dialog--box-lefts</find>
-      <find>box-left</find>
-      <find>user-type</find>
-      <find>title</find>
-      <find>phoneNumber</find>
-      <find>showErrorAlert</find>
-      <find>handleOnClickSignUpText</find>
-      <find>handleOnChangeCarouselItem</find>
-      <find>handleOnSubmitSignUpForm</find>
-      <find>handleOnAcceptCloseSignUpDialog</find>
-      <find>handleOnOpenPasswordRecoveryDialog</find>
-      <find>showSuccessAlert</find>
-      <find>Vld</find>
       <find>phoneNumberInput</find>
-      <find>handleOnClickAccountTextOnNavBar</find>
-      <find>signUpInfo</find>
-      <find>container</find>
-      <find>nav-item</find>
-      <find>Thoả</find>
+      <find>handleOnClickSignInBtn</find>
+      <find>Đăng nhập</find>
       <find>handleOnCloseSignUpDialog</find>
-      <find>emailOrPhoneNumberInput</find>
-      <find>handleOnOClickForgotPassword</find>
+      <find>handleOnCloseUserTypeDialogVisible</find>
+      <find>handleOnClickSignInText</find>
+      <find>innerCloseDialogVisible</find>
+      <find>Quý khách có chắc chắn là muốn huỷ</find>
+      <find>signInDialogWidth</find>
       <find>handleOnBackToLogin</find>
+      <find>handleOnSubmitPasswordRecoveryForm</find>
+      <find>handleOnClickSignUpText</find>
+      <find>inputOfPasswordRecoveryDialog</find>
+      <find>handleOnCloseSignInDialog</find>
+      <find>isForgettingPassword</find>
+      <find>isForgotPassword</find>
+      <find>signInCarouselHeight</find>
+      <find>signInDialogVisible</find>
+      <find>handleOnSubmitSignInForm</find>
+      <find>Bạn chưa có tài khoản</find>
+      <find>handleOnLogin</find>
+      <find>handleOnOClickForgetPassword</find>
+      <find>forgetPasswordDialogVisible</find>
+      <find>handleOnOClickForgotPassword</find>
+      <find>handleOnSubmitPasswordRecovery</find>
+      <find>Nhập</find>
+      <find>Bạn là nhà tuyển dụng hay ứng viên?</find>
+      <find>Vui lòng</find>
+      <find>title</find>
+      <find>user-type</find>
     </findStrings>
     <replaceStrings>
-      <replace>passwordRecoveryDialog</replace>
-      <replace>userType</replace>
-      <replace>signUpDialogItemIndex</replace>
-      <replace>handleOnConfirmInfo</replace>
-      <replace>candidateSignUpInfo</replace>
-      <replace>signUpDialog</replace>
-      <replace>isPersonName</replace>
-      <replace>isName</replace>
       <replace>hasChangedEmployerNameInput</replace>
       <replace>handleOnChangeCarouselItem</replace>
       <replace>009688</replace>
@@ -412,6 +425,14 @@
       <replace>ShowErrorAlert</replace>
       <replace>box-left</replace>
       <replace>ShowSuccessAlert</replace>
+      <replace>showErrorAlert</replace>
+      <replace>handleOnSubmitPasswordRecoveryForm</replace>
+      <replace>showSuccessAlert</replace>
+      <replace>isForgotPassword</replace>
+      <replace>forgetPasswordDialogVisible</replace>
+      <replace>emailOrPhoneNumberInput</replace>
+      <replace>passwordRecoveryDialogVisible</replace>
+      <replace>handleOnOClickForgetPassword</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\IT\Halu Projects\HaluJobs\components\public-components\cards\AttractiveJobCard</dir>
@@ -463,18 +484,18 @@
         <option value="$PROJECT_DIR$/plugins/font-awesome.js" />
         <option value="$PROJECT_DIR$/pages/ung-vien/SignUpDialog/index.vue" />
         <option value="$PROJECT_DIR$/components/ung-vien/SignUpDialog/index.vue" />
-        <option value="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" />
         <option value="$PROJECT_DIR$/components/ung-vien/boxs/IntroductionBox/index.vue" />
         <option value="$PROJECT_DIR$/store/index.js" />
         <option value="$PROJECT_DIR$/components/ung-vien/SignInDialog/index.vue" />
-        <option value="$PROJECT_DIR$/assets/js/functions.js" />
         <option value="$PROJECT_DIR$/assets/js/event-types.js" />
+        <option value="$PROJECT_DIR$/assets/js/functions.js" />
+        <option value="$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue" />
+        <option value="$PROJECT_DIR$/components/public-components/bars/NavBar/index.vue" />
+        <option value="$PROJECT_DIR$/assets/css/halujobs_qclasses.scss" />
+        <option value="$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue" />
         <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue" />
-        <option value="$PROJECT_DIR$/components/public-components/bars/NavBar/index.vue" />
         <option value="$PROJECT_DIR$/pages/ung-vien/dang-ky/index.vue" />
-        <option value="$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue" />
-        <option value="$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue" />
       </list>
     </option>
   </component>
@@ -535,7 +556,40 @@
             <path>
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
               <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="bars" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public-components" type="462c0819:PsiDirectoryNode" />
+              <item name="bars" type="462c0819:PsiDirectoryNode" />
+              <item name="NavBar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
@@ -580,7 +634,21 @@
               <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
+              <item name="dang-ky" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
               <item name="dang-ky-1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HaluJobs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HaluJobs" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="ung-vien" type="462c0819:PsiDirectoryNode" />
+              <item name="dang-nhap" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -604,7 +672,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\IT\Learning Nuxt js\halu-job\node_modules\prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.1.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -748,7 +816,9 @@
       <workItem from="1538698937528" duration="152000" />
       <workItem from="1538699271831" duration="32000" />
       <workItem from="1538700375692" duration="623000" />
-      <workItem from="1538701022507" duration="12488000" />
+      <workItem from="1538701022507" duration="12815000" />
+      <workItem from="1538785684487" duration="48000" />
+      <workItem from="1538785753388" duration="13598000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Development&quot;">
       <created>1533887616412</created>
@@ -761,7 +831,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1088338000" />
+    <option name="totallyTimeSpent" value="1102311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -770,7 +840,7 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Favorites" order="1" sideWeight="0.11953353" side_tool="true" weight="0.13751318" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.88046646" visible="true" weight="0.12941177" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.88046646" visible="true" weight="0.13262032" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.329718" />
@@ -785,7 +855,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" x="3288" y="117" width="525" height="876" id="Terminal" order="3" visible="true" weight="0.24385026" />
+      <window_info anchor="right" x="3288" y="117" width="525" height="876" id="Terminal" order="3" visible="true" weight="0.32566845" />
     </layout>
     <layout-to-restore>
       <window_info id="npm" order="0" side_tool="true" />
@@ -900,14 +970,8 @@
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/assets/js/functions.js</url>
-          <line>14</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue</url>
           <line>2</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
@@ -1046,13 +1110,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/ung-vien/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/halujobs_variables.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -1128,13 +1185,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/halujobs_qclasses.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="108" column="5" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/ung-vien/boxs/ActiveCandidateBox/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
@@ -1153,9 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1187,34 +1234,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3466">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="n#!!block;n#ConvertStringToShorterString#0" />
-            <element signature="n#!!block;n#ConvertToKebabCase#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/public-components/bars/NavBar/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="104" column="40" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
-          <folding>
-            <element signature="e#2818#2872#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.nuxt/router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2604">
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-2604" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-ky-1/index.vue">
@@ -1224,76 +1246,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="66" column="38" selection-end-line="748" />
-          <folding>
-            <element signature="n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-ky/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4587">
-          <caret line="253" column="18" lean-forward="true" selection-start-line="253" selection-start-column="18" selection-end-line="253" selection-end-column="18" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#0;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-form-item#1;n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="267" column="39" selection-start-line="267" selection-start-column="39" selection-end-line="267" selection-end-column="39" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-row#1;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-carousel-item#0;n#el-carousel#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#el-dialog#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#5575#5639#0" expanded="true" />
-            <element signature="n#style#0;n#!!top" />
-            <element signature="n#style#1;n#!!top" />
-            <element signature="n#style#2;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2421">
-          <caret line="173" column="6" selection-start-line="173" selection-start-column="6" selection-end-line="175" selection-end-column="14" />
-          <folding>
-            <element signature="n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#3154#3186#0" />
-            <element signature="e#3200#3821#0" />
-            <element signature="e#3837#4041#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/ung-vien/SignUpDialog/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4884">
+        <state relative-caret-position="2002">
           <caret line="465" column="38" selection-start-line="465" selection-start-column="38" selection-end-line="465" selection-end-column="38" />
           <folding>
             <element signature="n#el-row#0;n#div#0;n#el-carousel-item#1;n#el-carousel#0;n#el-dialog#0;n#template#0;n#!!top" />
@@ -1306,12 +1261,118 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/ung-vien/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+          <folding>
+            <element signature="n#advanced-search#0;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/public-components/bars/NavBar/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/halujobs_qclasses.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/ung-vien/SignUpForm/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="166" column="11" lean-forward="true" selection-start-line="149" selection-start-column="8" selection-end-line="166" selection-end-column="11" />
+          <folding>
+            <element signature="n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!block;n#ConvertStringToShorterString#0" />
+            <element signature="n#!!block;n#ConvertToKebabCase#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/ung-vien/SignInForm/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
+        <state relative-caret-position="429">
+          <caret line="71" column="50" selection-start-line="71" selection-start-column="50" selection-end-line="71" selection-end-column="50" />
           <folding>
-            <element signature="e#2795#3421#0" />
+            <element signature="e#2863#2905#0" expanded="true" />
+            <element signature="e#4386#5006#0" />
+            <element signature="e#5039#5614#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="107" column="29" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-row#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-row#1;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#el-carousel-item#0;n#el-carousel#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#el-dialog#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#3;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5865#5929#0" expanded="true" />
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-nhap/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="696" column="4" selection-start-line="696" selection-start-column="4" selection-end-line="696" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-dialog#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/ung-vien/dang-ky/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="622" column="4" selection-start-line="622" selection-start-column="4" selection-end-line="622" selection-end-column="23" />
+          <folding>
+            <element signature="n#el-col#0;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-form#0;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#el-col#1;n#el-row#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#4;n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#8151#8224#0" expanded="true" />
+            <element signature="e#10707#11248#0" />
+            <element signature="e#11283#11411#0" />
+            <element signature="e#11444#11572#0" />
+            <element signature="e#11608#11801#0" />
+            <element signature="e#11838#12032#0" />
+            <element signature="e#12612#13385#0" />
+            <element signature="e#10679#11299#0" />
+            <element signature="n#style#0;n#!!top" />
           </folding>
         </state>
       </provider>

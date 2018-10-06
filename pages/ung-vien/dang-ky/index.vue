@@ -7,257 +7,209 @@
       <el-col :span="8">
         <div class="box-right box-container">
           <h3 class="ta-center">
-            Đăng nhập cùng HaluJobs
+            Đăng ký tài khoản cùng HaluJobs
           </h3>
 
-          <div class="svo-sign-in mg-top-15">
 
+          <div class="svo-sign-in mg-top-15">
             <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
             <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
-
 
             <div class="text-or">
               Hoặc
             </div>
-
           </div>
 
-          <el-form :model="signInInfo" :rules="rules" ref="signInInfo" label-width="120px" label-position="top"
-                   class="mg-top-15">
-
-            <el-form-item
-              prop="emailOrPhoneNumber"
-            >
+          <el-form
+            :model="signUpInfo"
+            :rules="rules" ref="signUpInfo"
+            class="mg-top-15"
+          >
+            <el-form-item prop="emailOrPhoneNumber">
               <div class="form-input">
                 <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
                 <el-input
-                  v-model="signInInfo.phoneNumber"
+                  ref="emailOrPhoneNumberInput"
+                  v-model="signUpInfo.emailOrPhoneNumber"
                   auto-complete="off"
-                  autofocus="true"
-                  prefix-icon="el-icon-dai"
+                  prefix-icon="el-icon-halu"
                   placeHolder="Nhập email hoặc số điện thoại"
                 >
                 </el-input>
               </div>
             </el-form-item>
 
-            <el-form-item
-              prop="password"
-            >
+            <el-form-item prop="password">
               <div class="form-input">
                 <font-awesome-icon icon="lock" class="icon"/>
-                <el-input type="password" v-model="signInInfo.password" auto-complete="off" prefix-icon="el-icon-dai"
-                          placeHolder="Nhập mật khẩu"></el-input>
+                <el-input
+                  type="password"
+                  v-model="signUpInfo.password"
+                  auto-complete="off"
+                  prefix-icon="el-icon-dai"
+                  placeHolder="Nhập mật khẩu"
+                >
+                </el-input>
               </div>
             </el-form-item>
 
             <el-button
-              @click="handleOnClickSignInBtn('signInInfo')"
-              :loading="isLoading"
               class="button button--ujarak"
+              @click="handleOnSubmitSignUpForm('signUpInfo')"
+              :loading="isLoading"
             >
-              Đăng nhập
+              Đăng ký
             </el-button>
 
           </el-form>
 
-          <div class="forgot-password mg-top-15">
-            <span @click="handleOnOpenPasswordRecoveryDialog">Quên mật khẩu?</span>
+          <div class="mg-top-15" style="font-size: 14px;">Bằng việc đăng kí bạn đã đồng ý với
+            <nuxt-link to="/thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link>
+            của HaluJobs
           </div>
+
           <hr class="hr-1 mg-bottom-10"/>
 
-          <div class="ta-center">
-            <p>Bạn chưa có tài khoản?
-              <span class="sign-up-text" @click="handleOnClickSignUpText">Đăng ký</span>
-            </p>
-          </div>
-        </div>
-      </el-col>
-    </el-row>
-
-    <el-dialog
-      title="Khôi phục mật khẩu"
-      :visible.sync="passwordRecoveryDialog"
-      class="password-recovery-dialog"
-    >
-      <div>
-        <h3>Nhập số điện thoại hoặc email để nhận mật khẩu mới.</h3>
-        <el-input
-          v-model="inputOfPasswordRecoveryDialog"
-          placeholder="Nhập email hoặc số điện thoại"
-          autofocus="true"
-          class="mg-top-15"
-        >
-        </el-input>
-        <div
-          v-if="alertVisible"
-          class="alert mg-top-15"
-        >
-          Nhập chính xác số điện thoại hoặc email
-        </div>
-        <div>
-          <el-button
-            type="primary"
-            @click="handleOnSubmitPasswordRecovery"
-            :loading="isLoading"
-            class="mg-top-15"
-          >
-            Khôi phục mật khẩu
-          </el-button>
-        </div>
-
-      </div>
-    </el-dialog>
-
-    <el-dialog
-      :visible.sync="signUpDialogVisible"
-      class="sign-up-dialog"
-      :width="signUpDialogWidth"
-      :close-on-press-escape="false"
-      :close-on-click-modal="false"
-      :before-close="handleOnCloseSignUpDialog"
-    >
-      <el-carousel
-        indicator-position="none"
-        arrow="never"
-        :autoplay="false"
-        @change="handleOnChangeCarouselItem"
-        ref="signUpCarousel"
-        :height="signUpCarouselHeight"
-        v-if="signUpDialogVisible"
-      >
-
-        <el-carousel-item>
-          <div class="user-type" v-if="!signUpInfo.userType">
-            <div class="title">Bạn là nhà tuyển dụng hay ứng viên?</div>
-            <div class="container mg-top-15">
-              <div
-                class="small-box"
-                :class="{active: signUpInfo.userType === 'employer'}"
-                @click="handleOnClickEmployerBtn"
-              >
-                <font-awesome-icon :icon="['fas', 'user-tie']"/>
-                <span>Nhà tuyển dụng</span>
-              </div>
-
-              <div
-                class="small-box"
-                :class="{active: signUpInfo.userType === 'candidate'}"
-                @click="handleOnClickCandidateBtn"
-              >
-                <font-awesome-icon :icon="['fas', 'briefcase']"/>
-                <span>Ứng viên</span>
-              </div>
-            </div>
-
-          </div>
-        </el-carousel-item>
-
-        <el-carousel-item>
-          <el-row :gutter="10">
-            <el-col :span="12" class="sign-up-dialog--box-left">
-              <h3>Đăng ký để kết nối ngay với hàng triệu nhà tuyển dụng hàng đầu và ứng viên chất lượng</h3>
-
-              <p>
-                <font-awesome-icon :icon="['fas', 'check']"/>
-                <span>Tiếp cận hàng triệu công việc hoàn toàn miễn phí</span>
-              </p>
-
-              <p>
-                <font-awesome-icon :icon="['fas', 'check']"/>
-                <span>Ứng tuyển nhanh chóng, dễ dàng</span>
-              </p>
-
-              <p>
-                <font-awesome-icon :icon="['fas', 'check']"/>
-                <span>Nhận bản tin công việc phù hợp định kỳ</span>
-              </p>
-
-              <p>
-                <font-awesome-icon :icon="['fas', 'check']"/>
-                <span>Nâng cao cơ hội tìm việc với chương trình ứng viên năng động</span>
-              </p>
-            </el-col>
-            <el-col :span="12">
-              <div class="sign-up-dialog--box-left">
-                <div>Bằng việc đăng kí bạn đã đồng ý với <nuxt-link to="/thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link> của HaluJobs</div>
-                <div class="svo-sign-in mg-top-15">
-                  <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
-                  <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
-
-                  <div class="text-or">
-                    Hoặc
-                  </div>
-                </div>
-
-                <el-form
-                  :model="signUpInfo"
-                  :rules="rules" ref="signUpInfo"
-                  class="mg-top-15"
-                >
-                  <el-form-item prop="emailOrPhoneNumber">
-                    <div class="form-input">
-                      <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
-                      <el-input
-                        ref="phoneNumberInput"
-                        v-model="signUpInfo.phoneNumber"
-                        auto-complete="off"
-                        prefix-icon="el-icon-halu"
-                        placeHolder="Nhập email hoặc số điện thoại"
-                      >
-                      </el-input>
-                    </div>
-                  </el-form-item>
-
-                  <el-form-item prop="password">
-                    <div class="form-input">
-                      <font-awesome-icon icon="lock" class="icon"/>
-                      <el-input
-                        type="password"
-                        v-model="signUpInfo.password"
-                        auto-complete="off"
-                        prefix-icon="el-icon-dai"
-                        placeHolder="Nhập mật khẩu"
-                      >
-                      </el-input>
-                    </div>
-                  </el-form-item>
-
-                  <el-button
-                    class="button button--ujarak"
-                    @click="handleOnSubmitSignUpForm('signUpInfo')"
-                  >
-                    Đăng ký
-                  </el-button>
-
-                </el-form>
-              </div>
-            </el-col>
-          </el-row>
-          <hr class="hr-1 mg-top-15"/>
           <div class="ta-center mg-top-15">
             <p>Bạn đã có tài khoản?
               <span class="sign-up-text" @click="handleOnClickSignInText">Đăng nhập</span>
             </p>
           </div>
-        </el-carousel-item>
-      </el-carousel>
-      <el-dialog
-        width="30%"
-        :visible.sync="innerCloseDialogVisible"
-        append-to-body
-        style="margin-top: 25vh;"
-      >
-        <div class="mg-bottom-15" style="font-size: 18px">Quý khách có chắc chắn là muốn huỷ đăng ký tài khoản?</div>
-        <el-button @click="handleOnCancelingCloseSignUpDialog">Huỷ bỏ</el-button>
-        <el-button type="primary" @click="handleOnAcceptingCloseSignUpDialog">Đồng ý</el-button>
-      </el-dialog>
+
+        </div>
+      </el-col>
+    </el-row>
+
+    <el-dialog
+      :visible.sync="userTypeDialogVisible"
+      class="sign-up-dialog"
+      :width="signInDialogWidth"
+      :close-on-press-escape="false"
+      :close-on-click-modal="false"
+      :show-close="false"
+      style="margin-top: 20vh"
+    >
+      <div class="user-type">
+        <div class="title">Bạn là nhà tuyển dụng hay ứng viên?</div>
+        <div class="container mg-top-15">
+          <div
+            class="small-box"
+            :class="{active: signUpInfo.userType === 'employer'}"
+            @click="handleOnClickEmployerBtn"
+          >
+            <font-awesome-icon :icon="['fas', 'user-tie']"/>
+            <span>Nhà tuyển dụng</span>
+          </div>
+
+          <div
+            class="small-box"
+            :class="{active: signUpInfo.userType === 'candidate'}"
+            @click="handleOnClickCandidateBtn"
+          >
+            <font-awesome-icon :icon="['fas', 'briefcase']"/>
+            <span>Ứng viên</span>
+          </div>
+        </div>
+      </div>
+
+    </el-dialog>
+
+    <el-dialog
+      :visible.sync="signInDialogVisible"
+      class="sign-up-dialog"
+      :width="signInDialogWidth"
+    >
+      <div class="mg-top-10">Bằng việc đăng nhập bạn đã đồng ý với <nuxt-link to="thoa-thuan-su-dung" class="t-navy">Thỏa thuận sử dụng</nuxt-link> của HaluJobs</div>
+      <div class="svo-sign-in mg-top-15">
+        <el-button class="btn btn-halu">Đăng nhập qua SVOnline</el-button>
+        <el-button class="btn btn-facebook mg-top-15">Đăng nhập qua Facebook</el-button>
+      </div>
+
+      <div class="text-or">
+        Hoặc
+      </div>
+
+      <div v-if="!forgetPasswordDialogVisible">
+        <el-form
+          :model="signInInfo"
+          :rules="rules"
+          ref="signInInfo"
+          label-width="120px"
+          label-position="top"
+          class="mg-top-15">
+
+          <el-form-item prop="emailOrPhoneNumber">
+            <div class="form-input">
+              <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>
+              <el-input
+                ref="emailOrPhoneNumberInput"
+                v-model="signInInfo.emailOrPhoneNumber"
+                auto-complete="off"
+                prefix-icon="el-icon-dai"
+                placeHolder="Nhập email hoặc số điện thoại"
+              >
+              </el-input>
+            </div>
+          </el-form-item>
+
+          <el-form-item prop="password">
+            <div class="form-input">
+              <font-awesome-icon icon="lock" class="icon"/>
+              <el-input
+                type="password"
+                v-model="signInInfo.password"
+                auto-complete="off"
+                prefix-icon="el-icon-dai"
+                placeHolder="Nhập mật khẩu"
+              >
+              </el-input>
+            </div>
+          </el-form-item>
+
+          <el-button
+            class="button button--ujarak"
+            @click="handleOnSubmitSignInForm('signInInfo')"
+            :loading="isLoading"
+          >
+            Đăng nhập
+          </el-button>
+
+        </el-form>
+
+        <div class="forgot-password mg-top-15">
+          <span @click="handleOnOClickForgetPassword">Quên mật khẩu?</span>
+        </div>
+      </div>
+
+      <div v-if="forgetPasswordDialogVisible">
+        <p>
+          Nhập số điện thoại hoặc email để nhận mật khẩu mới
+        </p>
+        <el-input
+          ref="inputOfPasswordRecovery"
+          v-model="inputOfPasswordRecoveryDialog"
+          placeholder="Nhập email hoặc số điện thoại"
+          autofocus="true"
+          class="mg-top-15"
+        ></el-input>
+        <div class="mg-top-15">
+          <el-button @click="handleOnBackToLogin">Quay lại</el-button>
+          <el-button
+            type="primary"
+            @click="handleOnSubmitPasswordRecovery"
+            :loading="isLoading"
+          >
+            Khôi phục mật khẩu
+          </el-button>
+        </div>
+      </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
   import IntroductionBox from '~/components/ung-vien/boxs/IntroductionBox';
+  import SignInForm from '~/components/ung-vien/SignInForm';
 
   import {Vld} from '~/assets/js/functions';
 
@@ -269,77 +221,52 @@
     },
 
     components: {
-      IntroductionBox
+      IntroductionBox,
+      SignInForm
     },
 
     layout: 'candidate',
     data() {
       return {
-        title: 'Đăng nhập',
+        title: 'Đăng ký',
         signInInfo: {
-          phoneNumber: '',
+          emailOrPhoneNumber: '',
           password: '',
         },
         signUpInfo: {
           userType: '',
-          phoneNumber: '',
+          emailOrPhoneNumber: '',
           password: ''
         },
-        inputOfPasswordRecoveryDialog: '',
-        alertVisible: false,
-        passwordRecoveryDialog: false,
+        forgetPasswordDialogVisible: false,
         isLoading: false,
         isAnAccount: true,
-
-        signUpDialogVisible: false,
-        innerCloseDialogVisible: false,
-        signUpDialogWidth: '450px',
-        signUpCarouselHeight: '200px',
+        userTypeDialogVisible: true,
+        signInDialogVisible: false,
+        signInDialogWidth: '440px',
         rules: {
+          emailOrPhoneNumber: [
+            {required: true, message: 'Vui lòng nhập email hoặc số điện thoại', trigger: 'blur'},
+            {min: 10, message: 'Độ dài email hoặc số điện thoại phải có it nhất 10 ký tự ', trigger: 'blur'}
+          ],
           password: [
             {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
-            {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'},
-          ],
-          emailOrPhoneNumber: [
-            {required: true, message: 'Vui lòng nhập số điện thoại hoặc email', trigger: 'blur'},
+            {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
           ],
         }
       }
     },
     methods: {
-      handleOnOpenPasswordRecoveryDialog() {
-        this.passwordRecoveryDialog = true;
-      },
-
-      handleOnSubmitPasswordRecovery() {
-        if (Vld.isMobile(this.inputOfPasswordRecoveryDialog) || Vld.isEmail(this.inputOfPasswordRecoveryDialog)) {
-          this.alertVisible = false;
-          this.isLoading = true;
-          setTimeout(() => {
-            this.isLoading = false;
-            if (this.isAnAccount) {
-              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}. Quý khách vui lòng kiểm tra.`);
-              this.passwordRecoveryDialog = false;
-              this.inputOfPasswordRecoveryDialog = '';
-            } else {
-              this.showErrorAlert('Tài khoản không tồn tại trên hệ thống!');
-            }
-          }, 2000);
-        } else {
-          this.alertVisible = true;
-        }
-      },
-
       handleOnClickSignInBtn(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid && (Vld.isEmail(this.signInInfo) || Vld.isMobile(this.signInInfo))) {
+          if (valid && (Vld.isEmail(this.signInInfo.emailOrPhoneNumber) || Vld.isMobile(this.signInInfo.emailOrPhoneNumber))) {
             // alert('submit!');
             this.isLoading = true;
             setTimeout(() => {
               this.isLoading = false;
-              this.$router.push("/");
+              // this.$router.push("/");
 
-            }, 2000)
+            }, 1000)
           } else {
             this.showErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
             return false;
@@ -365,74 +292,85 @@
 
       handleOnClickEmployerBtn() {
         this.signUpInfo.userType = 'employer';
-        this.$refs.signUpCarousel.activeIndex = 1;
-        this.signUpCarouselHeight = '440px';
-        this.signUpDialogWidth = '750px'
+        this.userTypeDialogVisible = false;
       },
 
       handleOnClickCandidateBtn() {
         this.signUpInfo.userType = 'candidate';
-        this.$refs.signUpCarousel.activeIndex = 1;
-        this.signUpCarouselHeight = '440px';
-        this.signUpDialogWidth = '750px'
-      },
-
-      handleOnCloseSignUpDialog() {
-        this.innerCloseDialogVisible = true;
-      },
-
-      handleOnCancelingCloseSignUpDialog() {
-        this.innerCloseDialogVisible = false;
-      },
-
-      handleOnAcceptingCloseSignUpDialog() {
-        this.innerCloseDialogVisible = false;
-        this.signUpDialogVisible = false;
-        this.signUpInfo.userType = '';
-        this.signUpCarouselHeight = '200px';
-        this.signUpDialogWidth = '440px';
-        this.signUpInfo.phoneNumber = '';
-        this.signUpInfo.password = '';
+        this.userTypeDialogVisible = false;
       },
 
       handleOnSubmitSignUpForm(formName) {
         this.$refs[formName].validate((valid) => {
-          if (valid && (Vld.isMobile(this.signUpInfo.phoneNumber) || Vld.isEmail(this.signUpInfo))) {
-            this.showSuccessAlert("Đăng ký tài khoản thành công.");
-            this.$router.push("/");
+          if (valid && (Vld.isMobile(this.signUpInfo.emailOrPhoneNumber) || Vld.isEmail(this.signUpInfo.emailOrPhoneNumber))) {
+            this.isLoading = true;
+            setTimeout(() => {
+              this.isLoading = false;
+              this.showSuccessAlert("Đăng ký tài khoản thành công.");
+              // this.$router.push("/");
+            }, 1000);
           } else {
+            if (!this.signUpInfo.password) {
+              this.showErrorAlert("Vui lòng nhập email hoặc số điện thoại và mật khẩu.");
+              return false;
+            }
             this.showErrorAlert("Email hoặc số điện thoại không đúng định dạng. Vui lòng nhập lại.");
             return false;
           }
         });
       },
 
-      handleOnChangeCarouselItem(value) {
-        if (value === 1) {
-          //setTimeOut 200ms để tránh trùng event change của carousel vs focus của input
-          setTimeout(() => {
-            //this.$nextTick(() => {
-            this.$refs.phoneNumberInput.focus();
-            // })
-          }, 200);
-        }
-      },
 
-      handleOnClickSignUpText() {
-        this.signUpDialogVisible = true;
-        this.signUpCarouselHeight = '200px';
+      handleOnSubmitSignInForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid && (Vld.isEmail(this.signInInfo.emailOrPhoneNumber) || Vld.isMobile(this.signInInfo.emailOrPhoneNumber))) {
+            this.isLoading = true;
+            setTimeout(() => {
+              this.isLoading = false;
+              this.$router.push("/");
+            }, 1000)
+          } else {
+            this.showErrorAlert('Thông tin tài khoản hoặc mật khẩu không chính xác!');
+            return false;
+          }
+        });
       },
 
       handleOnClickSignInText() {
-        this.signUpDialogVisible = false;
-        this.signUpInfo.userType = '';
-        //nếu set thuộc tính :visible.sync của carousel thì không cần set this.signUpDialog = false
-        // this.signUpDialog = false;
-        this.signUpCarouselHeight = '200px';
-        this.signUpDialogWidth = '440px';
-        this.signUpInfo.phoneNumber = '';
-        this.signUpInfo.password = '';
+        this.signInDialogVisible = true;
+        this.forgetPasswordDialogVisible = false;
+      },
+
+      handleOnOClickForgetPassword() {
+        this.forgetPasswordDialogVisible = true;
+        setTimeout(() => {
+          this.$refs.inputOfPasswordRecovery.focus();
+        }, 100);
+      },
+      handleOnSubmitPasswordRecovery() {
+        if (Vld.isMobile(this.inputOfPasswordRecoveryDialog) || Vld.isEmail(this.inputOfPasswordRecoveryDialog)) {
+          this.isLoading = true;
+          setTimeout(() => {
+            this.isLoading = false;
+            if (this.isAnAccount) {
+              this.showSuccessAlert(`Mật khẩu mới đã được gửi tới ${this.inputOfPasswordRecoveryDialog}.`);
+            } else {
+              this.showErrorAlert('Tài khoản không tồn tại trên hệ thống!');
+            }
+          }, 1000);
+        } else {
+          this.showErrorAlert('Vui lòng nhập email hoặc số điện thoại để nhận mật khẩu mới!');
+        }
+      },
+
+
+      handleOnBackToLogin() {
+        this.forgetPasswordDialogVisible = false;
+        setTimeout(() => {
+          this.$refs.emailOrPhoneNumberInput.focus();
+        }, 100);
       }
+
 
     }
   }
@@ -625,7 +563,7 @@
   }
 
   .button--ujarak:hover {
-    color: #fff;
+    color: #ffffff;
     border-color: #009688;
     border-radius: 2px;
   }
@@ -682,7 +620,10 @@
   }
 
   .user-type {
-    /*text-align: center;*/
+    text-align: center;
+    .title {
+      font-size: 20px;
+    }
 
     .container {
       display: flex;
@@ -724,25 +665,5 @@
       }
     }
   }
-
-  .title {
-    font-size: 20px;
-  }
-
-  .fade-in-up-leave-active,
-  .fade-in-up-enter-active {
-    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0) !important;
-  }
-
-  .fade-in-up-enter,
-  .fade-in-up-leave-to {
-    transform: translateY(10px) !important;
-    opacity: 0 !important;
-  }
-
-  .el-select {
-    width: 100% !important;
-  }
-
 </style>
 

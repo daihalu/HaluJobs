@@ -96,7 +96,8 @@
     >
       <el-carousel
         indicator-position="none"
-        arrow="never" :autoplay="false"
+        arrow="never"
+        :autoplay="false"
         @change="handleOnChangeCarouselItem"
         ref="signUpCarousel"
         :height="signUpCarouselHeight"
@@ -133,10 +134,14 @@
             <sign-up-form
               v-if="signUpFormVisible"
               @on_click_sign_in_text="handleOnClickSignInText"
-              :autoFocus="autoFocusInput"
+              @on_submit_sign_up_form="handleOnSubmitSignUpForm"
             />
 
-            <sign-in-form v-if="signInFormVisible" @on_click_sign_up_text="handleOnClickSignUpText"/>
+            <sign-in-form
+              v-if="signInFormVisible"
+              @on_click_sign_up_text="handleOnClickSignUpText"
+              @on_submit_sign_in_form="handleOnSubmitSignInForm"
+            />
           </div>
         </el-carousel-item>
       </el-carousel>
@@ -150,7 +155,12 @@
         :before-close="handleOnCancelCloseSignUpDialog"
         style="margin-top: 25vh;"
       >
-        <div class="mg-bottom-15" style="font-size: 18px">Quý khách có chắc chắn là muốn huỷ đăng ký tài khoản?</div>
+        <div
+          class="mg-bottom-15"
+          style="font-size: 18px"
+        >
+          Quý khách có chắc chắn là muốn huỷ {{signUpFormVisible ? 'đăng ký' : 'đăng nhập'}} tài khoản?
+        </div>
         <div class="ta-center">
           <el-button @click="handleOnCancelCloseSignUpDialog">Huỷ bỏ</el-button>
           <el-button type="primary" @click="handleOnAcceptCloseSignUpDialog">Đồng ý</el-button>
@@ -195,8 +205,15 @@
         dialogPhoneVisible: false,
         dialogMailVisible: false,
 
+        signInInfo: {
+          emailOrPhoneNumber: '',
+          password: ''
+        },
+
         signUpInfo: {
           userType: '',
+          emailOrPhoneNumber: '',
+          password: ''
         },
         inputOfPasswordRecoveryDialog: '',
         passwordRecoveryDialogVisible: false,
@@ -210,17 +227,6 @@
         innerCloseDialogVisible: false,
         signUpDialogWidth: '440px',
         signUpCarouselHeight: '200px',
-        autoFocusInput:false,
-
-        rules: {
-          emailOrPhoneNumber: [
-            {required: true, message: 'Vui lòng nhập email hoặc số điện thoại', trigger: 'blur'},
-          ],
-          password: [
-            {required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur'},
-            {min: 6, message: 'Độ dài mật khẩu phải có ít nhất 6 ký tự', trigger: 'blur'}
-          ],
-        }
       }
     },
     computed: {
@@ -300,6 +306,18 @@
         this.signUpDialogVisible = true;
         this.signUpCarouselHeight = '200px';
         this.signUpDialogWidth = '440px';
+      },
+
+      handleOnSubmitSignUpForm(signUpInfo) {
+        this.signUpInfo.emailOrPhoneNumber = signUpInfo.emailOrPhoneNumber;
+        this.signUpInfo.password = signUpInfo.password;
+        console.log("Sign Up info: ", this.signUpInfo);
+      },
+
+      handleOnSubmitSignInForm(signInInfo) {
+        this.signInInfo.emailOrPhoneNumber = signInInfo.emailOrPhoneNumber;
+        this.signInInfo.password = signInInfo.password;
+        console.log("Sign In info: ", this.signInInfo);
       }
 
     },
@@ -415,270 +433,11 @@
 <style lang="scss" scoped>
   @import "~assets/css/halujobs_variables";
 
-  .wrapper {
-    width: $page-width;
-    margin: 0 auto !important;
-  }
-
-  .box-left {
-    color: $color-black;
-    margin-top: 20vh;
-    h2 {
-      font-size: 45px;
-      font-weight: 500;
-      line-height: 60px;
-    }
-
-    p {
-      line-height: 40px;
-      font-size: $fs-large-18;
-      display: flex;
-      align-items: center;
-
-      svg {
-        font-size: 25px;
-        border: 1px solid $color-white;
-        border-radius: 50%;
-        padding: 5px;
-        margin-right: 5px;
-      }
-    }
-  }
-
-  .box-right {
-    padding: $padding-border-box-15;
-    margin-top: 20vh;
-
-    h3 {
-      color: #48576a;
-      display: flex;
-      align-items: center;
-      margin-left: 5px;
-
-      svg {
-        margin-right: 5px;
-      }
-    }
-  }
-
-  .btn {
-    color: $color-white;
-    font-weight: 500;
-    margin: 0 auto;
-    width: 100%;
-    border-radius: 2px;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:active {
-      box-shadow: 0 0 0 transparent;
-      transition: none;
-    }
-  }
-
-  .btn-halu {
-    background-color: $color-primary;
-    border: transparent;
-  }
-
-  .btn-facebook {
-    background-color: #3b5998;
-    border: transparent;
-    margin-left: 0 !important;
-  }
-
-  a:hover {
-    cursor: pointer;
-  }
-
-  .svo-sign-in {
-    text-align: center;
-  }
-
-  .text-or {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    margin: 15px auto;
-
-    &::after,
-    &::before {
-      content: "";
-      background: gray;
-      height: 1px;
-      margin: .3em;
-      flex: 1;
-    }
-  }
-
-  .form-input {
-    position: relative;
-    .icon {
-      display: inline-block;
-      width: 17px;
-      color: $color-icon;
-      position: absolute;
-      top: 10px;
-      font-size: $fs-large-18;
-      z-index: 3;
-      left: 10px;
-    }
-  }
-
-  .forgot-password {
-    color: $color-primary;
-    text-align: center;
-
-    span {
-      font-weight: 500;
-      &:hover {
-        color: $color-secondary;
-        cursor: pointer;
-      }
-
-      &:active {
-        color: $color-primary;
-      }
-    }
-  }
-
-  .password-recovery-dialog {
-    width: 70%;
-    margin: 0 auto;
-  }
-
-  .alert {
-    color: $color-pink;
-  }
-
-  .sign-up-text {
-    color: $color-primary;
-    font-weight: 500;
-
-    &:hover {
-      color: $color-secondary;
-      cursor: pointer;
-    }
-  }
-</style>
-
-<style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
-
-  .button {
-    display: block;
-    border-radius: 2px;
-    margin-left: 0 !important;
-    margin-top: 1em;
-    width: 100%;
-    border: none;
-    color: #ffffff;
-    vertical-align: middle;
-    position: relative;
-    z-index: 1;
-    -webkit-backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .button:focus {
-    outline: none;
-  }
-
-  .button > span {
-    vertical-align: middle;
-  }
-
-  /* Ujarak */
-  .button--ujarak {
-    -webkit-transition: border-color 0.4s, color 0.4s;
-    transition: border-color 0.4s, color 0.4s;
-    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-    background-color: #1ab394;
-    border-radius: 2px;
-  }
-
-  .button--ujarak::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #009688;
-    border-radius: 2px;
-    z-index: -1;
-    opacity: 0;
-    -webkit-transform: scale3d(0.7, 1, 1);
-    transform: scale3d(0.7, 1, 1);
-    -webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
-    transition: transform 0.4s, opacity 0.4s;
-    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
-  }
-
-  .button--ujarak:hover {
-    color: #fff;
-    border-color: #009688;
-    border-radius: 2px;
-  }
-
-  .button--ujarak:hover::before {
-    opacity: 1;
-    border-radius: 2px;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-
-  /*==============================================*/
-
-  .password-recovery-dialog {
-    width: 70%;
-    margin: 0 auto;
-  }
-
-  .alert {
-    color: $color-pink;
-  }
-
-  .sign-up-dialog {
-
-    margin: 0 auto;
-    overflow: hidden;
-
-    .sign-up-dialog--box-left {
-      font-size: 18px;
-      color: $color-black;
-      h3 {
-        font-weight: 500;
-        margin-bottom: 30px;
-        /*line-height: 60px;*/
-      }
-
-      p {
-        line-height: 25px;
-        font-size: $fs-base-16;
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-
-        svg {
-          font-size: 20px;
-          border: 1px solid $color-primary;
-          color: $color-primary;
-          border-radius: 50%;
-          padding: 3px;
-          margin-right: 5px;
-        }
-      }
-    }
-  }
-
   .user-type {
-    /*text-align: center;*/
-
+    text-align: center;
+    .title {
+      font-size: 20px;
+    }
     .container {
       display: flex;
       justify-content: space-around;
@@ -721,25 +480,10 @@
     }
   }
 
-  .title {
-    font-size: 20px;
-  }
 
-  .fade-in-up-leave-active,
-  .fade-in-up-enter-active {
-    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0) !important;
-  }
-
-  .fade-in-up-enter,
-  .fade-in-up-leave-to {
-    transform: translateY(10px) !important;
-    opacity: 0 !important;
-  }
-
-  .el-select {
-    width: 100% !important;
-  }
 
 </style>
+
+
 
 
