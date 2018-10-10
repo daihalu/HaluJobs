@@ -8,9 +8,9 @@
     <el-col :span="13">
       <h2 class="job-title">{{title}}</h2>
       <p class="company-name">{{companyName}}</p>
-      <p><strong>Địa điểm tuyển dụng:</strong><span v-for="item in workAddresses" :key="item"> {{item}} </span></p>
+      <p><strong>Địa điểm tuyển dụng:</strong><span> {{locations}}</span></p>
       <p><strong>Mức lương:</strong><span> {{salary}}</span></p>
-      <p><strong>Hạn nộp hồ sơ:</strong><span> {{deadline}} </span></p>
+      <p><strong>Hạn nộp hồ sơ:</strong><span> {{closingDate}} </span></p>
       <div class="btn-options">
         <el-button
           class="apply-now"
@@ -56,11 +56,12 @@
 </template>
 
 <script>
+  import {FormattedDate} from '~/assets/js/functions';
   export default {
     props: {
       title: String,
       companyName: String,
-      salary: String,
+      salaryRange: Object,
       deadline: String,
       workAddresses: Array,
       logoUrl: String,
@@ -68,7 +69,14 @@
     data() {
       return {
         activeBtn: '',
+        salary: this.salaryRange.min + ' triệu - ' + this.salaryRange.max + ' triệu',
+        closingDate: this.deadline,
+        locations: this.workAddresses.join(', ')
       }
+    },
+
+    created() {
+      this.closingDate = FormattedDate(this.deadline);
     }
   }
 </script>

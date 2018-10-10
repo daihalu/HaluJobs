@@ -64,7 +64,6 @@
   .function-box:hover {
     background-color: $color-primary;
     color: $color-white !important;
-    box-shadow: 0 0 10px $color-primary;
   }
 
   .function-box svg {

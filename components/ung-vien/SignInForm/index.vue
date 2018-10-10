@@ -309,9 +309,9 @@
   }
 
   .ta-center {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
   }
 </style>
 

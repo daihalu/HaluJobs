@@ -347,6 +347,7 @@
           this.$refs.inputOfPasswordRecovery.focus();
         }, 100);
       },
+
       handleOnSubmitPasswordRecovery() {
         if (Vld.isMobile(this.inputOfPasswordRecoveryDialog) || Vld.isEmail(this.inputOfPasswordRecoveryDialog)) {
           this.isLoading = true;
@@ -540,7 +541,6 @@
     -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     background-color: #1ab394;
-    border-radius: 2px;
   }
 
   .button--ujarak::before {
@@ -551,7 +551,6 @@
     width: 100%;
     height: 100%;
     background: #009688;
-    border-radius: 2px;
     z-index: -1;
     opacity: 0;
     -webkit-transform: scale3d(0.7, 1, 1);

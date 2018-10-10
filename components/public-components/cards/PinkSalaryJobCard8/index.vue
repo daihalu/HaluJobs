@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <div class="avatar">
-      <nuxt-link :to="jobUrl + jobId" :title="companyName.title">
+    <div class="avatar" @click="handleOnClickAvatar">
+      <!--<nuxt-link :to="jobUrl + jobId" :title="companyName.title">-->
         <img :src="logoUrl"/>
-      </nuxt-link>
+      <!--</nuxt-link>-->
     </div>
 
     <div class="container">
@@ -60,10 +60,18 @@
         deadline: this.jobInfo.deadline
       }
     },
+    methods: {
+      handleOnClickAvatar() {
+        alert("Click");
+        this.$router.push('/tuyen-dung');
+      }
+    },
+
     created() {
       this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 33);
       this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 32);
       this.deadline = FormattedDate(this.deadline);
+      // console.log(this.jobInfo);
     }
   }
 </script>

@@ -9,12 +9,12 @@
     <Footer class="mg-top-15"/>
 
     <div class="fixed-contact-box">
-      <font-awesome-icon :icon="['fab', 'facebook-f']" @click="dialogFacebookVisible = true"/>
-      <font-awesome-icon :icon="['fas', 'phone']" @click="dialogPhoneVisible = true"/>
-      <font-awesome-icon :icon="['far', 'envelope']" @click="dialogMailVisible = true"/>
+      <font-awesome-icon :icon="['fab', 'facebook-f']" @click="facebookDialogVisible = true"/>
+      <font-awesome-icon :icon="['fas', 'phone']" @click="phoneDialogVisible = true"/>
+      <font-awesome-icon :icon="['far', 'envelope']" @click="mailDialogVisible = true"/>
     </div>
 
-    <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="dialogFacebookVisible">
+    <el-dialog title="Theo dõi HaluJobs qua MXH" :visible.sync="facebookDialogVisible">
       <el-row :gutter="10" class="box-container padding-15">
         <el-col :span="10" class="description">
           <p>Bạn muốn nhận các tin tức việc làm và tuyển dụng mới nhất từ HaluJobs?</p>
@@ -36,7 +36,7 @@
       </el-row>
     </el-dialog>
 
-    <el-dialog :visible.sync="dialogPhoneVisible">
+    <el-dialog :visible.sync="phoneDialogVisible">
       <el-row class="box-container hot-line-container">
         <div class="header">
           <h2>HOTLINE TƯ VẤN DÀNH CHO NHÀ TUYỂN DỤNG</h2>
@@ -68,7 +68,7 @@
       </el-row>
     </el-dialog>
 
-    <el-dialog :visible.sync="dialogMailVisible">
+    <el-dialog :visible.sync="mailDialogVisible">
       <div class="box-container dialog-mail-container">
         <p>
           Nếu Quý khách có bất kỳ thắc mắc nào về dịch vụ của HaluJobs, vui lòng gửi email tới địa chỉ tư vấn của chúng
@@ -77,7 +77,7 @@
 
         <div>
           <nuxt-link to="mailto:hotro@halutech.com.vn">
-            <font-awesome-icon :icon="['far', 'envelope']" @click="dialogMailVisible = true"/>
+            <font-awesome-icon :icon="['far', 'envelope']" @click="mailDialogVisible = true"/>
             hotro@halutech.com.vn
           </nuxt-link>
         </div>
@@ -86,87 +86,11 @@
       </div>
     </el-dialog>
 
-    <el-dialog
-      :visible.sync="signUpDialogVisible"
-      class="sign-up-dialog"
-      :width="signUpDialogWidth"
-      :close-on-press-escape="false"
-      :close-on-click-modal="false"
-      :before-close="handleOnCloseSignUpDialog"
-    >
-      <el-carousel
-        indicator-position="none"
-        arrow="never"
-        :autoplay="false"
-        @change="handleOnChangeCarouselItem"
-        ref="signUpCarousel"
-        :height="signUpCarouselHeight"
-      >
-
-        <el-carousel-item>
-          <div class="user-type" v-if="!signUpInfo.userType">
-            <div class="title">Bạn là nhà tuyển dụng hay ứng viên?</div>
-            <div class="container mg-top-15">
-              <div
-                class="small-box"
-                :class="{active: signUpInfo.userType === 'employer'}"
-                @click="handleOnClickEmployerBtn"
-              >
-                <font-awesome-icon :icon="['fas', 'user-tie']"/>
-                <span>Nhà tuyển dụng</span>
-              </div>
-
-              <div
-                class="small-box"
-                :class="{active: signUpInfo.userType === 'candidate'}"
-                @click="handleOnClickCandidateBtn"
-              >
-                <font-awesome-icon :icon="['fas', 'briefcase']"/>
-                <span>Ứng viên</span>
-              </div>
-            </div>
-
-          </div>
-        </el-carousel-item>
-
-        <el-carousel-item>
-          <div v-if="signUpInfo.userType">
-            <sign-up-form
-              v-if="signUpFormVisible"
-              @on_click_sign_in_text="handleOnClickSignInText"
-              @on_submit_sign_up_form="handleOnSubmitSignUpForm"
-            />
-
-            <sign-in-form
-              v-if="signInFormVisible"
-              @on_click_sign_up_text="handleOnClickSignUpText"
-              @on_submit_sign_in_form="handleOnSubmitSignInForm"
-            />
-          </div>
-        </el-carousel-item>
-      </el-carousel>
-
-      <el-dialog
-        width="30%"
-        :visible.sync="innerCloseDialogVisible"
-        append-to-body
-        :close-on-press-escape="false"
-        :close-on-click-modal="false"
-        :before-close="handleOnCancelCloseSignUpDialog"
-        style="margin-top: 25vh;"
-      >
-        <div
-          class="mg-bottom-15"
-          style="font-size: 18px"
-        >
-          Quý khách có chắc chắn là muốn huỷ {{signUpFormVisible ? 'đăng ký' : 'đăng nhập'}} tài khoản?
-        </div>
-        <div class="ta-center">
-          <el-button @click="handleOnCancelCloseSignUpDialog">Huỷ bỏ</el-button>
-          <el-button type="primary" @click="handleOnAcceptCloseSignUpDialog">Đồng ý</el-button>
-        </div>
-      </el-dialog>
-    </el-dialog>
+    <div v-if="signUpDialogVisible">
+      <sign-up-sign-in-dialog
+        @on_accept_close_sign_up_dialog="handleOnAcceptCloseSignUpDialog"
+      />
+    </div>
 
     <div
       class="btn-scroll-top"
@@ -182,8 +106,7 @@
   import NavBar from '~/components/public-components/bars/NavBar';
   import Footer from '~/components/public-components/bars/Footer';
   import ScrollBar from '~/components/public-components/bars/ScrollBar';
-  import SignInForm from '~/components/ung-vien/SignInForm';
-  import SignUpForm from '~/components/ung-vien/SignUpForm';
+  import SignUpSignInDialog from '~/components/public-components/dialogs/SignUpSignInDialog';
 
   import {mapState, mapGetters, mapActions} from 'vuex';
 
@@ -194,39 +117,16 @@
       NavBar,
       Footer,
       ScrollBar,
-      SignInForm,
-      SignUpForm
+      SignUpSignInDialog
     },
     data() {
       return {
         showScrollButton: false,
         scrollToTop: false,
-        dialogFacebookVisible: false,
-        dialogPhoneVisible: false,
-        dialogMailVisible: false,
-
-        signInInfo: {
-          emailOrPhoneNumber: '',
-          password: ''
-        },
-
-        signUpInfo: {
-          userType: '',
-          emailOrPhoneNumber: '',
-          password: ''
-        },
-        inputOfPasswordRecoveryDialog: '',
-        passwordRecoveryDialogVisible: false,
-        isLoading: false,
-        isAnAccount: true,
-
-        signInFormVisible: false,
-        signUpFormVisible: true,
-
+        facebookDialogVisible: false,
+        phoneDialogVisible: false,
+        mailDialogVisible: false,
         signUpDialogVisible: false,
-        innerCloseDialogVisible: false,
-        signUpDialogWidth: '440px',
-        signUpCarouselHeight: '200px',
       }
     },
     computed: {
@@ -244,82 +144,13 @@
         this.showScrollButton = window.scrollY > 600;
       },
 
-      handleOnClickEmployerBtn() {
-        this.signUpInfo.userType = 'employer';
-        this.$refs.signUpCarousel.activeIndex = 1;
-        this.signUpCarouselHeight = '440px';
-        this.signUpDialogWidth = '750px'
-      },
-
-      handleOnClickCandidateBtn() {
-        this.signUpInfo.userType = 'candidate';
-        this.$refs.signUpCarousel.activeIndex = 1;
-        this.signUpCarouselHeight = '440px';
-        this.signUpDialogWidth = '750px'
-      },
-
-      handleOnCloseSignUpDialog() {
-        this.innerCloseDialogVisible = true;
-      },
-
-      handleOnCancelCloseSignUpDialog() {
-        this.innerCloseDialogVisible = false;
+      handleOnClickAccountTextOnNavBar() {
+        this.signUpDialogVisible = true;
       },
 
       handleOnAcceptCloseSignUpDialog() {
-        this.$refs.signUpCarousel.activeIndex = 0;
-        this.innerCloseDialogVisible = false;
         this.signUpDialogVisible = false;
-        this.signUpFormVisible = true;
-        this.signInFormVisible = false;
-        this.signUpInfo.userType = '';
-        this.signUpCarouselHeight = '200px';
-        this.signUpDialogWidth = '440px';
-      },
-      
-      handleOnChangeCarouselItem(value) {
-        if (value === 1) {
-          //setTimeOut 200ms để tránh trùng event change của carousel vs focus của input
-          setTimeout(() => {
-            this.autoFocusInput = true;
-          }, 200);
-        }
-      },
-
-      handleOnClickSignInText() {
-        console.log('On click sign in text', this.$refs.signUpCarousel.activeIndex);
-        this.signInFormVisible = true;
-        this.signUpFormVisible = false;
-        this.signUpDialogWidth = '440px';
-        this.signUpCarouselHeight = '440px';
-      },
-
-      handleOnClickSignUpText() {
-        console.log('On click sign up text', this.$refs.signUpCarousel.activeIndex);
-        this.signUpFormVisible = true;
-        this.signInFormVisible = false;
-        this.signUpDialogWidth = "750px";
-        this.signUpCarouselHeight = '440px';
-      },
-
-      handleOnClickAccountTextOnNavBar() {
-        this.signUpDialogVisible = true;
-        this.signUpCarouselHeight = '200px';
-        this.signUpDialogWidth = '440px';
-      },
-
-      handleOnSubmitSignUpForm(signUpInfo) {
-        this.signUpInfo.emailOrPhoneNumber = signUpInfo.emailOrPhoneNumber;
-        this.signUpInfo.password = signUpInfo.password;
-        console.log("Sign Up info: ", this.signUpInfo);
-      },
-
-      handleOnSubmitSignInForm(signInInfo) {
-        this.signInInfo.emailOrPhoneNumber = signInInfo.emailOrPhoneNumber;
-        this.signInInfo.password = signInInfo.password;
-        console.log("Sign In info: ", this.signInInfo);
       }
-
     },
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
@@ -430,59 +261,6 @@
   }
 </style>
 
-<style lang="scss" scoped>
-  @import "~assets/css/halujobs_variables";
-
-  .user-type {
-    text-align: center;
-    .title {
-      font-size: 20px;
-    }
-    .container {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 20px;
-
-      .small-box {
-        width: 170px;
-        height: 110px;
-        border: 2px solid $color-primary;
-        padding: $padding-base-20;
-        color: $color-primary;
-        font-size: 17px;
-        border-radius: 2px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        -webkit-transition: all 0.15s ease-in-out;
-        transition: all 0.15s ease-in-out;
-
-        &:hover {
-          cursor: pointer;
-          background-color: $color-primary;
-          color: $color-white !important;
-
-        }
-
-        svg {
-          display: inline-block;
-          width: 40px;
-          height: 40px;
-          margin-bottom: 15px;
-        }
-      }
-
-      .active {
-        background-color: $color-primary;
-        color: $color-white;
-      }
-    }
-  }
-
-
-
-</style>
 
 
 

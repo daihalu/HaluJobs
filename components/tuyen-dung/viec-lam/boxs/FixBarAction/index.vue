@@ -5,18 +5,18 @@
         <el-col :span="16" class="fixed-top-candidate-bar--info">
             <h3>{{title}}</h3>
             <p>
-              <span>Mức lương: {{salary}}</span> | Hạn nộp hồ sơ <span>{{deadline}}</span>
+              <span>Mức lương: {{salary}}</span> | Hạn nộp hồ sơ <span>{{closingDate}}</span>
             </p>
         </el-col>
 
         <el-col :span="8">
           <div class="btn-options">
-            <el-button class="fixed-top-job-bar--btn view-contact">
+            <el-button class="fixed-top-job-bar--btn view-contact" @click="handleOnClickViewContactBtn">
               <font-awesome-icon :icon="['fas', 'heart']"/>
               Xem liên hệ
             </el-button>
 
-            <el-button class="fixed-top-job-bar--btn  apply-now">
+            <el-button class="fixed-top-job-bar--btn  apply-now" @click="handleOnClickApplyNowBtn">
               <font-awesome-icon :icon="['far', 'clipboard']"/>
               Ứng tuyển ngay
             </el-button>
@@ -30,24 +30,40 @@
 <script>
 
   import {JobOption} from '~/assets/js/data-options';
+  import {FormattedDate} from '~/assets/js/functions';
 
   export default {
     props: {
       title: String,
-      salary: String,
+      salaryRange: Object,
       deadline: String,
     },
     data() {
       return {
         scrolled: false,
         activeBtn: '',
+        salary: this.salaryRange.min + ' triệu - ' + this.salaryRange.max + ' triệu',
+        closingDate: this.deadline,
+
       }
     },
     methods: {
       handleScroll() {
         this.scrolled = window.scrollY > 550 && window.scrollY < 3500;
+      },
+
+      handleOnClickViewContactBtn() {
+        this.$emit('on_click_view_contact_btn');
+      },
+
+      handleOnClickApplyNowBtn() {
+        this.$emit('on_click_view_apply_now_btn');
       }
     },
+    created() {
+      this.closingDate = FormattedDate(this.deadline);
+    },
+
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
     },

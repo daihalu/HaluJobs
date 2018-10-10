@@ -2,9 +2,11 @@
   <div>
     <fix-bar-action
       v-if="scrolled"
-      :title="job.jobInfo.title"
-      :salary="job.jobInfo.salary"
-      :deadline="job.jobInfo.deadline"
+      :title="jobInfo.title"
+      :salaryRange="jobInfo.salary"
+      :deadline="jobInfo.closing_date"
+      @on_click_view_contact_btn="handleOnClickViewContactBtn"
+      @on_click_view_apply_now_btn="handleOnClickApplyNowBtn"
     />
 
     <search-bar/>
@@ -19,11 +21,11 @@
       <!--<banner class="mg-top-15"/>-->
 
       <job-cover
-        :title="job.jobInfo.title"
-        :companyName="job.employerInfo.companyName"
-        :salary="job.jobInfo.salary"
-        :deadline="job.jobInfo.deadline"
-        :workAddresses="job.jobInfo.workAddresses"
+        :title="jobInfo.title"
+        :companyName="jobInfo.employer.name"
+        :salaryRange="jobInfo.salary"
+        :deadline="jobInfo.closing_date"
+        :workAddresses="jobInfo.locations"
         :logoUrl="job.employerInfo._logoUrl"
         class="mg-top-15"
       />
@@ -68,13 +70,17 @@
       />
 
     </el-row>
+
+    <div v-if="signUpDialogVisible">
+      <sign-up-sign-in-dialog
+        @on_accept_close_sign_up_dialog="handleOnAcceptCloseSignUpDialog"
+      />
+    </div>
   </div>
 </template>
 
 <script>
   import SearchBar from '~/components/bars/SearchBar';
-
-
   import CompanyBox from '~/components/tuyen-dung/viec-lam/boxs/CompanyBox';
 
   import Breadcrumb from '~/components/public-components/bars/Breadcrumb';
@@ -86,6 +92,9 @@
 
   import JobCover from '~/components/tuyen-dung/viec-lam/job-info/JobCover';
   import QuickInfo from '~/components/tuyen-dung/viec-lam/job-info/QuickInfo';
+  import SignUpSignInDialog from '~/components/tuyen-dung/viec-lam/dialogs/SignUpSignInDialog';
+
+  import axios from 'axios';
 
 
   export default {
@@ -99,7 +108,8 @@
       FixBarAction,
       CompanyRecruitment,
       SameJobs,
-      QuickInfo
+      QuickInfo,
+      SignUpSignInDialog
     },
     head() {
       return {
@@ -107,8 +117,18 @@
       };
     },
     layout: 'default',
+
+    async asyncData() {
+      let {data} = await axios.get('https://halujobs.herokuapp.com/api/jobs/5b95ebe173b25010e12770de');
+
+      return {jobInfo: data.job};
+    },
+
     data() {
       return {
+        isUser: false,
+        signUpDialogVisible: false,
+
         job: {
           jobInfo: {
             title: 'Nhân viên hành chính nhân sự',
@@ -293,10 +313,23 @@
     methods: {
       handleOnScroll() {
         this.scrolled = window.scrollY > 800 && window.scrollY < 3500;
-        console.log(window.scrollY)
+      },
+
+      handleOnClickViewContactBtn() {
+        this.signUpDialogVisible = true;
+      },
+
+      handleOnClickApplyNowBtn() {
+        this.signUpDialogVisible = true;
+      },
+      handleOnAcceptCloseSignUpDialog() {
+        this.signUpDialogVisible = false;
       }
-    }
-    ,
+    },
+    created() {
+      console.log("data", this.jobInfo);
+    },
+
     beforeMount() {
       window.addEventListener('scroll', this.handleOnScroll);
     }
