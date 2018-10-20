@@ -12,7 +12,7 @@
 
           <div class="item">
             <font-awesome-icon icon="phone"/>
-            <p>Điện thoại: 098 999 88988</p>
+            <p>Điện thoại: 0247 102 9889</p>
           </div>
 
           <div class="item">
@@ -152,8 +152,12 @@
 
   .navigation-box {
     border: 1px solid transparent;
+    /*
+    02c39a
+    1dcd9f
+    */
     background-color: $color-secondary;
-    border-radius: $br-5;
+    border-radius: 2px;
     padding: 20px;
 
     p {

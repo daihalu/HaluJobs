@@ -256,7 +256,6 @@
         btnAfter: '',
         boxLeftHeight: 250,
         windowHeight: '',
-        flagUrl: require('~/assets/images/Flag_of_Vietnam.png'),
         hasChangeCompanyPhoneNumberInput: false,
         hasChangeEmployerNameInput: false,
         hasChangeCompanyNameInput: false,

@@ -21,6 +21,7 @@
         <el-col :span="16">
           <attractive-job-box
             jobBoxTitle="Việc làm hấp dẫn"
+            :jobs="jobs"
             class="mg-top-15"
           />
 
@@ -77,6 +78,7 @@
   import StatisticalBox from '~/components/public-components/boxs/StatisticalBox';
 
   import {mapState, mapGetters, mapActions} from 'vuex';
+  import axios from 'axios';
 
   export default {
     components: {
@@ -102,6 +104,13 @@
       }
     },
     layout: 'default',
+    async asyncData() {
+      let {data} = await axios.get('https://halujobs.herokuapp.com/jobs?size=50');
+
+      return {
+        jobs: data.jobs,
+      };
+    },
     data() {
       return {
         title: 'HaluJobs - Tuyển dụng thần tốc',
@@ -115,7 +124,7 @@
           },
           {
             companyName: 'Công ty cổ phần Paragon',
-            avatarUrl: 'http://www.gostudiorama.com/wp-content/uploads/2018/06/affordable-logo-designs-logo-design-contests-29-affordable-custom-logo-design-online-in-music-logo.png',
+            avatarUrl: 'https://www.logogarden.com/wp-content/uploads/lg-logo-samples/Construction-Handyman-Logo-2.png',
             employerUrl: '/nha-tuyen-dung'
           },
           {

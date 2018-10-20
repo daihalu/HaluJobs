@@ -17,8 +17,8 @@
         ref="signInInfo"
         label-width="120px"
         label-position="top"
-        class="mg-top-15">
-
+        class="mg-top-15"
+      >
         <el-form-item prop="emailOrPhoneNumber">
           <div class="form-input">
             <font-awesome-icon :icon="['fas', 'phone-square']" class="icon"/>

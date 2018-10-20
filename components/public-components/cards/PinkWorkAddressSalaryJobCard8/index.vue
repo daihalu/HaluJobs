@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="avatar">
-      <nuxt-link :to="jobUrl + jobId" :title="companyName.title">
+      <nuxt-link :to="jobUrl" :title="companyName">
         <img :src="logoUrl"/>
       </nuxt-link>
     </div>
@@ -9,37 +9,37 @@
     <div class="container">
       <el-tooltip
         effect="dark"
-        :content="jobTitle.title"
+        :content="jobTitle"
         placement="top-start"
       >
         <p class="position">
-          <nuxt-link :to="jobUrl + jobId">
-            {{jobTitle.value}}
+          <nuxt-link :to="jobUrl">
+            {{jobTitle}}
           </nuxt-link>
         </p>
       </el-tooltip>
 
-      <p class="company" :title="companyName.title">
+      <p class="company" :title="companyName">
         <font-awesome-icon :icon="['far', 'building']"/>
-        <span>{{companyName.value}}</span>
+        <span>{{companyName}}</span>
       </p>
 
-      <div class="items">
-        <p class="salary" :title="salary">
+      <el-row class="items">
+        <el-col :span="8" class="salary" :title="salary">
           <font-awesome-icon :icon="['fas', 'dollar-sign']"/>
           <span>{{salary}}</span>
-        </p>
+        </el-col>
 
-        <p class="deadline" :title="deadline">
+        <el-col :span="8" class="deadline" :title="deadline">
           <font-awesome-icon :icon="['fas', 'user-clock']"/>
           <span> {{deadline}}</span>
-        </p>
+        </el-col>
 
-        <p class="work-addresses " :title="workAddresses.title">
+        <el-col :span="8" class="work-addresses " :title="workAddresses">
           <font-awesome-icon :icon="['fas', 'map-marker-alt']"/>
-          {{workAddresses.value}}
-        </p>
-      </div>
+          {{workAddresses}}
+        </el-col>
+      </el-row>
 
     </div>
   </div>
@@ -54,30 +54,19 @@
     },
     data() {
       return {
-        logoUrl: this.jobInfo.logoUrl,
-        jobUrl: this.jobInfo.jobUrl,
+        logoUrl: this.jobInfo.employer._logo,
+        jobUrl: '/tuyen-dung/viec-lam/' + this.jobInfo._slug + '.html',
         jobId: this.jobInfo._jobId,
-        jobTitle: {
-          title: this.jobInfo.jobTitle,
-          value: this.jobInfo.jobTitle
-        },
-        companyName: {
-          title: this.jobInfo.companyName,
-          value: this.jobInfo.companyName
-        },
-        workAddresses: {
-          title: this.jobInfo.workAddresses,
-          value: this.jobInfo.workAddresses
-        },
-        salary: this.jobInfo.salary.min + ' - ' + this.jobInfo.salary.max + ' triệu',
+        jobTitle: this.jobInfo.title,
+        companyName: this.jobInfo.employer.name,
+        workAddresses: this.jobInfo.locations.join(", "),
+        salary: this.jobInfo.salary.label,
         deadline: this.jobInfo.deadline
       }
     },
+
+
     created() {
-      this.jobTitle.value = ConvertStringToShorterString(this.jobTitle.title, 0, 32);
-      this.companyName.value = ConvertStringToShorterString(this.companyName.title, 0, 30);
-      this.workAddresses.value = ConvertStringToShorterString(this.workAddresses.value, 0, 6);
-      this.deadline = FormattedDate(this.deadline);
     }
   }
 </script>
@@ -110,6 +99,10 @@
       display: block;
       text-transform: lowercase;
       padding-left: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 290px;
+      text-overflow: ellipsis;
 
       &::first-letter {
         text-transform: uppercase;
@@ -123,9 +116,15 @@
     text-transform: lowercase;
     display: flex;
     align-items: center;
+    text-overflow:ellipsis;
 
     span {
       display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 269px;
+      text-overflow: ellipsis;
+
       &::first-letter {
         text-transform: uppercase;
       }
@@ -147,8 +146,17 @@
       color: $color-pink;
     }
 
+    .work-addresses {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 91px;
+    }
+
     .deadline {
       opacity: 0.8;
+      text-align: center;
 
       &:hover {
         opacity: 1;

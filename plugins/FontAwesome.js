@@ -6,7 +6,8 @@ import {
   faFacebookF,
   faGoogle,
   faTwitter,
-  faInstagram
+  faInstagram,
+  faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons';
 
 import {
@@ -99,7 +100,8 @@ library.add(
   faCheck,
   faDotCircle,
   faCar,
-  faPhoneSquare
+  faPhoneSquare,
+  faLinkedinIn
 );
 // const stroopwafel = icon({ prefix: 'fas', iconName: 'stroopwafel' });
 config.autoAddCss = false;

@@ -81,7 +81,7 @@
   import Banner from '~/components/public-components/boxs/Banner';
   import FixBarAction from '~/components/tuyen-dung/viec-lam/boxs/FixBarAction';
   import AdvancedSearch from '~/components/public-components/boxs/AdvancedSearch';
-  import CompanyRecruitment from '~/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment';
+  import CompanyRecruitment from '~/components/tuyen-dung/viec-lam/boxs/CompanyJobs';
   import SameJobs from '~/components/tuyen-dung/viec-lam/boxs/SameJobs';
 
   import JobCover from '~/components/tuyen-dung/viec-lam/job-info/JobCover';

@@ -6,18 +6,18 @@
     </h4>
 
     <scroll-bar class="job-box">
-        <el-row :gutter="10">
-          <el-col
-            :span="12"
-            v-for="(item, index) in jobs"
-            :key="index"
-            class="mg-bottom-10"
-          >
-            <attractive-job-card
-              :jobInfo="item"
-            />
-          </el-col>
-        </el-row>
+      <el-row :gutter="10">
+        <el-col
+          :span="12"
+          v-for="(item, index) in jobs"
+          :key="index"
+          class="mg-bottom-10"
+        >
+          <attractive-job-card
+            :jobInfo="item"
+          />
+        </el-col>
+      </el-row>
     </scroll-bar>
 
   </el-row>
@@ -28,6 +28,7 @@
   import ScrollBar from '~/components/public-components/bars/ScrollBar';
   import {mapActions, mapState} from 'vuex';
 
+
   export default {
     components: {
       AttractiveJobCard,
@@ -35,21 +36,26 @@
     },
     props: {
       jobBoxTitle: String,
+      jobs: Array
     },
 
-    computed: {
-      ...mapState('HOME_PAGE', {
-        jobs: 'attractiveJobs'
-      })
-    },
 
-    methods: {
-      ...mapActions('HOME_PAGE', {
-        fetchAttractiveJobs: 'fetchAttractiveJobs'
-      })
-    },
+
+
+    // computed: {
+    //   ...mapState('HOME_PAGE', {
+    //     jobs: 'attractiveJobs'
+    //   })
+    // },
+
+    // methods: {
+    //   ...mapActions('HOME_PAGE', {
+    //     fetchAttractiveJobs: 'fetchAttractiveJobs'
+    //   })
+    // },
     created() {
-      this.fetchAttractiveJobs();
+      // this.fetchAttractiveJobs();
+      // console.log(this.jobs[0]);
     }
   }
 </script>

@@ -1,11 +1,13 @@
+<!--TODO: fix save job btn at fix bar and job cover-->
 <template>
   <div>
     <fix-bar-action
       v-if="scrolled"
       :title="jobInfo.title"
-      :salaryRange="jobInfo.salary"
-      :deadline="jobInfo.closing_date"
-      @on_click_view_contact_btn="handleOnClickViewContactBtn"
+      :salary="jobInfo.salary.long_label"
+      :deadline="jobInfo.deadline"
+      :isSaveJobBtnActive="isSaveJobBtnActive"
+      @on_click_save_job_btn="handleOnClickSaveJobBtn"
       @on_click_view_apply_now_btn="handleOnClickApplyNowBtn"
     />
 
@@ -13,7 +15,7 @@
 
     <el-row class="container">
       <breadcrumb
-        :title="job.jobInfo.title"
+        :title="jobInfo.title"
         :breadcrumbArr="breadcrumbArr"
         class="mg-top-15"
       />
@@ -23,23 +25,54 @@
       <job-cover
         :title="jobInfo.title"
         :companyName="jobInfo.employer.name"
-        :salaryRange="jobInfo.salary"
-        :deadline="jobInfo.closing_date"
+        :salary="jobInfo.salary.long_label"
+        :deadline="jobInfo.deadline"
         :workAddresses="jobInfo.locations"
-        :logoUrl="job.employerInfo._logoUrl"
+        :logoUrl="jobInfo.employer._logo"
+        :createdAt="jobInfo._created_at"
+        :views="jobInfo._views"
+        :isSaveJobBtnActive="isSaveJobBtnActive"
+        @on_click_save_job_btn="handleOnClickSaveJobBtn"
         class="mg-top-15"
       />
 
       <el-row :gutter="20">
         <el-col :span="16">
           <quick-info
-            :yearsOfExperience="job.jobRequirements.yearsOfExperience"
-            :qualification="job.jobRequirements.qualification"
-            :numberOfRecruits="job.jobDetails.numberOfRecruits"
-            :professions="job.jobDetails.professions"
-            :position="job.jobDetails.position"
-            :gender="job.jobRequirements.gender"
-            :jobType="job.jobDetails.jobType"
+            :yearsOfExperience="jobInfo.requirements.experience"
+            qualification="Đại học"
+            :quantity="jobInfo.quantity"
+            :professions="jobInfo.industries"
+            :position="jobInfo.position"
+            :gender="jobInfo.requirements.gender"
+            :jobType="jobInfo.work_type"
+            class="mg-top-15"
+          />
+
+          <job-description
+            :description="jobInfo.description"
+            class="mg-top-15"
+          />
+
+          <job-benefit
+            :benefit="jobInfo.benefit"
+            class="mg-top-15"
+          />
+
+          <job-requirements
+            :requirements="jobInfo.requirements"
+            class="mg-top-15"
+          />
+
+          <profile-requirements
+            :requirements="jobInfo.requirements"
+            class="mg-top-15"
+          />
+
+          <contact-info
+            :jobInfo="jobInfo"
+            @on_click_send_message_btn="handleOnClickSendMessageBtn"
+            @on_click_apply_now_btn="handleOnClickApplyNowBtn"
             class="mg-top-15"
           />
 
@@ -47,16 +80,16 @@
         <el-col :span="8">
 
           <company-box
-            :companyName="job.employerInfo.companyName"
-            :workAddresses="job.employerInfo.companyAddress"
-            :companySize="job.employerInfo.companySize"
-            :logoUrl="job.employerInfo._logoUrl"
+            :companyName="jobInfo.employer.name"
+            :workAddresses="jobInfo.employer.address"
+            companySize="100"
+            :logoUrl="jobInfo.employer._logo"
+            @on_click_send_message_btn="handleOnClickSendMessageBtn"
             class="mg-top-15"
           />
 
-
-          <company-recruitment
-            :name="job.employerInfo.companyName"
+          <company-jobs
+            :name="jobInfo.employer.name"
             :companyJobs="companyJobs"
           />
 
@@ -64,7 +97,7 @@
         </el-col>
       </el-row>
 
-      <same-jobs
+      <same-job-box
         :sameJobs="sameJobs"
         class="mg-top-15"
       />
@@ -76,6 +109,45 @@
         @on_accept_close_sign_up_dialog="handleOnAcceptCloseSignUpDialog"
       />
     </div>
+
+    <el-dialog
+      :title="dialogTitle"
+      :visible.sync="sendMessageDialogVisible"
+      class="dialog-container"
+    >
+      <el-form
+        ref="message"
+        :rules="rules"
+        :model="message"
+        label-position="top"
+      >
+        <el-form-item label="Nhập tiêu đề: " prop="title">
+          <el-input
+            v-model="message.title"
+            placeholder="Nhập tiêu đề"
+          >
+          </el-input>
+        </el-form-item>
+
+        <el-form-item label="Nhập tiêu nội dung tin nhắn: " prop="content">
+          <el-input
+            type="textarea"
+            :rows="5"
+            v-model="message.content"
+            placeholder="Nhập nội dung tin nhắn"
+          >
+          </el-input>
+        </el-form-item>
+
+        <el-form-item>
+          <el-button type="primary" class="send-message" @click="handleOnSendMessage('message')">
+            Gửi tin nhắn
+          </el-button>
+        </el-form-item>
+
+      </el-form>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -87,14 +159,21 @@
   import Banner from '~/components/public-components/boxs/Banner';
   import FixBarAction from '~/components/tuyen-dung/viec-lam/boxs/FixBarAction';
   import AdvancedSearch from '~/components/public-components/boxs/AdvancedSearch';
-  import CompanyRecruitment from '~/components/tuyen-dung/viec-lam/boxs/CompanyRecruitment';
-  import SameJobs from '~/components/tuyen-dung/viec-lam/boxs/SameJobs';
+  import CompanyJobs from '~/components/tuyen-dung/viec-lam/boxs/CompanyJobs';
+  import SameJobBox from '~/components/tuyen-dung/viec-lam/boxs/SameJobs';
 
   import JobCover from '~/components/tuyen-dung/viec-lam/job-info/JobCover';
+  import JobDescription from '~/components/tuyen-dung/viec-lam/job-info/JobDescription';
+  import JobBenefit from '~/components/tuyen-dung/viec-lam/job-info/JobBenefit';
+  import JobRequirements from '~/components/tuyen-dung/viec-lam/job-info/JobRequirements';
   import QuickInfo from '~/components/tuyen-dung/viec-lam/job-info/QuickInfo';
+  import ProfileRequirements from '~/components/tuyen-dung/viec-lam/job-info/ProfileRequirements';
+  import ContactInfo from '~/components/tuyen-dung/viec-lam/job-info/ContactInfo';
+
   import SignUpSignInDialog from '~/components/tuyen-dung/viec-lam/dialogs/SignUpSignInDialog';
 
   import axios from 'axios';
+  import {mapState, mapGetters, mapActions} from 'vuex';
 
 
   export default {
@@ -103,201 +182,60 @@
       Breadcrumb,
       Banner,
       JobCover,
+      JobDescription,
+      JobBenefit,
+      JobRequirements,
+      ProfileRequirements,
+      ContactInfo,
+
       AdvancedSearch,
       CompanyBox,
       FixBarAction,
-      CompanyRecruitment,
-      SameJobs,
+      CompanyJobs,
+      SameJobBox,
       QuickInfo,
       SignUpSignInDialog
     },
     head() {
       return {
-        title: `Tuyển ${this.job.jobInfo.title} - ${this.job.employerInfo.companyName}`
+        title: `Tuyển ${this.jobInfo.title} - ${this.jobInfo.employer.name}`
       };
     },
     layout: 'default',
 
-    async asyncData() {
-      let {data} = await axios.get('https://halujobs.herokuapp.com/api/jobs/5b95ebe173b25010e12770de');
+    async asyncData({route}) {
+      let [jobInfo, companyJobs, sameJobs] = await Promise.all([
+        axios.get(`https://halujobs.herokuapp.com/jobs/${route.params.slug}`),
+        axios.get('https://halujobs.herokuapp.com/jobs?size=5'),
+        axios.get('https://halujobs.herokuapp.com/jobs?size=15')
+      ]);
+      console.log("Route", route);
 
-      return {jobInfo: data.job};
+      return {
+        jobInfo: jobInfo.data.job,
+        companyJobs: companyJobs.data.jobs,
+        sameJobs: sameJobs.data.jobs
+      };
     },
 
     data() {
       return {
         isUser: false,
         signUpDialogVisible: false,
+        sendMessageDialogVisible: false,
 
-        job: {
-          jobInfo: {
-            title: 'Nhân viên hành chính nhân sự',
-            workAddresses: ['Hà Nội'],
-            salary: '8 triệu - 15 triệu',
-            isBonus: true,
-            deadline: '10/08/2018 '
-          },
-          jobDetails: {
-            jobType: 'Toàn thời gian cố định',
-            numberOfRecruits: '2',
-            position: 'Nhân viên',
-            professions: ['Hành chính văn phòng', 'Lương cao', 'Nhân sự'],
-            description: [
-              'Thực hiện các công việc hành chính',
-              'Giải quyết các công việc liên quan Tiền lương, bảo hiểm',
-              'Thực hiện các công việc khác theo sự chỉ đạo của cấp trên'
-            ],
-            benefit: [
-              'Thu nhập: 8 – 15 triệu/tháng',
-              'Được tham gia BHXH đầy đủ',
-              'Làm việc trong môi trường lớn và ổn định, chuyên nghiệp, có khả năng thăng tiến cao.',
-              'Được tham gia các hoạt động, phong trào du lịch hàng năm.'
-            ]
-          },
-          jobRequirements: {
-            yearsOfExperience: '3',
-            qualification: 'Đại học',
-            gender: 'Nam',
-            language: 'Tiếng Việt',
-            jobRequirements: [
-              'Am hiểu kiến thức Tiền Lương nhân sự, Bảo hiểm',
-              'Có thể đi công tác',
-              'Nhanh nhẹn, nhiệt tình, chăm chỉ trong công việc',
-              'Chỉ tuyển Nam'
-            ],
-            resumeRequirements: [
-              'Đơn xin việc.',
-              'Sơ yếu lý lịch.',
-              'Hộ khẩu, chứng minh nhân dân và giấy khám sức khỏe.',
-              'Các bằng cấp có liên quan.'
-            ]
-          },
-          contactInfo: {
-            contact: 'Mrs. Biền',
-            email: 'employer@gmail.com',
-            phoneNumber: '0123456789',
-          },
-          employerInfo: {
-            _id: '',
-            companyName: 'Công ty cổ phần công nghệ Halu Việt Nam',
-            companyAddress: 'T2, 36/7 Ngọc Khánh, Ba Đình, Hà Nội',
-            companySize: 'Hơn 10000 người',
-            _logoUrl: 'https://scontent.fhan2-2.fna.fbcdn.net/v/t1.0-9/27459795_1516131271837402_799174223676649307_n.png?_nc_cat=0&oh=b95d1c0d6edfd09e16efef0fe1ca2a8b&oe=5C087E5C'
-          },
-          _updatedDate: '18/05/2018'
+        jobInfo: {},
+
+        isSaveJobBtnActive: false,
+        dialogTitle: '',
+        message: {
+          title: '',
+          content: ''
         },
-        sameJobs: [
-          {
-            jobTitle: "Giám đốc tài chính 1",
-            companyName: 'Công ty THHH AK 1',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 2",
-            companyName: 'Công ty THHH AK 2',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 3",
-            companyName: 'Công ty THHH AK 3',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 4",
-            companyName: 'Công ty THHH AK 4',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 5",
-            companyName: 'Công ty THHH AK 5',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 6",
-            companyName: 'Công ty THHH AK 6',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png',
-            jobUrl: '/tuyen-dung'
-          }
-        ],
-        companyJobs: [
-          {
-            jobTitle: "Lập trình viên full-stack Lập trình viên full-stack",
-            companyName: 'Công ty cổ phần công nghệ Halu Việt Nam 1',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn, Hà Nội',
-            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 2",
-            companyName: 'Công ty THHH AK 2',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 3",
-            companyName: 'Công ty THHH AK 3',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 4",
-            companyName: 'Công ty THHH AK 4',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 5",
-            companyName: 'Công ty THHH AK 5',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
-            jobUrl: '/tuyen-dung'
-          },
-          {
-            jobTitle: "Giám đốc tài chính 6",
-            companyName: 'Công ty THHH AK 6',
-            salary: '15 - 20 triệu',
-            deadline: '25/9/2018',
-            workAddress: 'Sài Gòn',
-            logoUrl: 'https://cdn1.mywork.com.vn/company-logo-medium/042018/6b61d0525c385e6c76454d532267522b.gif',
-            jobUrl: '/tuyen-dung'
-          }
-        ],
+        rules: {
+          title: [{required: true, message: 'Vui lòng nhập tiêu đề tin nhắn', trigger: 'blur'}],
+          content: [{required: true, message: 'Vui lòng nhập nội dung tin nhắn', trigger: 'blur'}],
+        },
         breadcrumbArr: [
           {name: 'Trang chủ', url: '/'},
           {name: 'Tuyển dụng', url: '/tuyen-dung'},
@@ -305,12 +243,13 @@
         ],
         scrolled: false
       }
-    }
-    ,
-    // validate ({ params }) {
-    //   return /^([0-9]{12,12})$/.test(params.id)
-    // },
+    },
+
     methods: {
+      ...mapActions('JOB', {
+        fetchJobInfo: 'fetchJobInfo'
+      }),
+
       handleOnScroll() {
         this.scrolled = window.scrollY > 800 && window.scrollY < 3500;
       },
@@ -319,21 +258,60 @@
         this.signUpDialogVisible = true;
       },
 
+      handleOnClickSaveJobBtn(saveJobBtnStatus) {
+        this.isSaveJobBtnActive = saveJobBtnStatus;
+      },
+
       handleOnClickApplyNowBtn() {
         this.signUpDialogVisible = true;
       },
       handleOnAcceptCloseSignUpDialog() {
         this.signUpDialogVisible = false;
-      }
+      },
+
+      handleOnClickSendMessageBtn() {
+        this.sendMessageDialogVisible = true;
+      },
+
+      handleOnSendMessage(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.$notify({
+              title: 'Thông báo',
+              message: 'Tin nhắn đã được gửi thành công!',
+              type: 'success'
+            });
+            this.sendMessageDialogVisible = false;
+          } else {
+            this.$notify({
+              title: 'Thông báo',
+              message: 'Vui lòng nhập tiêu đề và nội dung tin nhắn!',
+              type: 'warning'
+            });
+            return false;
+          }
+        });
+      },
     },
-    created() {
-      console.log("data", this.jobInfo);
+    created: async function () {
+      console.log("Created");
+      let slug = this.$route.params.slug;
+      // const {data} = await axios.get(`https://halujobs.herokuapp.com/jobs/${slug}`);
+      //
+      // this.jobInfo = data.job;
+      // console.log("jobInfo", this.jobInfo.benefit);
+      // console.log("route props", this.$route);
+      this.dialogTitle = 'Gửi tin nhắn cho ' + this.jobInfo.employer.name;
+      // axios.get('https://halujobs.herokuapp.com/jobs/5b95ebe173b25010e1277064');
     },
 
-    beforeMount() {
+    beforeMount: async function () {
       window.addEventListener('scroll', this.handleOnScroll);
-    }
-    ,
+      // let slug = this.$route.params.slug;
+      // const {data} = await axios.get(`https://halujobs.herokuapp.com/jobs/${slug}`);
+      // console.log("beforeMount", data)
+    },
+
     beforeDestroy() {
       window.removeEventListener('scroll', this.handleOnScroll);
     }

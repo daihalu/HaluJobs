@@ -18,7 +18,7 @@ module.exports = {
       { hid: 'description', contact: 'description', content: 'Một sản phẩm của © HaluTech' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/logo.ico' }
     ],
 
   },
@@ -26,22 +26,45 @@ module.exports = {
     '@/assets/css/main.scss'
   ],
   plugins: [
-    '@/plugins/element-ui',
-    '@/plugins/font-awesome',
-    { src: '@/plugins/vue-particles', ssr: false },
-    '@/plugins/vue-scroll-to',
-    '@/plugins/vue-bar',
-    '@/plugins/vue2-google-maps',
-    { src: '@/plugins/local-storage.js', ssr: false }
+    '@/plugins/ElementUi',
+    '@/plugins/HaluApi',
+    '@/plugins/FontAwesome',
+    { src: '@/plugins/VueParticles', ssr: false },
+    '@/plugins/VueScrollTo',
+    '@/plugins/VueBar',
+    '@/plugins/Vue2GoogleMaps',
+    { src: '@/plugins/LocalStorage.js', ssr: false }
   ],
   /*
   ** Customize the progress bar color
   */
 
   router:  {
+    extendRoutes(routes, resolve) {
+      // Replace
+      let replace = {
+        'cong-ty/index':                 'cong-ty.html',
+        'tuyen-dung/viec-lam/_id': 'tuyen-dung/viec-lam/:slug.html',
+        'account/login': 'dang-nhap.html',
+        'terms-of-use': 'thoa-thuan-su-dung.html'
+      };
+      for(let k in replace) {
+        if(!replace.hasOwnProperty(k)) continue;
+        routes.find((r) => r.chunkName.includes('pages/' + k)).path = '/' + replace[k];
+      }
+      // Add
+      let add = [
+        // {name: 'activity-manage-idn', path: '/activity/manage/:idn', component: resolve(__dirname, 'pages/activity/editor.vue')},
+        // {name: 'hoat-dong-type-slug', path: '/hoat-dong/:type/:ids.html', component: resolve(__dirname, 'pages/activity/public/list.vue')}
+      ];
+      for(let k in add) {
+        if(!add.hasOwnProperty(k)) continue;
+        routes.push(add[k]);
+      }
+    },
 
     scrollBehavior: function (to, from, savedPosition) {
-      return savedPosition;
+      return { x: 0, y: 0 }
     },
   },
   loading: { color: '#ffffff' },
@@ -75,5 +98,16 @@ module.exports = {
         })
       }
     },
+
+    // filenames:      {
+    //   chunk: '[id].[chunkhash].js'
+    // },
+    // vendor:         ['js-cookie', 'lodash'],
+    // styleResources: {
+    //   scss: './assets/css/element-variables.scss'
+    // },
+    // extractCSS:     {
+    //   allChunks: true
+    // }
   }
 };

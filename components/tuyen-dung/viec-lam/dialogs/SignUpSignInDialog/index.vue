@@ -9,7 +9,7 @@
       :before-close="handleOnCloseSignUpDialog"
     >
 
-      <div>
+      <div class="mg-top-10">
         <sign-up-form
           v-if="signUpFormVisible"
           @on_click_sign_in_text="handleOnClickSignInText"
@@ -39,7 +39,7 @@
         >
           Quý khách có chắc chắn là muốn huỷ {{signUpFormVisible ? 'đăng ký' : 'đăng nhập'}} tài khoản?
         </div>
-        <div class="ta-center">
+        <div class="ta-center mg-top-15">
           <el-button @click="handleOnCancelCloseSignUpDialog">Huỷ bỏ</el-button>
           <el-button type="primary" @click="handleOnAcceptCloseSignUpDialog">Đồng ý</el-button>
         </div>

@@ -3,7 +3,8 @@
     <h4>{{name}}</h4>
     <hr class="hr-1"/>
     <div v-for="item in companyJobs" :key="item.name">
-      <attractive-job-card
+      <company-job-card
+        :name="name"
         :jobInfo="item"
       />
     </div>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-  import AttractiveJobCard from '~/components/public-components/cards/PinkWorkAddressSalaryJobCard8';
+  import CompanyJobCard from '~/components/public-components/cards/NoCompanyLogoJobCard';
 
   export default {
     props: {
@@ -20,7 +21,7 @@
       companyJobs: Array
     },
     components: {
-      AttractiveJobCard
+      CompanyJobCard
     }
   }
 </script>

@@ -6,6 +6,7 @@ import * as types from './mutation-types';
 
 import HOME_PAGE from './modules/trang-chu';
 import RECRUITMENT_PAGE from './modules/tuyen-dung';
+import JOB from './modules/job';
 
 const store = () => {
   return new Vuex.Store({
@@ -21,7 +22,8 @@ const store = () => {
     }),],
     modules: {
       HOME_PAGE,
-      RECRUITMENT_PAGE
+      RECRUITMENT_PAGE,
+      JOB
     },
 
     state: {

@@ -39,33 +39,36 @@
     <el-dialog :visible.sync="phoneDialogVisible">
       <el-row class="box-container hot-line-container">
         <div class="header">
-          <h2>HOTLINE TƯ VẤN DÀNH CHO NHÀ TUYỂN DỤNG</h2>
+          <h2>HOTLINE TƯ VẤN DÀNH CHO NHÀ TUYỂN DỤNG VÀ ỨNG VIÊN</h2>
         </div>
 
+        <!--<div class="hot-line-box">-->
+          <!--<h3>KHU VỰC <span>MIỀN BẮC</span> HOTLINE-->
+            <!--<nuxt-link to="/tel:">(024) 888 88888</nuxt-link>-->
+          <!--</h3>-->
+          <!--<h3>KHU VỰC <span>MIỀN TRUNG</span> HOTLINE-->
+            <!--<nuxt-link to="/tel:">(024) 888 88888</nuxt-link>-->
+          <!--</h3>-->
+          <!--<h3>KHU VỰC <span>MIỀN NAM</span> HOTLINE-->
+            <!--<nuxt-link to="/tel:">(024) 888 88888</nuxt-link>-->
+          <!--</h3>-->
+        <!--</div>-->
         <div class="hot-line-box">
-          <h3>KHU VỰC <span>MIỀN BẮC</span> HOTLINE
-            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
-          </h3>
-          <h3>KHU VỰC <span>MIỀN TRUNG</span> HOTLINE
-            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
-          </h3>
-          <h3>KHU VỰC <span>MIỀN NAM</span> HOTLINE
-            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
-          </h3>
+          <h3>0247 102 9889</h3>
         </div>
       </el-row>
 
-      <el-row class="box-container hot-line-container">
-        <div class="header">
-          <h2>HOTLINE TƯ VẤN DÀNH CHO NGUỜI TÌM VIỆC</h2>
-        </div>
-        <div class="hot-line-box">
-          <h3>TOÀN QUỐC:
-            <nuxt-link to="/tel:">(024) 888 88888</nuxt-link>
-          </h3>
-        </div>
+      <!--<el-row class="box-container hot-line-container">-->
+        <!--<div class="header">-->
+          <!--<h2>HOTLINE TƯ VẤN DÀNH CHO NGUỜI TÌM VIỆC</h2>-->
+        <!--</div>-->
+        <!--<div class="hot-line-box">-->
+          <!--<h3>TOÀN QUỐC:-->
+            <!--<nuxt-link to="/tel:">(024) 888 88888</nuxt-link>-->
+          <!--</h3>-->
+        <!--</div>-->
 
-      </el-row>
+      <!--</el-row>-->
     </el-dialog>
 
     <el-dialog :visible.sync="mailDialogVisible">

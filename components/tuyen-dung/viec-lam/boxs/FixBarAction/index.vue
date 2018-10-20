@@ -5,21 +5,24 @@
         <el-col :span="16" class="fixed-top-candidate-bar--info">
             <h3>{{title}}</h3>
             <p>
-              <span>Mức lương: {{salary}}</span> | Hạn nộp hồ sơ <span>{{closingDate}}</span>
+              Mức lương: <span>{{salary}}</span> | Hạn nộp hồ sơ: <span>{{deadline}}</span>
             </p>
         </el-col>
 
         <el-col :span="8">
           <div class="btn-options">
-            <el-button class="fixed-top-job-bar--btn view-contact" @click="handleOnClickViewContactBtn">
-              <font-awesome-icon :icon="['fas', 'heart']"/>
-              Xem liên hệ
-            </el-button>
 
             <el-button class="fixed-top-job-bar--btn  apply-now" @click="handleOnClickApplyNowBtn">
               <font-awesome-icon :icon="['far', 'clipboard']"/>
               Ứng tuyển ngay
             </el-button>
+
+            <el-button class="fixed-top-job-bar--btn save-job" @click="handleOnClickSaveJobBtn" :class="{active: isActive}">
+              <font-awesome-icon :icon="['fas', 'heart']"/>
+              Lưu công việc
+            </el-button>
+
+
           </div>
         </el-col>
       </el-row>
@@ -35,16 +38,14 @@
   export default {
     props: {
       title: String,
-      salaryRange: Object,
+      salary: String,
       deadline: String,
+      isSaveJobBtnActive: Boolean
     },
     data() {
       return {
         scrolled: false,
-        activeBtn: '',
-        salary: this.salaryRange.min + ' triệu - ' + this.salaryRange.max + ' triệu',
-        closingDate: this.deadline,
-
+        isActive: this.isSaveJobBtnActive,
       }
     },
     methods: {
@@ -52,18 +53,15 @@
         this.scrolled = window.scrollY > 550 && window.scrollY < 3500;
       },
 
-      handleOnClickViewContactBtn() {
-        this.$emit('on_click_view_contact_btn');
+      handleOnClickSaveJobBtn() {
+        this.isActive = !this.isActive;
+        this.$emit('on_click_save_job_btn', this.isActive);
       },
 
       handleOnClickApplyNowBtn() {
         this.$emit('on_click_view_apply_now_btn');
       }
     },
-    created() {
-      this.closingDate = FormattedDate(this.deadline);
-    },
-
     beforeMount() {
       window.addEventListener('scroll', this.handleScroll);
     },
@@ -99,6 +97,7 @@
 
   .fixed-top-candidate-bar--info p span {
     font-weight: $fw-base-500;
+
   }
 
   .fixed-top-candidate-bar .btn-options {
@@ -137,20 +136,26 @@
     background-color: $color-pink;
   }
 
-  .view-contact {
+  .save-job {
     background-color: transparent;
     border: 1px solid $color-white;
     color: $color-white;
   }
 
-  .view-contact:hover {
+  .save-job:hover {
     background-color: $color-white;
     color: $color-pink;
   }
 
-  .view-contact:active {
+  .save-job:active {
     background-color: transparent;
     color: $color-white;
+  }
+
+  .active {
+    color: $color-pink;
+    background-color: $color-white;
+    border-color: $color-pink;
   }
 
   .slide-fade-enter-active {

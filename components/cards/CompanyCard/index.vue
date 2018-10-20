@@ -4,7 +4,7 @@
           <img src="https://cdn1.mywork.com.vn/media/images/brand-cover/cover-4.jpg"/>
         </div>
         <a class="company-card--avatar">
-          <img src="http://www.spulsa.info/wp-content/uploads/best-25-hexagon-logo-ideas-on-pinterest-geometric-logo-simple-hexagon-logos.jpg"/>
+          <img src="https://image.freepik.com/free-vector/abstract-company-logo-template_1043-191.jpg"/>
         </a>
         <div >
           <p class="company-card--name">{{ companyName }}</p>

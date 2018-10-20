@@ -22,6 +22,7 @@
         </div>
       </el-row>
     </div>
+
     <div class="container">
       <el-row class="navigation-bar">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -34,8 +35,9 @@
         </el-breadcrumb>
       </el-row>
 
-      <CompanyBox jobTitle="ỨNG VIÊN NĂNG ĐỘNG"/>
+
     </div>
+    <CompanyBox jobTitle="ỨNG VIÊN NĂNG ĐỘNG" class="company-box"/>
   </div>
 
 </template>
@@ -64,13 +66,18 @@
   @import "~assets/css/halujobs_variables";
 
   .container {
-    width: $page-width;
+    width: 100%;
     margin: 0 auto !important;
   }
 
   .navigation-bar {
     margin: $mg-top-bottom-15 auto;
     padding-left: 0;
+    width: 100%;
+  }
+
+  .company-box {
+    width: $page-width;
   }
 
   .advanced-search-bar__nav {
@@ -103,7 +110,7 @@
 
   .container {
     display: flex;
-    margin-top: 50px;
+
   }
 
   .search-bar {
@@ -168,7 +175,7 @@
   }
 
   .container {
-    width: 50%;
+
     text-align: center;
     margin-left: 0;
   }
